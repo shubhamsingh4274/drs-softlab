@@ -4,10 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Careers at DRS SoftLab | Join Our Team</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a7a52'/><path d='M16 4L6 9v14l10 5 10-5V9L16 4z' fill='none' stroke='white' stroke-width='2'/><path d='M16 28V14M6 9l10 5 10-5' fill='none' stroke='white' stroke-width='1.5'/></svg>" />
+  <meta name="theme-color" content="#0a1628" />
+  
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="preloader"><div class="preloader-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/><path d="M12 22V12"/><path d="M3 7l9 5 9-5"/></svg></div><div class="preloader-bar"><div class="preloader-bar-fill"></div></div><div class="preloader-text">DRS SoftLab</div></div>
+  <div class="scroll-progress"></div>
   <canvas id="particles"></canvas>
+  <div class="grid-bg"></div>
+  <div class="floating-shapes"><div class="floating-shape fs-1"></div><div class="floating-shape fs-2"></div><div class="floating-shape fs-3"></div></div>
   <div class="mouse-glow" style="position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(34,196,122,0.06),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left 0.1s,top 0.1s"></div>
 
   <header class="header">
@@ -120,6 +127,13 @@
       <a href="index.html" style="color:var(--primary-light);font-weight:600">&larr; Back to Home</a>
     </div>
   </footer>
+  <!-- AI Badge -->
+  <div class="ai-floating-badge"><span class="dot"></span>AI-Powered</div>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" title="Toggle light/dark mode">&#9728;&#65039;</button>
+  <a href="#" class="back-to-top" title="Back to top">&#8593;</a>
+
   <!-- Floating Development Banner -->
   <div class="dev-banner" id="dev-banner">
     <span class="pulse-dot"></span>

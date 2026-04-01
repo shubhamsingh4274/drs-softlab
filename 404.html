@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | DRS SoftLab</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a7a52'/><path d='M16 4L6 9v14l10 5 10-5V9L16 4z' fill='none' stroke='white' stroke-width='2'/><path d='M16 28V14M6 9l10 5 10-5' fill='none' stroke='white' stroke-width='1.5'/></svg>" />
+  <meta name="theme-color" content="#0a1628" />
+  
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="preloader"><div class="preloader-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/><path d="M12 22V12"/><path d="M3 7l9 5 9-5"/></svg></div><div class="preloader-bar"><div class="preloader-bar-fill"></div></div><div class="preloader-text">DRS SoftLab</div></div>
+  <div class="scroll-progress"></div>
+  <canvas id="particles"></canvas>
+
+  <header class="header">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/><path d="M12 22V12"/><path d="M3 7l9 5 9-5"/></svg></div>
+      <div><div class="logo-text">DRS SoftLab</div><div class="logo-sub">Digital Retail Solutions</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="contact.html" class="btn-cta">Contact Us</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding:200px 48px 160px;text-align:center">
+    <div class="hero-bg"></div>
+    <div class="hero-orb" style="width:400px;height:400px;background:rgba(248,113,113,0.1);top:-50px;right:-50px"></div>
+    <div class="container" style="position:relative;z-index:1">
+      <div style="font-size:120px;font-weight:900;line-height:1;letter-spacing:-4px;margin-bottom:16px" class="gradient-text">404</div>
+      <h1 style="font-size:32px;margin-bottom:16px">Page Not Found</h1>
+      <p class="subtitle subtitle-center" style="margin-bottom:40px">Looks like you wandered into uncharted territory. The page you're looking for doesn't exist or has been moved.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="index.html" class="btn-glow" style="position:relative"><span style="position:relative;z-index:1">&#127968; Go Home</span></a>
+        <a href="contact.html" class="btn-outline">Contact Support &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

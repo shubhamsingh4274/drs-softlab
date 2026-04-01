@@ -5,10 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DRS SoftLab | Digital Retail Solutions — AI-Powered Software for India</title>
   <meta name="description" content="DRS SoftLab builds next-generation AI-powered SaaS platforms for Indian businesses. NeoShala for schools, Aushadhi for pharmacies." />
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a7a52'/><path d='M16 4L6 9v14l10 5 10-5V9L16 4z' fill='none' stroke='white' stroke-width='2'/><path d='M16 28V14M6 9l10 5 10-5' fill='none' stroke='white' stroke-width='1.5'/></svg>" />
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="DRS SoftLab | AI-Powered Software for India" />
+  <meta property="og:description" content="Building next-gen SaaS platforms for education and healthcare. NeoShala for schools, Aushadhi for pharmacies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://drssoftlab.netlify.app" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0a1628" />
+  
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Preloader Splash -->
+  <div class="preloader">
+    <div class="preloader-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/><path d="M12 22V12"/><path d="M3 7l9 5 9-5"/></svg>
+    </div>
+    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+    <div class="preloader-text">DRS SoftLab</div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress"></div>
+
   <canvas id="particles"></canvas>
+  <!-- Grid Background -->
+  <div class="grid-bg"></div>
+  <!-- Floating Shapes -->
+  <div class="floating-shapes">
+    <div class="floating-shape fs-1"></div>
+    <div class="floating-shape fs-2"></div>
+    <div class="floating-shape fs-3"></div>
+    <div class="floating-shape fs-4"></div>
+    <div class="floating-shape fs-5"></div>
+  </div>
   <div class="mouse-glow" style="position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(34,196,122,0.06),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left 0.1s,top 0.1s"></div>
 
   <header class="header">
@@ -19,6 +51,7 @@
     <nav class="nav">
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
+      <a href="pricing.html">Pricing</a>
       <a href="careers.html">Careers</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html" class="btn-cta">Contact Us</a>
@@ -30,6 +63,13 @@
     <div class="hero-bg"></div>
     <div class="hero-orb" style="width:500px;height:500px;background:rgba(26,122,82,0.12);top:-100px;right:-100px"></div>
     <div class="hero-orb" style="width:400px;height:400px;background:rgba(21,101,192,0.08);bottom:-100px;left:-100px"></div>
+    <!-- Floating emojis in hero -->
+    <span class="floating-emoji" style="top:15%;right:12%;animation-delay:0s;font-size:28px">&#128187;</span>
+    <span class="floating-emoji" style="top:25%;left:8%;animation-delay:1s;font-size:22px">&#128138;</span>
+    <span class="floating-emoji" style="bottom:25%;right:8%;animation-delay:2s;font-size:26px">&#127891;</span>
+    <span class="floating-emoji" style="top:60%;left:12%;animation-delay:3s;font-size:20px">&#9889;</span>
+    <span class="floating-emoji" style="bottom:15%;left:25%;animation-delay:4s;font-size:24px">&#128200;</span>
+    <span class="floating-emoji" style="top:35%;right:25%;animation-delay:1.5s;font-size:18px">&#127470;&#127475;</span>
     <div class="container">
       <div class="ai-badge reveal"><span class="pulse"></span>AI-Powered &middot; Built in India &middot; Since 2026</div>
       <h1 class="reveal reveal-d1">We Build Software<br/>That <span class="gradient-text">Empowers India</span></h1>
@@ -44,6 +84,30 @@
         <a href="contact.html" class="btn-outline">Get in Touch &rarr;</a>
       </div>
       <p class="reveal reveal-d4" style="margin-top:32px;font-size:12px;color:var(--text-muted)">Noida, India &middot; 2 Products &middot; 80+ Features &middot; 10+ Languages</p>
+
+      <!-- Live Code Terminal -->
+      <div class="reveal" style="margin-top:56px;display:flex;justify-content:center">
+        <div class="terminal" id="hero-terminal">
+          <div class="terminal-bar">
+            <div class="terminal-dot" style="background:#ff5f57"></div>
+            <div class="terminal-dot" style="background:#ffbd2e"></div>
+            <div class="terminal-dot" style="background:#28c840"></div>
+            <span style="margin-left:8px;font-size:11px;color:var(--text-muted)">drs-softlab ~ deploy</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line"><span class="cmd">$</span> drs deploy --product=aushadhi</div>
+            <div class="terminal-line"><span class="output">&#10003; Building React frontend...</span></div>
+            <div class="terminal-line"><span class="output">&#10003; Compiling TypeScript backend...</span></div>
+            <div class="terminal-line"><span class="output">&#10003; Running 248 tests... </span><span class="highlight">ALL PASSED</span></div>
+            <div class="terminal-line"><span class="output">&#128640; </span><span class="highlight">Deployed to production in 12s</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orbit Ring -->
+    <div class="hero-orbit" style="display:none">
+      <div class="hero-orbit-dot"></div>
     </div>
   </section>
 
@@ -65,6 +129,71 @@
       </div>
     </div>
   </section>
+
+  <!-- AI Orbit Section -->
+  <section class="section" style="position:relative;z-index:1;border-top:1px solid var(--border);overflow:hidden">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+        <div class="reveal">
+          <div class="section-tag"><span class="dot"></span> AI Engine</div>
+          <h2 style="margin-bottom:16px">Intelligence at the <span class="gradient-text">Core</span></h2>
+          <p style="color:var(--text-muted);font-size:15px;line-height:1.8;margin-bottom:24px">
+            Every DRS product is powered by our AI engine — learning from millions of data points to predict, suggest, and automate.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:12px;font-size:14px">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--primary-light);box-shadow:0 0 8px rgba(34,196,122,0.4);flex-shrink:0"></div>
+              <span>Predictive expiry &amp; stock alerts</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:14px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#60a5fa;box-shadow:0 0 8px rgba(96,165,250,0.4);flex-shrink:0"></div>
+              <span>Smart revenue &amp; attendance analytics</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:14px">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(251,191,36,0.4);flex-shrink:0"></div>
+              <span>Auto-generated reports &amp; insights</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:14px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#f87171;box-shadow:0 0 8px rgba(248,113,113,0.4);flex-shrink:0"></div>
+              <span>Generic medicine suggestions at POS</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font-size:14px">
+              <div style="width:8px;height:8px;border-radius:50%;background:#c084fc;box-shadow:0 0 8px rgba(192,132,252,0.4);flex-shrink:0"></div>
+              <span>Voice search &amp; intelligent commands</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orbit Visualization -->
+        <div class="reveal reveal-d1" style="display:flex;justify-content:center">
+          <div class="ai-orbit-wrap">
+            <!-- Center Brain -->
+            <div class="ai-orbit-center">&#129504;</div>
+            <!-- Ring 1 -->
+            <div class="ai-orbit-ring ai-orbit-ring-1">
+              <div class="ai-orbit-item ai-item-1">&#128200;<div class="ai-orbit-label">Analytics</div></div>
+              <div class="ai-orbit-item ai-item-2">&#9889;<div class="ai-orbit-label">Speed</div></div>
+            </div>
+            <!-- Ring 2 -->
+            <div class="ai-orbit-ring ai-orbit-ring-2">
+              <div class="ai-orbit-item ai-item-3">&#128138;<div class="ai-orbit-label">Pharmacy</div></div>
+              <div class="ai-orbit-item ai-item-4">&#127891;<div class="ai-orbit-label">School</div></div>
+              <div class="ai-orbit-item ai-item-5">&#128274;<div class="ai-orbit-label">Security</div></div>
+            </div>
+            <!-- Ring 3 -->
+            <div class="ai-orbit-ring ai-orbit-ring-3">
+              <div class="ai-orbit-item ai-item-6">&#127470;&#127475;<div class="ai-orbit-label">India</div></div>
+              <div class="ai-orbit-item ai-item-7">&#128172;<div class="ai-orbit-label">WhatsApp</div></div>
+              <div class="ai-orbit-item ai-item-8">&#127760;<div class="ai-orbit-label">Languages</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gradient Divider -->
+  <div style="position:relative;z-index:1;padding:0 48px"><div class="gradient-line" style="width:200px"></div></div>
 
   <!-- Products -->
   <section class="section" id="products">
@@ -97,6 +226,619 @@
             <div class="product-cta" style="color:#34d399">Visit Aushadhi &rarr;</div>
           </div>
         </a>
+      </div>
+
+      <!-- Device Mockups — Sliding Feature Demo -->
+      <div class="reveal" style="margin-top:64px" id="demo-section">
+        <div class="text-center" style="margin-bottom:32px">
+          <h3 style="font-size:22px;margin-bottom:6px">See It <span class="gradient-text">In Action</span></h3>
+          <p style="color:var(--text-muted);font-size:14px">Watch live feature demos from both products</p>
+        </div>
+        <div style="display:flex;align-items:flex-end;justify-content:center;gap:32px;flex-wrap:wrap">
+
+          <!-- LAPTOP — Aushadhi 3-Step Billing Slideshow -->
+          <div style="flex:1;max-width:620px">
+            <!-- Step indicators -->
+            <div style="display:flex;justify-content:center;gap:8px;margin-bottom:16px">
+              <div class="demo-step-dot active" data-step="0" style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.3s;background:rgba(26,122,82,0.15);border:1px solid rgba(26,122,82,0.3);color:var(--primary-light)">
+                <span style="width:18px;height:18px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800">1</span> Search Medicine
+              </div>
+              <div class="demo-step-dot" data-step="1" style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.3s;background:var(--glass);border:1px solid var(--glass-border);color:var(--text-muted)">
+                <span style="width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.1);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800">2</span> Add &amp; Calculate GST
+              </div>
+              <div class="demo-step-dot" data-step="2" style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.3s;background:var(--glass);border:1px solid var(--glass-border);color:var(--text-muted)">
+                <span style="width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.1);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800">3</span> Receipt
+              </div>
+              <div class="demo-step-dot" data-step="3" style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.3s;background:var(--glass);border:1px solid var(--glass-border);color:var(--text-muted)">
+                <span style="width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.1);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800">4</span> Medicines
+              </div>
+              <div class="demo-step-dot" data-step="4" style="display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.3s;background:var(--glass);border:1px solid var(--glass-border);color:var(--text-muted)">
+                <span style="width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,0.1);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800">5</span> Reports
+              </div>
+            </div>
+            <div class="device-laptop">
+            <div class="device-screen">
+              <!-- Slide container -->
+              <div id="laptop-slides" style="position:relative;width:100%;height:100%;overflow:hidden">
+
+                <!-- SLIDE 1: Search Medicine -->
+                <div class="laptop-slide" style="position:absolute;inset:0;transition:opacity 0.5s,transform 0.5s;opacity:1;background:#f4f7f5;display:flex;font-family:Inter,sans-serif">
+                  <div style="width:48px;background:#0a2e22;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;flex-shrink:0"><div style="width:24px;height:24px;background:linear-gradient(135deg,#1a7a52,#0d4f35);border-radius:6px;margin-bottom:4px;font-size:11px;display:flex;align-items:center;justify-content:center">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Dashboard">&#127968;</div><div style="width:22px;height:22px;background:#1a7a52;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(26,122,82,0.4)" title="New Sale">&#128722;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Medicines">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Customers">&#128101;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Reports">&#128200;</div><div style="flex:1"></div><div style="width:22px;height:22px;background:rgba(255,255,255,0.06);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:8.5px" title="Settings">&#9881;&#65039;</div></div>
+                  <div style="flex:1;padding:10px 12px;display:flex;flex-direction:column;gap:6px">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                      <div style="font-size:12px;font-weight:900;color:#1a2e25">&#128722; New Sale</div>
+                      <div style="font-size:12px;color:#6b8c7a">Step 1 of 3</div>
+                    </div>
+                    <!-- Search bar -->
+                    <div style="background:#fff;border:2px solid #1a7a52;border-radius:6px;padding:6px 8px;display:flex;align-items:center;gap:6px">
+                      <div style="font-size:12px">&#128269;</div>
+                      <div style="font-size:11px;color:#1a7a52;font-weight:900">Paracetamol 500mg...</div>
+                      <div style="margin-left:auto;font-size:12px;background:#d1fae5;color:#059669;padding:2px 6px;border-radius:4px;font-weight:900">&#127908; Voice</div>
+                    </div>
+                    <!-- Search results -->
+                    <div style="background:#fff;border-radius:5px;border:1px solid #e2ebe6;flex:1">
+                      <div style="padding:5px 8px;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center;background:#f0fdf4">
+                        <div><div style="font-size:11px;font-weight:900;color:#1a2e25">Paracetamol 500mg (Crocin)</div><div style="font-size:8.5px;color:#6b8c7a">GSK &middot; Strip of 10 &middot; HSN: 3004</div></div>
+                        <div style="text-align:right"><div style="font-size:11px;font-weight:900;color:#1a7a52">&#8377;45.00</div><div style="font-size:12px;color:#059669">Stock: 248</div></div>
+                      </div>
+                      <div style="padding:5px 8px;border-bottom:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+                        <div><div style="font-size:11px;font-weight:900;color:#1a2e25">Paracetamol 650mg (Dolo)</div><div style="font-size:8.5px;color:#6b8c7a">Micro Labs &middot; Strip of 15 &middot; HSN: 3004</div></div>
+                        <div style="text-align:right"><div style="font-size:11px;font-weight:900;color:#374151">&#8377;32.00</div><div style="font-size:12px;color:#059669">Stock: 156</div></div>
+                      </div>
+                      <div style="padding:5px 8px;display:flex;justify-content:space-between;align-items:center">
+                        <div><div style="font-size:11px;font-weight:900;color:#1a2e25">Paracetamol Syrup (Calpol)</div><div style="font-size:8.5px;color:#6b8c7a">GSK &middot; 60ml Bottle &middot; HSN: 3004</div></div>
+                        <div style="text-align:right"><div style="font-size:11px;font-weight:900;color:#374151">&#8377;78.00</div><div style="font-size:12px;color:#d97706">Stock: 12</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 2: Cart + GST Calculation -->
+                <div class="laptop-slide" style="position:absolute;inset:0;transition:opacity 0.5s,transform 0.5s;opacity:0;transform:translateX(30px);background:#f4f7f5;display:flex;font-family:Inter,sans-serif">
+                  <div style="width:48px;background:#0a2e22;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;flex-shrink:0"><div style="width:24px;height:24px;background:linear-gradient(135deg,#1a7a52,#0d4f35);border-radius:6px;margin-bottom:4px;font-size:11px;display:flex;align-items:center;justify-content:center">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Dashboard">&#127968;</div><div style="width:22px;height:22px;background:#1a7a52;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(26,122,82,0.4)" title="New Sale">&#128722;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Medicines">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Customers">&#128101;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Reports">&#128200;</div><div style="flex:1"></div><div style="width:22px;height:22px;background:rgba(255,255,255,0.06);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:8.5px" title="Settings">&#9881;&#65039;</div></div>
+                  <div style="flex:1;padding:10px 12px;display:flex;gap:8px">
+                    <!-- Items Table (left) -->
+                    <div style="flex:2;display:flex;flex-direction:column;gap:4px">
+                      <div style="display:flex;justify-content:space-between;align-items:center">
+                        <div style="font-size:12px;font-weight:900;color:#1a2e25">&#128722; New Sale — POS</div>
+                        <div style="display:flex;gap:3px">
+                          <div style="background:#E8F5E9;color:#2E7D32;font-size:11px;font-weight:900;padding:2px 5px;border-radius:3px">Walk-in Customer</div>
+                          <div style="background:#E3F2FD;color:#1565C0;font-size:11px;font-weight:900;padding:2px 5px;border-radius:3px">Cash</div>
+                        </div>
+                      </div>
+                      <!-- Items with columns -->
+                      <div style="background:#fff;border-radius:5px;border:1px solid #e2ebe6;flex:1;overflow:hidden">
+                        <div style="display:flex;padding:4px 6px;border-bottom:2px solid #d1d9d4;font-size:11px;font-weight:900;color:#374151;text-transform:uppercase;gap:2px;background:#f8faf9;letter-spacing:0.3px">
+                          <div style="flex:3">Medicine</div><div style="flex:1;text-align:center">Qty</div><div style="flex:1;text-align:center">MRP</div><div style="flex:1;text-align:center">GST</div><div style="flex:1;text-align:right">Amount</div><div style="width:12px"></div>
+                        </div>
+                        <div style="display:flex;padding:5px 6px;border-bottom:1px solid #f1f5f9;font-size:8.5px;align-items:center;gap:2px;background:#f0fdf4">
+                          <div style="flex:3"><div style="font-weight:900;color:#1a2e25">Paracetamol 500mg</div><div style="font-size:8.5px;color:#059669;font-weight:900">GSK &middot; B2026-A1 &middot; Exp: Dec 27</div></div>
+                          <div style="flex:1;text-align:center"><div style="background:#e2ebe6;border-radius:3px;padding:2px 5px;font-weight:900;color:#1a2e25">2</div></div>
+                          <div style="flex:1;text-align:center;font-weight:900;color:#374151">&#8377;45</div>
+                          <div style="flex:1;text-align:center;font-size:11px;color:#059669;font-weight:900">5%</div>
+                          <div style="flex:1;text-align:right;font-weight:900;color:#1a2e25">&#8377;90</div>
+                          <div style="width:12px;text-align:center;font-size:8.5px;color:#dc2626;font-weight:900">&#215;</div>
+                        </div>
+                        <div style="display:flex;padding:5px 6px;border-bottom:1px solid #f1f5f9;font-size:8.5px;align-items:center;gap:2px">
+                          <div style="flex:3"><div style="font-weight:900;color:#1a2e25">Amoxicillin 250mg</div><div style="font-size:8.5px;color:#059669;font-weight:900">Cipla &middot; C2026-K8 &middot; Exp: Mar 28</div></div>
+                          <div style="flex:1;text-align:center"><div style="background:#e2ebe6;border-radius:3px;padding:2px 5px;font-weight:900;color:#1a2e25">1</div></div>
+                          <div style="flex:1;text-align:center;font-weight:900;color:#374151">&#8377;125</div>
+                          <div style="flex:1;text-align:center;font-size:11px;color:#059669;font-weight:900">12%</div>
+                          <div style="flex:1;text-align:right;font-weight:900;color:#1a2e25">&#8377;125</div>
+                          <div style="width:12px;text-align:center;font-size:8.5px;color:#dc2626;font-weight:900">&#215;</div>
+                        </div>
+                        <div style="display:flex;padding:5px 6px;font-size:8.5px;align-items:center;gap:2px">
+                          <div style="flex:3"><div style="font-weight:900;color:#1a2e25">Cetirizine 10mg</div><div style="font-size:8.5px;color:#059669;font-weight:900">Sun Pharma &middot; S2025-P3 &middot; Exp: Jan 28</div></div>
+                          <div style="flex:1;text-align:center"><div style="background:#e2ebe6;border-radius:3px;padding:2px 5px;font-weight:900;color:#1a2e25">3</div></div>
+                          <div style="flex:1;text-align:center;font-weight:900;color:#374151">&#8377;15</div>
+                          <div style="flex:1;text-align:center;font-size:11px;color:#059669;font-weight:900">5%</div>
+                          <div style="flex:1;text-align:right;font-weight:900;color:#1a2e25">&#8377;45</div>
+                          <div style="width:12px;text-align:center;font-size:8.5px;color:#dc2626;font-weight:900">&#215;</div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Order Summary (right sidebar) -->
+                    <div style="flex:1;background:#fff;border-radius:5px;border:1px solid #e2ebe6;padding:6px 8px;display:flex;flex-direction:column;gap:2px">
+                      <div style="font-size:8.5px;font-weight:900;color:#1a2e25;margin-bottom:4px;display:flex;align-items:center;gap:3px">&#128203; Order Summary</div>
+                      <div style="display:flex;justify-content:space-between;font-size:8.5px;padding:1px 0"><span style="color:#374151;font-weight:900">Items (3)</span><span style="font-weight:900;color:#1a2e25">&#8377;260.00</span></div>
+                      <div style="display:flex;justify-content:space-between;font-size:8.5px;padding:1px 0"><span style="color:#374151;font-weight:900">CGST</span><span style="font-weight:900;color:#1a2e25">&#8377;6.50</span></div>
+                      <div style="display:flex;justify-content:space-between;font-size:8.5px;padding:1px 0"><span style="color:#374151;font-weight:900">SGST</span><span style="font-weight:900;color:#1a2e25">&#8377;6.50</span></div>
+                      <div style="display:flex;justify-content:space-between;font-size:8.5px;padding:1px 0"><span style="color:#374151;font-weight:900">Discount (5%)</span><span style="color:#dc2626;font-weight:900">-&#8377;13.00</span></div>
+                      <div style="border-top:2px solid #1a7a52;padding-top:4px;margin-top:4px;display:flex;justify-content:space-between;font-size:12px;font-weight:900">
+                        <span style="color:#1a2e25">Total</span><span style="color:#1a7a52">&#8377;260.00</span>
+                      </div>
+                      <div style="font-size:8.5px;color:#059669;font-weight:900;margin-top:2px">GST: &#8377;13.00 (CGST: &#8377;6.50 + SGST: &#8377;6.50)</div>
+                      <!-- Payment Method -->
+                      <div style="margin-top:auto;display:flex;flex-direction:column;gap:3px">
+                        <div style="font-size:11px;font-weight:900;color:#1a2e25">Payment Method</div>
+                        <div style="display:flex;gap:3px">
+                          <div style="flex:1;background:#d1fae5;border:1.5px solid #1a7a52;border-radius:4px;padding:3px;text-align:center;font-size:11px;font-weight:900;color:#1a7a52">Cash</div>
+                          <div style="flex:1;background:#fff;border:1.5px solid #e2ebe6;border-radius:4px;padding:3px;text-align:center;font-size:11px;font-weight:900;color:#9ca3af">UPI</div>
+                          <div style="flex:1;background:#fff;border:1.5px solid #e2ebe6;border-radius:4px;padding:3px;text-align:center;font-size:11px;font-weight:900;color:#9ca3af">Card</div>
+                          <div style="flex:1;background:#fff;border:1.5px solid #e2ebe6;border-radius:4px;padding:3px;text-align:center;font-size:11px;font-weight:900;color:#9ca3af">Udhar</div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,#1a7a52,#0d4f35);border-radius:5px;padding:6px;text-align:center;color:#fff;font-size:11px;font-weight:900;box-shadow:0 3px 10px rgba(26,122,82,0.4)">&#9889; Generate Bill</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 3: Receipt Generated -->
+                <div class="laptop-slide" style="position:absolute;inset:0;transition:opacity 0.5s,transform 0.5s;opacity:0;transform:translateX(30px);background:#f4f7f5;display:flex;font-family:Inter,sans-serif">
+                  <div style="width:48px;background:#0a2e22;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;flex-shrink:0"><div style="width:24px;height:24px;background:linear-gradient(135deg,#1a7a52,#0d4f35);border-radius:6px;margin-bottom:4px;font-size:11px;display:flex;align-items:center;justify-content:center">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Dashboard">&#127968;</div><div style="width:22px;height:22px;background:#1a7a52;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(26,122,82,0.4)" title="New Sale">&#128722;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Medicines">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Customers">&#128101;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Reports">&#128200;</div><div style="flex:1"></div><div style="width:22px;height:22px;background:rgba(255,255,255,0.06);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:8.5px" title="Settings">&#9881;&#65039;</div></div>
+                  <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:10px">
+                    <div style="background:#fff;border-radius:6px;border:1px solid #e2ebe6;padding:10px 14px;width:60%;max-width:200px;text-align:center">
+                      <div style="font-size:14px;margin-bottom:4px">&#9989;</div>
+                      <div style="font-size:8.5px;font-weight:900;color:#059669;margin-bottom:2px">Bill Generated!</div>
+                      <div style="font-size:12px;color:#6b8c7a;margin-bottom:6px">Invoice #INV-2026-04821</div>
+                      <div style="border-top:1px dashed #e2ebe6;padding-top:5px;margin-bottom:4px">
+                        <div style="font-size:11px;font-weight:900;color:#1a2e25">Aushadhi Medical Store</div>
+                        <div style="font-size:12px;color:#374151;font-weight:900">GSTIN: 09AABCD1234E1Z5</div>
+                      </div>
+                      <div style="text-align:left;font-size:8.5px;color:#374151;line-height:1.8">
+                        Paracetamol 500mg x2 — &#8377;90<br/>Amoxicillin 250mg x1 — &#8377;125<br/>Cetirizine 10mg x3 — &#8377;45
+                      </div>
+                      <div style="border-top:1px dashed #e2ebe6;margin-top:4px;padding-top:4px">
+                        <div style="font-size:8.5px;font-weight:900;color:#1a7a52">Total: &#8377;260.00</div>
+                        <div style="font-size:8.5px;color:#6b8c7a">CGST: &#8377;6.50 + SGST: &#8377;6.50</div>
+                      </div>
+                      <div style="display:flex;gap:4px;margin-top:6px">
+                        <div style="flex:1;background:#1a7a52;border-radius:3px;padding:3px;color:#fff;font-size:11px;font-weight:900">&#128424; Print</div>
+                        <div style="flex:1;background:#25D366;border-radius:3px;padding:3px;color:#fff;font-size:11px;font-weight:900">&#128172; WhatsApp</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                <!-- SLIDE 4: Medicines Inventory -->
+                <div class="laptop-slide" style="position:absolute;inset:0;opacity:0;transform:translateX(30px);background:#f4f7f5;display:flex;font-family:Inter,sans-serif">
+                  <div style="width:48px;background:#0a2e22;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;flex-shrink:0"><div style="width:24px;height:24px;background:linear-gradient(135deg,#1a7a52,#0d4f35);border-radius:6px;margin-bottom:4px;font-size:11px;display:flex;align-items:center;justify-content:center">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Dashboard">&#127968;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="New Sale">&#128722;</div><div style="width:22px;height:22px;background:#1a7a52;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(26,122,82,0.4)" title="Medicines">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Customers">&#128101;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Reports">&#128200;</div><div style="flex:1"></div><div style="width:22px;height:22px;background:rgba(255,255,255,0.06);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:8.5px" title="Settings">&#9881;&#65039;</div></div>
+                  <div style="flex:1;padding:10px 12px;display:flex;flex-direction:column;gap:6px">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                      <div style="font-size:12px;font-weight:900;color:#1a2e25">&#128138; Medicines</div>
+                      <div style="display:flex;gap:4px"><div style="background:#d1fae5;color:#059669;font-size:11px;font-weight:900;padding:3px 6px;border-radius:4px">2,847 items</div><div style="background:#1a7a52;color:#fff;font-size:11px;font-weight:900;padding:3px 6px;border-radius:4px">+ Add</div></div>
+                    </div>
+                    <div style="background:#fff;border:1.5px solid #1a7a52;border-radius:5px;padding:5px 8px;display:flex;align-items:center;gap:4px"><span style="font-size:8.5px">&#128269;</span><span style="font-size:11px;color:#1a7a52;font-weight:900">Search medicines, generic names...</span></div>
+                    <div style="background:#fff;border-radius:5px;border:1px solid #e2ebe6;flex:1;overflow:hidden">
+                      <div style="display:flex;padding:4px 6px;border-bottom:2px solid #e2ebe6;font-size:11px;font-weight:900;color:#374151;text-transform:uppercase"><div style="flex:2">Medicine</div><div style="flex:1">Type</div><div style="flex:1">Stock</div><div style="flex:1">Price</div><div style="flex:1">Expiry</div></div>
+                      <div style="display:flex;padding:4px 6px;border-bottom:1px solid #f1f5f9;font-size:8.5px"><div style="flex:2"><b style="color:#1a2e25">Paracetamol 500mg</b><div style="font-size:12px;color:#6b8c7a;font-weight:900">GSK</div></div><div style="flex:1"><span style="background:#d1fae5;color:#166534;padding:1px 3px;border-radius:2px;font-size:12px;font-weight:900">Tab</span></div><div style="flex:1;font-weight:900;color:#059669">248</div><div style="flex:1;font-weight:900;color:#1a2e25">&#8377;45</div><div style="flex:1;font-size:8.5px;color:#059669;font-weight:900">Dec 27</div></div>
+                      <div style="display:flex;padding:4px 6px;border-bottom:1px solid #f1f5f9;font-size:8.5px"><div style="flex:2"><b style="color:#1a2e25">Amoxicillin 250mg</b><div style="font-size:12px;color:#6b8c7a;font-weight:900">Cipla</div></div><div style="flex:1"><span style="background:#dbeafe;color:#1e40af;padding:1px 3px;border-radius:2px;font-size:12px;font-weight:900">Cap</span></div><div style="flex:1;font-weight:900;color:#059669">156</div><div style="flex:1;font-weight:900;color:#1a2e25">&#8377;125</div><div style="flex:1;font-size:8.5px;color:#059669;font-weight:900">Mar 28</div></div>
+                      <div style="display:flex;padding:4px 6px;border-bottom:1px solid #f1f5f9;font-size:8.5px"><div style="flex:2"><b style="color:#1a2e25">Calpol Syrup 60ml</b><div style="font-size:12px;color:#6b8c7a;font-weight:900">GSK</div></div><div style="flex:1"><span style="background:#fef3c7;color:#92400e;padding:1px 3px;border-radius:2px;font-size:12px;font-weight:900">Syr</span></div><div style="flex:1;font-weight:900;color:#d97706">12</div><div style="flex:1;font-weight:900;color:#1a2e25">&#8377;78</div><div style="flex:1;font-size:8.5px;color:#dc2626;font-weight:900">Apr 26 &#9888;</div></div>
+                      <div style="display:flex;padding:4px 6px;font-size:8.5px"><div style="flex:2"><b style="color:#1a2e25">Omeprazole 20mg</b><div style="font-size:12px;color:#6b8c7a;font-weight:900">Sun Pharma</div></div><div style="flex:1"><span style="background:#d1fae5;color:#166534;padding:1px 3px;border-radius:2px;font-size:12px;font-weight:900">Cap</span></div><div style="flex:1;font-weight:900;color:#059669">89</div><div style="flex:1;font-weight:900;color:#1a2e25">&#8377;65</div><div style="flex:1;font-size:8.5px;color:#059669;font-weight:900">Nov 27</div></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SLIDE 5: Reports Dashboard -->
+                <div class="laptop-slide" style="position:absolute;inset:0;opacity:0;transform:translateX(30px);background:#f4f7f5;display:flex;font-family:Inter,sans-serif">
+                  <div style="width:48px;background:#0a2e22;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;flex-shrink:0"><div style="width:24px;height:24px;background:linear-gradient(135deg,#1a7a52,#0d4f35);border-radius:6px;margin-bottom:4px;font-size:11px;display:flex;align-items:center;justify-content:center">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Dashboard">&#127968;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="New Sale">&#128722;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Medicines">&#128138;</div><div style="width:22px;height:22px;background:rgba(255,255,255,0.08);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px" title="Customers">&#128101;</div><div style="width:22px;height:22px;background:#1a7a52;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 8px rgba(26,122,82,0.4)" title="Reports">&#128200;</div><div style="flex:1"></div><div style="width:22px;height:22px;background:rgba(255,255,255,0.06);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:8.5px" title="Settings">&#9881;&#65039;</div></div>
+                  <div style="flex:1;padding:10px 12px;display:flex;flex-direction:column;gap:5px">
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                      <div style="font-size:10px;font-weight:900;color:#1a2e25">&#128200; Reports &amp; Analytics</div>
+                      <div style="display:flex;gap:3px">
+                        <div style="background:#d1fae5;color:#059669;font-size:5px;font-weight:900;padding:3px 6px;border-radius:4px">Apr 2026</div>
+                        <div style="background:#1a7a52;color:#fff;font-size:5px;font-weight:900;padding:3px 6px;border-radius:4px">&#128196; Export GST</div>
+                      </div>
+                    </div>
+                    <!-- Key Metrics Row -->
+                    <div style="display:flex;gap:3px">
+                      <div style="flex:1;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6">
+                        <div style="font-size:5px;color:#374151;font-weight:800">Revenue</div>
+                        <div style="font-size:10px;font-weight:900;color:#1a7a52">&#8377;2.84L</div>
+                        <div style="font-size:5px;color:#16a34a;font-weight:800">&#9650; 15.2% vs last</div>
+                      </div>
+                      <div style="flex:1;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6">
+                        <div style="font-size:5px;color:#374151;font-weight:800">Transactions</div>
+                        <div style="font-size:10px;font-weight:900;color:#3b82f6">342</div>
+                        <div style="font-size:5px;color:#16a34a;font-weight:800">&#9650; 8% growth</div>
+                      </div>
+                      <div style="flex:1;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6">
+                        <div style="font-size:5px;color:#374151;font-weight:800">GST Collected</div>
+                        <div style="font-size:10px;font-weight:900;color:#d97706">&#8377;14.2K</div>
+                        <div style="font-size:5px;color:#374151;font-weight:700">CGST + SGST</div>
+                      </div>
+                      <div style="flex:1;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6">
+                        <div style="font-size:5px;color:#374151;font-weight:800">Avg Bill</div>
+                        <div style="font-size:10px;font-weight:900;color:#8b5cf6">&#8377;831</div>
+                        <div style="font-size:5px;color:#16a34a;font-weight:800">&#9650; 4% up</div>
+                      </div>
+                    </div>
+                    <!-- Charts Row -->
+                    <div style="display:flex;gap:3px;flex:1">
+                      <!-- Revenue Chart -->
+                      <div style="flex:2;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6;display:flex;flex-direction:column">
+                        <div style="font-size:6px;font-weight:900;color:#1a2e25;margin-bottom:2px">30-Day Revenue Trend</div>
+                        <svg width="100%" height="28" viewBox="0 0 200 28" preserveAspectRatio="none" style="flex:1"><defs><linearGradient id="rg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a7a52" stop-opacity="0.2"/><stop offset="100%" stop-color="#1a7a52" stop-opacity="0"/></linearGradient></defs><path d="M0,22 L33,16 L66,18 L100,8 L133,12 L166,4 L200,6 L200,28 L0,28Z" fill="url(#rg2)"/><path d="M0,22 L33,16 L66,18 L100,8 L133,12 L166,4 L200,6" fill="none" stroke="#1a7a52" stroke-width="1.5"/><circle cx="166" cy="4" r="2.5" fill="#1a7a52"/></svg>
+                      </div>
+                      <!-- Top Sellers -->
+                      <div style="flex:1;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6">
+                        <div style="font-size:6px;font-weight:900;color:#1a2e25;margin-bottom:2px">Top Medicines</div>
+                        <div style="font-size:5.5px;font-weight:900;padding:2px 0;display:flex;justify-content:space-between;border-bottom:1px solid #f1f5f9"><span style="color:#000">Paracetamol</span><span style="color:#1a7a52">&#8377;18K</span></div>
+                        <div style="font-size:5.5px;font-weight:900;padding:2px 0;display:flex;justify-content:space-between;border-bottom:1px solid #f1f5f9"><span style="color:#000">Amoxicillin</span><span style="color:#1a7a52">&#8377;16K</span></div>
+                        <div style="font-size:5.5px;font-weight:900;padding:2px 0;display:flex;justify-content:space-between;border-bottom:1px solid #f1f5f9"><span style="color:#000">Cetirizine</span><span style="color:#1a7a52">&#8377;12K</span></div>
+                        <div style="font-size:5.5px;font-weight:900;padding:2px 0;display:flex;justify-content:space-between"><span style="color:#000">Omeprazole</span><span style="color:#1a7a52">&#8377;9K</span></div>
+                      </div>
+                    </div>
+                    <!-- Module Reports Row -->
+                    <div style="display:flex;gap:3px">
+                      <div style="flex:1;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6;display:flex;align-items:center;gap:4px">
+                        <div style="font-size:10px">&#128176;</div>
+                        <div><div style="font-size:5px;font-weight:900;color:#000">Credit Outstanding</div><div style="font-size:7px;font-weight:900;color:#f97316">&#8377;45,200</div></div>
+                      </div>
+                      <div style="flex:1;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6;display:flex;align-items:center;gap:4px">
+                        <div style="font-size:10px">&#9888;&#65039;</div>
+                        <div><div style="font-size:5px;font-weight:900;color:#000">Expiring Soon</div><div style="font-size:7px;font-weight:900;color:#dc2626">12 items</div></div>
+                      </div>
+                      <div style="flex:1;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6;display:flex;align-items:center;gap:4px">
+                        <div style="font-size:10px">&#128230;</div>
+                        <div><div style="font-size:5px;font-weight:900;color:#000">Low Stock</div><div style="font-size:7px;font-weight:900;color:#d97706">8 items</div></div>
+                      </div>
+                      <div style="flex:1;background:#fff;border-radius:4px;padding:4px 5px;border:1px solid #e2ebe6;display:flex;align-items:center;gap:4px">
+                        <div style="font-size:10px">&#128587;</div>
+                        <div><div style="font-size:5px;font-weight:900;color:#000">Customers</div><div style="font-size:7px;font-weight:900;color:#3b82f6">1,245</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <!-- TABLET — NeoShala Sliding Modules -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+            <div style="display:flex;gap:6px" id="tablet-dots">
+              <div class="tablet-dot" style="width:8px;height:8px;border-radius:50%;background:var(--primary-light);cursor:pointer;transition:all 0.3s"></div>
+              <div class="tablet-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:all 0.3s"></div>
+              <div class="tablet-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);cursor:pointer;transition:all 0.3s"></div>
+            </div>
+          <div class="device-tablet" style="width:280px">
+            <div class="device-screen">
+              <div id="tablet-slides" style="position:relative;width:100%;height:100%;overflow:hidden">
+
+              <!-- TABLET SLIDE 1: Student Management -->
+              <div class="tablet-slide" style="position:absolute;inset:0;transition:opacity 0.6s cubic-bezier(0.4,0,0.2,1),transform 0.6s cubic-bezier(0.4,0,0.2,1);opacity:1;background:#f4f7fc;display:flex;font-family:Inter,sans-serif;overflow:hidden">
+                <!-- Mini sidebar -->
+                <div style="width:36px;background:#0a1628;display:flex;flex-direction:column;align-items:center;padding:6px 0;gap:3px;flex-shrink:0">
+                  <div style="width:20px;height:20px;background:linear-gradient(135deg,#1565C0,#0D47A1);border-radius:5px;margin-bottom:4px;font-size:8px;display:flex;align-items:center;justify-content:center">&#127891;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#127968;</div>
+                  <div style="width:16px;height:16px;background:#1565C0;border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(21,101,192,0.4)">&#128104;&#8205;&#127891;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#9989;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#128176;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#128221;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#128214;</div>
+                </div>
+                <!-- Content -->
+                <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:5px;overflow:hidden">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div><div style="font-size:8px;font-weight:900;color:#1a1f36">&#128104;&#8205;&#127891; Students</div><div style="font-size:5px;color:#6b7280;font-weight:700">1,247 students &middot; 42 classes</div></div>
+                    <div style="display:flex;gap:3px">
+                      <div style="background:#E3F2FD;color:#1565C0;font-size:5px;font-weight:900;padding:3px 6px;border-radius:4px">&#128269; Search</div>
+                      <div style="background:#1565C0;color:#fff;font-size:5px;font-weight:900;padding:3px 6px;border-radius:4px">+ Add Student</div>
+                    </div>
+                  </div>
+                  <!-- Filter bar -->
+                  <div style="display:flex;gap:3px">
+                    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:4px;padding:3px 6px;font-size:5px;color:#374151;font-weight:700">Class: <b style="color:#1565C0">All</b></div>
+                    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:4px;padding:3px 6px;font-size:5px;color:#374151;font-weight:700">Section: <b style="color:#1565C0">All</b></div>
+                    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:4px;padding:3px 6px;font-size:5px;color:#374151;font-weight:700">&#128196; Export</div>
+                  </div>
+                  <!-- Students table -->
+                  <div style="background:#fff;border-radius:5px;border:1px solid #e2e8f0;flex:1;overflow:hidden">
+                    <div style="display:flex;padding:4px 6px;border-bottom:2px solid #e2e8f0;font-size:5px;font-weight:900;color:#374151;text-transform:uppercase;letter-spacing:0.3px;background:#f8fafc">
+                      <div style="flex:2">Student</div><div style="flex:1">Class</div><div style="flex:1">Roll No</div><div style="flex:1">Phone</div><div style="flex:1;text-align:center">Actions</div>
+                    </div>
+                    <div style="display:flex;padding:5px 6px;border-bottom:1px solid #f1f5f9;font-size:6px;align-items:center">
+                      <div style="flex:2;display:flex;align-items:center;gap:4px"><div style="width:16px;height:16px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center;font-size:5px;font-weight:900;color:#1565C0">A</div><div><div style="font-weight:900;color:#000">Aarav Sharma</div><div style="font-size:5px;color:#6b7280;font-weight:700">ENR-2026-001</div></div></div>
+                      <div style="flex:1;font-weight:800;color:#374151">10-A</div>
+                      <div style="flex:1;font-weight:800;color:#374151">01</div>
+                      <div style="flex:1;font-size:5px;color:#374151;font-weight:700">98765-43210</div>
+                      <div style="flex:1;text-align:center;display:flex;gap:2px;justify-content:center"><div style="background:#E3F2FD;color:#1565C0;padding:2px 4px;border-radius:3px;font-size:5px;font-weight:800">View</div><div style="background:#FFF3E0;color:#E65100;padding:2px 4px;border-radius:3px;font-size:5px;font-weight:800">Edit</div></div>
+                    </div>
+                    <div style="display:flex;padding:5px 6px;border-bottom:1px solid #f1f5f9;font-size:6px;align-items:center">
+                      <div style="flex:2;display:flex;align-items:center;gap:4px"><div style="width:16px;height:16px;border-radius:50%;background:#E8F5E9;display:flex;align-items:center;justify-content:center;font-size:5px;font-weight:900;color:#2E7D32">P</div><div><div style="font-weight:900;color:#000">Priya Patel</div><div style="font-size:5px;color:#6b7280;font-weight:700">ENR-2026-002</div></div></div>
+                      <div style="flex:1;font-weight:800;color:#374151">10-A</div>
+                      <div style="flex:1;font-weight:800;color:#374151">02</div>
+                      <div style="flex:1;font-size:5px;color:#374151;font-weight:700">87654-32109</div>
+                      <div style="flex:1;text-align:center;display:flex;gap:2px;justify-content:center"><div style="background:#E3F2FD;color:#1565C0;padding:2px 4px;border-radius:3px;font-size:5px;font-weight:800">View</div><div style="background:#FFF3E0;color:#E65100;padding:2px 4px;border-radius:3px;font-size:5px;font-weight:800">Edit</div></div>
+                    </div>
+                    <div style="display:flex;padding:5px 6px;border-bottom:1px solid #f1f5f9;font-size:6px;align-items:center">
+                      <div style="flex:2;display:flex;align-items:center;gap:4px"><div style="width:16px;height:16px;border-radius:50%;background:#FFF3E0;display:flex;align-items:center;justify-content:center;font-size:5px;font-weight:900;color:#E65100">R</div><div><div style="font-weight:900;color:#000">Rohit Kumar</div><div style="font-size:5px;color:#6b7280;font-weight:700">ENR-2026-003</div></div></div>
+                      <div style="flex:1;font-weight:800;color:#374151">9-B</div>
+                      <div style="flex:1;font-weight:800;color:#374151">15</div>
+                      <div style="flex:1;font-size:5px;color:#374151;font-weight:700">76543-21098</div>
+                      <div style="flex:1;text-align:center;display:flex;gap:2px;justify-content:center"><div style="background:#E3F2FD;color:#1565C0;padding:2px 4px;border-radius:3px;font-size:5px;font-weight:800">View</div><div style="background:#FFF3E0;color:#E65100;padding:2px 4px;border-radius:3px;font-size:5px;font-weight:800">Edit</div></div>
+                    </div>
+                    <div style="display:flex;padding:5px 6px;font-size:6px;align-items:center">
+                      <div style="flex:2;display:flex;align-items:center;gap:4px"><div style="width:16px;height:16px;border-radius:50%;background:#F3E5F5;display:flex;align-items:center;justify-content:center;font-size:5px;font-weight:900;color:#6A1B9A">A</div><div><div style="font-weight:900;color:#000">Ananya Singh</div><div style="font-size:5px;color:#6b7280;font-weight:700">ENR-2026-004</div></div></div>
+                      <div style="flex:1;font-weight:800;color:#374151">10-A</div>
+                      <div style="flex:1;font-weight:800;color:#374151">03</div>
+                      <div style="flex:1;font-size:5px;color:#374151;font-weight:700">65432-10987</div>
+                      <div style="flex:1;text-align:center;display:flex;gap:2px;justify-content:center"><div style="background:#E3F2FD;color:#1565C0;padding:2px 4px;border-radius:3px;font-size:5px;font-weight:800">View</div><div style="background:#FFF3E0;color:#E65100;padding:2px 4px;border-radius:3px;font-size:5px;font-weight:800">Edit</div></div>
+                    </div>
+                  </div>
+                  <!-- Pagination -->
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div style="font-size:5px;color:#6b7280;font-weight:700">Showing 1-4 of 1,247</div>
+                    <div style="display:flex;gap:2px">
+                      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:3px;padding:2px 5px;font-size:5px;font-weight:800;color:#6b7280">&laquo;</div>
+                      <div style="background:#1565C0;border-radius:3px;padding:2px 5px;font-size:5px;font-weight:800;color:#fff">1</div>
+                      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:3px;padding:2px 5px;font-size:5px;font-weight:800;color:#374151">2</div>
+                      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:3px;padding:2px 5px;font-size:5px;font-weight:800;color:#374151">3</div>
+                      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:3px;padding:2px 5px;font-size:5px;font-weight:800;color:#6b7280">&raquo;</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TABLET SLIDE 2: Timetable -->
+              <div class="tablet-slide" style="position:absolute;inset:0;opacity:0;transform:translateX(30px);background:#f4f7fc;display:flex;font-family:Inter,sans-serif;overflow:hidden">
+                <div style="width:36px;background:#0a1628;display:flex;flex-direction:column;align-items:center;padding:6px 0;gap:3px;flex-shrink:0">
+                  <div style="width:20px;height:20px;background:linear-gradient(135deg,#1565C0,#0D47A1);border-radius:5px;margin-bottom:4px;font-size:8px;display:flex;align-items:center;justify-content:center">&#127891;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#127968;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#128104;&#8205;&#127891;</div>
+                  <div style="width:16px;height:16px;background:#1565C0;border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(21,101,192,0.4)">&#128197;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#128176;</div>
+                </div>
+                <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:4px;overflow:hidden">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div style="font-size:8px;font-weight:900;color:#1a1f36">&#128197; Timetable — Class 10-A</div>
+                    <div style="background:#E3F2FD;color:#1565C0;font-size:5px;font-weight:900;padding:2px 6px;border-radius:3px">Monday</div>
+                  </div>
+                  <div style="background:#fff;border-radius:5px;border:1px solid #e2e8f0;flex:1;overflow:hidden">
+                    <div style="display:flex;padding:3px 5px;border-bottom:2px solid #e2e8f0;font-size:5px;font-weight:900;color:#374151;text-transform:uppercase;background:#f8fafc">
+                      <div style="flex:1">Period</div><div style="flex:2">Subject</div><div style="flex:2">Teacher</div><div style="flex:1">Time</div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;border-bottom:1px solid #f1f5f9;font-size:5.5px;align-items:center;background:#f0f7ff">
+                      <div style="flex:1;font-weight:900;color:#1565C0">1st</div><div style="flex:2;font-weight:900;color:#000">Mathematics</div><div style="flex:2;font-weight:800;color:#374151">Mr. R. Sharma</div><div style="flex:1;font-weight:700;color:#374151">8:00</div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;border-bottom:1px solid #f1f5f9;font-size:5.5px;align-items:center">
+                      <div style="flex:1;font-weight:900;color:#1565C0">2nd</div><div style="flex:2;font-weight:900;color:#000">English</div><div style="flex:2;font-weight:800;color:#374151">Ms. P. Desai</div><div style="flex:1;font-weight:700;color:#374151">8:45</div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;border-bottom:1px solid #f1f5f9;font-size:5.5px;align-items:center">
+                      <div style="flex:1;font-weight:900;color:#1565C0">3rd</div><div style="flex:2;font-weight:900;color:#000">Science</div><div style="flex:2;font-weight:800;color:#374151">Dr. A. Kumar</div><div style="flex:1;font-weight:700;color:#374151">9:30</div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;border-bottom:1px solid #f1f5f9;font-size:5.5px;align-items:center;background:#FFF3E0">
+                      <div style="flex:1;font-weight:900;color:#E65100">Break</div><div style="flex:2;font-weight:800;color:#E65100">&#9749; Recess</div><div style="flex:2;color:#6b7280">—</div><div style="flex:1;font-weight:700;color:#374151">10:15</div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;border-bottom:1px solid #f1f5f9;font-size:5.5px;align-items:center">
+                      <div style="flex:1;font-weight:900;color:#1565C0">4th</div><div style="flex:2;font-weight:900;color:#000">Hindi</div><div style="flex:2;font-weight:800;color:#374151">Mrs. S. Verma</div><div style="flex:1;font-weight:700;color:#374151">10:45</div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;font-size:5.5px;align-items:center">
+                      <div style="flex:1;font-weight:900;color:#1565C0">5th</div><div style="flex:2;font-weight:900;color:#000">Social Studies</div><div style="flex:2;font-weight:800;color:#374151">Mr. K. Joshi</div><div style="flex:1;font-weight:700;color:#374151">11:30</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TABLET SLIDE 3: Library -->
+              <div class="tablet-slide" style="position:absolute;inset:0;opacity:0;transform:translateX(30px);background:#f4f7fc;display:flex;font-family:Inter,sans-serif;overflow:hidden">
+                <div style="width:36px;background:#0a1628;display:flex;flex-direction:column;align-items:center;padding:6px 0;gap:3px;flex-shrink:0">
+                  <div style="width:20px;height:20px;background:linear-gradient(135deg,#1565C0,#0D47A1);border-radius:5px;margin-bottom:4px;font-size:8px;display:flex;align-items:center;justify-content:center">&#127891;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#127968;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#128104;&#8205;&#127891;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#128197;</div>
+                  <div style="width:16px;height:16px;background:rgba(255,255,255,0.08);border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center">&#128176;</div>
+                  <div style="width:16px;height:16px;background:#1565C0;border-radius:4px;font-size:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(21,101,192,0.4)">&#128214;</div>
+                </div>
+                <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:4px;overflow:hidden">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div style="font-size:8px;font-weight:900;color:#1a1f36">&#128214; Library</div>
+                    <div style="display:flex;gap:3px">
+                      <div style="background:#E8F5E9;color:#2E7D32;font-size:5px;font-weight:900;padding:2px 6px;border-radius:3px">4,520 books</div>
+                      <div style="background:#1565C0;color:#fff;font-size:5px;font-weight:900;padding:2px 6px;border-radius:3px">+ Issue Book</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:3px">
+                    <div style="flex:1;background:#d1fae5;border-radius:4px;padding:4px;text-align:center"><div style="font-size:9px;font-weight:900;color:#166534">4,520</div><div style="font-size:4.5px;font-weight:800;color:#166534">Total Books</div></div>
+                    <div style="flex:1;background:#E3F2FD;border-radius:4px;padding:4px;text-align:center"><div style="font-size:9px;font-weight:900;color:#1565C0">342</div><div style="font-size:4.5px;font-weight:800;color:#1565C0">Issued</div></div>
+                    <div style="flex:1;background:#FFF3E0;border-radius:4px;padding:4px;text-align:center"><div style="font-size:9px;font-weight:900;color:#E65100">28</div><div style="font-size:4.5px;font-weight:800;color:#E65100">Overdue</div></div>
+                  </div>
+                  <div style="background:#fff;border-radius:5px;border:1px solid #e2e8f0;flex:1;overflow:hidden">
+                    <div style="display:flex;padding:3px 5px;border-bottom:2px solid #e2e8f0;font-size:5px;font-weight:900;color:#374151;text-transform:uppercase;background:#f8fafc">
+                      <div style="flex:2">Book</div><div style="flex:1">Category</div><div style="flex:1">Student</div><div style="flex:1">Due Date</div><div style="flex:1">Status</div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;border-bottom:1px solid #f1f5f9;font-size:5.5px;align-items:center">
+                      <div style="flex:2;font-weight:900;color:#000">The Alchemist</div><div style="flex:1"><span style="background:#F3E5F5;color:#6A1B9A;padding:1px 3px;border-radius:2px;font-size:4.5px;font-weight:900">Fiction</span></div><div style="flex:1;font-weight:800;color:#374151">Aarav S.</div><div style="flex:1;font-weight:700;color:#374151">Apr 10</div><div style="flex:1"><span style="background:#d1fae5;color:#166534;padding:1px 3px;border-radius:2px;font-size:4.5px;font-weight:900">Active</span></div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;border-bottom:1px solid #f1f5f9;font-size:5.5px;align-items:center">
+                      <div style="flex:2;font-weight:900;color:#000">NCERT Physics</div><div style="flex:1"><span style="background:#E3F2FD;color:#1565C0;padding:1px 3px;border-radius:2px;font-size:4.5px;font-weight:900">Science</span></div><div style="flex:1;font-weight:800;color:#374151">Priya P.</div><div style="flex:1;font-weight:700;color:#dc2626">Mar 28</div><div style="flex:1"><span style="background:#fee2e2;color:#991b1b;padding:1px 3px;border-radius:2px;font-size:4.5px;font-weight:900">Overdue</span></div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;border-bottom:1px solid #f1f5f9;font-size:5.5px;align-items:center">
+                      <div style="flex:2;font-weight:900;color:#000">Wings of Fire</div><div style="flex:1"><span style="background:#FFF3E0;color:#E65100;padding:1px 3px;border-radius:2px;font-size:4.5px;font-weight:900">Bio</span></div><div style="flex:1;font-weight:800;color:#374151">Rohit K.</div><div style="flex:1;font-weight:700;color:#374151">Apr 15</div><div style="flex:1"><span style="background:#d1fae5;color:#166534;padding:1px 3px;border-radius:2px;font-size:4.5px;font-weight:900">Active</span></div>
+                    </div>
+                    <div style="display:flex;padding:4px 5px;font-size:5.5px;align-items:center">
+                      <div style="flex:2;font-weight:900;color:#000">RD Sharma Math</div><div style="flex:1"><span style="background:#E3F2FD;color:#1565C0;padding:1px 3px;border-radius:2px;font-size:4.5px;font-weight:900">Math</span></div><div style="flex:1;font-weight:800;color:#374151">Meera G.</div><div style="flex:1;font-weight:700;color:#374151">Apr 20</div><div style="flex:1"><span style="background:#d1fae5;color:#166534;padding:1px 3px;border-radius:2px;font-size:4.5px;font-weight:900">Active</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <!-- PHONE — NeoShala Multi-Page Slideshow -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+            <!-- Page indicator dots -->
+            <div style="display:flex;gap:6px" id="phone-dots">
+              <div class="phone-dot" style="width:8px;height:8px;border-radius:50%;background:var(--primary-light);transition:all 0.3s"></div>
+              <div class="phone-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);transition:all 0.3s"></div>
+              <div class="phone-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);transition:all 0.3s"></div>
+              <div class="phone-dot" style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);transition:all 0.3s"></div>
+            </div>
+          <div class="device-phone" style="width:240px">
+            <div class="device-notch"></div>
+            <div class="device-screen">
+              <div id="phone-slides" style="position:relative;width:100%;height:100%;overflow:hidden">
+
+                <!-- PHONE SLIDE 1: NeoShala Dashboard -->
+                <div class="phone-slide" style="position:absolute;inset:0;transition:opacity 0.5s,transform 0.5s;opacity:1;background:#f4f7fc;display:flex;flex-direction:column;font-family:Inter,sans-serif;overflow:hidden">
+                  <div style="background:linear-gradient(135deg,#0a1628,#162240);padding:16px 8px 8px;display:flex;justify-content:space-between;align-items:center">
+                    <div><div style="font-size:12px;font-weight:900;color:#fff">&#127891; NeoShala</div><div style="font-size:11px;color:rgba(255,255,255,0.5)">Dashboard</div></div>
+                    <div style="width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#1565C0,#0D47A1);font-size:11px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800">S</div>
+                  </div>
+                  <div style="padding:4px;display:flex;gap:3px">
+                    <div style="flex:1;background:#fff;border-radius:4px;padding:4px;border:1px solid #e2e8f0">
+                      <div style="font-size:11px;color:#374151;font-weight:800">Students</div><div style="font-size:11px;font-weight:900;color:#1565C0">1,247</div>
+                    </div>
+                    <div style="flex:1;background:#fff;border-radius:4px;padding:4px;border:1px solid #e2e8f0">
+                      <div style="font-size:11px;color:#374151;font-weight:800">Attendance</div><div style="font-size:11px;font-weight:900;color:#2E7D32">92%</div>
+                    </div>
+                  </div>
+                  <div style="padding:0 4px;display:flex;gap:3px">
+                    <div style="flex:1;background:#fff;border-radius:4px;padding:4px;border:1px solid #e2e8f0">
+                      <div style="font-size:11px;color:#374151;font-weight:800">Fee Collected</div><div style="font-size:11px;font-weight:900;color:#E65100">&#8377;3.4L</div>
+                    </div>
+                    <div style="flex:1;background:#fff;border-radius:4px;padding:4px;border:1px solid #e2e8f0">
+                      <div style="font-size:11px;color:#374151;font-weight:800">Teachers</div><div style="font-size:11px;font-weight:900;color:#6A1B9A">86</div>
+                    </div>
+                  </div>
+                  <div style="margin:4px;background:#fff;border-radius:4px;border:1px solid #e2e8f0;padding:4px;flex:1">
+                    <div style="font-size:12px;font-weight:900;color:#1a1f36;margin-bottom:3px">Fee Trend</div>
+                    <svg width="100%" height="30" viewBox="0 0 160 30" preserveAspectRatio="none"><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1565C0" stop-opacity="0.2"/><stop offset="100%" stop-color="#1565C0" stop-opacity="0"/></linearGradient></defs><path d="M0,22 L26,16 L53,20 L80,8 L106,14 L133,5 L160,10 L160,30 L0,30Z" fill="url(#pg)"/><path d="M0,22 L26,16 L53,20 L80,8 L106,14 L133,5 L160,10" fill="none" stroke="#1565C0" stroke-width="1.2"/></svg>
+                  </div>
+                  <!-- Bottom Nav -->
+                  <div style="display:flex;background:#fff;border-top:1px solid #e2e8f0;padding:3px 2px">
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#127968;</div><div style="font-size:11px;color:#1565C0;font-weight:800">Home</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128104;&#8205;&#127891;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Students</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#9989;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Attend</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128176;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Fees</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128221;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Exams</div></div>
+                  </div>
+                </div>
+
+                <!-- PHONE SLIDE 2: Attendance Page -->
+                <div class="phone-slide" style="position:absolute;inset:0;transition:opacity 0.5s,transform 0.5s;opacity:0;transform:translateX(30px);background:#f4f7fc;display:flex;flex-direction:column;font-family:Inter,sans-serif;overflow:hidden">
+                  <div style="background:linear-gradient(135deg,#0a1628,#162240);padding:16px 8px 8px;display:flex;justify-content:space-between;align-items:center">
+                    <div><div style="font-size:12px;font-weight:900;color:#fff">&#9989; Attendance</div><div style="font-size:11px;color:rgba(255,255,255,0.5)">Class 10-A &middot; Today</div></div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.5)">32 students</div>
+                  </div>
+                  <div style="padding:4px;display:flex;gap:3px">
+                    <div style="flex:1;background:#d1fae5;border-radius:4px;padding:4px;text-align:center"><div style="font-size:12px;font-weight:900;color:#166534">28</div><div style="font-size:11px;color:#166534">Present</div></div>
+                    <div style="flex:1;background:#fee2e2;border-radius:4px;padding:4px;text-align:center"><div style="font-size:12px;font-weight:900;color:#991b1b">3</div><div style="font-size:11px;color:#991b1b">Absent</div></div>
+                    <div style="flex:1;background:#fef3c7;border-radius:4px;padding:4px;text-align:center"><div style="font-size:12px;font-weight:900;color:#92400e">1</div><div style="font-size:11px;color:#92400e">Late</div></div>
+                  </div>
+                  <div style="padding:0 4px;flex:1;overflow:hidden">
+                    <div style="background:#fff;border-radius:4px;border:1px solid #e2e8f0;height:100%;overflow:hidden">
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9"><div style="font-size:12px;font-weight:800">Aarav Sharma</div><div style="font-size:11px;color:#166534;font-weight:800;background:#d1fae5;padding:1px 4px;border-radius:3px;font-weight:700">Present</div></div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9"><div style="font-size:12px;font-weight:800">Priya Patel</div><div style="font-size:11px;color:#166534;font-weight:800;background:#d1fae5;padding:1px 4px;border-radius:3px;font-weight:700">Present</div></div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9"><div style="font-size:12px;font-weight:800">Rohit Kumar</div><div style="font-size:11px;color:#991b1b;font-weight:800;background:#fee2e2;padding:1px 4px;border-radius:3px;font-weight:700">Absent</div></div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9"><div style="font-size:12px;font-weight:900;color:#000">Ananya Singh</div><div style="font-size:11px;color:#166534;font-weight:800;background:#d1fae5;padding:1px 4px;border-radius:3px;font-weight:700">Present</div></div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9"><div style="font-size:12px;font-weight:800">Vikram Joshi</div><div style="font-size:11px;color:#92400e;font-weight:800;background:#fef3c7;padding:1px 4px;border-radius:3px;font-weight:700">Late</div></div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:12px;font-weight:800">Meera Gupta</div><div style="font-size:11px;color:#166534;font-weight:800;background:#d1fae5;padding:1px 4px;border-radius:3px;font-weight:700">Present</div></div>
+                    </div>
+                  </div>
+                  <div style="padding:4px"><div style="background:#1565C0;border-radius:4px;padding:5px;text-align:center;color:#fff;font-size:11px;font-weight:800">Save Attendance &#10003;</div></div>
+                  <!-- Bottom Nav -->
+                  <div style="display:flex;background:#fff;border-top:1px solid #e2e8f0;padding:3px 2px">
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#127968;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Home</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128104;&#8205;&#127891;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Students</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#9989;</div><div style="font-size:11px;color:#1565C0;font-weight:800">Attend</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128176;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Fees</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128221;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Exams</div></div>
+                  </div>
+                </div>
+
+                <!-- PHONE SLIDE 3: Fee Collection -->
+                <div class="phone-slide" style="position:absolute;inset:0;transition:opacity 0.5s,transform 0.5s;opacity:0;transform:translateX(30px);background:#f4f7fc;display:flex;flex-direction:column;font-family:Inter,sans-serif;overflow:hidden">
+                  <div style="background:linear-gradient(135deg,#0a1628,#162240);padding:16px 8px 8px;display:flex;justify-content:space-between;align-items:center">
+                    <div><div style="font-size:12px;font-weight:900;color:#fff">&#128176; Fees</div><div style="font-size:11px;color:rgba(255,255,255,0.5)">Collection &amp; Dues</div></div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.5)">April 2026</div>
+                  </div>
+                  <div style="padding:4px;display:flex;gap:3px">
+                    <div style="flex:1;background:#d1fae5;border-radius:4px;padding:5px;text-align:center"><div style="font-size:12px;font-weight:800;color:#166534">&#8377;3.4L</div><div style="font-size:11px;color:#166534">Collected</div></div>
+                    <div style="flex:1;background:#fee2e2;border-radius:4px;padding:5px;text-align:center"><div style="font-size:12px;font-weight:800;color:#991b1b">&#8377;1.2L</div><div style="font-size:11px;color:#991b1b">Pending</div></div>
+                  </div>
+                  <div style="padding:0 4px;flex:1;overflow:hidden">
+                    <div style="font-size:11px;font-weight:800;color:#1a1f36;margin-bottom:3px">Recent Payments</div>
+                    <div style="background:#fff;border-radius:4px;border:1px solid #e2e8f0;height:calc(100% - 14px);overflow:hidden">
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9">
+                        <div><div style="font-size:12px;font-weight:900">Rahul Verma</div><div style="font-size:11px;color:#6b7280;font-weight:700">Class 8-B &middot; Tuition</div></div>
+                        <div style="text-align:right"><div style="font-size:12px;font-weight:900;color:#2E7D32">&#8377;12,500</div><div style="font-size:11px;color:#166534;font-weight:800;background:#d1fae5;padding:0 3px;border-radius:3px">&#10003; Paid</div></div>
+                      </div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9">
+                        <div><div style="font-size:12px;font-weight:900">Sneha Das</div><div style="font-size:11px;color:#6b7280;font-weight:700">Class 5-A &middot; Transport</div></div>
+                        <div style="text-align:right"><div style="font-size:12px;font-weight:900;color:#2E7D32">&#8377;4,500</div><div style="font-size:11px;color:#166534;font-weight:800;background:#d1fae5;padding:0 3px;border-radius:3px">&#10003; Paid</div></div>
+                      </div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9">
+                        <div><div style="font-size:12px;font-weight:900">Karan Singh</div><div style="font-size:11px;color:#6b7280;font-weight:700">Class 10-A &middot; Tuition</div></div>
+                        <div style="text-align:right"><div style="font-size:12px;font-weight:900;color:#dc2626">&#8377;15,000</div><div style="font-size:11px;color:#991b1b;font-weight:800;background:#fee2e2;padding:0 3px;border-radius:3px">Due</div></div>
+                      </div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center">
+                        <div><div style="font-size:12px;font-weight:900">Aisha Khan</div><div style="font-size:11px;color:#6b7280;font-weight:700">Class 3-C &middot; Hostel</div></div>
+                        <div style="text-align:right"><div style="font-size:12px;font-weight:900;color:#2E7D32">&#8377;8,000</div><div style="font-size:11px;color:#166534;font-weight:800;background:#d1fae5;padding:0 3px;border-radius:3px">&#10003; Paid</div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding:4px"><div style="background:#E65100;border-radius:4px;padding:5px;text-align:center;color:#fff;font-size:11px;font-weight:800">Send WhatsApp Reminder &#128172;</div></div>
+                  <!-- Bottom Nav -->
+                  <div style="display:flex;background:#fff;border-top:1px solid #e2e8f0;padding:3px 2px">
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#127968;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Home</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128104;&#8205;&#127891;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Students</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#9989;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Attend</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128176;</div><div style="font-size:11px;color:#E65100;font-weight:800">Fees</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128221;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Exams</div></div>
+                  </div>
+                </div>
+
+                <!-- PHONE SLIDE 4: Exam Results -->
+                <div class="phone-slide" style="position:absolute;inset:0;transition:opacity 0.5s,transform 0.5s;opacity:0;transform:translateX(30px);background:#f4f7fc;display:flex;flex-direction:column;font-family:Inter,sans-serif;overflow:hidden">
+                  <div style="background:linear-gradient(135deg,#0a1628,#162240);padding:16px 8px 8px;display:flex;justify-content:space-between;align-items:center">
+                    <div><div style="font-size:12px;font-weight:900;color:#fff">&#128221; Examinations</div><div style="font-size:11px;color:rgba(255,255,255,0.5)">Mid-Term Results</div></div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.5)">Class 10-A</div>
+                  </div>
+                  <div style="padding:4px;background:#fff;margin:4px;border-radius:4px;border:1px solid #e2e8f0">
+                    <div style="font-size:11px;font-weight:800;color:#1a1f36;margin-bottom:4px">Class Average: 76.4%</div>
+                    <div style="display:flex;gap:3px;height:20px;align-items:flex-end">
+                      <div style="flex:1;text-align:center"><div style="height:85%;background:#E3F2FD;border-radius:2px"></div><div style="font-size:11px;color:#6b7280;font-weight:700;margin-top:1px">Math</div></div>
+                      <div style="flex:1;text-align:center"><div style="height:70%;background:#E8F5E9;border-radius:2px"></div><div style="font-size:11px;color:#6b7280;font-weight:700;margin-top:1px">Sci</div></div>
+                      <div style="flex:1;text-align:center"><div style="height:90%;background:#F3E5F5;border-radius:2px"></div><div style="font-size:11px;color:#6b7280;font-weight:700;margin-top:1px">Eng</div></div>
+                      <div style="flex:1;text-align:center"><div style="height:65%;background:#FFF3E0;border-radius:2px"></div><div style="font-size:11px;color:#6b7280;font-weight:700;margin-top:1px">Hindi</div></div>
+                      <div style="flex:1;text-align:center"><div style="height:75%;background:#E1F5FE;border-radius:2px"></div><div style="font-size:11px;color:#6b7280;font-weight:700;margin-top:1px">SST</div></div>
+                    </div>
+                  </div>
+                  <div style="padding:0 4px;flex:1;overflow:hidden">
+                    <div style="font-size:11px;font-weight:800;color:#1a1f36;margin-bottom:2px">Top Students</div>
+                    <div style="background:#fff;border-radius:4px;border:1px solid #e2e8f0;overflow:hidden">
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9;background:#f0f7ff">
+                        <div style="display:flex;align-items:center;gap:3px"><div style="font-size:12px">&#129351;</div><div style="font-size:12px;font-weight:900;color:#000;letter-spacing:-0.2px">Ananya Singh</div></div>
+                        <div style="font-size:12px;font-weight:900;color:#1565C0">96.2%</div>
+                      </div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9">
+                        <div style="display:flex;align-items:center;gap:3px"><div style="font-size:12px">&#129352;</div><div style="font-size:12px;font-weight:900;color:#000;letter-spacing:-0.2px">Aarav Sharma</div></div>
+                        <div style="font-size:12px;font-weight:900;color:#2E7D32">94.8%</div>
+                      </div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9">
+                        <div style="display:flex;align-items:center;gap:3px"><div style="font-size:12px">&#129353;</div><div style="font-size:12px;font-weight:900">Meera Gupta</div></div>
+                        <div style="font-size:12px;font-weight:900;color:#E65100">91.5%</div>
+                      </div>
+                      <div style="padding:3px 5px;display:flex;justify-content:space-between;align-items:center">
+                        <div style="display:flex;align-items:center;gap:3px"><div style="font-size:12px;opacity:0.5">4</div><div style="font-size:12px;font-weight:900;color:#000">Rohit Kumar</div></div>
+                        <div style="font-size:12px;font-weight:900;color:#374151">88.3%</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding:4px"><div style="background:#6A1B9A;border-radius:4px;padding:5px;text-align:center;color:#fff;font-size:11px;font-weight:800">Generate Report Cards &#128196;</div></div>
+                  <!-- Bottom Nav -->
+                  <div style="display:flex;background:#fff;border-top:1px solid #e2e8f0;padding:3px 2px">
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#127968;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Home</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128104;&#8205;&#127891;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Students</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#9989;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Attend</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128176;</div><div style="font-size:11px;color:#6b7280;font-weight:700">Fees</div></div>
+                    <div style="flex:1;text-align:center;padding:2px 0"><div style="font-size:11px">&#128221;</div><div style="font-size:11px;color:#6A1B9A;font-weight:800">Exams</div></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -226,6 +968,193 @@
     </div>
   </section>
 
+  <!-- Client Logos -->
+  <div class="logos-marquee" style="position:relative;z-index:1;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="logos-track">
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>Delhi Public School</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>LifeCare Pharmacy</div>
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>Sunrise Academy</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>MedPlus Stores</div>
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>St. Mary's School</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>Apollo Pharmacy</div>
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>Bright Future College</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>Patel Medical Store</div>
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>National Academy</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>HealthFirst Pharmacy</div>
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>Delhi Public School</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>LifeCare Pharmacy</div>
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>Sunrise Academy</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>MedPlus Stores</div>
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>St. Mary's School</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>Apollo Pharmacy</div>
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>Bright Future College</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>Patel Medical Store</div>
+      <div class="logo-item"><div class="logo-item-icon">&#127891;</div>National Academy</div>
+      <div class="logo-item"><div class="logo-item-icon">&#128138;</div>HealthFirst Pharmacy</div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:48px">
+        <div class="section-tag reveal"><span class="dot"></span> Testimonials</div>
+        <h2 class="reveal reveal-d1">What Our <span class="gradient-text">Clients Say</span></h2>
+      </div>
+      <div class="testimonial-carousel reveal">
+        <div class="testimonial-track">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="testimonial-quote">Aushadhi transformed our pharmacy. Billing went from 2 minutes to 10 seconds. GST is auto-calculated, expiry alerts save us lakhs every year. Best investment we ever made.</div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:linear-gradient(135deg,#1a7a52,#0d4f35)">RP</div>
+              <div class="testimonial-info"><strong>Rajesh Patel</strong><span>Owner, Patel Medical Store, Ahmedabad</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="testimonial-quote">NeoShala handles everything — from admissions to report cards. Our staff saves 10+ hours per week. Parents love the fee reminders on WhatsApp. Truly a game changer.</div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:linear-gradient(135deg,#1565C0,#0D47A1)">DS</div>
+              <div class="testimonial-info"><strong>Dr. Sunita Sharma</strong><span>Principal, Sunrise Academy, Jaipur</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="testimonial-quote">Managing 3 pharmacy stores from one dashboard is incredible. The credit ledger and WhatsApp reminders reduced our outstanding by 60%. Shubham's support is unmatched.</div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:linear-gradient(135deg,#d97706,#b45309)">AK</div>
+              <div class="testimonial-info"><strong>Amit Kumar</strong><span>Manager, 3-Store Chain, Lucknow</span></div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="testimonial-quote">We switched from a ₹50,000/year software to NeoShala at a fraction of the cost. More features, better support, and it actually understands Indian school workflows.</div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:linear-gradient(135deg,#6A1B9A,#4527A0)">MV</div>
+              <div class="testimonial-info"><strong>Meena Verma</strong><span>Director, Bright Future College, Delhi</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-dots">
+          <div class="testimonial-dot active"></div>
+          <div class="testimonial-dot"></div>
+          <div class="testimonial-dot"></div>
+          <div class="testimonial-dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:48px">
+        <div class="section-tag reveal"><span class="dot"></span> Compare</div>
+        <h2 class="reveal reveal-d1">Why Choose <span style="color:var(--primary-light)">DRS SoftLab</span></h2>
+        <p class="subtitle subtitle-center reveal reveal-d2">See how we stack up against the competition</p>
+      </div>
+      <div class="glass reveal" style="border-radius:16px;overflow:hidden;max-width:800px;margin:0 auto">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="text-align:left">Feature</th>
+              <th class="drs-col">DRS SoftLab</th>
+              <th>Traditional Software</th>
+              <th>Spreadsheets</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>GST Auto-Calculation</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Multi-Language (10+)</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>WhatsApp Integration</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>AI-Powered Analytics</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Mobile Responsive</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Multi-Store/Institute</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Direct Founder Support</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Free Trial</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td></tr>
+            <tr><td>Data Export (CSV)</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+            <tr><td>Setup Fee</td><td class="drs-col" style="color:var(--primary-light);font-weight:900">&#8377;0</td><td style="color:#f87171;font-weight:700">&#8377;10K-50K</td><td style="color:var(--primary-light)">&#8377;0</td></tr>
+            <tr><td>Monthly Cost</td><td class="drs-col" style="color:var(--primary-light);font-weight:900">From &#8377;499</td><td style="color:#f87171;font-weight:700">&#8377;2K-5K</td><td style="color:var(--primary-light)">Free</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" style="border-top:1px solid var(--border)">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:56px">
+        <div class="section-tag reveal"><span class="dot"></span> Services</div>
+        <h2 class="reveal reveal-d1">What We <span class="gradient-text">Offer</span></h2>
+        <p class="subtitle subtitle-center reveal reveal-d2">End-to-end solutions for Indian businesses</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:1000px;margin:0 auto">
+        <div class="glass reveal" style="padding:32px;border-radius:20px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(34,196,122,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">&#128187;</div>
+          <div><h3 style="margin-bottom:6px">Custom SaaS Development</h3><p style="color:var(--text-muted);font-size:13px;line-height:1.6">We build tailored cloud platforms for your industry — scalable, secure, and production-ready.</p></div>
+        </div>
+        <div class="glass reveal reveal-d1" style="padding:32px;border-radius:20px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(96,165,250,0.3)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(96,165,250,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">&#128736;</div>
+          <div><h3 style="margin-bottom:6px">Setup &amp; Data Migration</h3><p style="color:var(--text-muted);font-size:13px;line-height:1.6">We set up your account, import your existing data, and train your team — zero downtime.</p></div>
+        </div>
+        <div class="glass reveal reveal-d2" style="padding:32px;border-radius:20px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(251,191,36,0.3)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(251,191,36,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">&#128222;</div>
+          <div><h3 style="margin-bottom:6px">24/7 WhatsApp Support</h3><p style="color:var(--text-muted);font-size:13px;line-height:1.6">Direct access to the founding team. No tickets, no bots — just real humans who care.</p></div>
+        </div>
+        <div class="glass reveal" style="padding:32px;border-radius:20px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(139,92,246,0.3)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">&#127912;</div>
+          <div><h3 style="margin-bottom:6px">Custom Branding</h3><p style="color:var(--text-muted);font-size:13px;line-height:1.6">Your logo, your colors, your domain. Each client gets a fully branded experience.</p></div>
+        </div>
+        <div class="glass reveal reveal-d1" style="padding:32px;border-radius:20px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(248,113,113,0.3)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(248,113,113,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">&#128200;</div>
+          <div><h3 style="margin-bottom:6px">Analytics &amp; Reporting</h3><p style="color:var(--text-muted);font-size:13px;line-height:1.6">AI-powered dashboards, GST reports, P&amp;L statements — data-driven decisions made simple.</p></div>
+        </div>
+        <div class="glass reveal reveal-d2" style="padding:32px;border-radius:20px;display:flex;gap:20px;align-items:flex-start;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,211,102,0.3)';this.style.transform='translateY(-4px)'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.transform=''">
+          <div style="width:52px;height:52px;border-radius:14px;background:rgba(34,211,102,0.1);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">&#128241;</div>
+          <div><h3 style="margin-bottom:6px">Mobile Responsive</h3><p style="color:var(--text-muted);font-size:13px;line-height:1.6">Works beautifully on desktop, tablet, and phone. Your team can work from anywhere.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="border-top:1px solid var(--border)" id="faq">
+    <div class="container" style="max-width:800px">
+      <div class="text-center" style="margin-bottom:48px">
+        <div class="section-tag reveal"><span class="dot"></span> FAQ</div>
+        <h2 class="reveal reveal-d1">Frequently Asked <span style="color:var(--primary-light)">Questions</span></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <details class="glass reveal" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">What is DRS SoftLab? <span style="color:var(--primary-light);font-size:20px;transition:transform 0.3s">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">DRS SoftLab is a technology company based in Noida, India. We build AI-powered SaaS platforms for Indian businesses — currently NeoShala (school management) and Aushadhi (pharmacy management).</p>
+        </details>
+        <details class="glass reveal reveal-d1" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Is there a free trial? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! Both NeoShala and Aushadhi offer free trials — 30 days for NeoShala and 15 days for Aushadhi. No credit card required.</p>
+        </details>
+        <details class="glass reveal reveal-d2" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">How do I get support? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Direct WhatsApp support from the founding team! No tickets, no bots. Call us at +91 94533 73823 or email shubhamsingh4274@gmail.com. We respond within hours.</p>
+        </details>
+        <details class="glass reveal" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Is my data safe? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Absolutely. We use encryption, 2FA, and never share your data with third parties. You can export all your data as CSV anytime. Your data belongs to you.</p>
+        </details>
+        <details class="glass reveal reveal-d1" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Do you support multiple languages? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! 10+ Indian languages including Hindi, Marathi, Tamil, Bengali, Gujarati, Telugu, Kannada, Malayalam, and Punjabi.</p>
+        </details>
+        <details class="glass reveal reveal-d2" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Can I use it on my phone? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! Both NeoShala and Aushadhi are fully responsive — they work beautifully on desktop, tablet, and mobile phones. No app download needed.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section section" id="contact">
     <div class="container" style="position:relative;z-index:1">
@@ -254,7 +1183,7 @@
         <a data-link="email" href="#" style="font-size:12px;color:var(--text-muted);margin-top:8px">&#9993;&#65039; <span data-text="email"></span></a>
         <p style="margin-top:12px;font-size:13px;line-height:1.7;color:var(--text-muted);max-width:280px">Building next-gen software that empowers Indian businesses.</p>
       </div>
-      <div><h4>PRODUCTS</h4><a data-link="neoshala" href="#">NeoShala</a><a data-link="aushadhi" href="https://aushadhi-kappa.vercel.app/" target="_blank">Aushadhi</a></div>
+      <div><h4>PRODUCTS</h4><a data-link="neoshala" href="#products">NeoShala</a><a data-link="aushadhi" href="https://aushadhi-kappa.vercel.app/" target="_blank">Aushadhi</a><a href="pricing.html">Pricing</a><a href="#faq">FAQ</a></div>
       <div><h4>COMPANY</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a></div>
       <div><h4>CONNECT</h4><a data-link="whatsapp" href="#" style="color:#25D366">&#128172; WhatsApp</a><a data-link="phone" href="#">&#128222; <span data-text="phone"></span></a><a data-link="email" href="#">&#9993;&#65039; Email</a></div>
     </div>
@@ -263,6 +1192,46 @@
       <span style="color:rgba(255,255,255,0.25)">Empowering Indian Businesses, One Click at a Time</span>
     </div>
   </footer>
+
+  <!-- Request Demo Button -->
+  <button class="demo-float-btn">&#128640; Request Demo</button>
+
+  <!-- Demo Modal -->
+  <div class="demo-modal-overlay">
+    <div class="demo-modal" style="position:relative">
+      <button class="demo-modal-close">&times;</button>
+      <h3 style="color:#fff">&#128640; Request a Free Demo</h3>
+      <p>We'll show you Aushadhi or NeoShala live. No obligation.</p>
+      <form id="demo-form">
+        <input name="name" placeholder="Your Name *" required />
+        <input name="phone" placeholder="Phone Number *" required />
+        <input name="business" placeholder="Business Name (School/Pharmacy)" />
+        <button type="submit" class="btn-glow" style="width:100%;padding:14px;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;color:#fff;position:relative">
+          <span style="position:relative;z-index:1">&#128172; Send via WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- AI Floating Badge -->
+  <div class="ai-floating-badge">
+    <span class="dot"></span>
+    AI-Powered
+  </div>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" title="Toggle light/dark mode">&#9728;&#65039;</button>
+
+  <!-- Back to Top -->
+  <a href="#" class="back-to-top" title="Back to top">&#8593;</a>
+
+  <!-- Cookie Consent -->
+  <div class="cookie-banner" style="display:none">
+    <span>&#127850;</span>
+    <span style="flex:1">We use cookies to improve your experience. By continuing to visit this site you agree to our use of cookies.</span>
+    <button class="cookie-btn cookie-accept">Accept</button>
+    <button class="cookie-btn cookie-decline">Decline</button>
+  </div>
 
   <!-- Floating Development Banner -->
   <div class="dev-banner" id="dev-banner">
