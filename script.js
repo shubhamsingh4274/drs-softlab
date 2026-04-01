@@ -105,7 +105,16 @@
           const progress = Math.min(elapsed / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
           const current = target * eased;
-          e.target.textContent = (Number.isInteger(target) ? Math.floor(current) : current.toFixed(1)) + suffix;
+          const fmt = e.target.dataset.format;
+          let display;
+          if (fmt === 'k' && current >= 1000) {
+            display = (current / 1000).toFixed(current >= target ? 0 : 0) + 'K';
+          } else if (Number.isInteger(target)) {
+            display = Math.floor(current).toLocaleString();
+          } else {
+            display = current.toFixed(1);
+          }
+          e.target.textContent = display + suffix;
           if (progress < 1) requestAnimationFrame(update);
         }
         requestAnimationFrame(update);
