@@ -534,9 +534,9 @@ body.light-mode + .page-cover, body.light-mode .page-cover { background: #ffffff
 }
 
 /* Light mode logos */
-body.light-mode .logo-item { color: rgba(0,0,0,0.35); font-weight: 800; }
-body.light-mode .logo-item-icon { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); }
-body.light-mode .logos-marquee { border-color: rgba(0,0,0,0.06); }
+body.light-mode .logo-item { color: #6b7280; font-weight: 800; }
+body.light-mode .logo-item-icon { background: rgba(26,122,82,0.08); border-color: rgba(26,122,82,0.15); }
+body.light-mode .logos-marquee { background: #f8faf9; border-color: #e2e8f0; }
 
 /* ─── Scroll Progress Bar ─────────────────────────── */
 .scroll-progress {
