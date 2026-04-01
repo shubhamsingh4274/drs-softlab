@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRS SoftLab Blog | Insights & Updates</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="mouse-glow" style="position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(34,196,122,0.06),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left 0.1s,top 0.1s"></div>
+
+  <header class="header">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/><path d="M12 22V12"/><path d="M3 7l9 5 9-5"/></svg></div>
+      <div><div class="logo-text">DRS SoftLab</div><div class="logo-sub">Digital Retail Solutions</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="contact.html" class="btn-cta">Contact Us</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding:160px 48px 100px">
+    <div class="hero-bg"></div>
+    <div class="container text-center">
+      <div class="ai-badge reveal"><span class="pulse"></span>Blog</div>
+      <h1 class="reveal reveal-d1">Insights & <span class="gradient-text">Updates</span></h1>
+      <p class="subtitle subtitle-center reveal reveal-d2">Tips, stories, and learnings from building India's future business tools.</p>
+    </div>
+  </section>
+
+  <section class="section" style="position:relative;z-index:1">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px">
+
+        <article class="glass reveal" style="border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(255,255,255,0.15)'" onmouseleave="this.style.transform='';this.style.borderColor='var(--glass-border)'">
+          <div style="background:linear-gradient(135deg,rgba(26,122,82,0.2),rgba(26,122,82,0.05));padding:40px;text-align:center;font-size:48px">&#128138;</div>
+          <div style="padding:24px">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+              <span style="background:rgba(34,196,122,0.1);color:var(--primary-light);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700">Product</span>
+              <span style="font-size:12px;color:var(--text-muted)">Mar 25, 2026 &middot; 4 min</span>
+            </div>
+            <h3 style="margin-bottom:8px;line-height:1.4">Why Every Pharmacy Needs Aushadhi in 2026</h3>
+            <p style="color:var(--text-muted);font-size:13px;line-height:1.6">GST compliance, expiry tracking, and 3-click billing. Why pharmacists across India are switching.</p>
+            <div style="margin-top:16px;font-size:13px;font-weight:600;color:var(--primary-light)">Read more &rarr;</div>
+          </div>
+        </article>
+
+        <article class="glass reveal reveal-d1" style="border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(255,255,255,0.15)'" onmouseleave="this.style.transform='';this.style.borderColor='var(--glass-border)'">
+          <div style="background:linear-gradient(135deg,rgba(21,101,192,0.2),rgba(21,101,192,0.05));padding:40px;text-align:center;font-size:48px">&#127891;</div>
+          <div style="padding:24px">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+              <span style="background:rgba(96,165,250,0.1);color:#60a5fa;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700">Product</span>
+              <span style="font-size:12px;color:var(--text-muted)">Mar 18, 2026 &middot; 5 min</span>
+            </div>
+            <h3 style="margin-bottom:8px;line-height:1.4">How NeoShala is Transforming School Management</h3>
+            <p style="color:var(--text-muted);font-size:13px;line-height:1.6">500+ schools saving 10+ hours per week with NeoShala's integrated platform.</p>
+            <div style="margin-top:16px;font-size:13px;font-weight:600;color:#60a5fa">Read more &rarr;</div>
+          </div>
+        </article>
+
+        <article class="glass reveal reveal-d2" style="border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(255,255,255,0.15)'" onmouseleave="this.style.transform='';this.style.borderColor='var(--glass-border)'">
+          <div style="background:linear-gradient(135deg,rgba(251,191,36,0.2),rgba(251,191,36,0.05));padding:40px;text-align:center;font-size:48px">&#128161;</div>
+          <div style="padding:24px">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+              <span style="background:rgba(251,191,36,0.1);color:#fbbf24;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700">Tips</span>
+              <span style="font-size:12px;color:var(--text-muted)">Mar 10, 2026 &middot; 3 min</span>
+            </div>
+            <h3 style="margin-bottom:8px;line-height:1.4">5 Tips to Reduce Medicine Expiry Losses by 80%</h3>
+            <p style="color:var(--text-muted);font-size:13px;line-height:1.6">Batch tracking, FEFO, and automated alerts every pharmacy owner should know.</p>
+            <div style="margin-top:16px;font-size:13px;font-weight:600;color:#fbbf24">Read more &rarr;</div>
+          </div>
+        </article>
+
+        <article class="glass reveal" style="border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(255,255,255,0.15)'" onmouseleave="this.style.transform='';this.style.borderColor='var(--glass-border)'">
+          <div style="background:linear-gradient(135deg,rgba(139,92,246,0.2),rgba(139,92,246,0.05));padding:40px;text-align:center;font-size:48px">&#128176;</div>
+          <div style="padding:24px">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+              <span style="background:rgba(139,92,246,0.1);color:#c084fc;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700">Guide</span>
+              <span style="font-size:12px;color:var(--text-muted)">Mar 5, 2026 &middot; 6 min</span>
+            </div>
+            <h3 style="margin-bottom:8px;line-height:1.4">The Complete Guide to GST Billing for Pharmacies</h3>
+            <p style="color:var(--text-muted);font-size:13px;line-height:1.6">CGST, SGST, IGST — stay GST compliant with Aushadhi's auto-calculation.</p>
+            <div style="margin-top:16px;font-size:13px;font-weight:600;color:#c084fc">Read more &rarr;</div>
+          </div>
+        </article>
+
+        <article class="glass reveal reveal-d1" style="border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(255,255,255,0.15)'" onmouseleave="this.style.transform='';this.style.borderColor='var(--glass-border)'">
+          <div style="background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));padding:40px;text-align:center;font-size:48px">&#128640;</div>
+          <div style="padding:24px">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+              <span style="background:rgba(255,255,255,0.06);color:var(--text-muted);border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700">Company</span>
+              <span style="font-size:12px;color:var(--text-muted)">Feb 28, 2026 &middot; 7 min</span>
+            </div>
+            <h3 style="margin-bottom:8px;line-height:1.4">Building DRS SoftLab: Noida to 500+ Clients</h3>
+            <p style="color:var(--text-muted);font-size:13px;line-height:1.6">Shubham shares the story of starting DRS SoftLab and what's next.</p>
+            <div style="margin-top:16px;font-size:13px;font-weight:600;color:var(--text)">Read more &rarr;</div>
+          </div>
+        </article>
+
+        <article class="glass reveal reveal-d2" style="border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer" onmouseenter="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(255,255,255,0.15)'" onmouseleave="this.style.transform='';this.style.borderColor='var(--glass-border)'">
+          <div style="background:linear-gradient(135deg,rgba(8,145,178,0.2),rgba(8,145,178,0.05));padding:40px;text-align:center;font-size:48px">&#127470;&#127475;</div>
+          <div style="padding:24px">
+            <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+              <span style="background:rgba(8,145,178,0.1);color:#22d3ee;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700">Engineering</span>
+              <span style="font-size:12px;color:var(--text-muted)">Feb 20, 2026 &middot; 5 min</span>
+            </div>
+            <h3 style="margin-bottom:8px;line-height:1.4">Multi-Language: Reaching Bharat, Not Just India</h3>
+            <p style="color:var(--text-muted);font-size:13px;line-height:1.6">How we added 10 Indian languages and why it matters for adoption.</p>
+            <div style="margin-top:16px;font-size:13px;font-weight:600;color:#22d3ee">Read more &rarr;</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="glass reveal text-center" style="margin-top:56px;padding:48px;border-radius:24px">
+        <h2 style="margin-bottom:8px;font-size:28px">Stay <span class="gradient-text">Updated</span></h2>
+        <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px">Get articles and product updates in your inbox.</p>
+        <div style="display:flex;gap:10px;justify-content:center;max-width:440px;margin:0 auto">
+          <input placeholder="Enter your email" style="flex:1;padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none" />
+          <button class="btn-glow" style="padding:14px 28px;border:none;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;color:#fff;position:relative"><span style="position:relative;z-index:1">Subscribe</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none">
+      <span>&copy; 2026 DRS SoftLab. All rights reserved.</span>
+      <a href="index.html" style="color:var(--primary-light);font-weight:600">&larr; Back to Home</a>
+    </div>
+  </footer>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

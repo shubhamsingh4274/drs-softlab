@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact DRS SoftLab | Get in Touch</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="mouse-glow" style="position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(34,196,122,0.06),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left 0.1s,top 0.1s"></div>
+
+  <header class="header">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/><path d="M12 22V12"/><path d="M3 7l9 5 9-5"/></svg></div>
+      <div><div class="logo-text">DRS SoftLab</div><div class="logo-sub">Digital Retail Solutions</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html" class="btn-cta active">Contact Us</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding:160px 48px 100px">
+    <div class="hero-bg"></div>
+    <div class="container text-center">
+      <div class="ai-badge reveal"><span class="pulse"></span>Contact Us</div>
+      <h1 class="reveal reveal-d1">Let's <span class="gradient-text">Talk</span></h1>
+      <p class="subtitle subtitle-center reveal reveal-d2">We respond within hours, not days. Reach out to Shubham and the DRS team.</p>
+    </div>
+  </section>
+
+  <section class="section" style="position:relative;z-index:1">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px">
+        <!-- Contact Info -->
+        <div class="reveal">
+          <h2 style="margin-bottom:32px">Get In <span style="color:var(--primary-light)">Touch</span></h2>
+
+          <div style="display:flex;flex-direction:column;gap:24px">
+            <div class="glass" style="padding:20px 24px;display:flex;gap:16px;align-items:center;border-radius:16px">
+              <div style="width:48px;height:48px;border-radius:14px;background:rgba(34,196,122,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#127970;</div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:var(--primary-light);letter-spacing:0.5px;margin-bottom:4px">OFFICE</div>
+                <div style="font-size:14px;line-height:1.5">B-12, Sector 62, Noida<br/>Uttar Pradesh 201301, India</div>
+              </div>
+            </div>
+
+            <div class="glass" style="padding:20px 24px;display:flex;gap:16px;align-items:center;border-radius:16px">
+              <div style="width:48px;height:48px;border-radius:14px;background:rgba(34,196,122,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128222;</div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:var(--primary-light);letter-spacing:0.5px;margin-bottom:4px">PHONE</div>
+                <a data-link="phone" href="#" style="font-size:16px;font-weight:600;color:#fff;text-decoration:none">+91 94533 73823</a>
+              </div>
+            </div>
+
+            <div class="glass" style="padding:20px 24px;display:flex;gap:16px;align-items:center;border-radius:16px">
+              <div style="width:48px;height:48px;border-radius:14px;background:rgba(34,196,122,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#9993;&#65039;</div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:var(--primary-light);letter-spacing:0.5px;margin-bottom:4px">EMAIL</div>
+                <a data-link="email" href="#" style="font-size:14px;color:#fff;text-decoration:none">shubhamsingh4274@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="glass" style="padding:20px 24px;display:flex;gap:16px;align-items:center;border-radius:16px">
+              <div style="width:48px;height:48px;border-radius:14px;background:rgba(37,211,102,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128172;</div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#25D366;letter-spacing:0.5px;margin-bottom:4px">WHATSAPP</div>
+                <a data-link="whatsapp" href="#" style="font-size:14px;color:#fff;text-decoration:none">Chat with us instantly</a>
+              </div>
+            </div>
+
+            <div class="glass" style="padding:20px 24px;display:flex;gap:16px;align-items:center;border-radius:16px">
+              <div style="width:48px;height:48px;border-radius:14px;background:rgba(96,165,250,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128337;</div>
+              <div>
+                <div style="font-size:12px;font-weight:700;color:#60a5fa;letter-spacing:0.5px;margin-bottom:4px">HOURS</div>
+                <div style="font-size:14px">Mon - Sat: 9:00 AM - 7:00 PM IST</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="reveal reveal-d1">
+          <h2 style="margin-bottom:32px">Send a <span style="color:var(--gold)">Message</span></h2>
+          <form id="contact-form" style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <input id="cf-name" placeholder="Your Name *" required style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
+              <input id="cf-email" placeholder="Email *" required type="email" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <input id="cf-phone" placeholder="Phone" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
+              <input id="cf-subject" placeholder="Subject" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
+            </div>
+            <textarea id="cf-msg" placeholder="Your Message *" required rows="5" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;resize:vertical;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'"></textarea>
+            <button type="submit" class="btn-glow" style="padding:16px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;color:#fff;position:relative">
+              <span style="position:relative;z-index:1">Send Message via WhatsApp</span>
+            </button>
+          </form>
+          <script>
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+              e.preventDefault();
+              const n = document.getElementById('cf-name').value;
+              const em = document.getElementById('cf-email').value;
+              const ph = document.getElementById('cf-phone').value;
+              const s = document.getElementById('cf-subject').value;
+              const m = document.getElementById('cf-msg').value;
+              const msg = encodeURIComponent('Hi DRS Team!\n\nName: '+n+'\nEmail: '+em+'\nPhone: '+ph+'\nSubject: '+s+'\n\nMessage:\n'+m);
+              window.open('https://wa.me/919453373823?text='+msg, '_blank');
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none">
+      <span>&copy; 2026 DRS SoftLab. All rights reserved. | Noida, India</span>
+      <a href="index.html" style="color:var(--primary-light);font-weight:600">&larr; Back to Home</a>
+    </div>
+  </footer>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

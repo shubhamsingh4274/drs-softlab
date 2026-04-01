@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers at DRS SoftLab | Join Our Team</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="mouse-glow" style="position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(34,196,122,0.06),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left 0.1s,top 0.1s"></div>
+
+  <header class="header">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/><path d="M12 22V12"/><path d="M3 7l9 5 9-5"/></svg></div>
+      <div><div class="logo-text">DRS SoftLab</div><div class="logo-sub">Digital Retail Solutions</div></div>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="careers.html" class="active">Careers</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html" class="btn-cta">Contact Us</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="padding:160px 48px 100px">
+    <div class="hero-bg"></div>
+    <div class="container text-center">
+      <div class="ai-badge reveal"><span class="pulse"></span>We're Hiring</div>
+      <h1 class="reveal reveal-d1">Build the Future of<br/><span class="gradient-text">Indian SaaS</span></h1>
+      <p class="subtitle subtitle-center reveal reveal-d2">Join a small, passionate team shipping real products to real businesses. No bureaucracy, just building.</p>
+    </div>
+  </section>
+
+  <!-- Perks -->
+  <section class="section-sm" style="position:relative;z-index:1">
+    <div class="container">
+      <div class="values-grid">
+        <div class="value-card reveal"><div class="icon">&#127968;</div><h3>Remote Friendly</h3><p>Work from anywhere in India. We care about output, not office hours.</p></div>
+        <div class="value-card reveal reveal-d1"><div class="icon">&#128176;</div><h3>Competitive Pay</h3><p>Market-rate salaries with performance bonuses. Stipend for interns.</p></div>
+        <div class="value-card reveal reveal-d2"><div class="icon">&#128640;</div><h3>Startup Culture</h3><p>Ship features fast, learn rapidly. Make real impact from day one.</p></div>
+        <div class="value-card reveal"><div class="icon">&#128218;</div><h3>Learning Budget</h3><p>Annual budget for courses, conferences, and certifications.</p></div>
+        <div class="value-card reveal reveal-d1"><div class="icon">&#129309;</div><h3>Work with Founders</h3><p>Small team, direct access to leadership. No layers of management.</p></div>
+        <div class="value-card reveal reveal-d2"><div class="icon">&#127881;</div><h3>Team Events</h3><p>Regular outings, hackathons, and celebrations. We work hard and play hard.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Openings -->
+  <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:48px">
+        <div class="section-tag reveal"><span class="dot"></span> Open Roles</div>
+        <h2 class="reveal reveal-d1">Current <span style="color:var(--primary-light)">Openings</span></h2>
+      </div>
+
+      <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+
+        <div class="glass reveal" style="padding:28px;border-radius:16px;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+            <div><h3 style="margin-bottom:4px">Full Stack Developer</h3><span style="font-size:12px;color:var(--text-muted)">Full-time &middot; Noida / Remote</span></div>
+            <a data-link="email-apply" data-subject="Application: Full Stack Developer" href="#" class="btn-glow" style="padding:8px 20px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;color:#fff;position:relative"><span style="position:relative;z-index:1">Apply</span></a>
+          </div>
+          <p style="color:var(--text-muted);font-size:14px;margin-top:12px;line-height:1.6">Build and scale React + Node.js platforms. PostgreSQL, TypeScript experience preferred.</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <span style="padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--glass);border:1px solid var(--glass-border);color:#60a5fa">React</span>
+            <span style="padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--glass);border:1px solid var(--glass-border);color:#34d399">Node.js</span>
+            <span style="padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--glass);border:1px solid var(--glass-border);color:#fbbf24">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="glass reveal reveal-d1" style="padding:28px;border-radius:16px;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+            <div><h3 style="margin-bottom:4px">UI/UX Designer</h3><span style="font-size:12px;color:var(--text-muted)">Full-time &middot; Noida / Remote</span></div>
+            <a data-link="email-apply" data-subject="Application: UI/UX Designer" href="#" class="btn-glow" style="padding:8px 20px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;color:#fff;position:relative"><span style="position:relative;z-index:1">Apply</span></a>
+          </div>
+          <p style="color:var(--text-muted);font-size:14px;margin-top:12px;line-height:1.6">Design beautiful interfaces for SaaS products used by thousands of Indian businesses.</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <span style="padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--glass);border:1px solid var(--glass-border);color:#c084fc">Figma</span>
+            <span style="padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--glass);border:1px solid var(--glass-border);color:#f472b6">UI/UX</span>
+          </div>
+        </div>
+
+        <div class="glass reveal reveal-d2" style="padding:28px;border-radius:16px;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+            <div><h3 style="margin-bottom:4px">Sales & Business Development</h3><span style="font-size:12px;color:var(--text-muted)">Full-time &middot; Noida</span></div>
+            <a data-link="email-apply" data-subject="Application: Sales" href="#" class="btn-glow" style="padding:8px 20px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;color:#fff;position:relative"><span style="position:relative;z-index:1">Apply</span></a>
+          </div>
+          <p style="color:var(--text-muted);font-size:14px;margin-top:12px;line-height:1.6">Help Indian schools and pharmacies discover our products. Field + digital sales.</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <span style="padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--glass);border:1px solid var(--glass-border);color:#fb923c">B2B Sales</span>
+            <span style="padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--glass);border:1px solid var(--glass-border);color:#34d399">SaaS</span>
+          </div>
+        </div>
+
+        <div class="glass reveal reveal-d3" style="padding:28px;border-radius:16px;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+            <div><h3 style="margin-bottom:4px">Frontend Developer Intern</h3><span style="font-size:12px;color:var(--text-muted)">Internship &middot; Remote &middot; Stipend</span></div>
+            <a data-link="email-apply" data-subject="Application: Frontend Intern" href="#" class="btn-glow" style="padding:8px 20px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;color:#fff;position:relative"><span style="position:relative;z-index:1">Apply</span></a>
+          </div>
+          <p style="color:var(--text-muted);font-size:14px;margin-top:12px;line-height:1.6">Learn React by building real features used by thousands daily. Stipend + certificate provided.</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <span style="padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--glass);border:1px solid var(--glass-border);color:#60a5fa">React</span>
+            <span style="padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;background:var(--glass);border:1px solid var(--glass-border);color:#fbbf24">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center reveal" style="margin-top:40px">
+        <p style="color:var(--text-muted);font-size:14px;margin-bottom:8px">Don't see a role that fits?</p>
+        <a data-link="email-apply" data-subject="General Application - DRS SoftLab" href="#" style="color:var(--primary-light);font-weight:700;font-size:16px;text-decoration:none">shubhamsingh4274@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top:none">
+      <span>&copy; 2026 DRS SoftLab. All rights reserved.</span>
+      <a href="index.html" style="color:var(--primary-light);font-weight:600">&larr; Back to Home</a>
+    </div>
+  </footer>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
