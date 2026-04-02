@@ -22,6 +22,19 @@
   }
 })();
 
+// ─── Mobile Menu ─────────────────────────────────────────
+(function initMobileMenu() {
+  const btn = document.querySelector('.hamburger');
+  const menu = document.querySelector('.mobile-menu');
+  if (!btn || !menu) return;
+  btn.addEventListener('click', () => menu.classList.add('open'));
+  menu.addEventListener('click', (e) => {
+    if (e.target === menu || e.target.closest('.mobile-menu-close')) menu.classList.remove('open');
+  });
+  // Close on link click
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+})();
+
 // ─── Page loads normally — no transitions needed ─────────
 
 // ─── Auto-hide Dev Banner after 10s ──────────────────────
@@ -345,7 +358,21 @@
   if (laptopSlides.length > 0) {
     stepDots.forEach((d, i) => d.addEventListener('click', () => { laptopIdx = i; showLaptopSlide(i); }));
     addHoverPause('.device-laptop', (v) => laptopPaused = v);
-    setInterval(() => { if (!laptopPaused) { laptopIdx = (laptopIdx + 1) % laptopSlides.length; showLaptopSlide(laptopIdx); } }, 4000);
+    // Progress bar for laptop
+    const laptopProgress = document.getElementById('laptop-progress');
+    let laptopTimer = 0;
+    setInterval(() => {
+      if (!laptopPaused) {
+        laptopTimer += 100;
+        if (laptopProgress) laptopProgress.style.width = (laptopTimer / 4000 * 100) + '%';
+        if (laptopTimer >= 4000) {
+          laptopTimer = 0;
+          laptopIdx = (laptopIdx + 1) % laptopSlides.length;
+          showLaptopSlide(laptopIdx);
+          if (laptopProgress) laptopProgress.style.width = '0%';
+        }
+      }
+    }, 100);
   }
 
   // ── Tablet slides ──────────────────────────────────
