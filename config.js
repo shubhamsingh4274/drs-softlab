@@ -5,7 +5,7 @@
 
 const CONFIG = {
   // ─── Product URLs ────────────────────────────────────
-  NEOSHALA_URL: '',  // Leave empty if not deployed yet. Example: 'https://neoshala.vercel.app'
+  NEOSHALA_URL: 'https://neo-shala.vercel.app',
   AUSHADHI_URL: 'https://aushadhi-kappa.vercel.app/',
 
   // ─── Contact Info ────────────────────────────────────
