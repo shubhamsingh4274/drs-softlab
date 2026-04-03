@@ -10,14 +10,14 @@ const CONFIG = {
 
   // ─── Contact Info ────────────────────────────────────
   PHONE: '9453373823',
-  EMAIL: ['shubhamsingh4274', 'gmail.com'].join('@'),  // obfuscated from bots
+  EMAIL: ['drssoftlabs', 'gmail.com'].join('@'),  // obfuscated from bots
   WHATSAPP_MSG: 'Hi DRS Team, I want to know about your products',
 
   // ─── Company Info ────────────────────────────────────
   COMPANY_NAME: 'DRS SoftLab',
   TAGLINE: 'Digital Retail Solutions',
   ADDRESS: 'B-12, Sector 62, Noida, Uttar Pradesh 201301, India',
-  FOUNDED_YEAR: '2026',
+  FOUNDED_YEAR: '2025',
 
   // ─── Social Links (add when you have them) ──────────
   LINKEDIN_URL: '',
