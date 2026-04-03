@@ -6,11 +6,11 @@
 const CONFIG = {
   // ─── Product URLs ────────────────────────────────────
   NEOSHALA_URL: 'https://neo-shala.vercel.app',
-  AUSHADHI_URL: 'https://aushadhi-kappa.vercel.app/',
+  AUSHADHI_URL: 'https://aushadhi-kappa.vercel.app',
 
   // ─── Contact Info ────────────────────────────────────
   PHONE: '9453373823',
-  EMAIL: 'shubhamsingh4274@gmail.com',
+  EMAIL: ['shubhamsingh4274', 'gmail.com'].join('@'),  // obfuscated from bots
   WHATSAPP_MSG: 'Hi DRS Team, I want to know about your products',
 
   // ─── Company Info ────────────────────────────────────
@@ -42,20 +42,21 @@ const CONFIG = {
 // ─── Auto-apply config to all pages on load ────────────
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Update all product links
+  // Update all product links — route through loading page
   document.querySelectorAll('[data-link="neoshala"]').forEach(el => {
     if (CONFIG.NEOSHALA_URL) {
-      el.href = CONFIG.NEOSHALA_URL;
-      el.target = '_blank';
+      el.href = `loading.html?product=neoshala&url=${encodeURIComponent(CONFIG.NEOSHALA_URL)}`;
     } else {
       el.href = '#products';
-      el.removeAttribute('target');
     }
   });
 
   document.querySelectorAll('[data-link="aushadhi"]').forEach(el => {
-    el.href = CONFIG.AUSHADHI_URL || '#products';
-    if (CONFIG.AUSHADHI_URL) el.target = '_blank';
+    if (CONFIG.AUSHADHI_URL) {
+      el.href = `loading.html?product=aushadhi&url=${encodeURIComponent(CONFIG.AUSHADHI_URL)}`;
+    } else {
+      el.href = '#products';
+    }
   });
 
   // Update all email links
