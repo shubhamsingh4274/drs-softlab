@@ -214,7 +214,7 @@
           if (fmt === 'k' && current >= 1000) {
             display = Math.round(current / 1000) + 'K';
           } else if (Number.isInteger(target)) {
-            display = Math.floor(current).toLocaleString();
+            display = Math.round(current).toLocaleString();
           } else {
             display = current.toFixed(1);
           }
