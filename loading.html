@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Loading... | DRS SoftLab</title>
+  <title>Loading... | DRS Softlabs</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a7a52'/><path d='M16 4L6 9v14l10 5 10-5V9L16 4z' fill='none' stroke='white' stroke-width='2'/></svg>" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -149,7 +149,7 @@
     <div class="loader-status"><span class="dot"></span> <span id="loader-status">Connecting to server...</span></div>
   </div>
 
-  <div class="loader-footer">DRS SoftLab &middot; Digital Retail Solutions</div>
+  <div class="loader-footer">DRS Softlabs &middot; Digital Retail Solutions</div>
 
   <script>
     // Get product from URL params
@@ -225,7 +225,7 @@
     document.getElementById('loader-brand').textContent = p.name;
     document.getElementById('loader-sub').textContent = p.sub;
     document.getElementById('loader-bar').style.background = p.barColor;
-    document.title = `Loading ${p.name}... | DRS SoftLab`;
+    document.title = `Loading ${p.name}... | DRS Softlabs`;
     document.body.style.background = product === 'neoshala' ? '#0a1628' : '#060f1a';
     document.getElementById('loader-glow').style.background = `${p.color}60`;
     document.querySelector('.orbit-1').style.setProperty('--accent-color', p.color);

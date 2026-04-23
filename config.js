@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-// DRS SoftLab — Site Configuration
+// DRS Softlabs — Site Configuration
 // Change URLs and settings here. They apply across ALL pages.
 // ═══════════════════════════════════════════════════════════
 
@@ -14,7 +14,7 @@ const CONFIG = {
   WHATSAPP_MSG: 'Hi DRS Team, I want to know about your products',
 
   // ─── Company Info ────────────────────────────────────
-  COMPANY_NAME: 'DRS SoftLab',
+  COMPANY_NAME: 'DRS Softlabs',
   TAGLINE: 'Digital Retail Solutions',
   ADDRESS: 'B-12, Sector 62, Noida, Uttar Pradesh 201301, India',
   FOUNDED_YEAR: '2025',

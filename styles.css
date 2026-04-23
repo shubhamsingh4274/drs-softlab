@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   DRS SoftLab — Company Website Styles
+   DRS Softlabs — Company Website Styles
    AI-Driven. Modern. Premium.
    ═══════════════════════════════════════════════════════════ */
 
@@ -1172,3 +1172,25 @@ article:hover .blog-coming-soon { opacity: 1; pointer-events: all; }
 /* WhatsApp Floating Button */
 .whatsapp-float { position:fixed; bottom:24px; right:24px; width:56px; height:56px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,0.4); z-index:9999; text-decoration:none; transition:all 0.3s; }
 .whatsapp-float:hover { transform:scale(1.1); box-shadow:0 6px 30px rgba(37,211,102,0.5); }
+
+/* ─── Mobile: New Sections Responsive ────────────── */
+@media (max-width: 768px) {
+  .container { padding: 0 16px; }
+  .section { padding: 48px 0; }
+  .section-sm { padding: 24px 0; }
+  h2 { font-size: 24px !important; }
+  .stat-card { padding: 20px 16px; }
+  .stat-value { font-size: 32px !important; }
+  .compare-table { font-size: 12px; }
+  .compare-table th, .compare-table td { padding: 8px 6px; }
+  .testimonial-card { min-width: 280px; }
+  .whatsapp-float { bottom: 70px; } /* above cookie bar */
+
+  /* Collapse inline 2-col and 3-col grids to single column on mobile */
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: repeat(3"],
+  [style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+}

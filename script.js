@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-// DRS SoftLab — Interactive Effects
+// DRS Softlabs — Interactive Effects
 // Particles, Scroll Reveals, Animated Counters, Typing
 // ═══════════════════════════════════════════════════════════
 
