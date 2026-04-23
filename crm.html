@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DRS Softlabs — Lead Tracker & CRM</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a7a52'/><path d='M16 4L6 9v14l10 5 10-5V9L16 4z' fill='none' stroke='white' stroke-width='2'/></svg>" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Inter',sans-serif; background:#0a1628; color:#e2e8f0; min-height:100vh; }
+  .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+  /* Header */
+  .crm-header { background:linear-gradient(135deg,#0a1628,#162240); padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:100; backdrop-filter:blur(12px); }
+  .crm-header-inner { display:flex; align-items:center; justify-content:space-between; }
+  .crm-logo { font-size:18px; font-weight:800; color:#fff; display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .crm-logo span { color:#22c47a; }
+  .crm-nav { display:flex; gap:8px; }
+  .crm-nav a { padding:8px 16px; border-radius:8px; color:#94a3b8; font-size:13px; font-weight:600; text-decoration:none; transition:all 0.2s; }
+  .crm-nav a:hover, .crm-nav a.active { background:rgba(34,196,122,0.1); color:#22c47a; }
+
+  /* Stats */
+  .stats-row { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin:20px 0; }
+  .stat-box { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px; text-align:center; }
+  .stat-num { font-size:28px; font-weight:900; }
+  .stat-label { font-size:11px; color:#64748b; margin-top:4px; }
+
+  /* Tabs */
+  .tabs { display:flex; gap:4px; margin-bottom:16px; background:rgba(255,255,255,0.04); padding:4px; border-radius:10px; width:fit-content; }
+  .tab { padding:8px 20px; border-radius:8px; border:none; background:none; color:#94a3b8; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:inherit; }
+  .tab.active { background:#22c47a; color:#fff; }
+
+  /* Table */
+  .table-wrap { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; overflow:hidden; }
+  table { width:100%; border-collapse:collapse; }
+  th { text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#64748b; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.08); font-weight:700; }
+  td { padding:12px 16px; font-size:13px; border-bottom:1px solid rgba(255,255,255,0.04); }
+  tr:hover td { background:rgba(34,196,122,0.03); }
+  .badge { padding:3px 10px; border-radius:20px; font-size:10px; font-weight:700; }
+  .badge-new { background:rgba(59,130,246,0.15); color:#60a5fa; }
+  .badge-contacted { background:rgba(251,191,36,0.15); color:#fbbf24; }
+  .badge-demo { background:rgba(168,85,247,0.15); color:#a855f7; }
+  .badge-won { background:rgba(34,197,94,0.15); color:#22c55e; }
+  .badge-lost { background:rgba(239,68,68,0.15); color:#ef4444; }
+
+  /* Form */
+  .form-row { display:grid; grid-template-columns:1fr 1fr 1fr 1fr auto; gap:8px; margin-bottom:16px; }
+  .form-row input, .form-row select { padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; font-size:13px; font-family:inherit; outline:none; }
+  .form-row input:focus, .form-row select:focus { border-color:#22c47a; }
+  .form-row select option { background:#1e293b; }
+  .btn-add { padding:10px 20px; border-radius:10px; border:none; background:#22c47a; color:#fff; font-weight:700; font-size:13px; cursor:pointer; font-family:inherit; white-space:nowrap; }
+  .btn-add:hover { background:#16a34a; }
+
+  /* Actions */
+  .btn-sm { padding:4px 10px; border-radius:6px; border:none; font-size:11px; font-weight:600; cursor:pointer; font-family:inherit; transition:all 0.2s; }
+  .btn-status { background:rgba(255,255,255,0.06); color:#94a3b8; }
+  .btn-status:hover { background:rgba(34,196,122,0.15); color:#22c47a; }
+  .btn-del { background:rgba(239,68,68,0.1); color:#ef4444; }
+  .btn-del:hover { background:rgba(239,68,68,0.2); }
+  .btn-export { padding:8px 16px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:none; color:#94a3b8; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .btn-export:hover { border-color:#22c47a; color:#22c47a; }
+
+  /* Search */
+  .search-bar { padding:10px 14px 10px 36px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; font-size:13px; width:250px; outline:none; font-family:inherit; }
+  .search-wrap { position:relative; }
+  .search-wrap::before { content:'🔍'; position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:13px; }
+
+  /* Empty */
+  .empty { text-align:center; padding:48px 20px; color:#64748b; }
+  .empty-icon { font-size:48px; margin-bottom:12px; opacity:0.4; }
+
+  /* Responsive */
+  @media (max-width:768px) {
+    .stats-row { grid-template-columns:repeat(2,1fr); }
+    .form-row { grid-template-columns:1fr; }
+    .crm-nav { display:none; }
+    .search-bar { width:100%; }
+  }
+
+  /* Password gate */
+  .gate { position:fixed; inset:0; background:#0a1628; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px; }
+  .gate-box { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:32px; max-width:360px; width:90%; text-align:center; }
+  .gate input { width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; font-size:14px; margin:16px 0; outline:none; text-align:center; font-family:inherit; }
+  .gate button { width:100%; padding:12px; border-radius:10px; border:none; background:#22c47a; color:#fff; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
+  .gate-error { color:#ef4444; font-size:12px; margin-top:8px; }
+</style>
+</head>
+<body>
+
+<!-- Password Gate -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div style="font-size:36px;margin-bottom:8px">🔒</div>
+    <h2 style="font-size:18px;font-weight:800;margin-bottom:4px">DRS Softlabs CRM</h2>
+    <p style="font-size:12px;color:#64748b">Enter password to access lead tracker</p>
+    <input type="password" id="gate-pwd" placeholder="Password" onkeydown="if(event.key==='Enter')checkGate()" />
+    <button onclick="checkGate()">Unlock</button>
+    <div class="gate-error" id="gate-error"></div>
+  </div>
+</div>
+
+<!-- Main App -->
+<div id="app" style="display:none">
+
+<header class="crm-header">
+  <div class="container crm-header-inner">
+    <a href="index.html" class="crm-logo">🏢 DRS <span>CRM</span></a>
+    <div class="crm-nav">
+      <a href="index.html">← Website</a>
+      <a href="#" class="active">Leads</a>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="btn-export" onclick="exportCSV()">📥 Export CSV</button>
+      <button class="btn-export" onclick="clearAll()">🗑️ Clear All</button>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding:20px">
+
+  <!-- Stats -->
+  <div class="stats-row" id="stats"></div>
+
+  <!-- Add Lead Form -->
+  <div class="form-row">
+    <input type="text" id="f-name" placeholder="Name / Institute" />
+    <input type="text" id="f-phone" placeholder="Phone / WhatsApp" />
+    <input type="email" id="f-email" placeholder="Email" />
+    <select id="f-product">
+      <option value="NeoShala">🎓 NeoShala</option>
+      <option value="Aushadhi">💊 Aushadhi</option>
+      <option value="Both">Both</option>
+    </select>
+    <button class="btn-add" onclick="addLead()">+ Add Lead</button>
+  </div>
+
+  <!-- Filters -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+    <div class="tabs" id="tabs">
+      <button class="tab active" onclick="filterTab('all',this)">All</button>
+      <button class="tab" onclick="filterTab('new',this)">New</button>
+      <button class="tab" onclick="filterTab('contacted',this)">Contacted</button>
+      <button class="tab" onclick="filterTab('demo',this)">Demo Done</button>
+      <button class="tab" onclick="filterTab('won',this)">Won ✅</button>
+      <button class="tab" onclick="filterTab('lost',this)">Lost ❌</button>
+    </div>
+    <div class="search-wrap">
+      <input class="search-bar" type="text" placeholder="Search leads..." oninput="renderLeads()" id="search" />
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Product</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Notes</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="leads-body"></tbody>
+    </table>
+    <div class="empty" id="empty" style="display:none">
+      <div class="empty-icon">📋</div>
+      <div style="font-size:14px;font-weight:600">No leads yet</div>
+      <div style="font-size:12px;margin-top:4px">Add your first lead above</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const CRM_KEY = 'drs_crm_leads';
+const CRM_PWD = 'drs2026';
+let currentFilter = 'all';
+
+function checkGate() {
+  const pwd = document.getElementById('gate-pwd').value;
+  if (pwd === CRM_PWD) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    sessionStorage.setItem('crm_auth', '1');
+    renderLeads();
+  } else {
+    document.getElementById('gate-error').textContent = 'Wrong password';
+  }
+}
+
+// Auto-login if already authenticated
+if (sessionStorage.getItem('crm_auth') === '1') {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+function getLeads() {
+  try { return JSON.parse(localStorage.getItem(CRM_KEY) || '[]'); }
+  catch { return []; }
+}
+function saveLeads(leads) { localStorage.setItem(CRM_KEY, JSON.stringify(leads)); }
+
+function addLead() {
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const product = document.getElementById('f-product').value;
+  if (!name) { alert('Name is required'); return; }
+  const leads = getLeads();
+  leads.unshift({
+    id: Date.now(),
+    name, phone, email, product,
+    status: 'new',
+    date: new Date().toISOString().slice(0,10),
+    notes: '',
+  });
+  saveLeads(leads);
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-phone').value = '';
+  document.getElementById('f-email').value = '';
+  renderLeads();
+}
+
+function updateStatus(id) {
+  const leads = getLeads();
+  const lead = leads.find(l => l.id === id);
+  if (!lead) return;
+  const order = ['new','contacted','demo','won','lost'];
+  const next = order[(order.indexOf(lead.status) + 1) % order.length];
+  lead.status = next;
+  saveLeads(leads);
+  renderLeads();
+}
+
+function addNote(id) {
+  const note = prompt('Add note:');
+  if (!note) return;
+  const leads = getLeads();
+  const lead = leads.find(l => l.id === id);
+  if (lead) { lead.notes = note; saveLeads(leads); renderLeads(); }
+}
+
+function deleteLead(id) {
+  if (!confirm('Delete this lead?')) return;
+  const leads = getLeads().filter(l => l.id !== id);
+  saveLeads(leads);
+  renderLeads();
+}
+
+function whatsappLead(lead) {
+  const num = lead.phone.replace(/[^0-9]/g,'');
+  const full = num.length === 10 ? '91' + num : num;
+  const product = lead.product === 'Aushadhi' ? 'Aushadhi (pharmacy management)' : 'NeoShala (school management)';
+  const msg = `Hi ${lead.name},\n\nThis is DRS Softlabs. We'd love to show you ${product}.\n\nFree trial — no card needed.\n\nCan we schedule a quick 5-min demo?\n\n— DRS Softlabs Team`;
+  window.open(`https://web.whatsapp.com/send?phone=${full}&text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function emailLead(lead) {
+  const product = lead.product === 'Aushadhi' ? 'Aushadhi' : 'NeoShala';
+  const subject = encodeURIComponent(`${product} — Free Trial for ${lead.name}`);
+  const body = encodeURIComponent(`Hi ${lead.name},\n\nThank you for your interest in ${product} by DRS Softlabs.\n\nWe'd love to schedule a quick demo. It's completely free — no card needed.\n\nLet us know a convenient time.\n\nBest regards,\nDRS Softlabs Team\n+91 94533 73823`);
+  window.open(`https://mail.google.com/mail/?view=cm&to=${lead.email}&su=${subject}&body=${body}`, '_blank');
+}
+
+function filterTab(status, btn) {
+  currentFilter = status;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderLeads();
+}
+
+function renderLeads() {
+  const leads = getLeads();
+  const search = (document.getElementById('search')?.value || '').toLowerCase();
+  const filtered = leads.filter(l => {
+    if (currentFilter !== 'all' && l.status !== currentFilter) return false;
+    if (search && !l.name.toLowerCase().includes(search) && !l.phone.includes(search) && !(l.email||'').toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  // Stats
+  const stats = {
+    total: leads.length,
+    new: leads.filter(l => l.status === 'new').length,
+    contacted: leads.filter(l => l.status === 'contacted').length,
+    demo: leads.filter(l => l.status === 'demo').length,
+    won: leads.filter(l => l.status === 'won').length,
+  };
+  document.getElementById('stats').innerHTML = [
+    { n:stats.total, l:'Total Leads', c:'#fff' },
+    { n:stats.new, l:'New', c:'#60a5fa' },
+    { n:stats.contacted, l:'Contacted', c:'#fbbf24' },
+    { n:stats.demo, l:'Demo Done', c:'#a855f7' },
+    { n:stats.won, l:'Won ✅', c:'#22c55e' },
+  ].map(s => `<div class="stat-box"><div class="stat-num" style="color:${s.c}">${s.n}</div><div class="stat-label">${s.l}</div></div>`).join('');
+
+  // Table
+  const tbody = document.getElementById('leads-body');
+  const empty = document.getElementById('empty');
+  if (filtered.length === 0) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  tbody.innerHTML = filtered.map((l, i) => `
+    <tr>
+      <td style="color:#64748b">${i+1}</td>
+      <td style="font-weight:700">${l.name}</td>
+      <td>${l.phone || '—'}</td>
+      <td style="font-size:12px">${l.email || '—'}</td>
+      <td><span style="font-size:12px;font-weight:600;color:${l.product==='Aushadhi'?'#22c47a':'#60a5fa'}">${l.product==='Aushadhi'?'💊':'🎓'} ${l.product}</span></td>
+      <td><span class="badge badge-${l.status}">${l.status.toUpperCase()}</span></td>
+      <td style="font-size:12px;color:#64748b">${l.date}</td>
+      <td style="font-size:11px;color:#94a3b8;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${l.notes||''}">${l.notes || '—'}</td>
+      <td>
+        <div style="display:flex;gap:4px;flex-wrap:wrap">
+          <button class="btn-sm btn-status" onclick="updateStatus(${l.id})" title="Change status">↻</button>
+          <button class="btn-sm btn-status" onclick="addNote(${l.id})" title="Add note">📝</button>
+          ${l.phone ? `<button class="btn-sm btn-status" onclick='whatsappLead(${JSON.stringify(l)})' title="WhatsApp" style="color:#25D366">💬</button>` : ''}
+          ${l.email ? `<button class="btn-sm btn-status" onclick='emailLead(${JSON.stringify(l)})' title="Email" style="color:#60a5fa">📧</button>` : ''}
+          <button class="btn-sm btn-del" onclick="deleteLead(${l.id})" title="Delete">🗑</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function exportCSV() {
+  const leads = getLeads();
+  if (!leads.length) { alert('No leads to export'); return; }
+  const csv = 'Name,Phone,Email,Product,Status,Date,Notes\n' +
+    leads.map(l => `"${l.name}","${l.phone}","${l.email}","${l.product}","${l.status}","${l.date}","${l.notes}"`).join('\n');
+  const blob = new Blob([csv], { type:'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `drs-leads-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+}
+
+function clearAll() {
+  if (!confirm('Delete ALL leads? This cannot be undone!')) return;
+  localStorage.removeItem(CRM_KEY);
+  renderLeads();
+}
+
+// Initial render
+renderLeads();
+</script>
+</body>
+</html>
