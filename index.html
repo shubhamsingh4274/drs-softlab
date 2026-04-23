@@ -1839,21 +1839,70 @@
     <div class="demo-modal" style="position:relative">
       <button class="demo-modal-close">&times;</button>
       <h3 style="color:#fff">&#128640; Request a Free Demo</h3>
-      <p>We'll show you Aushadhi or NeoShala live. No obligation.</p>
+      <p>Fill the form — we'll contact you within 24 hours!</p>
       <form id="demo-form">
-        <input name="name" placeholder="Your Name *" required />
-        <input name="phone" placeholder="Phone Number *" required />
-        <input name="business" placeholder="Business Name (School/Pharmacy)" />
+        <input name="name" id="demo-name" placeholder="Your Name *" required />
+        <input name="phone" id="demo-phone" placeholder="Phone / WhatsApp *" required />
+        <input name="email" id="demo-email" placeholder="Email (optional)" />
+        <input name="business" id="demo-business" placeholder="School / Pharmacy Name" />
+        <select name="product" id="demo-product" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--glass-border);background:var(--glass);color:#fff;font-size:13px;font-family:inherit;margin-bottom:12px">
+          <option value="NeoShala">🎓 NeoShala (School)</option>
+          <option value="Aushadhi">💊 Aushadhi (Pharmacy)</option>
+          <option value="Both">Both Products</option>
+        </select>
         <button type="submit" class="btn-glow" style="width:100%;padding:14px;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;color:#fff;position:relative">
-          <span style="position:relative;z-index:1">&#128172; Send via WhatsApp</span>
+          <span style="position:relative;z-index:1">📩 Submit Request</span>
         </button>
       </form>
+      <div id="demo-success" style="display:none;text-align:center;padding:24px">
+        <div style="font-size:48px;margin-bottom:12px">✅</div>
+        <div style="font-size:18px;font-weight:800;color:#22c55e;margin-bottom:8px">Request Submitted!</div>
+        <div style="font-size:13px;color:var(--text-muted)">We'll contact you within 24 hours on WhatsApp.</div>
+      </div>
       <div style="display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap">
-        <a href="mailto:drssoftlabs@gmail.com?subject=Demo%20Request%20-%20DRS%20Softlabs" style="padding:10px 20px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;color:var(--primary-light);display:inline-flex;align-items:center;gap:6px;background:var(--glass);border:1px solid var(--glass-border)">&#128231; Email Instead</a>
-        <a href="tel:+919453373823" style="padding:10px 20px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;color:var(--gold);display:inline-flex;align-items:center;gap:6px;background:var(--glass);border:1px solid var(--glass-border)">&#128222; Call Us</a>
+        <a href="https://wa.me/919453373823?text=Hi%20DRS%20Softlabs!%20I%20want%20a%20demo." target="_blank" style="padding:10px 20px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;color:#25D366;display:inline-flex;align-items:center;gap:6px;background:var(--glass);border:1px solid var(--glass-border)">💬 WhatsApp Direct</a>
+        <a href="mailto:drssoftlabs@gmail.com?subject=Demo%20Request" style="padding:10px 20px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;color:var(--primary-light);display:inline-flex;align-items:center;gap:6px;background:var(--glass);border:1px solid var(--glass-border)">📧 Email</a>
+        <a href="tel:+919453373823" style="padding:10px 20px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;color:var(--gold);display:inline-flex;align-items:center;gap:6px;background:var(--glass);border:1px solid var(--glass-border)">📞 Call</a>
       </div>
     </div>
   </div>
+  <script>
+  // Demo form → Google Sheets + WhatsApp + Email notification
+  document.getElementById('demo-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('demo-name').value;
+    const phone = document.getElementById('demo-phone').value;
+    const email = document.getElementById('demo-email').value;
+    const business = document.getElementById('demo-business').value;
+    const product = document.getElementById('demo-product').value;
+
+    // Send to Google Form (background — no redirect)
+    // Send to Google Form → auto saves in Google Sheets
+    const gFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf9iyp9dFuubI2-xmc37UyppgVhDsxPOOrdTkxq3u9BHAVuhg/formResponse';
+    fetch(gFormUrl + '?entry.799273929=' + encodeURIComponent(name) + '&entry.481726064=' + encodeURIComponent(phone) + '&entry.1812061235=' + encodeURIComponent(email) + '&entry.1025421485=' + encodeURIComponent(product) + '&entry.927378248=' + encodeURIComponent(business) + '&submit=Submit', {
+      method: 'GET',
+      mode: 'no-cors',
+    }).catch(() => {});
+
+    // Also open WhatsApp with the lead info (your number)
+    const num = '919453373823';
+    const msg = '🔔 NEW LEAD!\n\nName: ' + name + '\nPhone: ' + phone + '\nEmail: ' + (email||'—') + '\nBusiness: ' + (business||'—') + '\nProduct: ' + product + '\n\nFrom: DRS Website Demo Form';
+
+    // Send WhatsApp notification to yourself
+    window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(msg), '_blank');
+
+    // Show success
+    document.getElementById('demo-form').style.display = 'none';
+    document.getElementById('demo-success').style.display = 'block';
+
+    // Also save to localStorage CRM
+    try {
+      const leads = JSON.parse(localStorage.getItem('drs_crm_leads') || '[]');
+      leads.unshift({ id:Date.now(), name, phone, email, product, status:'new', date:new Date().toISOString().slice(0,10), notes:'From website demo form — ' + business });
+      localStorage.setItem('drs_crm_leads', JSON.stringify(leads));
+    } catch(e) {}
+  });
+  </script>
 
   <!-- AI Floating Badge -->
   <div class="ai-floating-badge">
