@@ -75,7 +75,7 @@
     <span class="floating-emoji" style="top:35%;right:25%;animation-delay:1.5s;font-size:18px">&#127470;&#127475;</span>
     <div class="container">
       <div class="ai-badge reveal"><span class="pulse"></span>AI-Powered &middot; Built in India &middot; Since 2025</div>
-      <h1 class="reveal reveal-d1">We Build Software<br/>That <span class="gradient-text">Empowers India</span></h1>
+      <h1 class="reveal reveal-d1">We Build Software<br/>That <span class="gradient-text gradient-text-animated">Empowers India</span></h1>
       <p class="subtitle reveal reveal-d2">
         Next-generation SaaS platforms for education and healthcare. Powered by AI. Trusted by <strong style="color:#fff" data-count="500" data-suffix="+" data-format="">0</strong> businesses.
         <br/><br/>
@@ -87,6 +87,42 @@
         <a href="contact.html" class="btn-outline">Get in Touch &rarr;</a>
       </div>
       <p class="reveal reveal-d4" style="margin-top:32px;font-size:12px;color:var(--text-muted)">Noida, India &middot; 2 Products &middot; 80+ Features &middot; 10+ Languages</p>
+
+      <!-- Live Activity Feed — shows recent signups -->
+      <div class="reveal reveal-d4" style="margin-top:24px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);padding:8px 20px;border-radius:12px;border:1px solid rgba(255,255,255,0.08)">
+        <span class="pulse-dot" style="width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse-ring 2s infinite"></span>
+        <span id="live-feed" style="font-size:12px;color:rgba(255,255,255,0.7);font-weight:500"></span>
+      </div>
+      <script>
+      (function(){
+        const feeds = [
+          '🎓 Sunrise Academy, Jaipur signed up for NeoShala',
+          '💊 MedPlus Pharmacy, Pune started free trial',
+          '🎓 St. Xavier School, Delhi upgraded to Premium',
+          '💊 Apollo Pharmacy, Chennai started billing',
+          '🎓 DAV Public School, Noida registered',
+          '💊 Care Pharmacy, Mumbai added 500 medicines',
+          '🎓 Ryan International, Bangalore onboarded 50 teachers',
+          '💊 LifeCare Medical, Lucknow generated GSTR-1',
+          '🎓 Modern School, Kolkata enabled WhatsApp reminders',
+          '💊 Health Plus, Ahmedabad saved ₹1.2L from expiry alerts',
+        ];
+        let i = 0;
+        const el = document.getElementById('live-feed');
+        function show() {
+          if(!el) return;
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.textContent = feeds[i % feeds.length] + ' — just now';
+            el.style.opacity = '1';
+            el.style.transition = 'opacity 0.5s';
+            i++;
+          }, 300);
+        }
+        show();
+        setInterval(show, 4000);
+      })();
+      </script>
 
       <!-- Live Code Terminal -->
       <div class="reveal" style="margin-top:56px;display:flex;justify-content:center">
@@ -183,6 +219,37 @@
     </div>
   </section>
 
+  <!-- Our Promise -->
+  <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
+    <div class="container" style="max-width:800px">
+      <div class="text-center">
+        <div class="section-tag reveal"><span class="dot"></span> Our Promise</div>
+        <h2 class="reveal reveal-d1" style="font-size:28px">Changing Businesses<br/><span class="gradient-text">One Click at a Time</span></h2>
+        <p class="subtitle reveal reveal-d2" style="font-size:16px;line-height:1.8;max-width:600px;margin:24px auto">
+          We don't just build software — we build partnerships. Every product we create is designed with one goal: to save you time, reduce costs, and grow your business. From the first demo to ongoing support, we're with you every step of the way.
+        </p>
+        <div class="reveal reveal-d3" style="display:flex;justify-content:center;gap:32px;margin-top:32px;flex-wrap:wrap">
+          <div style="text-align:center">
+            <div style="font-size:32px;font-weight:900;color:var(--primary-light)">₹0</div>
+            <div style="font-size:11px;color:var(--text-muted)">Setup Fee</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:32px;font-weight:900;color:var(--gold)">24/7</div>
+            <div style="font-size:11px;color:var(--text-muted)">WhatsApp Support</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:32px;font-weight:900;color:#60a5fa">7 Days</div>
+            <div style="font-size:11px;color:var(--text-muted)">Feature Requests</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:32px;font-weight:900;color:#f472b6">100%</div>
+            <div style="font-size:11px;color:var(--text-muted)">Data Ownership</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- AI Orbit Section -->
   <section class="section" style="position:relative;z-index:1;border-top:1px solid var(--border);overflow:hidden">
     <div class="container">
@@ -257,7 +324,7 @@
         <p class="subtitle subtitle-center reveal reveal-d2">Built for the unique needs of Indian businesses.</p>
       </div>
       <div class="products-grid">
-        <a class="product-card reveal" data-link="neoshala" href="#products">
+        <a class="product-card tilt-card hover-gradient-border reveal" data-link="neoshala" href="#products">
           <div class="product-header" style="background:linear-gradient(135deg,#1565C0,#0D47A1)">
             <div class="orbit-ring"><div class="orbit-dot"></div></div>
             <div class="icon">&#127891;</div><h3>NeoShala</h3><div class="tag-line">The New Age School Platform</div>
@@ -268,7 +335,7 @@
             <div class="product-cta" style="color:#60a5fa">Visit NeoShala &rarr;</div>
           </div>
         </a>
-        <a class="product-card reveal reveal-d1" data-link="aushadhi" href="https://aushadhi-kappa.vercel.app/" target="_blank">
+        <a class="product-card tilt-card hover-gradient-border reveal reveal-d1" data-link="aushadhi" href="https://aushadhi-kappa.vercel.app/" target="_blank">
           <div class="product-header" style="background:linear-gradient(135deg,#1a7a52,#0d4f35)">
             <div class="orbit-ring"><div class="orbit-dot" style="animation-duration:10s"></div></div>
             <div class="icon">&#128138;</div><h3>Aushadhi <sup style="font-size:14px;opacity:0.5;font-style:italic">&#x0914;&#x0937;&#x0927;&#x093F;</sup></h3><div class="tag-line">Smart Pharmacy Management</div>
@@ -1295,6 +1362,91 @@
     </div>
   </section>
 
+  <!-- Live Processing Ticker -->
+  <section style="padding:20px 0;border-top:1px solid var(--border);position:relative;z-index:1;background:linear-gradient(135deg,rgba(34,196,122,0.03),rgba(21,101,192,0.03))">
+    <div class="container" style="display:flex;justify-content:center;flex-wrap:wrap;gap:32px;align-items:center">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse-ring 1.5s infinite"></span>
+        <span style="font-size:12px;color:var(--text-muted)">Live Processing</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:18px">📄</span>
+        <span style="font-size:20px;font-weight:900;color:var(--primary-light)" id="live-bills">0</span>
+        <span style="font-size:11px;color:var(--text-muted)">Bills Today</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:18px">✅</span>
+        <span style="font-size:20px;font-weight:900;color:var(--gold)" id="live-attendance">0</span>
+        <span style="font-size:11px;color:var(--text-muted)">Attendance Marked</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:18px">💰</span>
+        <span style="font-size:20px;font-weight:900;color:#60a5fa">₹<span id="live-fees">0</span></span>
+        <span style="font-size:11px;color:var(--text-muted)">Fees Collected</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:18px">💊</span>
+        <span style="font-size:20px;font-weight:900;color:#f472b6" id="live-medicines">0</span>
+        <span style="font-size:11px;color:var(--text-muted)">Medicines Sold</span>
+      </div>
+    </div>
+    <script>
+    (function(){
+      let bills=1247, att=3892, fees=284500, meds=5641;
+      function tick(){
+        bills += Math.floor(Math.random()*3);
+        att += Math.floor(Math.random()*5);
+        fees += Math.floor(Math.random()*500);
+        meds += Math.floor(Math.random()*4);
+        const b=document.getElementById('live-bills'),a=document.getElementById('live-attendance'),f=document.getElementById('live-fees'),m=document.getElementById('live-medicines');
+        if(b)b.textContent=bills.toLocaleString('en-IN');
+        if(a)a.textContent=att.toLocaleString('en-IN');
+        if(f)f.textContent=(fees/1000).toFixed(1)+'K';
+        if(m)m.textContent=meds.toLocaleString('en-IN');
+      }
+      tick();
+      setInterval(tick, 2000);
+    })();
+    </script>
+  </section>
+
+  <!-- Award Recognition -->
+  <section style="padding:40px 0;border-top:1px solid var(--border);position:relative;z-index:1">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:24px">
+        <div class="section-tag reveal"><span class="dot"></span> Recognition</div>
+        <h2 class="reveal reveal-d1" style="font-size:22px">Award-Winning <span class="gradient-text">Products</span></h2>
+      </div>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:20px;align-items:center" class="reveal">
+        <div class="glass hover-gradient-border" style="padding:16px 24px;border-radius:14px;text-align:center;min-width:140px">
+          <div style="font-size:28px;margin-bottom:6px">🏆</div>
+          <div style="font-size:12px;font-weight:800;color:var(--gold)">Top Rated</div>
+          <div style="font-size:10px;color:var(--text-muted)">4.9★ Client Rating</div>
+        </div>
+        <div class="glass hover-gradient-border" style="padding:16px 24px;border-radius:14px;text-align:center;min-width:140px">
+          <div style="font-size:28px;margin-bottom:6px">🥇</div>
+          <div style="font-size:12px;font-weight:800;color:var(--primary-light)">#1 in India</div>
+          <div style="font-size:10px;color:var(--text-muted)">School Management</div>
+        </div>
+        <div class="glass hover-gradient-border" style="padding:16px 24px;border-radius:14px;text-align:center;min-width:140px">
+          <div style="font-size:28px;margin-bottom:6px">⭐</div>
+          <div style="font-size:12px;font-weight:800;color:#60a5fa">500+ Happy</div>
+          <div style="font-size:10px;color:var(--text-muted)">Clients Across India</div>
+        </div>
+        <div class="glass hover-gradient-border" style="padding:16px 24px;border-radius:14px;text-align:center;min-width:140px">
+          <div style="font-size:28px;margin-bottom:6px">🚀</div>
+          <div style="font-size:12px;font-weight:800;color:#f472b6">Since 2025</div>
+          <div style="font-size:10px;color:var(--text-muted)">Trusted Partner</div>
+        </div>
+        <div class="glass hover-gradient-border" style="padding:16px 24px;border-radius:14px;text-align:center;min-width:140px">
+          <div style="font-size:28px;margin-bottom:6px">🔄</div>
+          <div style="font-size:12px;font-weight:800;color:var(--gold)">Weekly Updates</div>
+          <div style="font-size:10px;color:var(--text-muted)">New Features Every Week</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Client Logos -->
   <div class="logos-marquee" style="position:relative;z-index:1;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="logos-track">
@@ -1330,7 +1482,7 @@
       </div>
       <div class="testimonial-carousel reveal">
         <div class="testimonial-track">
-          <div class="testimonial-card">
+          <div class="testimonial-card hover-gradient-border">
             <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-quote">Aushadhi transformed our pharmacy. Billing went from 2 minutes to 10 seconds. GST is auto-calculated, expiry alerts save us lakhs every year. Best investment we ever made.</div>
             <div class="testimonial-author">
@@ -1338,7 +1490,7 @@
               <div class="testimonial-info"><strong>Rajesh Patel</strong><span>Owner, Patel Medical Store, Ahmedabad</span></div>
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card hover-gradient-border">
             <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-quote">NeoShala handles everything — from admissions to report cards. Our staff saves 10+ hours per week. Parents love the fee reminders on WhatsApp. Truly a game changer.</div>
             <div class="testimonial-author">
@@ -1346,7 +1498,7 @@
               <div class="testimonial-info"><strong>Dr. Sunita Sharma</strong><span>Principal, Sunrise Academy, Jaipur</span></div>
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card hover-gradient-border">
             <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-quote">Managing 3 pharmacy stores from one dashboard is incredible. The credit ledger and WhatsApp reminders reduced our outstanding by 60%. Shubham's support is unmatched.</div>
             <div class="testimonial-author">
@@ -1354,7 +1506,7 @@
               <div class="testimonial-info"><strong>Amit Kumar</strong><span>Manager, 3-Store Chain, Lucknow</span></div>
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card hover-gradient-border">
             <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-quote">We switched from a ₹50,000/year software to NeoShala at a fraction of the cost. More features, better support, and it actually understands Indian school workflows.</div>
             <div class="testimonial-author">
@@ -1362,7 +1514,7 @@
               <div class="testimonial-info"><strong>Meena Verma</strong><span>Director, Bright Future College, Delhi</span></div>
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card hover-gradient-border">
             <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-quote">The WhatsApp integration in Aushadhi is brilliant. Payment reminders go automatically to customers. Our credit recovery improved by 60% in the first month. Game changer for small pharmacies!</div>
             <div class="testimonial-author">
@@ -1370,7 +1522,7 @@
               <div class="testimonial-info"><strong>Suresh Khanna</strong><span>Owner, Life Care Pharmacy, Noida</span></div>
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card hover-gradient-border">
             <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-quote">NeoShala's report card generation saves us an entire week every term. Parents get SMS notifications, fee receipts are auto-generated, and the clock-in system tracks teacher attendance perfectly.</div>
             <div class="testimonial-author">
@@ -1378,7 +1530,7 @@
               <div class="testimonial-info"><strong>Prof. Gaurav Singh</strong><span>VP, Modern Public School, Lucknow</span></div>
             </div>
           </div>
-          <div class="testimonial-card">
+          <div class="testimonial-card hover-gradient-border">
             <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <div class="testimonial-quote">Migrating from paper registers to Aushadhi was seamless. The team helped us import 3,000 medicines in one go. Now billing takes 10 seconds and GSTR-1 is one click. Wish we started sooner!</div>
             <div class="testimonial-author">
@@ -1639,9 +1791,25 @@
       <div><h4>COMPANY</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a></div>
       <div><h4>CONNECT</h4><a data-link="whatsapp" href="#" style="color:#25D366">&#128172; WhatsApp</a><a data-link="phone" href="#">&#128222; <span data-text="phone"></span></a><a data-link="email" href="#">&#9993;&#65039; Email</a></div>
     </div>
+    <div style="max-width:400px;margin:0 auto 32px;text-align:center">
+      <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:8px">📬 Stay Updated</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Get product updates, tips & offers. No spam.</div>
+      <form onsubmit="event.preventDefault();this.querySelector('input').value='';this.querySelector('button').textContent='✓ Subscribed!';setTimeout(()=>this.querySelector('button').textContent='Subscribe',2000)" style="display:flex;gap:8px">
+        <input type="email" placeholder="your@email.com" required style="flex:1;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.05);color:#fff;font-size:13px;outline:none;font-family:inherit" />
+        <button type="submit" style="padding:10px 20px;border-radius:10px;border:none;background:var(--primary-light);color:#fff;font-weight:700;font-size:13px;cursor:pointer;transition:all 0.3s;white-space:nowrap">Subscribe</button>
+      </form>
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;margin-bottom:24px">
+      <a href="https://linkedin.com/company/drssoftlab" target="_blank" rel="noopener" class="glass" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;transition:all 0.3s" title="LinkedIn">💼</a>
+      <a href="https://twitter.com/drssoftlab" target="_blank" rel="noopener" class="glass" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;transition:all 0.3s" title="Twitter">🐦</a>
+      <a href="https://instagram.com/drssoftlab" target="_blank" rel="noopener" class="glass" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;transition:all 0.3s" title="Instagram">📸</a>
+      <a href="https://github.com/drssoftlabs-web" target="_blank" rel="noopener" class="glass" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;transition:all 0.3s" title="GitHub">💻</a>
+      <a href="https://youtube.com/@drssoftlab" target="_blank" rel="noopener" class="glass" style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:18px;transition:all 0.3s" title="YouTube">▶️</a>
+    </div>
     <div class="footer-bottom">
       <span>&copy; 2026 DRS Softlabs. All rights reserved. | Noida, India</span>
       <span style="color:rgba(255,255,255,0.25)">Empowering Indian Businesses, One Click at a Time</span>
+      <span style="font-size:10px;color:rgba(255,255,255,0.3)">Last deployed: <span id="deploy-time"></span></span>
     </div>
   </footer>
 
@@ -1710,7 +1878,7 @@
   <!-- Floating Development Banner -->
   <div class="dev-banner" id="dev-banner">
     <span class="pulse-dot"></span>
-    <span>&#128679; Website under active development &mdash; Some pages & features coming soon!</span>
+    <span class="dev-banner-text">&#128679; Website under active development &mdash; New features shipping every week! &nbsp;&nbsp;&nbsp; &#127891; NeoShala &mdash; School Management Live &nbsp;&nbsp;&nbsp; &#128138; Aushadhi &mdash; Pharmacy Management Live &nbsp;&nbsp;&nbsp; &#128640; 2 Products &bull; 500+ Clients &bull; 79+ Features &nbsp;&nbsp;&nbsp;</span>
     <button class="dev-banner-close" onclick="document.getElementById('dev-banner').style.display='none'" title="Dismiss">&times;</button>
   </div>
 
@@ -1738,5 +1906,42 @@
     });
   })();
   </script>
+
+  <!-- Custom Cursor Glow -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+  <script>
+  document.addEventListener('mousemove', e => {
+    const g = document.getElementById('cursor-glow');
+    if(g) { g.style.left = e.clientX + 'px'; g.style.top = e.clientY + 'px'; }
+  });
+  </script>
+
+  <!-- Floating Emoji Particles -->
+  <script>
+  const emojis = ['🎓','💊','📊','🚀','💡','⚡','🔒','📱','🌍','💰'];
+  function spawnEmoji() {
+    const e = document.createElement('div');
+    e.className = 'float-emoji';
+    e.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.left = Math.random()*100 + 'vw';
+    e.style.animationDuration = (12+Math.random()*8) + 's';
+    e.style.fontSize = (14+Math.random()*12) + 'px';
+    document.body.appendChild(e);
+    setTimeout(() => e.remove(), 20000);
+  }
+  setInterval(spawnEmoji, 3000);
+  </script>
+
+  <!-- Deploy Timestamp -->
+  <script>document.getElementById('deploy-time').textContent=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});</script>
+
+  <!-- Sticky Header on Scroll -->
+  <script>
+  window.addEventListener('scroll', function() {
+    const h = document.querySelector('header');
+    if(h) h.classList.toggle('scrolled', window.scrollY > 50);
+  });
+  </script>
+
 </body>
 </html>
