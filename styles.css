@@ -404,22 +404,24 @@ body.light-mode + .page-cover, body.light-mode .page-cover { background: #ffffff
 /* ─── Social Proof Ticker ─────────────────────────── */
 .social-proof {
   position: fixed; bottom: 20px; left: 20px; z-index: 997;
-  display: flex; align-items: center; gap: 8px;
-  padding: 10px 16px; border-radius: 12px;
-  background: rgba(6,15,26,0.92); backdrop-filter: blur(12px);
-  border: 1px solid rgba(34,196,122,0.15);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  font-size: 12px; color: var(--text-muted);
-  animation: socialSlideIn 0.5s cubic-bezier(0.16,1,0.3,1);
-  transition: opacity 0.3s, transform 0.3s;
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px; border-radius: 14px;
+  background: rgba(6,15,26,0.95); backdrop-filter: blur(16px);
+  border: 1px solid rgba(34,196,122,0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(34,196,122,0.05);
+  font-size: 13px; color: var(--text-muted);
+  animation: socialSlideIn 0.6s cubic-bezier(0.16,1,0.3,1);
+  transition: opacity 0.4s, transform 0.4s;
+  max-width: 360px;
 }
 .social-proof.hiding { opacity: 0; transform: translateX(-20px); }
 @keyframes socialSlideIn { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
 .social-proof-avatar {
-  width: 28px; height: 28px; border-radius: 50%;
+  width: 34px; height: 34px; border-radius: 50%;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   display: flex; align-items: center; justify-content: center;
-  color: #fff; font-weight: 800; font-size: 10px; flex-shrink: 0;
+  color: #fff; font-weight: 800; font-size: 11px; flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(26,122,82,0.3);
 }
 .social-proof-text strong { color: #fff; }
 .social-proof-time { font-size: 10px; color: rgba(255,255,255,0.3); margin-left: 4px; }
@@ -1158,7 +1160,7 @@ article:hover .blog-coming-soon { opacity: 1; pointer-events: all; }
   .ai-floating-badge { display: none; }
   .theme-toggle { top: auto; bottom: 130px; right: 16px; }
   .demo-float-btn { bottom: 70px; right: 16px; padding: 10px 16px; font-size: 12px; }
-  .social-proof { left: 12px; right: auto; bottom: 12px; max-width: 280px; }
+  .social-proof { left: 12px; right: 12px; bottom: 80px; max-width: calc(100vw - 24px); font-size: 12px; padding: 10px 14px; border-radius: 12px; }
   .device-laptop { max-width: 100% !important; }
   .device-tablet { width: 100% !important; }
   .device-phone { width: 180px !important; }
@@ -1204,6 +1206,162 @@ article:hover .blog-coming-soon { opacity: 1; pointer-events: all; }
   [style*="grid-template-columns: repeat(3"],
   [style*="grid-template-columns:repeat(3"] {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* ─── Enhanced Mobile Responsive (All New Sections) ── */
+@media (max-width: 768px) {
+  /* ROI Calculator */
+  #calc-school > div, #calc-pharmacy > div {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  #calc-school, #calc-pharmacy {
+    padding: 20px !important;
+  }
+
+  /* Feature Walkthrough tabs */
+  #feat-neo, #feat-aus {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Comparison tables scroll */
+  .compare-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Integration ecosystem - hide orbit on mobile */
+  #roi-calculator .container > div[style*="display:flex;justify-content:center"] { display: none !important; }
+
+  /* Video testimonials */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(320px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Before/After slider */
+  #ba-slider { max-width: 100% !important; }
+  #ba-slider [style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+  #ba-slider [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+
+  /* AI Chat window */
+  #ai-chat-window {
+    width: calc(100vw - 32px) !important;
+    height: 70vh !important;
+    left: -8px !important;
+    bottom: 54px !important;
+  }
+
+  /* WhatsApp widget popup */
+  #wa-popup {
+    width: calc(100vw - 48px) !important;
+    right: -8px !important;
+  }
+
+  /* Changelog items */
+  #changelog-section [style*="padding-left:40px"] {
+    padding-left: 36px !important;
+  }
+
+  /* Security badges */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(180px"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Customer success wall */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(200px"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Pricing toggle buttons */
+  [style*="display:inline-flex"][style*="border-radius:50px"] {
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  /* Calculator tabs */
+  [id*="calc-tab"], [id*="feat-tab"] {
+    padding: 10px 16px !important;
+    font-size: 12px !important;
+  }
+
+  /* Integration orbit hide on mobile */
+  [style*="position:relative;width:500px;height:500px"] {
+    display: none !important;
+  }
+
+  /* FAQ product headers */
+  [style*="font-size:16px;color:#60a5fa"],
+  [style*="font-size:16px;color:#22c47a"] {
+    font-size: 14px !important;
+  }
+
+  /* Demo float button position */
+  .demo-float-btn {
+    bottom: 70px !important;
+    right: 12px !important;
+    padding: 8px 14px !important;
+    font-size: 11px !important;
+  }
+
+  /* Ensure all new grids stack on mobile */
+  [style*="grid-template-columns: repeat(auto-fit,minmax(250px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns: repeat(auto-fit,minmax(280px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns: repeat(auto-fit,minmax(300px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns: repeat(auto-fit,minmax(340px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Fix overflow issues */
+  body { overflow-x: hidden; }
+  .section, section { overflow-x: hidden; }
+}
+
+@media (max-width: 480px) {
+  /* Even smaller screens */
+  [style*="grid-template-columns:repeat(auto-fit,minmax(180px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:repeat(auto-fit,minmax(200px"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:repeat(auto-fit,minmax(140px"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Calculator results smaller text */
+  #roi-fee-recovery, #roi-time-saved, #roi-total-school,
+  #roi-expiry-save, #roi-credit-recovery, #roi-time-pharm, #roi-total-pharm {
+    font-size: 24px !important;
+  }
+
+  /* Tab buttons stack */
+  [style*="display:flex;justify-content:center;gap:12px;margin-bottom:32px"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 16px !important;
+  }
+
+  /* AI Chat */
+  #ai-chat-window {
+    width: calc(100vw - 16px) !important;
+    left: -16px !important;
+  }
+
+  /* WhatsApp widget */
+  #wa-popup {
+    width: calc(100vw - 32px) !important;
   }
 }
 

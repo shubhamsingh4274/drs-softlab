@@ -37,17 +37,6 @@
 
 // ─── Page loads normally — no transitions needed ─────────
 
-// ─── Auto-hide Dev Banner after 10s ──────────────────────
-(function initAutoHideBanner() {
-  const banner = document.getElementById('dev-banner');
-  if (!banner) return;
-  setTimeout(() => {
-    banner.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    banner.style.opacity = '0';
-    banner.style.transform = 'translateX(-50%) translateY(20px)';
-    setTimeout(() => { banner.style.display = 'none'; }, 500);
-  }, 10000);
-})();
 
 // ─── Social Proof Ticker ─────────────────────────────────
 (function initSocialProof() {
@@ -80,17 +69,17 @@
         '<div class="social-proof-text"><strong>' + p.name + '</strong> from ' + p.city + ' ' + p.action +
         '<span class="social-proof-time">' + p.time + '</span></div>';
       document.body.appendChild(div);
-      // Auto-hide after 5s
+      // Auto-hide after 8s
       setTimeout(() => {
         div.classList.add('hiding');
         setTimeout(() => div.remove(), 300);
-      }, 5000);
+      }, 8000);
     }, 400);
   }
 
-  // First one after 5s, then every 10s
-  setTimeout(showProof, 5000);
-  setInterval(showProof, 10000);
+  // First one after 15s, then every 25s (much slower)
+  setTimeout(showProof, 15000);
+  setInterval(showProof, 25000);
 })();
 
 // ─── Particle System ─────────────────────────────────────
@@ -307,12 +296,12 @@
       transition: 'opacity 0.3s',
     });
     document.body.appendChild(toast);
-    setTimeout(() => { toast.style.opacity = '0'; }, 3500);
-    setTimeout(() => { toast.remove(); }, 4000);
+    setTimeout(() => { toast.style.opacity = '0'; }, 6000);
+    setTimeout(() => { toast.remove(); }, 6500);
   }
-  // Show first after 3s, then every 8s
-  setTimeout(showToast, 3000);
-  setInterval(showToast, 8000);
+  // Show first after 20s, then every 30s (much slower)
+  setTimeout(showToast, 20000);
+  setInterval(showToast, 30000);
 })();
 
 // ─── Device Demo Slideshow (pause on hover) ──────────────

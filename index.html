@@ -1128,69 +1128,183 @@
     </div>
   </section>
 
-  <!-- Built With Modern Tech -->
-  <section style="position:relative;z-index:1;padding:40px 0;border-top:1px solid var(--border)">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:32px">
-        <div class="section-tag reveal"><span class="dot"></span> Technology</div>
-        <h2 class="reveal reveal-d1" style="font-size:22px">Powered by <span style="color:var(--primary-light)">Modern Technology</span></h2>
-      </div>
-      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:16px;align-items:center" class="reveal">
-        <div class="glass" style="padding:10px 20px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">
-          <span style="color:#61dafb;font-size:18px">⚛️</span> React.js
-        </div>
-        <div class="glass" style="padding:10px 20px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">
-          <span style="color:#68a063;font-size:18px">🟢</span> Node.js
-        </div>
-        <div class="glass" style="padding:10px 20px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">
-          <span style="color:#336791;font-size:18px">🐘</span> PostgreSQL
-        </div>
-        <div class="glass" style="padding:10px 20px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">
-          <span style="color:#38bdf8;font-size:18px">🎨</span> Tailwind CSS
-        </div>
-        <div class="glass" style="padding:10px 20px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">
-          <span style="color:#25D366;font-size:18px">💬</span> WhatsApp API
-        </div>
-        <div class="glass" style="padding:10px 20px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">
-          <span style="color:#f59e0b;font-size:18px">🤖</span> AI Analytics
-        </div>
-        <div class="glass" style="padding:10px 20px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">
-          <span style="color:#ef4444;font-size:18px">📄</span> PDF Engine
-        </div>
-        <div class="glass" style="padding:10px 20px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600">
-          <span style="color:#a78bfa;font-size:18px">🔐</span> 2FA & Encryption
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Key Numbers / Social Proof -->
-  <section style="position:relative;z-index:1;padding:48px 0;border-top:1px solid var(--border);background:linear-gradient(135deg,rgba(21,101,192,0.05),rgba(34,196,122,0.05))">
-    <div class="container">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px;text-align:center">
-        <div class="reveal">
-          <div style="font-size:36px;font-weight:900;color:var(--primary-light)" data-count="50000" data-suffix="+" data-format="k">0</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Transactions Processed</div>
+  <!-- ROI Calculator -->
+  <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1;overflow:hidden" id="roi-calculator">
+    <div class="container" style="max-width:900px">
+      <div class="text-center" style="margin-bottom:48px">
+        <div class="section-tag reveal"><span class="dot"></span> ROI Calculator</div>
+        <h2 class="reveal reveal-d1">How Much Will You <span class="gradient-text">Save?</span></h2>
+        <p class="subtitle subtitle-center reveal reveal-d2">Calculate your savings with DRS Softlabs products</p>
+      </div>
+
+      <!-- Calculator Tabs -->
+      <div class="reveal" style="display:flex;justify-content:center;gap:12px;margin-bottom:32px">
+        <button onclick="showCalc('school')" id="calc-tab-school" style="padding:12px 28px;border-radius:12px;border:2px solid #1565C0;background:rgba(21,101,192,0.15);color:#60a5fa;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;transition:all 0.3s;display:flex;align-items:center;gap:8px">🎓 School / College</button>
+        <button onclick="showCalc('pharmacy')" id="calc-tab-pharmacy" style="padding:12px 28px;border-radius:12px;border:2px solid var(--glass-border);background:var(--glass);color:var(--text-muted);font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;transition:all 0.3s;display:flex;align-items:center;gap:8px">💊 Pharmacy</button>
+      </div>
+
+      <!-- School Calculator -->
+      <div id="calc-school" class="glass reveal" style="border-radius:20px;padding:36px;border-left:4px solid #1565C0">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <!-- Inputs -->
+          <div>
+            <h3 style="font-size:18px;margin-bottom:20px;color:#60a5fa">🎓 Enter Your School Details</h3>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div>
+                <label style="font-size:12px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Total Students</label>
+                <input type="number" id="roi-students" value="500" min="50" max="10000" oninput="calcSchoolROI()" style="width:100%;padding:12px 16px;border:1px solid var(--glass-border);border-radius:10px;font-size:16px;font-weight:700;background:var(--glass);color:#fff;font-family:inherit;outline:none" />
+              </div>
+              <div>
+                <label style="font-size:12px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Staff Members (office + teachers)</label>
+                <input type="number" id="roi-staff" value="30" min="5" max="500" oninput="calcSchoolROI()" style="width:100%;padding:12px 16px;border:1px solid var(--glass-border);border-radius:10px;font-size:16px;font-weight:700;background:var(--glass);color:#fff;font-family:inherit;outline:none" />
+              </div>
+              <div>
+                <label style="font-size:12px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Monthly Fee per Student (Avg)</label>
+                <input type="number" id="roi-fee" value="3000" min="500" max="50000" oninput="calcSchoolROI()" style="width:100%;padding:12px 16px;border:1px solid var(--glass-border);border-radius:10px;font-size:16px;font-weight:700;background:var(--glass);color:#fff;font-family:inherit;outline:none" />
+              </div>
+              <div>
+                <label style="font-size:12px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Fee Defaulters (%)</label>
+                <input type="range" id="roi-defaulters" value="20" min="5" max="50" oninput="calcSchoolROI();document.getElementById('roi-def-val').textContent=this.value+'%'" style="width:100%;accent-color:var(--primary-light)" />
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted)"><span>5%</span><span id="roi-def-val" style="font-weight:700;color:#fff">20%</span><span>50%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <h3 style="font-size:18px;margin-bottom:8px;color:var(--primary-light)">Your Annual Savings</h3>
+            <div style="background:rgba(21,101,192,0.08);border:1px solid rgba(21,101,192,0.2);border-radius:12px;padding:16px;text-align:center">
+              <div style="font-size:11px;color:var(--text-muted);font-weight:700">Fee Recovery via WhatsApp Reminders</div>
+              <div style="font-size:32px;font-weight:900;color:#60a5fa" id="roi-fee-recovery">₹3.6L</div>
+              <div style="font-size:11px;color:var(--text-muted)">estimated additional collection/year</div>
+            </div>
+            <div style="background:rgba(34,196,122,0.08);border:1px solid rgba(34,196,122,0.2);border-radius:12px;padding:16px;text-align:center">
+              <div style="font-size:11px;color:var(--text-muted);font-weight:700">Time Saved (Admin Work)</div>
+              <div style="font-size:32px;font-weight:900;color:var(--primary-light)" id="roi-time-saved">520 hrs</div>
+              <div style="font-size:11px;color:var(--text-muted)">saved per year across staff</div>
+            </div>
+            <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:12px;padding:16px;text-align:center">
+              <div style="font-size:11px;color:var(--text-muted);font-weight:700">Total Estimated ROI</div>
+              <div style="font-size:36px;font-weight:900;color:var(--gold)" id="roi-total-school">₹5.2L</div>
+              <div style="font-size:11px;color:var(--text-muted)">savings per year vs manual operations</div>
+            </div>
+            <a href="https://wa.me/919453373823?text=Hi!%20I%20calculated%20my%20ROI%20on%20your%20website.%20I%20want%20a%20demo%20of%20NeoShala!" target="_blank" style="display:block;text-align:center;padding:14px;border-radius:12px;background:linear-gradient(135deg,#1565C0,#0D47A1);color:#fff;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(21,101,192,0.3);margin-top:4px">Get NeoShala Demo →</a>
+          </div>
         </div>
-        <div class="reveal reveal-d1">
-          <div style="font-size:36px;font-weight:900;color:var(--gold)" data-count="100000" data-suffix="+" data-format="k">0</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Students Managed</div>
-        </div>
-        <div class="reveal reveal-d2">
-          <div style="font-size:36px;font-weight:900;color:#60a5fa" data-count="25000" data-suffix="+" data-format="k">0</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Medicines Tracked</div>
-        </div>
-        <div class="reveal">
-          <div style="font-size:36px;font-weight:900;color:#f472b6" data-count="99" data-suffix=".9%">0</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Uptime SLA</div>
-        </div>
-        <div class="reveal reveal-d1">
-          <div style="font-size:36px;font-weight:900;color:var(--primary-light)" data-count="4" data-suffix=".9★">0</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-top:4px">Client Rating</div>
+      </div>
+
+      <!-- Pharmacy Calculator -->
+      <div id="calc-pharmacy" class="glass" style="border-radius:20px;padding:36px;display:none;border-left:4px solid var(--primary)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <!-- Inputs -->
+          <div>
+            <h3 style="font-size:18px;margin-bottom:20px;color:var(--primary-light)">💊 Enter Your Pharmacy Details</h3>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div>
+                <label style="font-size:12px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Bills per Day (Avg)</label>
+                <input type="number" id="roi-bills" value="50" min="10" max="500" oninput="calcPharmROI()" style="width:100%;padding:12px 16px;border:1px solid var(--glass-border);border-radius:10px;font-size:16px;font-weight:700;background:var(--glass);color:#fff;font-family:inherit;outline:none" />
+              </div>
+              <div>
+                <label style="font-size:12px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Average Bill Amount (₹)</label>
+                <input type="number" id="roi-avg-bill" value="250" min="50" max="5000" oninput="calcPharmROI()" style="width:100%;padding:12px 16px;border:1px solid var(--glass-border);border-radius:10px;font-size:16px;font-weight:700;background:var(--glass);color:#fff;font-family:inherit;outline:none" />
+              </div>
+              <div>
+                <label style="font-size:12px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Total Medicine Stock Value (₹)</label>
+                <input type="number" id="roi-stock" value="500000" min="50000" max="5000000" step="10000" oninput="calcPharmROI()" style="width:100%;padding:12px 16px;border:1px solid var(--glass-border);border-radius:10px;font-size:16px;font-weight:700;background:var(--glass);color:#fff;font-family:inherit;outline:none" />
+              </div>
+              <div>
+                <label style="font-size:12px;font-weight:700;color:var(--text-muted);display:block;margin-bottom:4px">Credit/Udhar Outstanding (₹)</label>
+                <input type="number" id="roi-credit" value="100000" min="0" max="2000000" step="5000" oninput="calcPharmROI()" style="width:100%;padding:12px 16px;border:1px solid var(--glass-border);border-radius:10px;font-size:16px;font-weight:700;background:var(--glass);color:#fff;font-family:inherit;outline:none" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <h3 style="font-size:18px;margin-bottom:8px;color:var(--primary-light)">Your Annual Savings</h3>
+            <div style="background:rgba(34,196,122,0.08);border:1px solid rgba(34,196,122,0.2);border-radius:12px;padding:16px;text-align:center">
+              <div style="font-size:11px;color:var(--text-muted);font-weight:700">Expiry Loss Prevention</div>
+              <div style="font-size:32px;font-weight:900;color:var(--primary-light)" id="roi-expiry-save">₹1.5L</div>
+              <div style="font-size:11px;color:var(--text-muted)">saved from expiry alerts (est. 3% stock)</div>
+            </div>
+            <div style="background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.2);border-radius:12px;padding:16px;text-align:center">
+              <div style="font-size:11px;color:var(--text-muted);font-weight:700">Credit Recovery (WhatsApp Reminders)</div>
+              <div style="font-size:32px;font-weight:900;color:var(--gold)" id="roi-credit-recovery">₹60K</div>
+              <div style="font-size:11px;color:var(--text-muted)">additional recovery/year (est. 60%)</div>
+            </div>
+            <div style="background:rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.2);border-radius:12px;padding:16px;text-align:center">
+              <div style="font-size:11px;color:var(--text-muted);font-weight:700">Time Saved (Billing Speed)</div>
+              <div style="font-size:32px;font-weight:900;color:#60a5fa" id="roi-time-pharm">365 hrs</div>
+              <div style="font-size:11px;color:var(--text-muted)">saved per year (2min → 10sec/bill)</div>
+            </div>
+            <div style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:12px;padding:16px;text-align:center">
+              <div style="font-size:11px;color:var(--text-muted);font-weight:700">Total Estimated ROI</div>
+              <div style="font-size:36px;font-weight:900;color:#f87171" id="roi-total-pharm">₹2.7L</div>
+              <div style="font-size:11px;color:var(--text-muted)">savings per year vs manual billing</div>
+            </div>
+            <a href="https://wa.me/919453373823?text=Hi!%20I%20calculated%20my%20ROI%20on%20your%20website.%20I%20want%20a%20demo%20of%20Aushadhi!" target="_blank" style="display:block;text-align:center;padding:14px;border-radius:12px;background:linear-gradient(135deg,#1a7a52,#0d4f35);color:#fff;font-weight:800;font-size:14px;text-decoration:none;box-shadow:0 4px 20px rgba(26,122,82,0.3);margin-top:4px">Get Aushadhi Demo →</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
+  <script>
+  function showCalc(type) {
+    document.getElementById('calc-school').style.display = type === 'school' ? 'block' : 'none';
+    document.getElementById('calc-pharmacy').style.display = type === 'pharmacy' ? 'block' : 'none';
+    document.getElementById('calc-tab-school').style.background = type === 'school' ? 'rgba(21,101,192,0.15)' : 'var(--glass)';
+    document.getElementById('calc-tab-school').style.borderColor = type === 'school' ? '#1565C0' : 'var(--glass-border)';
+    document.getElementById('calc-tab-school').style.color = type === 'school' ? '#60a5fa' : 'var(--text-muted)';
+    document.getElementById('calc-tab-pharmacy').style.background = type === 'pharmacy' ? 'rgba(34,196,122,0.15)' : 'var(--glass)';
+    document.getElementById('calc-tab-pharmacy').style.borderColor = type === 'pharmacy' ? '#1a7a52' : 'var(--glass-border)';
+    document.getElementById('calc-tab-pharmacy').style.color = type === 'pharmacy' ? 'var(--primary-light)' : 'var(--text-muted)';
+  }
+  function fmt(n) {
+    if (n >= 100000) return '₹' + (n/100000).toFixed(1) + 'L';
+    if (n >= 1000) return '₹' + (n/1000).toFixed(0) + 'K';
+    return '₹' + n.toLocaleString('en-IN');
+  }
+  function calcSchoolROI() {
+    var students = parseInt(document.getElementById('roi-students').value) || 500;
+    var staff = parseInt(document.getElementById('roi-staff').value) || 30;
+    var fee = parseInt(document.getElementById('roi-fee').value) || 3000;
+    var defPct = parseInt(document.getElementById('roi-defaulters').value) || 20;
+    // Fee recovery: WhatsApp reminders recover ~60% of defaulter amount
+    var totalFeeYear = students * fee * 12;
+    var defaulterAmount = totalFeeYear * (defPct / 100);
+    var feeRecovery = Math.round(defaulterAmount * 0.6);
+    // Time saved: 2 hrs/week per staff member on admin tasks reduced by 40%
+    var timeSaved = Math.round(staff * 2 * 52 * 0.4);
+    // Staff cost saved (time * ₹150/hr avg)
+    var staffSavings = timeSaved * 150;
+    var total = feeRecovery + staffSavings;
+    document.getElementById('roi-fee-recovery').textContent = fmt(feeRecovery);
+    document.getElementById('roi-time-saved').textContent = timeSaved + ' hrs';
+    document.getElementById('roi-total-school').textContent = fmt(total);
+  }
+  function calcPharmROI() {
+    var bills = parseInt(document.getElementById('roi-bills').value) || 50;
+    var avgBill = parseInt(document.getElementById('roi-avg-bill').value) || 250;
+    var stock = parseInt(document.getElementById('roi-stock').value) || 500000;
+    var credit = parseInt(document.getElementById('roi-credit').value) || 100000;
+    // Expiry prevention: save ~3% of stock value per year
+    var expirySave = Math.round(stock * 0.03);
+    // Credit recovery: WhatsApp reminders recover ~60% of outstanding
+    var creditRecovery = Math.round(credit * 0.6);
+    // Time saved: 2min per bill → 10sec = 1.83 min saved * bills * 365 days / 60
+    var timeSaved = Math.round(bills * 1.83 * 365 / 60);
+    // Total (time valued at ₹100/hr)
+    var total = expirySave + creditRecovery + (timeSaved * 100);
+    document.getElementById('roi-expiry-save').textContent = fmt(expirySave);
+    document.getElementById('roi-credit-recovery').textContent = fmt(creditRecovery);
+    document.getElementById('roi-time-pharm').textContent = timeSaved + ' hrs';
+    document.getElementById('roi-total-pharm').textContent = fmt(total);
+  }
+  // Initialize
+  calcSchoolROI();
+  calcPharmROI();
+  </script>
 
   <!-- Case Studies -->
   <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
@@ -1447,6 +1561,190 @@
     </div>
   </section>
 
+  <!-- Security & Compliance Certifications -->
+  <section style="padding:48px 0;border-top:1px solid var(--border);position:relative;z-index:1;background:linear-gradient(180deg,rgba(34,196,122,0.02),transparent)">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:32px">
+        <div class="section-tag reveal"><span class="dot"></span> Security & Compliance</div>
+        <h2 class="reveal reveal-d1" style="font-size:24px">Enterprise-Grade <span class="gradient-text">Security</span></h2>
+        <p class="subtitle subtitle-center reveal reveal-d2" style="font-size:14px">Your data is protected with industry-leading security standards</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;max-width:1000px;margin:0 auto" class="reveal">
+        <div class="glass hover-gradient-border" style="padding:24px;border-radius:16px;text-align:center;transition:all 0.3s">
+          <div style="width:56px;height:56px;border-radius:16px;background:rgba(34,196,122,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px">🔐</div>
+          <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:4px">256-bit SSL</div>
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.5">Bank-grade encryption for all data in transit and at rest</div>
+        </div>
+        <div class="glass hover-gradient-border" style="padding:24px;border-radius:16px;text-align:center;transition:all 0.3s">
+          <div style="width:56px;height:56px;border-radius:16px;background:rgba(96,165,250,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px">🛡️</div>
+          <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:4px">2FA Authentication</div>
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.5">Two-factor authentication for all admin accounts</div>
+        </div>
+        <div class="glass hover-gradient-border" style="padding:24px;border-radius:16px;text-align:center;transition:all 0.3s">
+          <div style="width:56px;height:56px;border-radius:16px;background:rgba(251,191,36,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px">📋</div>
+          <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:4px">GDPR Ready</div>
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.5">Data privacy compliant with full export & deletion rights</div>
+        </div>
+        <div class="glass hover-gradient-border" style="padding:24px;border-radius:16px;text-align:center;transition:all 0.3s">
+          <div style="width:56px;height:56px;border-radius:16px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px">🏛️</div>
+          <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:4px">GST Compliant</div>
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.5">100% GST ready with GSTR-1/3B auto-generation</div>
+        </div>
+        <div class="glass hover-gradient-border" style="padding:24px;border-radius:16px;text-align:center;transition:all 0.3s">
+          <div style="width:56px;height:56px;border-radius:16px;background:rgba(248,113,113,0.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px">💾</div>
+          <div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:4px">Daily Backups</div>
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.5">Automated daily backups with 99.9% uptime SLA guarantee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Feature Walkthrough -->
+  <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1;overflow:hidden" id="features">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:48px">
+        <div class="section-tag reveal"><span class="dot"></span> Features Deep Dive</div>
+        <h2 class="reveal reveal-d1">Explore Key <span class="gradient-text">Features</span></h2>
+        <p class="subtitle subtitle-center reveal reveal-d2">Click on any feature to learn more</p>
+      </div>
+
+      <!-- Product Tabs -->
+      <div class="reveal" style="display:flex;justify-content:center;gap:12px;margin-bottom:32px">
+        <button onclick="showFeatures('neo')" id="feat-tab-neo" style="padding:12px 28px;border-radius:12px;border:2px solid #1565C0;background:rgba(21,101,192,0.15);color:#60a5fa;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;transition:all 0.3s;display:flex;align-items:center;gap:8px">🎓 NeoShala Features</button>
+        <button onclick="showFeatures('aus')" id="feat-tab-aus" style="padding:12px 28px;border-radius:12px;border:2px solid var(--glass-border);background:var(--glass);color:var(--text-muted);font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;transition:all 0.3s;display:flex;align-items:center;gap:8px">💊 Aushadhi Features</button>
+      </div>
+
+      <!-- NeoShala Features -->
+      <div id="feat-neo" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:1100px;margin:0 auto">
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(21,101,192,0.5)'" onmouseleave="this.style.transform='';this.style.borderColor='rgba(255,255,255,0.08)'">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">👨‍🎓</span><strong style="font-size:15px">Student Management</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Admissions, enrollment, profiles, class/section assignment, promotion, TC generation, alumni tracking, parent portal access.</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">💰</span><strong style="font-size:15px">Fee Collection</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Multi-fee types, auto receipts (PDF), partial payments, WhatsApp reminders for dues, fee defaulter reports, GST invoicing.</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">✅</span><strong style="font-size:15px">Attendance</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">One-tap student attendance, teacher clock-in/out, monthly reports, parent notifications, absent alerts via WhatsApp.</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">📝</span><strong style="font-size:15px">Exams & Report Cards</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Create exams, enter marks, auto-generate report cards (PDF), class rankings, subject-wise analytics, grade calculation.</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">📚</span><strong style="font-size:15px">Library & Transport</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Book catalog, issue/return tracking, overdue alerts. Bus routes, stop management, student-bus assignment, route fees.</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">👔</span><strong style="font-size:15px">HR & Payroll</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Teacher profiles, salary management, auto deductions, salary slips (PDF), leave management, payroll reports.</p>
+        </div>
+      </div>
+
+      <!-- Aushadhi Features -->
+      <div id="feat-aus" style="display:none;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:1100px;margin:0 auto">
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid var(--primary)" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">🛒</span><strong style="font-size:15px">3-Click POS Billing</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Search medicine, add to cart, generate bill — in under 10 seconds. Voice search, barcode scanning, batch auto-selection (FEFO).</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid var(--primary)" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">🏛️</span><strong style="font-size:15px">GST Compliance</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Auto CGST/SGST/IGST calculation, HSN codes, GST-compliant invoices, one-click GSTR-1 export, tax reports.</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid var(--primary)" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">⚠️</span><strong style="font-size:15px">Expiry Management</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">FEFO auto-selection, 90/60/30 day expiry alerts, batch tracking, return management, expiry loss prevention dashboard.</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid var(--primary)" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">📒</span><strong style="font-size:15px">Credit Ledger (Udhar)</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Track customer credit, partial payments, auto WhatsApp payment reminders, outstanding reports, doctor-wise credit tracking.</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid var(--primary)" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">📊</span><strong style="font-size:15px">Analytics & Reports</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Revenue trends, top-selling medicines, profit/loss reports, customer analytics, stock valuation, purchase history.</p>
+        </div>
+        <div class="glass" style="padding:24px;border-radius:16px;cursor:pointer;transition:all 0.3s;border-left:3px solid var(--primary)" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="font-size:24px">🌐</span><strong style="font-size:15px">Online Shop</strong></div>
+          <p style="color:var(--text-muted);font-size:12px;line-height:1.6">Built-in e-commerce, customer ordering via WhatsApp/URL, order management, delivery tracking, custom domain support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  function showFeatures(type) {
+    document.getElementById('feat-neo').style.display = type === 'neo' ? 'grid' : 'none';
+    document.getElementById('feat-aus').style.display = type === 'aus' ? 'grid' : 'none';
+    document.getElementById('feat-tab-neo').style.background = type === 'neo' ? 'rgba(21,101,192,0.15)' : 'var(--glass)';
+    document.getElementById('feat-tab-neo').style.borderColor = type === 'neo' ? '#1565C0' : 'var(--glass-border)';
+    document.getElementById('feat-tab-neo').style.color = type === 'neo' ? '#60a5fa' : 'var(--text-muted)';
+    document.getElementById('feat-tab-aus').style.background = type === 'aus' ? 'rgba(34,196,122,0.15)' : 'var(--glass)';
+    document.getElementById('feat-tab-aus').style.borderColor = type === 'aus' ? '#1a7a52' : 'var(--glass-border)';
+    document.getElementById('feat-tab-aus').style.color = type === 'aus' ? 'var(--primary-light)' : 'var(--text-muted)';
+  }
+  </script>
+
+  <!-- Video Testimonials -->
+  <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:48px">
+        <div class="section-tag reveal"><span class="dot"></span> Client Stories</div>
+        <h2 class="reveal reveal-d1">Hear From Our <span class="gradient-text">Clients</span></h2>
+        <p class="subtitle subtitle-center reveal reveal-d2">Real stories from real business owners across India</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1100px;margin:0 auto">
+        <!-- Video Card 1 -->
+        <div class="glass reveal" style="border-radius:16px;overflow:hidden;transition:all 0.3s" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
+          <div style="position:relative;background:linear-gradient(135deg,#0d4f35,#1a7a52);padding:48px;text-align:center;cursor:pointer" onclick="this.innerHTML='<div style=&quot;padding:20px;text-align:center&quot;><div style=&quot;font-size:48px;margin-bottom:8px&quot;>🎬</div><div style=&quot;color:#fff;font-size:14px&quot;>Video coming soon!</div></div>'">
+            <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto;backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.2)">
+              <span style="font-size:24px;margin-left:4px">▶</span>
+            </div>
+            <div style="color:rgba(255,255,255,0.6);font-size:12px;margin-top:12px">Click to play</div>
+          </div>
+          <div style="padding:20px 24px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a7a52,#0d4f35);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800">RP</div>
+              <div><strong style="font-size:13px;display:block">Rajesh Patel</strong><span style="font-size:11px;color:var(--text-muted)">Patel Medical Store, Ahmedabad</span></div>
+            </div>
+            <p style="color:var(--text-muted);font-size:12px;line-height:1.6">"Aushadhi reduced our billing time from 2 minutes to 10 seconds. Expiry alerts saved us ₹2L+ this year alone."</p>
+          </div>
+        </div>
+        <!-- Video Card 2 -->
+        <div class="glass reveal reveal-d1" style="border-radius:16px;overflow:hidden;transition:all 0.3s" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
+          <div style="position:relative;background:linear-gradient(135deg,#0D47A1,#1565C0);padding:48px;text-align:center;cursor:pointer" onclick="this.innerHTML='<div style=&quot;padding:20px;text-align:center&quot;><div style=&quot;font-size:48px;margin-bottom:8px&quot;>🎬</div><div style=&quot;color:#fff;font-size:14px&quot;>Video coming soon!</div></div>'">
+            <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto;backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.2)">
+              <span style="font-size:24px;margin-left:4px">▶</span>
+            </div>
+            <div style="color:rgba(255,255,255,0.6);font-size:12px;margin-top:12px">Click to play</div>
+          </div>
+          <div style="padding:20px 24px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1565C0,#0D47A1);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800">DS</div>
+              <div><strong style="font-size:13px;display:block">Dr. Sunita Sharma</strong><span style="font-size:11px;color:var(--text-muted)">Sunrise Academy, Jaipur</span></div>
+            </div>
+            <p style="color:var(--text-muted);font-size:12px;line-height:1.6">"NeoShala handles everything — admissions to report cards. Our staff saves 10+ hours per week. Parents love WhatsApp reminders."</p>
+          </div>
+        </div>
+        <!-- Video Card 3 -->
+        <div class="glass reveal reveal-d2" style="border-radius:16px;overflow:hidden;transition:all 0.3s" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
+          <div style="position:relative;background:linear-gradient(135deg,#7c3aed,#5b21b6);padding:48px;text-align:center;cursor:pointer" onclick="this.innerHTML='<div style=&quot;padding:20px;text-align:center&quot;><div style=&quot;font-size:48px;margin-bottom:8px&quot;>🎬</div><div style=&quot;color:#fff;font-size:14px&quot;>Video coming soon!</div></div>'">
+            <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto;backdrop-filter:blur(8px);border:2px solid rgba(255,255,255,0.2)">
+              <span style="font-size:24px;margin-left:4px">▶</span>
+            </div>
+            <div style="color:rgba(255,255,255,0.6);font-size:12px;margin-top:12px">Click to play</div>
+          </div>
+          <div style="padding:20px 24px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#5b21b6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800">AK</div>
+              <div><strong style="font-size:13px;display:block">Amit Kumar</strong><span style="font-size:11px;color:var(--text-muted)">3-Store Pharmacy Chain, Lucknow</span></div>
+            </div>
+            <p style="color:var(--text-muted);font-size:12px;line-height:1.6">"Managing 3 stores from one dashboard is incredible. Credit ledger and WhatsApp reminders reduced outstanding by 60%."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Client Logos -->
   <div class="logos-marquee" style="position:relative;z-index:1;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="logos-track">
@@ -1558,33 +1856,81 @@
     <div class="container">
       <div class="text-center" style="margin-bottom:48px">
         <div class="section-tag reveal"><span class="dot"></span> Compare</div>
-        <h2 class="reveal reveal-d1">Why Choose <span style="color:var(--primary-light)">DRS Softlabs</span></h2>
-        <p class="subtitle subtitle-center reveal reveal-d2">See how we stack up against the competition</p>
+        <h2 class="reveal reveal-d1">DRS Softlabs vs <span style="color:var(--primary-light)">Competitors</span></h2>
+        <p class="subtitle subtitle-center reveal reveal-d2">See how we stack up against Tally, Marg, Fedena & Entab</p>
       </div>
-      <div class="glass reveal" style="border-radius:16px;overflow:hidden;max-width:800px;margin:0 auto">
+
+      <!-- Pharmacy Comparison: DRS Aushadhi vs Tally vs Marg -->
+      <div class="glass reveal" style="border-radius:16px;overflow:hidden;max-width:900px;margin:0 auto 32px">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:8px">
+          <span style="font-size:20px">💊</span>
+          <span style="font-weight:800;font-size:15px;color:#fff">Pharmacy Software Comparison</span>
+        </div>
+        <div style="overflow-x:auto">
         <table class="compare-table">
           <thead>
             <tr>
               <th style="text-align:left">Feature</th>
-              <th class="drs-col">DRS Softlabs</th>
-              <th>Traditional Software</th>
-              <th>Spreadsheets</th>
+              <th class="drs-col">Aushadhi</th>
+              <th>Tally</th>
+              <th>Marg ERP</th>
+              <th>RetailGraph</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>GST Auto-Calculation</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td></tr>
-            <tr><td>Multi-Language (10+)</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-            <tr><td>WhatsApp Integration</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-            <tr><td>AI-Powered Analytics</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-            <tr><td>Mobile Responsive</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-            <tr><td>Multi-Store/Institute</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-            <tr><td>Direct Founder Support</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
-            <tr><td>Free Trial</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td></tr>
-            <tr><td>Data Export (CSV)</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
-            <tr><td>Setup Fee</td><td class="drs-col" style="color:var(--primary-light);font-weight:900">&#8377;0</td><td style="color:#f87171;font-weight:700">&#8377;10K-50K</td><td style="color:var(--primary-light)">&#8377;0</td></tr>
-            <tr><td>Monthly Cost</td><td class="drs-col" style="color:var(--primary-light);font-weight:900">From &#8377;499</td><td style="color:#f87171;font-weight:700">&#8377;2K-5K</td><td style="color:var(--primary-light)">Free</td></tr>
+            <tr><td>GST Auto-Calculation</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+            <tr><td>3-Click Billing</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Expiry Alerts (FEFO)</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>WhatsApp Bill & Reminders</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Voice Search</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>10+ Indian Languages</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Online Shop / E-Commerce</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Multi-Store Dashboard</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>AI Analytics & Suggestions</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Credit Ledger + Auto Reminders</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Mobile Responsive (No Install)</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Setup Fee</td><td class="drs-col" style="color:var(--primary-light);font-weight:900">&#8377;0</td><td style="color:#f87171;font-weight:700">&#8377;18K+</td><td style="color:#f87171;font-weight:700">&#8377;15K-40K</td><td style="color:#f87171;font-weight:700">&#8377;10K+</td></tr>
+            <tr><td>Monthly Cost</td><td class="drs-col" style="color:var(--primary-light);font-weight:900">From &#8377;499</td><td style="color:#f87171;font-weight:700">&#8377;1.5K+/yr</td><td style="color:#f87171;font-weight:700">&#8377;3K-5K/mo</td><td style="color:#f87171;font-weight:700">&#8377;2K+/mo</td></tr>
           </tbody>
         </table>
+        </div>
+      </div>
+
+      <!-- School Comparison: NeoShala vs Fedena vs Entab vs Vidyalaya -->
+      <div class="glass reveal reveal-d1" style="border-radius:16px;overflow:hidden;max-width:900px;margin:0 auto">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:8px">
+          <span style="font-size:20px">🎓</span>
+          <span style="font-weight:800;font-size:15px;color:#fff">School Management Software Comparison</span>
+        </div>
+        <div style="overflow-x:auto">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="text-align:left">Feature</th>
+              <th class="drs-col">NeoShala</th>
+              <th>Fedena</th>
+              <th>Entab</th>
+              <th>MyClassboard</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Student & Teacher Mgmt</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+            <tr><td>Fee Collection + GST</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+            <tr><td>WhatsApp Fee Reminders</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Exam + Report Cards (PDF)</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+            <tr><td>Library Management</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Transport & Hostel</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>HR/Payroll + Salary Slips</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>10+ Indian Languages</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>AI Analytics & Insights</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Multi-Branch Support</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Custom Certificates (TC, Bonafide)</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Direct Founder Support</td><td class="drs-col"><span class="check">&#10003;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td><td><span class="cross">&#10007;</span></td></tr>
+            <tr><td>Setup Fee</td><td class="drs-col" style="color:var(--primary-light);font-weight:900">&#8377;0</td><td style="color:#f87171;font-weight:700">&#8377;25K-1L</td><td style="color:#f87171;font-weight:700">&#8377;30K-2L</td><td style="color:#f87171;font-weight:700">&#8377;15K+</td></tr>
+            <tr><td>Monthly Cost</td><td class="drs-col" style="color:var(--primary-light);font-weight:900">From &#8377;499</td><td style="color:#f87171;font-weight:700">&#8377;2K-8K/mo</td><td style="color:#f87171;font-weight:700">&#8377;3K-10K/mo</td><td style="color:#f87171;font-weight:700">&#8377;2K-5K/mo</td></tr>
+          </tbody>
+        </table>
+        </div>
       </div>
     </div>
   </section>
@@ -1696,9 +2042,245 @@
           <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">What makes you different from Entab, Fedena, or Marg ERP? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
           <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Three things: (1) We're 5-10x cheaper with zero setup fees, (2) Direct founder support via WhatsApp — no ticketing systems, (3) Modern UI with WhatsApp integration, 10+ languages, and AI analytics that legacy software simply doesn't offer.</p>
         </details>
+
+        <!-- NeoShala Specific FAQs -->
+        <div style="margin-top:32px;margin-bottom:16px;display:flex;align-items:center;gap:8px" class="reveal">
+          <span style="font-size:20px">���</span>
+          <span style="font-weight:800;font-size:16px;color:#60a5fa">NeoShala — School Management FAQs</span>
+        </div>
+        <details class="glass reveal" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.borderColor='rgba(21,101,192,0.4)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">How does NeoShala handle fee collection and reminders? <span style="color:#60a5fa;font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">NeoShala supports multiple fee types (tuition, transport, hostel, exam). Auto-generate fee receipts (PDF), send WhatsApp reminders for pending dues, track partial payments, and generate fee defaulter reports. Parents can also view fee status via their portal.</p>
+        </details>
+        <details class="glass reveal reveal-d1" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.borderColor='rgba(21,101,192,0.4)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Can parents and students access NeoShala? <span style="color:#60a5fa;font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! NeoShala has a student/parent portal where they can check attendance, exam results, fee status, timetable, and download report cards. Teachers can mark attendance and upload marks from their own login.</p>
+        </details>
+        <details class="glass reveal reveal-d2" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.borderColor='rgba(21,101,192,0.4)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Does NeoShala support transport route management? <span style="color:#60a5fa;font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! Full transport module — define routes, stops, assign students to buses, track transport fees separately, and generate route-wise reports. Parents get WhatsApp updates about bus timings.</p>
+        </details>
+        <details class="glass reveal" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1565C0" onmouseenter="this.style.borderColor='rgba(21,101,192,0.4)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Can I manage teacher salary and HR with NeoShala? <span style="color:#60a5fa;font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Absolutely! NeoShala includes HR/Payroll — teacher profiles, clock-in attendance, salary calculation with deductions, auto-generated salary slips (PDF), and payroll reports. All in one place.</p>
+        </details>
+
+        <!-- Aushadhi Specific FAQs -->
+        <div style="margin-top:32px;margin-bottom:16px;display:flex;align-items:center;gap:8px" class="reveal">
+          <span style="font-size:20px">💊</span>
+          <span style="font-weight:800;font-size:16px;color:#22c47a">Aushadhi — Pharmacy Management FAQs</span>
+        </div>
+        <details class="glass reveal" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1a7a52" onmouseenter="this.style.borderColor='rgba(26,122,82,0.4)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">How does Aushadhi handle expiry tracking? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Aushadhi uses FEFO (First Expiry First Out) for automatic batch selection during billing. Get alerts 90/60/30 days before expiry. Dashboard shows expiring medicines with return options. This alone saves pharmacies lakhs every year.</p>
+        </details>
+        <details class="glass reveal reveal-d1" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1a7a52" onmouseenter="this.style.borderColor='rgba(26,122,82,0.4)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Can I manage credit (Udhar) customers in Aushadhi? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! Full credit ledger — track who owes what, partial payment support, auto WhatsApp payment reminders, customer-wise outstanding reports, and doctor-wise credit tracking. Our users reported 60% reduction in outstanding within the first month.</p>
+        </details>
+        <details class="glass reveal reveal-d2" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1a7a52" onmouseenter="this.style.borderColor='rgba(26,122,82,0.4)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Does Aushadhi support barcode scanning? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! Scan barcodes with any USB barcode scanner or your phone camera. Medicine auto-populates in the billing screen. You can also print custom barcode labels for medicines that don't have one.</p>
+        </details>
+        <details class="glass reveal" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s;border-left:3px solid #1a7a52" onmouseenter="this.style.borderColor='rgba(26,122,82,0.4)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Can I run an online pharmacy shop with Aushadhi? <span style="color:var(--primary-light);font-size:20px">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! Aushadhi includes a built-in online shop module. Customers can browse medicines, place orders via WhatsApp or your custom URL, and you manage orders from the same dashboard. No separate website needed.</p>
+        </details>
       </div>
     </div>
   </section>
+
+<!-- What's New Changelog -->
+<section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
+  <div class="container" style="max-width:800px">
+    <div class="text-center" style="margin-bottom:48px">
+      <div class="section-tag reveal"><span class="dot"></span> What's New</div>
+      <h2 class="reveal reveal-d1">Latest <span class="gradient-text">Updates</span></h2>
+      <p class="subtitle subtitle-center reveal reveal-d2">We ship new features every week</p>
+    </div>
+    <div style="position:relative">
+      <div style="position:absolute;left:16px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--primary-light),var(--gold),#60a5fa);border-radius:2px"></div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div class="reveal" style="display:flex;gap:20px;padding:16px 0;padding-left:40px;position:relative">
+          <div style="position:absolute;left:9px;top:22px;width:16px;height:16px;border-radius:50%;background:var(--primary-light);border:3px solid var(--darker,#060f1a);z-index:1"></div>
+          <div class="glass" style="padding:18px 22px;border-radius:14px;flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span style="background:rgba(34,196,122,0.15);color:var(--primary-light);padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700">NEW</span>
+              <span style="font-size:11px;color:var(--text-muted)">Apr 25, 2026</span>
+            </div>
+            <h3 style="font-size:15px;margin-bottom:4px">Voice Search in Aushadhi POS</h3>
+            <p style="color:var(--text-muted);font-size:12px;line-height:1.5">Search medicines by speaking — Hindi & English supported. 3x faster billing.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-d1" style="display:flex;gap:20px;padding:16px 0;padding-left:40px;position:relative">
+          <div style="position:absolute;left:9px;top:22px;width:16px;height:16px;border-radius:50%;background:var(--gold);border:3px solid var(--darker,#060f1a);z-index:1"></div>
+          <div class="glass" style="padding:18px 22px;border-radius:14px;flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span style="background:rgba(251,191,36,0.15);color:var(--gold);padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700">IMPROVEMENT</span>
+              <span style="font-size:11px;color:var(--text-muted)">Apr 18, 2026</span>
+            </div>
+            <h3 style="font-size:15px;margin-bottom:4px">NeoShala Report Cards 2.0</h3>
+            <p style="color:var(--text-muted);font-size:12px;line-height:1.5">Redesigned report card templates with school logo, principal signature, and grade analysis charts.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-d2" style="display:flex;gap:20px;padding:16px 0;padding-left:40px;position:relative">
+          <div style="position:absolute;left:9px;top:22px;width:16px;height:16px;border-radius:50%;background:#60a5fa;border:3px solid var(--darker,#060f1a);z-index:1"></div>
+          <div class="glass" style="padding:18px 22px;border-radius:14px;flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span style="background:rgba(96,165,250,0.15);color:#60a5fa;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700">FEATURE</span>
+              <span style="font-size:11px;color:var(--text-muted)">Apr 10, 2026</span>
+            </div>
+            <h3 style="font-size:15px;margin-bottom:4px">WhatsApp Payment Reminders for Udhar</h3>
+            <p style="color:var(--text-muted);font-size:12px;line-height:1.5">Automatic credit payment reminders via WhatsApp. 60% reduction in outstanding reported by users.</p>
+          </div>
+        </div>
+        <div class="reveal" style="display:flex;gap:20px;padding:16px 0;padding-left:40px;position:relative">
+          <div style="position:absolute;left:9px;top:22px;width:16px;height:16px;border-radius:50%;background:#c084fc;border:3px solid var(--darker,#060f1a);z-index:1"></div>
+          <div class="glass" style="padding:18px 22px;border-radius:14px;flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span style="background:rgba(192,132,252,0.15);color:#c084fc;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700">FEATURE</span>
+              <span style="font-size:11px;color:var(--text-muted)">Apr 2, 2026</span>
+            </div>
+            <h3 style="font-size:15px;margin-bottom:4px">Multi-Branch Dashboard for Pharmacy Chains</h3>
+            <p style="color:var(--text-muted);font-size:12px;line-height:1.5">Manage multiple pharmacy stores from a single super admin dashboard. Consolidated reports across branches.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Integration Ecosystem -->
+<section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1;overflow:hidden">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <div class="section-tag reveal"><span class="dot"></span> Integrations</div>
+      <h2 class="reveal reveal-d1">Connected <span class="gradient-text">Ecosystem</span></h2>
+      <p class="subtitle subtitle-center reveal reveal-d2">Seamlessly integrated with the tools India uses</p>
+    </div>
+    <div class="reveal" style="display:flex;justify-content:center">
+      <div style="position:relative;width:500px;height:500px">
+        <!-- Center Hub -->
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;z-index:2;box-shadow:0 0 40px rgba(34,196,122,0.3);text-align:center;line-height:1.2">DRS<br>Softlabs</div>
+        <!-- Orbit rings -->
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:260px;height:260px;border-radius:50%;border:1px dashed rgba(34,196,122,0.15)"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;border-radius:50%;border:1px dashed rgba(251,191,36,0.1)"></div>
+        <!-- Integration nodes (positioned around the circles) -->
+        <div style="position:absolute;top:10%;left:50%;transform:translateX(-50%)" class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;white-space:nowrap"><div class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;white-space:nowrap">💬 WhatsApp API</div></div>
+        <div style="position:absolute;top:22%;right:5%" class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700"><div class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700">🏛️ GST Portal</div></div>
+        <div style="position:absolute;top:50%;right:0;transform:translateY(-50%)"><div class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700">💳 UPI / Razorpay</div></div>
+        <div style="position:absolute;bottom:22%;right:5%"><div class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700">📧 Email / SMTP</div></div>
+        <div style="position:absolute;bottom:10%;left:50%;transform:translateX(-50%)"><div class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700">📱 SMS Gateway</div></div>
+        <div style="position:absolute;bottom:22%;left:5%"><div class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700">📄 PDF Engine</div></div>
+        <div style="position:absolute;top:50%;left:0;transform:translateY(-50%)"><div class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700">☁️ Cloudflare CDN</div></div>
+        <div style="position:absolute;top:22%;left:5%"><div class="glass" style="padding:10px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700">🔐 2FA / OTP</div></div>
+      </div>
+    </div>
+    <!-- Mobile fallback list -->
+    <style>@media(max-width:768px){#int-orbit{display:none !important}#int-list{display:flex !important}}</style>
+  </div>
+</section>
+
+<!-- Before/After Slider -->
+<section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
+  <div class="container" style="max-width:900px">
+    <div class="text-center" style="margin-bottom:48px">
+      <div class="section-tag reveal"><span class="dot"></span> Transformation</div>
+      <h2 class="reveal reveal-d1">Drag to See the <span class="gradient-text">Difference</span></h2>
+      <p class="subtitle subtitle-center reveal reveal-d2">From manual chaos to digital clarity</p>
+    </div>
+    <div class="reveal" style="position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--glass-border);max-width:800px;margin:0 auto;user-select:none;touch-action:none" id="ba-slider">
+      <!-- After (bottom layer) -->
+      <div style="width:100%;background:#f4f7f5;padding:32px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;font-weight:900;color:#1a7a52">✅ With DRS Softlabs</span><span style="background:#d1fae5;color:#059669;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Digital</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <div style="background:#fff;border:1px solid #e2ebe6;border-radius:10px;padding:14px;text-align:center"><div style="font-size:24px;margin-bottom:4px">⚡</div><div style="font-size:22px;font-weight:900;color:#1a7a52">10 sec</div><div style="font-size:10px;color:#6b8c7a">Per Bill</div></div>
+          <div style="background:#fff;border:1px solid #e2ebe6;border-radius:10px;padding:14px;text-align:center"><div style="font-size:24px;margin-bottom:4px">📊</div><div style="font-size:22px;font-weight:900;color:#1565C0">1-Click</div><div style="font-size:10px;color:#6b8c7a">GST Reports</div></div>
+          <div style="background:#fff;border:1px solid #e2ebe6;border-radius:10px;padding:14px;text-align:center"><div style="font-size:24px;margin-bottom:4px">💬</div><div style="font-size:22px;font-weight:900;color:#25D366">Auto</div><div style="font-size:10px;color:#6b8c7a">WhatsApp Alerts</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="background:#fff;border:1px solid #e2ebe6;border-radius:10px;padding:14px;text-align:center"><div style="font-size:22px;font-weight:900;color:#d97706">₹0</div><div style="font-size:10px;color:#6b8c7a">Expiry Losses (Alerts Save Lakhs)</div></div>
+          <div style="background:#fff;border:1px solid #e2ebe6;border-radius:10px;padding:14px;text-align:center"><div style="font-size:22px;font-weight:900;color:#7c3aed">Cloud</div><div style="font-size:10px;color:#6b8c7a">Access Anywhere, Any Device</div></div>
+        </div>
+      </div>
+      <!-- Before (overlay, clipped) -->
+      <div id="ba-before" style="position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;border-right:3px solid #fff;z-index:2;pointer-events:none">
+        <div style="width:800px;max-width:none;background:#fef2f2;padding:32px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;font-weight:900;color:#dc2626">❌ Without DRS Softlabs</span><span style="background:#fee2e2;color:#dc2626;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Manual</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <div style="background:#fff;border:1px solid #fecaca;border-radius:10px;padding:14px;text-align:center"><div style="font-size:24px;margin-bottom:4px">🐌</div><div style="font-size:22px;font-weight:900;color:#dc2626">2+ min</div><div style="font-size:10px;color:#9ca3af">Per Bill</div></div>
+            <div style="background:#fff;border:1px solid #fecaca;border-radius:10px;padding:14px;text-align:center"><div style="font-size:24px;margin-bottom:4px">📋</div><div style="font-size:22px;font-weight:900;color:#dc2626">Manual</div><div style="font-size:10px;color:#9ca3af">Excel/Paper GST</div></div>
+            <div style="background:#fff;border:1px solid #fecaca;border-radius:10px;padding:14px;text-align:center"><div style="font-size:24px;margin-bottom:4px">📞</div><div style="font-size:22px;font-weight:900;color:#dc2626">Call</div><div style="font-size:10px;color:#9ca3af">Manual Follow-ups</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:#fff;border:1px solid #fecaca;border-radius:10px;padding:14px;text-align:center"><div style="font-size:22px;font-weight:900;color:#dc2626">₹2L+</div><div style="font-size:10px;color:#9ca3af">Lost to Expired Stock/Year</div></div>
+            <div style="background:#fff;border:1px solid #fecaca;border-radius:10px;padding:14px;text-align:center"><div style="font-size:22px;font-weight:900;color:#dc2626">Desktop</div><div style="font-size:10px;color:#9ca3af">Only Works on 1 PC</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- Drag Handle -->
+      <div id="ba-handle" style="position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:40px;z-index:3;cursor:ew-resize;display:flex;align-items:center;justify-content:center">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary-light),var(--gold));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.3);font-size:14px;font-weight:900;color:#fff">⟷</div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var slider=document.getElementById('ba-slider'),before=document.getElementById('ba-before'),handle=document.getElementById('ba-handle');
+  if(!slider||!before||!handle)return;
+  var dragging=false;
+  function move(x){var r=slider.getBoundingClientRect();var pct=Math.max(5,Math.min(95,((x-r.left)/r.width)*100));before.style.width=pct+'%';handle.style.left=pct+'%';}
+  handle.addEventListener('mousedown',function(){dragging=true});
+  document.addEventListener('mousemove',function(e){if(dragging)move(e.clientX)});
+  document.addEventListener('mouseup',function(){dragging=false});
+  handle.addEventListener('touchstart',function(){dragging=true},{passive:true});
+  document.addEventListener('touchmove',function(e){if(dragging&&e.touches[0])move(e.touches[0].clientX)},{passive:true});
+  document.addEventListener('touchend',function(){dragging=false});
+})();
+</script>
+
+<!-- Customer Success Wall -->
+<section class="section-sm" style="border-top:1px solid var(--border);position:relative;z-index:1;background:linear-gradient(135deg,rgba(34,196,122,0.03),rgba(21,101,192,0.03))">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:32px">
+      <div class="section-tag reveal"><span class="dot"></span> Success Stories</div>
+      <h2 class="reveal reveal-d1" style="font-size:24px">Trusted by <span class="gradient-text">Leaders Across India</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:1100px;margin:0 auto" class="reveal">
+      <div class="glass" style="padding:20px;border-radius:14px;text-align:center;transition:all 0.3s" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+        <div style="font-size:28px;margin-bottom:8px">🎓</div>
+        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:2px">Sunrise Academy</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">Jaipur &middot; 1,200 students</div>
+        <div style="background:rgba(34,196,122,0.1);border-radius:8px;padding:6px;font-size:20px;font-weight:900;color:var(--primary-light)">40% time saved</div>
+      </div>
+      <div class="glass" style="padding:20px;border-radius:14px;text-align:center;transition:all 0.3s" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+        <div style="font-size:28px;margin-bottom:8px">💊</div>
+        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:2px">Patel Medical</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">Ahmedabad &middot; 5,000+ SKUs</div>
+        <div style="background:rgba(251,191,36,0.1);border-radius:8px;padding:6px;font-size:20px;font-weight:900;color:var(--gold)">₹2L+ saved</div>
+      </div>
+      <div class="glass" style="padding:20px;border-radius:14px;text-align:center;transition:all 0.3s" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+        <div style="font-size:28px;margin-bottom:8px">🎓</div>
+        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:2px">DAV Public School</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">Delhi &middot; 3,500 students</div>
+        <div style="background:rgba(96,165,250,0.1);border-radius:8px;padding:6px;font-size:20px;font-weight:900;color:#60a5fa">98% satisfied</div>
+      </div>
+      <div class="glass" style="padding:20px;border-radius:14px;text-align:center;transition:all 0.3s" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+        <div style="font-size:28px;margin-bottom:8px">💊</div>
+        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:2px">LifeCare Pharmacy</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">Lucknow &middot; 3 stores</div>
+        <div style="background:rgba(192,132,252,0.1);border-radius:8px;padding:6px;font-size:20px;font-weight:900;color:#c084fc">60% less dues</div>
+      </div>
+      <div class="glass" style="padding:20px;border-radius:14px;text-align:center;transition:all 0.3s" onmouseenter="this.style.transform='translateY(-4px)'" onmouseleave="this.style.transform=''">
+        <div style="font-size:28px;margin-bottom:8px">🎓</div>
+        <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:2px">Modern School</div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:8px">Kolkata &middot; 2,800 students</div>
+        <div style="background:rgba(248,113,113,0.1);border-radius:8px;padding:6px;font-size:20px;font-weight:900;color:#f87171">10 hrs/week</div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Why Trust Us -->
   <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
@@ -1831,9 +2413,6 @@
     </div>
   </div>
 
-  <!-- Request Demo Button -->
-  <button class="demo-float-btn">&#128640; Request Demo</button>
-
   <!-- Demo Modal -->
   <div class="demo-modal-overlay">
     <div class="demo-modal" style="position:relative">
@@ -1924,17 +2503,46 @@
     <button class="cookie-btn cookie-decline">Decline</button>
   </div>
 
-  <!-- Floating Development Banner -->
-  <div class="dev-banner" id="dev-banner">
-    <span class="pulse-dot"></span>
-    <span class="dev-banner-text">&#128679; Website under active development &mdash; New features shipping every week! &nbsp;&nbsp;&nbsp; &#127891; NeoShala &mdash; School Management Live &nbsp;&nbsp;&nbsp; &#128138; Aushadhi &mdash; Pharmacy Management Live &nbsp;&nbsp;&nbsp; &#128640; 2 Products &bull; 500+ Clients &bull; 79+ Features &nbsp;&nbsp;&nbsp;</span>
-    <button class="dev-banner-close" onclick="document.getElementById('dev-banner').style.display='none'" title="Dismiss">&times;</button>
+  <!-- Smart WhatsApp Widget -->
+<div id="wa-widget" style="position:fixed;bottom:24px;right:24px;z-index:9999">
+  <!-- Popup Menu (hidden by default) -->
+  <div id="wa-popup" style="display:none;position:absolute;bottom:70px;right:0;width:300px;background:var(--darker,#0a1628);border:1px solid rgba(37,211,102,0.2);border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.4);overflow:hidden;animation:socialSlideIn 0.3s ease">
+    <div style="background:linear-gradient(135deg,#25D366,#128C7E);padding:16px 20px;color:#fff">
+      <div style="font-weight:800;font-size:15px">DRS Softlabs</div>
+      <div style="font-size:12px;opacity:0.8">Usually replies within 15 min</div>
+    </div>
+    <div style="padding:12px">
+      <div style="font-size:11px;color:var(--text-muted,#94a3b8);margin-bottom:10px;font-weight:600">Quick Actions:</div>
+      <a href="https://wa.me/919453373823?text=Hi!%20I%20want%20a%20demo%20of%20NeoShala%20(School%20Management)" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;color:var(--text,#e2e8f0);font-size:13px;font-weight:600;transition:background 0.2s;background:rgba(255,255,255,0.04);margin-bottom:6px" onmouseenter="this.style.background='rgba(37,211,102,0.1)'" onmouseleave="this.style.background='rgba(255,255,255,0.04)'">
+        <span style="font-size:20px">🎓</span> NeoShala Demo
+      </a>
+      <a href="https://wa.me/919453373823?text=Hi!%20I%20want%20a%20demo%20of%20Aushadhi%20(Pharmacy%20Management)" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;color:var(--text,#e2e8f0);font-size:13px;font-weight:600;transition:background 0.2s;background:rgba(255,255,255,0.04);margin-bottom:6px" onmouseenter="this.style.background='rgba(37,211,102,0.1)'" onmouseleave="this.style.background='rgba(255,255,255,0.04)'">
+        <span style="font-size:20px">💊</span> Aushadhi Demo
+      </a>
+      <a href="https://wa.me/919453373823?text=Hi!%20I%20want%20to%20know%20about%20pricing%20and%20plans" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;color:var(--text,#e2e8f0);font-size:13px;font-weight:600;transition:background 0.2s;background:rgba(255,255,255,0.04);margin-bottom:6px" onmouseenter="this.style.background='rgba(37,211,102,0.1)'" onmouseleave="this.style.background='rgba(255,255,255,0.04)'">
+        <span style="font-size:20px">💰</span> Pricing Info
+      </a>
+      <a href="https://wa.me/919453373823?text=Hi!%20I%20need%20technical%20support" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;text-decoration:none;color:var(--text,#e2e8f0);font-size:13px;font-weight:600;transition:background 0.2s;background:rgba(255,255,255,0.04)" onmouseenter="this.style.background='rgba(37,211,102,0.1)'" onmouseleave="this.style.background='rgba(255,255,255,0.04)'">
+        <span style="font-size:20px">🔧</span> Technical Support
+      </a>
+    </div>
+    <div style="padding:8px 12px 12px">
+      <a href="https://wa.me/919453373823?text=Hi%20DRS%20Softlabs!" target="_blank" rel="noopener" style="display:block;text-align:center;padding:12px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none">💬 Start Custom Chat</a>
+    </div>
   </div>
-
-  <!-- WhatsApp Floating Chat Button -->
-  <a href="https://wa.me/919453373823?text=Hi%20DRS%20Softlabs!%20I'm%20interested%20in%20your%20products." target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Chat with us on WhatsApp">
+  <!-- FAB Button -->
+  <button onclick="document.getElementById('wa-popup').style.display=document.getElementById('wa-popup').style.display==='none'?'block':'none'" style="width:56px;height:56px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all 0.3s" onmouseenter="this.style.transform='scale(1.1)'" onmouseleave="this.style.transform='scale(1)'">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
-  </a>
+  </button>
+</div>
+<script>
+// Close WhatsApp popup when clicking outside
+document.addEventListener('click', function(e) {
+  var widget = document.getElementById('wa-widget');
+  var popup = document.getElementById('wa-popup');
+  if (widget && popup && !widget.contains(e.target)) popup.style.display = 'none';
+});
+</script>
 
   <script src="config.js"></script>
   <script src="script.js"></script>
@@ -1991,6 +2599,88 @@
     if(h) h.classList.toggle('scrolled', window.scrollY > 50);
   });
   </script>
+
+<!-- AI Chat Assistant -->
+<div id="ai-chat" style="position:fixed;bottom:24px;left:24px;z-index:9998">
+  <div id="ai-chat-window" style="display:none;position:absolute;bottom:60px;left:0;width:340px;height:480px;background:var(--darker,#0a1628);border:1px solid var(--glass-border,rgba(255,255,255,0.08));border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.5);overflow:hidden;display:flex;flex-direction:column;animation:socialSlideIn 0.3s ease">
+    <div style="background:linear-gradient(135deg,var(--primary,#1a7a52),var(--primary-dark,#0d4f35));padding:14px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0">
+      <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:18px">🤖</div>
+      <div style="flex:1"><div style="color:#fff;font-weight:700;font-size:14px">DRS Assistant</div><div style="color:rgba(255,255,255,0.6);font-size:11px">Ask me anything about our products</div></div>
+      <button onclick="document.getElementById('ai-chat-window').style.display='none'" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:18px;cursor:pointer">&times;</button>
+    </div>
+    <div id="ai-chat-messages" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px">
+      <div style="background:rgba(34,196,122,0.1);border:1px solid rgba(34,196,122,0.15);border-radius:12px 12px 12px 4px;padding:10px 14px;font-size:13px;color:var(--text,#e2e8f0);line-height:1.5;max-width:85%">
+        👋 Hi! I'm DRS Assistant. Ask me about NeoShala or Aushadhi, or pick a question below:
+      </div>
+    </div>
+    <div id="ai-quick-qs" style="padding:8px 14px;display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid var(--glass-border,rgba(255,255,255,0.08))">
+      <button class="ai-q-btn" onclick="aiAsk(this.textContent)" style="padding:6px 12px;border-radius:20px;border:1px solid var(--glass-border,rgba(255,255,255,0.08));background:var(--glass,rgba(255,255,255,0.04));color:var(--text-muted,#94a3b8);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)';this.style.color='#fff'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.color='var(--text-muted)'">What is NeoShala?</button>
+      <button class="ai-q-btn" onclick="aiAsk(this.textContent)" style="padding:6px 12px;border-radius:20px;border:1px solid var(--glass-border,rgba(255,255,255,0.08));background:var(--glass,rgba(255,255,255,0.04));color:var(--text-muted,#94a3b8);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)';this.style.color='#fff'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.color='var(--text-muted)'">What is Aushadhi?</button>
+      <button class="ai-q-btn" onclick="aiAsk(this.textContent)" style="padding:6px 12px;border-radius:20px;border:1px solid var(--glass-border,rgba(255,255,255,0.08));background:var(--glass,rgba(255,255,255,0.04));color:var(--text-muted,#94a3b8);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)';this.style.color='#fff'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.color='var(--text-muted)'">Pricing?</button>
+      <button class="ai-q-btn" onclick="aiAsk(this.textContent)" style="padding:6px 12px;border-radius:20px;border:1px solid var(--glass-border,rgba(255,255,255,0.08));background:var(--glass,rgba(255,255,255,0.04));color:var(--text-muted,#94a3b8);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)';this.style.color='#fff'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.color='var(--text-muted)'">Free trial?</button>
+      <button class="ai-q-btn" onclick="aiAsk(this.textContent)" style="padding:6px 12px;border-radius:20px;border:1px solid var(--glass-border,rgba(255,255,255,0.08));background:var(--glass,rgba(255,255,255,0.04));color:var(--text-muted,#94a3b8);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)';this.style.color='#fff'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.color='var(--text-muted)'">Languages?</button>
+      <button class="ai-q-btn" onclick="aiAsk(this.textContent)" style="padding:6px 12px;border-radius:20px;border:1px solid var(--glass-border,rgba(255,255,255,0.08));background:var(--glass,rgba(255,255,255,0.04));color:var(--text-muted,#94a3b8);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)';this.style.color='#fff'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.color='var(--text-muted)'">GST billing?</button>
+      <button class="ai-q-btn" onclick="aiAsk(this.textContent)" style="padding:6px 12px;border-radius:20px;border:1px solid var(--glass-border,rgba(255,255,255,0.08));background:var(--glass,rgba(255,255,255,0.04));color:var(--text-muted,#94a3b8);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.3)';this.style.color='#fff'" onmouseleave="this.style.borderColor='var(--glass-border)';this.style.color='var(--text-muted)'">Talk to human</button>
+    </div>
+    <div style="padding:8px 14px 12px;display:flex;gap:8px;border-top:1px solid var(--glass-border,rgba(255,255,255,0.08))">
+      <input id="ai-chat-input" placeholder="Type a question..." onkeydown="if(event.key==='Enter')aiAsk(this.value)" style="flex:1;padding:10px 14px;border:1px solid var(--glass-border,rgba(255,255,255,0.08));border-radius:10px;background:var(--glass,rgba(255,255,255,0.04));color:#fff;font-size:13px;font-family:inherit;outline:none" />
+      <button onclick="aiAsk(document.getElementById('ai-chat-input').value)" style="padding:10px 16px;border-radius:10px;border:none;background:linear-gradient(135deg,var(--primary,#1a7a52),var(--primary-dark,#0d4f35));color:#fff;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit">Send</button>
+    </div>
+  </div>
+  <button onclick="var w=document.getElementById('ai-chat-window');w.style.display=w.style.display==='none'?'flex':'none'" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--primary,#1a7a52),var(--primary-dark,#0d4f35));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(26,122,82,0.4);transition:all 0.3s;font-size:22px" onmouseenter="this.style.transform='scale(1.1)'" onmouseleave="this.style.transform='scale(1)'">🤖</button>
+</div>
+<script>
+var aiKB = {
+  'what is neoshala': '🎓 <b>NeoShala</b> is a complete School & College Management System with 35+ modules — students, teachers, fees, exams, attendance, library, transport, hostel, HR/payroll. Used by 500+ schools across India. Starts at just ₹999/month!',
+  'what is aushadhi': '💊 <b>Aushadhi</b> is a Smart Pharmacy Management platform with 55+ features — GST billing, inventory, expiry tracking (FEFO), credit ledger, online shop, analytics, barcode scanning, WhatsApp integration. Starts at ₹499/month!',
+  'pricing': '💰 <b>NeoShala:</b> Free trial → ₹999 → ₹2,499 → ₹4,999/mo<br><b>Aushadhi:</b> ₹499 → ₹1,200/mo → Custom<br><br>Annual billing saves 20%! Zero setup fee. No credit card needed for trial.',
+  'free trial': '✅ Yes! Both products offer <b>free trials</b>:<br>• NeoShala: 30-day free trial<br>• Aushadhi: 15-day free trial<br><br>No credit card required. Full features included.',
+  'languages': '🌍 We support <b>10+ Indian languages</b>: Hindi, English, Marathi, Tamil, Bengali, Gujarati, Telugu, Kannada, Malayalam, Punjabi. More coming soon!',
+  'gst billing': '🏛️ <b>Aushadhi</b> handles GST automatically:<br>• Auto CGST/SGST/IGST calculation<br>• HSN code mapping<br>• One-click GSTR-1 export<br>• GST-compliant invoices<br>• Tax summary reports',
+  'talk to human': '👨‍💻 Sure! You can reach our team directly:<br><br>📱 <a href="https://wa.me/919453373823" target="_blank" style="color:#25D366;text-decoration:underline">WhatsApp: +91 94533 73823</a><br>📞 Phone: +91 94533 73823<br>📧 Email: drssoftlabs@gmail.com<br><br>We respond within 15 minutes on WhatsApp!',
+  'support': '📞 We offer <b>direct founder support</b> via WhatsApp. No tickets, no bots. Talk to Shubham and the team directly. Response time: under 15 minutes!',
+  'data safe': '🔒 Yes! We use <b>256-bit encryption</b>, 2FA authentication, daily backups, and never share your data. Full CSV export anytime. Your data = your ownership.',
+  'modules': '📋 <b>NeoShala has 35+ modules:</b> Students, Teachers, Attendance, Fees, Exams, Report Cards, Timetable, Library, Transport, Hostel, HR/Payroll, Certificates, WhatsApp Notifications, and more!',
+  'expiry': '⚠️ <b>Aushadhi Expiry Management:</b> FEFO auto-selection, 90/60/30 day alerts, batch tracking, return management, expiry dashboard. Saves pharmacies ₹2L+ per year!',
+};
+function aiAsk(q) {
+  if (!q || !q.trim()) return;
+  var msgs = document.getElementById('ai-chat-messages');
+  var input = document.getElementById('ai-chat-input');
+  // Add user message
+  var um = document.createElement('div');
+  um.style.cssText = 'align-self:flex-end;background:rgba(21,101,192,0.15);border:1px solid rgba(21,101,192,0.2);border-radius:12px 12px 4px 12px;padding:10px 14px;font-size:13px;color:#fff;max-width:85%';
+  um.textContent = q;
+  msgs.appendChild(um);
+  if(input) input.value = '';
+  // Find answer
+  var ql = q.toLowerCase().trim().replace(/[?!.]/g,'');
+  var answer = null;
+  for (var key in aiKB) {
+    if (ql.includes(key) || key.includes(ql)) { answer = aiKB[key]; break; }
+  }
+  // Partial matching
+  if (!answer) {
+    var keywords = ql.split(' ');
+    for (var key in aiKB) {
+      for (var i=0;i<keywords.length;i++) {
+        if (keywords[i].length > 3 && key.includes(keywords[i])) { answer = aiKB[key]; break; }
+      }
+      if(answer) break;
+    }
+  }
+  if (!answer) answer = "🤔 I don't have an answer for that yet. Would you like to <a href='https://wa.me/919453373823?text=Hi!%20I%20have%20a%20question%20about%20" + encodeURIComponent(q) + "' target='_blank' style='color:#25D366;text-decoration:underline'>chat with our team on WhatsApp</a>?";
+  // Add bot reply with typing delay
+  setTimeout(function() {
+    var bm = document.createElement('div');
+    bm.style.cssText = 'background:rgba(34,196,122,0.1);border:1px solid rgba(34,196,122,0.15);border-radius:12px 12px 12px 4px;padding:10px 14px;font-size:13px;color:var(--text,#e2e8f0);line-height:1.6;max-width:85%';
+    bm.innerHTML = answer;
+    msgs.appendChild(bm);
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 600);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+</script>
 
 </body>
 </html>

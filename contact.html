@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact DRS Softlabs | Get in Touch</title>
+  <meta name="description" content="Contact DRS Softlabs - WhatsApp, Email, Phone. Office in Sector 62, Noida. We respond within hours." />
+  <meta property="og:title" content="Contact DRS Softlabs | Get in Touch | DRS Softlabs" />
+  <meta property="og:description" content="Contact DRS Softlabs - WhatsApp, Email, Phone. Office in Sector 62, Noida. We respond within hours." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://drssoftlab.netlify.app/contact.html" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a7a52'/><path d='M16 4L6 9v14l10 5 10-5V9L16 4z' fill='none' stroke='white' stroke-width='2'/><path d='M16 28V14M6 9l10 5 10-5' fill='none' stroke='white' stroke-width='1.5'/></svg>" />
   <meta name="theme-color" content="#0a1628" />
   
@@ -94,32 +100,108 @@
         <!-- Form -->
         <div class="reveal reveal-d1">
           <h2 style="margin-bottom:32px">Send a <span style="color:var(--gold)">Message</span></h2>
-          <form id="contact-form" style="display:flex;flex-direction:column;gap:16px">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <form id="contact-form" style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
               <input id="cf-name" placeholder="Your Name *" required style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
               <input id="cf-email" placeholder="Email *" required type="email" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-              <input id="cf-phone" placeholder="Phone" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
-              <input id="cf-subject" placeholder="Subject" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+              <input id="cf-phone" placeholder="Phone *" required style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
+              <select id="cf-product" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s;appearance:auto">
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="NeoShala Demo">NeoShala (School)</option>
+                <option value="Aushadhi Demo">Aushadhi (Pharmacy)</option>
+                <option value="Pricing Question">Pricing Question</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Partnership">Partnership</option>
+              </select>
             </div>
-            <textarea id="cf-msg" placeholder="Your Message *" required rows="5" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;resize:vertical;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'"></textarea>
-            <button type="submit" class="btn-glow" style="padding:16px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;color:#fff;position:relative">
-              <span style="position:relative;z-index:1">Send Message via WhatsApp</span>
-            </button>
+            <input id="cf-subject" placeholder="Subject" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'" />
+            <textarea id="cf-msg" placeholder="Your Message *" required rows="4" style="padding:14px 18px;border:1px solid var(--glass-border);border-radius:12px;font-size:14px;font-family:inherit;background:var(--glass);color:#fff;outline:none;resize:vertical;transition:border-color 0.2s" onfocus="this.style.borderColor='rgba(34,196,122,0.4)'" onblur="this.style.borderColor='var(--glass-border)'"></textarea>
+
+            <!-- 3 Send Options -->
+            <div style="font-size:12px;font-weight:700;color:var(--text-muted);margin-top:4px">Choose how to send:</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+              <button type="button" onclick="sendVia('whatsapp')" style="padding:14px 12px;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:#fff;background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 4px 16px rgba(37,211,102,0.3);display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s" onmouseenter="this.style.transform='translateY(-2px)'" onmouseleave="this.style.transform=''">
+                &#128172; WhatsApp
+              </button>
+              <button type="button" onclick="sendVia('email')" style="padding:14px 12px;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:#fff;background:linear-gradient(135deg,#1565C0,#0D47A1);box-shadow:0 4px 16px rgba(21,101,192,0.3);display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s" onmouseenter="this.style.transform='translateY(-2px)'" onmouseleave="this.style.transform=''">
+                &#9993;&#65039; Email
+              </button>
+              <button type="button" onclick="sendVia('phone')" style="padding:14px 12px;border:none;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;color:#fff;background:linear-gradient(135deg,var(--primary,#1a7a52),var(--primary-dark,#0d4f35));box-shadow:0 4px 16px rgba(26,122,82,0.3);display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s" onmouseenter="this.style.transform='translateY(-2px)'" onmouseleave="this.style.transform=''">
+                &#128222; Call Now
+              </button>
+            </div>
           </form>
           <script>
-            document.getElementById('contact-form').addEventListener('submit', function(e) {
-              e.preventDefault();
-              const n = document.getElementById('cf-name').value;
-              const em = document.getElementById('cf-email').value;
-              const ph = document.getElementById('cf-phone').value;
-              const s = document.getElementById('cf-subject').value;
-              const m = document.getElementById('cf-msg').value;
-              const msg = encodeURIComponent('Hi DRS Team!\n\nName: '+n+'\nEmail: '+em+'\nPhone: '+ph+'\nSubject: '+s+'\n\nMessage:\n'+m);
-              window.open('https://wa.me/919453373823?text='+msg, '_blank');
-            });
+          function sendVia(method) {
+            var form = document.getElementById('contact-form');
+            var n = document.getElementById('cf-name').value;
+            var em = document.getElementById('cf-email').value;
+            var ph = document.getElementById('cf-phone').value;
+            var prod = document.getElementById('cf-product').value;
+            var s = document.getElementById('cf-subject').value;
+            var m = document.getElementById('cf-msg').value;
+
+            // Validate required fields
+            if (!n || !em || !ph || !m) {
+              alert('Please fill in all required fields (Name, Email, Phone, Message)');
+              return;
+            }
+
+            if (method === 'whatsapp') {
+              var msg = 'Hi DRS Team!\n\nName: '+n+'\nEmail: '+em+'\nPhone: '+ph+'\nInterest: '+prod+'\nSubject: '+(s||'—')+'\n\nMessage:\n'+m;
+              window.open('https://wa.me/919453373823?text='+encodeURIComponent(msg), '_blank');
+            } else if (method === 'email') {
+              var subject = (prod !== 'General Inquiry' ? prod + ' — ' : '') + (s || 'Contact from Website');
+              var body = 'Name: '+n+'\nPhone: '+ph+'\nInterest: '+prod+'\n\n'+m+'\n\n— Sent from DRS Softlabs Website';
+              window.open('https://mail.google.com/mail/?view=cm&fs=1&to=drssoftlabs@gmail.com&su='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body), '_blank');
+            } else if (method === 'phone') {
+              window.open('tel:+919453373823', '_self');
+            }
+
+            // Show success
+            form.innerHTML = '<div style="text-align:center;padding:32px"><div style="font-size:48px;margin-bottom:12px">&#9989;</div><h3 style="font-size:20px;font-weight:800;color:var(--primary-light);margin-bottom:8px">'+(method==='phone'?'Calling...':'Message Sent!')+'</h3><p style="color:var(--text-muted);font-size:14px;line-height:1.6">'+(method==='phone'?'Dial +91 94533 73823 to speak with our team':'We will get back to you within a few hours.')+'</p><div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap"><a href="https://wa.me/919453373823" target="_blank" style="padding:8px 16px;border-radius:8px;background:rgba(37,211,102,0.15);color:#25D366;font-size:12px;font-weight:700;text-decoration:none">&#128172; WhatsApp</a><a href="tel:+919453373823" style="padding:8px 16px;border-radius:8px;background:rgba(96,165,250,0.15);color:#60a5fa;font-size:12px;font-weight:700;text-decoration:none">&#128222; +91 94533 73823</a><a href="https://mail.google.com/mail/?view=cm&fs=1&to=drssoftlabs@gmail.com" target="_blank" style="padding:8px 16px;border-radius:8px;background:rgba(251,191,36,0.15);color:#fbbf24;font-size:12px;font-weight:700;text-decoration:none">&#9993;&#65039; drssoftlabs@gmail.com</a></div></div>';
+          }
           </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map & Response Times -->
+  <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+        <!-- Map -->
+        <div class="glass reveal" style="border-radius:16px;overflow:hidden;min-height:350px">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0!2d77.3629!3d28.6273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSector%2062%2C%20Noida!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="100%" style="border:0;min-height:350px;border-radius:16px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <!-- Response Times -->
+        <div class="reveal reveal-d1">
+          <h3 style="font-size:20px;margin-bottom:20px">Response <span style="color:var(--primary-light)">Times</span></h3>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div class="glass" style="padding:20px 24px;border-radius:14px;display:flex;align-items:center;gap:16px">
+              <div style="width:48px;height:48px;border-radius:12px;background:rgba(37,211,102,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128172;</div>
+              <div style="flex:1"><strong style="font-size:14px">WhatsApp</strong><p style="font-size:12px;color:var(--text-muted);margin-top:2px">Usually within 15 minutes</p></div>
+              <div style="background:rgba(37,211,102,0.15);color:#25D366;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Fastest</div>
+            </div>
+            <div class="glass" style="padding:20px 24px;border-radius:14px;display:flex;align-items:center;gap:16px">
+              <div style="width:48px;height:48px;border-radius:12px;background:rgba(96,165,250,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128222;</div>
+              <div style="flex:1"><strong style="font-size:14px">Phone Call</strong><p style="font-size:12px;color:var(--text-muted);margin-top:2px">Mon-Sat, 9 AM - 7 PM IST</p></div>
+              <div style="background:rgba(96,165,250,0.15);color:#60a5fa;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Instant</div>
+            </div>
+            <div class="glass" style="padding:20px 24px;border-radius:14px;display:flex;align-items:center;gap:16px">
+              <div style="width:48px;height:48px;border-radius:12px;background:rgba(251,191,36,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#9993;&#65039;</div>
+              <div style="flex:1"><strong style="font-size:14px">Email</strong><p style="font-size:12px;color:var(--text-muted);margin-top:2px">Within 2-4 hours</p></div>
+              <div style="background:rgba(251,191,36,0.15);color:#fbbf24;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Same Day</div>
+            </div>
+            <div class="glass" style="padding:20px 24px;border-radius:14px;display:flex;align-items:center;gap:16px">
+              <div style="width:48px;height:48px;border-radius:12px;background:rgba(248,113,113,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">&#128736;</div>
+              <div style="flex:1"><strong style="font-size:14px">Bug/Issue Report</strong><p style="font-size:12px;color:var(--text-muted);margin-top:2px">Priority fix within 24 hours</p></div>
+              <div style="background:rgba(248,113,113,0.15);color:#f87171;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Priority</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -140,13 +222,6 @@
   <!-- Theme Toggle -->
   <button class="theme-toggle" title="Toggle light/dark mode">&#9728;&#65039;</button>
   <a href="#" class="back-to-top" title="Back to top">&#8593;</a>
-
-  <!-- Floating Development Banner -->
-  <div class="dev-banner" id="dev-banner">
-    <span class="pulse-dot"></span>
-    <span>&#128679; Website under active development &mdash; Some pages & features coming soon!</span>
-    <button class="dev-banner-close" onclick="document.getElementById('dev-banner').style.display='none'" title="Dismiss">&times;</button>
-  </div>
 
   <script src="config.js"></script>
   <script src="script.js"></script>

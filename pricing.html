@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing | DRS Softlabs — NeoShala & Aushadhi Plans</title>
+  <meta name="description" content="DRS Softlabs Pricing - NeoShala school management from ₹999/mo, Aushadhi pharmacy from ₹499/mo. Free trial available." />
+  <meta property="og:title" content="Pricing | DRS Softlabs — NeoShala & Aushadhi Plans | DRS Softlabs" />
+  <meta property="og:description" content="DRS Softlabs Pricing - NeoShala school management from ₹999/mo, Aushadhi pharmacy from ₹499/mo. Free trial available." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://drssoftlab.netlify.app/pricing.html" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a7a52'/><path d='M16 4L6 9v14l10 5 10-5V9L16 4z' fill='none' stroke='white' stroke-width='2'/><path d='M16 28V14M6 9l10 5 10-5' fill='none' stroke='white' stroke-width='1.5'/></svg>" />
   <meta name="theme-color" content="#0a1628" />
   
@@ -41,6 +47,14 @@
     </div>
   </section>
 
+  <!-- Billing Toggle -->
+  <div style="text-align:center;padding:24px 0;position:relative;z-index:1" class="reveal">
+    <div style="display:inline-flex;align-items:center;gap:12px;background:var(--glass);border:1px solid var(--glass-border);padding:6px;border-radius:50px;backdrop-filter:blur(12px)">
+      <button id="btn-monthly" onclick="setBilling('monthly')" style="padding:10px 28px;border-radius:50px;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.3s;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff">Monthly</button>
+      <button id="btn-annual" onclick="setBilling('annual')" style="padding:10px 28px;border-radius:50px;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.3s;background:transparent;color:var(--text-muted)">Annual <span style="background:rgba(251,191,36,0.2);color:#fbbf24;padding:2px 8px;border-radius:10px;font-size:11px;margin-left:4px">Save 20%</span></button>
+    </div>
+  </div>
+
   <!-- NeoShala Pricing -->
   <section class="section" style="position:relative;z-index:1">
     <div class="container">
@@ -52,8 +66,8 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1000px;margin:0 auto">
         <div class="glass reveal pricing-glass" style="padding:32px;border-radius:20px;text-align:center" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
           <div style="font-size:13px;font-weight:700;color:var(--text-muted);margin-bottom:8px">TRIAL</div>
-          <div style="font-size:40px;font-weight:900;color:#fff;line-height:1">Free</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px">30 days</div>
+          <div class="price-display" data-monthly="Free" data-annual="Free" style="font-size:40px;font-weight:900;color:#fff;line-height:1">Free</div>
+          <div class="price-period" data-monthly="30 days" data-annual="30 days" style="font-size:13px;color:var(--text-muted);margin-bottom:24px">30 days</div>
           <div style="border-top:1px solid var(--border);padding-top:20px;text-align:left;font-size:13px;color:var(--text-muted);line-height:2.2">
             &#10003; Up to 100 students<br/>&#10003; Dashboard + Students + Fees<br/>&#10003; Reports<br/>&#10003; Email support
           </div>
@@ -61,8 +75,8 @@
         </div>
         <div class="glass reveal reveal-d1 pricing-glass popular" style="padding:32px;border-radius:20px;text-align:center" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
           <div style="font-size:13px;font-weight:700;color:#60a5fa;margin-bottom:8px">BASIC</div>
-          <div style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;999</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
+          <div class="price-display" data-monthly="&#8377;999" data-annual="&#8377;799" style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;999</div>
+          <div class="price-period" data-monthly="/month" data-annual="/mo billed annually" style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
           <div style="border-top:1px solid var(--border);padding-top:20px;text-align:left;font-size:13px;color:var(--text-muted);line-height:2.2">
             &#10003; Up to 500 students<br/>&#10003; All core modules<br/>&#10003; Exams + Timetable<br/>&#10003; Priority support
           </div>
@@ -70,8 +84,8 @@
         </div>
         <div class="glass reveal reveal-d2 pricing-glass" style="padding:32px;border-radius:20px;text-align:center" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
           <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:8px">STANDARD</div>
-          <div style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;2,499</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
+          <div class="price-display" data-monthly="&#8377;2,499" data-annual="&#8377;1,999" style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;2,499</div>
+          <div class="price-period" data-monthly="/month" data-annual="/mo billed annually" style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
           <div style="border-top:1px solid var(--border);padding-top:20px;text-align:left;font-size:13px;color:var(--text-muted);line-height:2.2">
             &#10003; Up to 2000 students<br/>&#10003; All modules + Portal<br/>&#10003; Library + Transport<br/>&#10003; API access
           </div>
@@ -79,8 +93,8 @@
         </div>
         <div class="glass reveal reveal-d3 pricing-glass" style="padding:32px;border-radius:20px;text-align:center" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
           <div style="font-size:13px;font-weight:700;color:var(--primary-light);margin-bottom:8px">PREMIUM</div>
-          <div style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;4,999</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
+          <div class="price-display" data-monthly="&#8377;4,999" data-annual="&#8377;3,999" style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;4,999</div>
+          <div class="price-period" data-monthly="/month" data-annual="/mo billed annually" style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
           <div style="border-top:1px solid var(--border);padding-top:20px;text-align:left;font-size:13px;color:var(--text-muted);line-height:2.2">
             &#10003; Unlimited students<br/>&#10003; Everything + HR/Payroll<br/>&#10003; Dedicated support<br/>&#10003; Custom branding
           </div>
@@ -101,8 +115,8 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:900px;margin:0 auto">
         <div class="glass reveal pricing-glass" style="padding:32px;border-radius:20px;text-align:center" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
           <div style="font-size:13px;font-weight:700;color:var(--text-muted);margin-bottom:8px">SILVER</div>
-          <div style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;499</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
+          <div class="price-display" data-monthly="&#8377;499" data-annual="&#8377;399" style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;499</div>
+          <div class="price-period" data-monthly="/month" data-annual="/mo billed annually" style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
           <div style="border-top:1px solid var(--border);padding-top:20px;text-align:left;font-size:13px;color:var(--text-muted);line-height:2.2">
             &#10003; GST Billing<br/>&#10003; Inventory Management<br/>&#10003; Expiry Alerts<br/>&#10003; SMS Notifications<br/>&#10003; 1 Device
           </div>
@@ -111,8 +125,8 @@
         <div class="glass reveal reveal-d1 pricing-glass popular" style="padding:32px;border-radius:20px;text-align:center;position:relative" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
           <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:4px 16px;border-radius:20px;font-size:11px;font-weight:700">MOST POPULAR</div>
           <div style="font-size:13px;font-weight:700;color:var(--gold);margin-bottom:8px;margin-top:8px">GOLD</div>
-          <div style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;1,200</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
+          <div class="price-display" data-monthly="&#8377;1,200" data-annual="&#8377;960" style="font-size:40px;font-weight:900;color:#fff;line-height:1">&#8377;1,200</div>
+          <div class="price-period" data-monthly="/month" data-annual="/mo billed annually" style="font-size:13px;color:var(--text-muted);margin-bottom:24px">/month</div>
           <div style="border-top:1px solid var(--border);padding-top:20px;text-align:left;font-size:13px;color:var(--text-muted);line-height:2.2">
             &#10003; Everything in Silver<br/>&#10003; GSTR-1 Export<br/>&#10003; Analytics Dashboard<br/>&#10003; Online Shop<br/>&#10003; Credit Ledger<br/>&#10003; 3 Devices + Mobile
           </div>
@@ -120,8 +134,8 @@
         </div>
         <div class="glass reveal reveal-d2 pricing-glass" style="padding:32px;border-radius:20px;text-align:center" onmouseenter="this.style.transform='translateY(-6px)'" onmouseleave="this.style.transform=''">
           <div style="font-size:13px;font-weight:700;color:#c084fc;margin-bottom:8px">ENTERPRISE</div>
-          <div style="font-size:40px;font-weight:900;color:#fff;line-height:1">Custom</div>
-          <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px">contact us</div>
+          <div class="price-display" data-monthly="Custom" data-annual="Custom" style="font-size:40px;font-weight:900;color:#fff;line-height:1">Custom</div>
+          <div class="price-period" data-monthly="contact us" data-annual="contact us" style="font-size:13px;color:var(--text-muted);margin-bottom:24px">contact us</div>
           <div style="border-top:1px solid var(--border);padding-top:20px;text-align:left;font-size:13px;color:var(--text-muted);line-height:2.2">
             &#10003; Everything in Gold<br/>&#10003; Multi-Store Management<br/>&#10003; Unlimited Devices<br/>&#10003; Custom Domain<br/>&#10003; Dedicated Support<br/>&#10003; Free Data Migration
           </div>
@@ -130,6 +144,53 @@
       </div>
     </div>
   </section>
+
+  <!-- Pricing FAQ -->
+  <section class="section" style="border-top:1px solid var(--border);position:relative;z-index:1" id="pricing-faq">
+    <div class="container" style="max-width:800px">
+      <div class="text-center" style="margin-bottom:48px">
+        <div class="section-tag reveal"><span class="dot"></span> FAQ</div>
+        <h2 class="reveal">Frequently Asked <span class="gradient-text">Questions</span></h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <details class="glass reveal" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Can I switch plans anytime? <span style="color:var(--primary-light);font-size:20px;transition:transform 0.3s">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! You can upgrade or downgrade your plan at any time. When upgrading, you'll get immediate access to new features. When downgrading, changes take effect at the start of your next billing cycle.</p>
+        </details>
+        <details class="glass reveal reveal-d1" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Is there a contract or lock-in period? <span style="color:var(--primary-light);font-size:20px;transition:transform 0.3s">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">No contracts, no lock-in. All our plans are pay-as-you-go. You can cancel anytime and your service continues until the end of your current billing period.</p>
+        </details>
+        <details class="glass reveal reveal-d2" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">What payment methods do you accept? <span style="color:var(--primary-light);font-size:20px;transition:transform 0.3s">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">We accept all major credit/debit cards, UPI, net banking, and bank transfers. For enterprise plans, we also support invoice-based payments with custom billing cycles.</p>
+        </details>
+        <details class="glass reveal" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Do you offer refunds? <span style="color:var(--primary-light);font-size:20px;transition:transform 0.3s">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Yes! We offer a 30-day money-back guarantee on all paid plans. If you're not satisfied, contact our support team within 30 days of purchase for a full refund &mdash; no questions asked.</p>
+        </details>
+        <details class="glass reveal reveal-d1" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">What's included in the free trial? <span style="color:var(--primary-light);font-size:20px;transition:transform 0.3s">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">The free trial gives you full access to core features for 30 days &mdash; including dashboard, student/inventory management, reports, and email support. No credit card required to start.</p>
+        </details>
+        <details class="glass reveal reveal-d2" style="padding:20px 24px;border-radius:14px;cursor:pointer;transition:all 0.3s" onmouseenter="this.style.borderColor='rgba(34,196,122,0.2)'" onmouseleave="this.style.borderColor='var(--glass-border)'">
+          <summary style="font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center">Can I get a custom plan? <span style="color:var(--primary-light);font-size:20px;transition:transform 0.3s">+</span></summary>
+          <p style="color:var(--text-muted);font-size:14px;line-height:1.7;margin-top:12px">Absolutely! If none of our standard plans fit your needs, contact our sales team and we'll create a custom plan tailored to your institution or business requirements.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Money-Back Guarantee Badge -->
+  <div style="text-align:center;padding:48px 24px 24px;position:relative;z-index:1" class="reveal">
+    <div style="display:inline-flex;align-items:center;gap:16px;background:var(--glass);border:1px solid var(--glass-border);padding:24px 36px;border-radius:20px;backdrop-filter:blur(12px)">
+      <div style="font-size:40px">&#128737;</div>
+      <div style="text-align:left">
+        <div style="font-weight:800;font-size:18px;color:#fff">30-Day Money-Back Guarantee</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px">Not satisfied? Get a full refund within 30 days. No questions asked.</div>
+      </div>
+    </div>
+  </div>
 
   <!-- CTA -->
   <section class="cta-section section-sm" style="position:relative;z-index:1">
@@ -155,14 +216,32 @@
     </div>
   </footer>
 
-  <!-- Dev Banner -->
-  <div class="dev-banner" id="dev-banner">
-    <span class="pulse-dot"></span>
-    <span>&#128679; Website under active development &mdash; Some pages & features coming soon!</span>
-    <button class="dev-banner-close" onclick="document.getElementById('dev-banner').style.display='none'" title="Dismiss">&times;</button>
-  </div>
-
   <script src="config.js"></script>
   <script src="script.js"></script>
+  <script>
+    function setBilling(mode) {
+      var btnM = document.getElementById('btn-monthly');
+      var btnA = document.getElementById('btn-annual');
+      var prices = document.querySelectorAll('.price-display');
+      var periods = document.querySelectorAll('.price-period');
+      if (mode === 'annual') {
+        btnA.style.background = 'linear-gradient(135deg,var(--primary),var(--primary-dark))';
+        btnA.style.color = '#fff';
+        btnM.style.background = 'transparent';
+        btnM.style.color = 'var(--text-muted)';
+      } else {
+        btnM.style.background = 'linear-gradient(135deg,var(--primary),var(--primary-dark))';
+        btnM.style.color = '#fff';
+        btnA.style.background = 'transparent';
+        btnA.style.color = 'var(--text-muted)';
+      }
+      prices.forEach(function(el) {
+        el.innerHTML = el.getAttribute('data-' + mode);
+      });
+      periods.forEach(function(el) {
+        el.innerHTML = el.getAttribute('data-' + mode);
+      });
+    }
+  </script>
 </body>
 </html>
