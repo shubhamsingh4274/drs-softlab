@@ -214,6 +214,7 @@
     <button class="btn btn-outline btn-sm" onclick="openAddModal()">+ Add Lead</button>
     <button class="btn btn-outline btn-sm" onclick="openImportModal()">Import CSV</button>
     <button class="btn btn-outline btn-sm" onclick="exportCSV()">Export CSV</button>
+    <button class="btn btn-red btn-sm" onclick="deleteSelected()">🗑️ Delete Selected</button>
     <button class="btn btn-red btn-sm" onclick="resetAllData()">Reset All</button>
     <label style="font-size:11px;color:#94a3b8;display:flex;align-items:center;gap:5px;margin-left:auto">
       Delay:
@@ -750,35 +751,35 @@ var currentLang = 'hinglish';
 
 var WA_LANG_TEMPLATES = {
   hinglish: {
-    school:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. Humne ek school management software banaya hai — NeoShala.\n\n✅ Fee collection + WhatsApp reminders\n✅ Attendance 1 click mein\n✅ Report cards, certificates\n✅ 45+ modules, Hindi support\n\n500+ schools already use kar rahe hain.\n30-day FREE trial — no card needed.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
-    pharmacy:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. FREE pharmacy billing software — Aushadhi.\n\n✅ 10-second GST billing\n✅ Expiry alerts — lakhs bachao\n✅ WhatsApp payment reminders\n✅ Credit ledger + GSTR-1\n\n500+ pharmacies trust us.\n15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
-    coaching:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — coaching center management software.\n\n✅ Student enrollment + batch management\n✅ Fee collection + WhatsApp reminders\n✅ Attendance tracking\n✅ Test results + progress reports\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
-    college:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — college management system.\n\n✅ Student admission + enrollment\n✅ Fee management + WhatsApp reminders\n✅ Examinations + results\n✅ Library, hostel, transport\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
-    followup1:'Namaste Sir/Madam,\n\nMaine pichle hafte NeoShala ke baare mein message kiya tha.\nKya aapne demo dekha?\n\n500+ schools already use kar rahe hain.\n5 min ka free demo de denge.\n\nWhatsApp: 94533 73823\n\n— DRS Softlabs Team',
-    followup2:'Namaste Sir/Madam,\n\nYe last reminder hai NeoShala ke baare mein.\n\n🎁 Is hafte sign up karo toh pehle 3 months pe 20% discount!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823'
+    school:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. Humne ek school management software banaya hai — NeoShala.\n\n✅ Fee collection + WhatsApp reminders\n✅ Attendance 1 click mein\n✅ Report cards, certificates\n✅ 45+ modules, Hindi support\n\n500+ schools already use kar rahe hain.\n30-day FREE trial — no card needed.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    pharmacy:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. FREE pharmacy billing software — Aushadhi.\n\n✅ 10-second GST billing\n✅ Expiry alerts — lakhs bachao\n✅ WhatsApp payment reminders\n✅ Credit ledger + GSTR-1\n\n500+ pharmacies trust us.\n15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    coaching:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — coaching center management software.\n\n✅ Student enrollment + batch management\n✅ Fee collection + WhatsApp reminders\n✅ Attendance tracking\n✅ Test results + progress reports\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    college:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — college management system.\n\n✅ Student admission + enrollment\n✅ Fee management + WhatsApp reminders\n✅ Examinations + results\n✅ Library, hostel, transport\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    followup1:'Namaste Sir/Madam,\n\nMaine pichle hafte NeoShala ke baare mein message kiya tha.\nKya aapne demo dekha?\n\n500+ schools already use kar rahe hain.\n5 min ka free demo de denge.\n\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    followup2:'Namaste Sir/Madam,\n\nYe last reminder hai NeoShala ke baare mein.\n\n🎁 Is hafte sign up karo toh pehle 3 months pe 20% discount!\n\nDemo: https://neo-shala.vercel.app\n📞 +91 94533 73823\n📧 drssoftlabs@gmail.com'
   },
   hindi: {
-    school:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। हमने एक स्कूल मैनेजमेंट सॉफ्टवेयर बनाया है — NeoShala।\n\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ 1 क्लिक में अटेंडेंस\n✅ रिपोर्ट कार्ड, सर्टिफिकेट\n✅ 45+ मॉड्यूल, हिंदी सपोर्ट\n\n500+ स्कूल पहले से इस्तेमाल कर रहे हैं।\n30 दिन FREE ट्रायल — कोई कार्ड नहीं चाहिए।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs टीम',
-    pharmacy:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। FREE फार्मेसी बिलिंग सॉफ्टवेयर — Aushadhi (औषधि)।\n\n✅ 10 सेकंड में GST बिलिंग\n✅ एक्सपायरी अलर्ट — लाखों बचाएं\n✅ WhatsApp पेमेंट रिमाइंडर\n✅ क्रेडिट लेजर + GSTR-1\n\n500+ फार्मेसी हम पर भरोसा करती हैं।\n15 दिन FREE ट्रायल।\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs टीम',
-    coaching:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। NeoShala — कोचिंग सेंटर मैनेजमेंट सॉफ्टवेयर।\n\n✅ स्टूडेंट एनरोलमेंट + बैच मैनेजमेंट\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ अटेंडेंस ट्रैकिंग\n✅ टेस्ट रिजल्ट + प्रोग्रेस रिपोर्ट\n\n30 दिन FREE ट्रायल।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs टीम',
-    college:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। NeoShala — कॉलेज मैनेजमेंट सिस्टम।\n\n✅ स्टूडेंट रजिस्ट्रेशन + एडमिशन\n✅ फीस मैनेजमेंट\n✅ परीक्षा + रिजल्ट\n✅ लाइब्रेरी, हॉस्टल, ट्रांसपोर्ट\n\n30 दिन FREE ट्रायल।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs टीम',
+    school:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। हमने एक स्कूल मैनेजमेंट सॉफ्टवेयर बनाया है — NeoShala।\n\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ 1 क्लिक में अटेंडेंस\n✅ रिपोर्ट कार्ड, सर्टिफिकेट\n✅ 45+ मॉड्यूल, हिंदी सपोर्ट\n\n500+ स्कूल पहले से इस्तेमाल कर रहे हैं।\n30 दिन FREE ट्रायल — कोई कार्ड नहीं चाहिए।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs टीम',
+    pharmacy:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। FREE फार्मेसी बिलिंग सॉफ्टवेयर — Aushadhi (औषधि)।\n\n✅ 10 सेकंड में GST बिलिंग\n✅ एक्सपायरी अलर्ट — लाखों बचाएं\n✅ WhatsApp पेमेंट रिमाइंडर\n✅ क्रेडिट लेजर + GSTR-1\n\n500+ फार्मेसी हम पर भरोसा करती हैं।\n15 दिन FREE ट्रायल।\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs टीम',
+    coaching:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। NeoShala — कोचिंग सेंटर मैनेजमेंट सॉफ्टवेयर।\n\n✅ स्टूडेंट एनरोलमेंट + बैच मैनेजमेंट\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ अटेंडेंस ट्रैकिंग\n✅ टेस्ट रिजल्ट + प्रोग्रेस रिपोर्ट\n\n30 दिन FREE ट्रायल।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs टीम',
+    college:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। NeoShala — कॉलेज मैनेजमेंट सिस्टम।\n\n✅ स्टूडेंट रजिस्ट्रेशन + एडमिशन\n✅ फीस मैनेजमेंट\n✅ परीक्षा + रिजल्ट\n✅ लाइब्रेरी, हॉस्टल, ट्रांसपोर्ट\n\n30 दिन FREE ट्रायल।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs टीम',
     followup1:'नमस्ते सर/मैडम,\n\nमैंने पिछले हफ्ते NeoShala के बारे में मैसेज किया था।\nक्या आपने डेमो देखा?\n\n500+ स्कूल पहले से इस्तेमाल कर रहे हैं।\n5 मिनट का फ्री डेमो दे देंगे।\n\nWhatsApp: 94533 73823\n\n— DRS Softlabs टीम',
-    followup2:'नमस्ते सर/मैडम,\n\nये आखिरी रिमाइंडर है NeoShala के बारे में।\n\n🎁 इस हफ्ते साइन अप करें तो पहले 3 महीने 20% छूट!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823'
+    followup2:'नमस्ते सर/मैडम,\n\nये आखिरी रिमाइंडर है NeoShala के बारे में।\n\n🎁 इस हफ्ते साइन अप करें तो पहले 3 महीने 20% छूट!\n\nDemo: https://neo-shala.vercel.app\n📞 +91 94533 73823\n📧 drssoftlabs@gmail.com'
   },
   english: {
-    school:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. We\'ve built NeoShala — a complete school management system.\n\n✅ Fee collection + WhatsApp reminders to parents\n✅ Attendance tracking (1 click)\n✅ Report cards, certificates (auto PDF)\n✅ 45+ modules, 10 Indian languages\n\n500+ schools already use it.\n30-day FREE trial — no credit card needed.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
-    pharmacy:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. We offer Aushadhi — smart pharmacy management software.\n\n✅ 10-second GST billing\n✅ Expiry alerts — save lakhs every year\n✅ WhatsApp payment reminders\n✅ Credit ledger + GSTR-1 export\n\n500+ pharmacies trust us.\n15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
-    coaching:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. NeoShala — coaching center management software.\n\n✅ Student enrollment + batch management\n✅ Fee collection + WhatsApp reminders\n✅ Attendance tracking\n✅ Test results + progress reports\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
-    college:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. NeoShala — college management system.\n\n✅ Student registration + admissions\n✅ Fee management + online payment\n✅ Examinations + results\n✅ Library, hostel, transport\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
-    followup1:'Hello Sir/Madam,\n\nI messaged you last week about NeoShala.\nHave you had a chance to check the demo?\n\n500+ schools trust us. Happy to give a 5-min demo.\n\nWhatsApp: 94533 73823\n\n— DRS Softlabs Team',
-    followup2:'Hello Sir/Madam,\n\nFinal reminder about NeoShala.\n\n🎁 Sign up this week and get 20% off for first 3 months!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823'
+    school:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. We\'ve built NeoShala — a complete school management system.\n\n✅ Fee collection + WhatsApp reminders to parents\n✅ Attendance tracking (1 click)\n✅ Report cards, certificates (auto PDF)\n✅ 45+ modules, 10 Indian languages\n\n500+ schools already use it.\n30-day FREE trial — no credit card needed.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    pharmacy:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. We offer Aushadhi — smart pharmacy management software.\n\n✅ 10-second GST billing\n✅ Expiry alerts — save lakhs every year\n✅ WhatsApp payment reminders\n✅ Credit ledger + GSTR-1 export\n\n500+ pharmacies trust us.\n15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    coaching:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. NeoShala — coaching center management software.\n\n✅ Student enrollment + batch management\n✅ Fee collection + WhatsApp reminders\n✅ Attendance tracking\n✅ Test results + progress reports\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    college:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. NeoShala — college management system.\n\n✅ Student registration + admissions\n✅ Fee management + online payment\n✅ Examinations + results\n✅ Library, hostel, transport\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    followup1:'Hello Sir/Madam,\n\nI messaged you last week about NeoShala.\nHave you had a chance to check the demo?\n\n500+ schools trust us. Happy to give a 5-min demo.\n\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\n\n— DRS Softlabs Team',
+    followup2:'Hello Sir/Madam,\n\nFinal reminder about NeoShala.\n\n🎁 Sign up this week and get 20% off for first 3 months!\n\nDemo: https://neo-shala.vercel.app\n📞 +91 94533 73823\n📧 drssoftlabs@gmail.com'
   }
 };
 
 var EMAIL_LANG = {
-  hinglish: { subject:'Free School Management Software — NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. Humne NeoShala banaya hai — ek complete school management software with 45+ modules.\n\n✅ Fee Collection + WhatsApp Reminders\n✅ One-Click Attendance\n✅ Report Cards & Certificates (auto PDF)\n✅ Hindi + 10 Languages Support\n\n500+ institutions across India trust NeoShala.\n30-day FREE trial — no credit card needed.\n\nDemo: https://neo-shala.vercel.app\n\n5-minute demo chahiye? WhatsApp karein: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
+  hinglish: { subject:'Free School Management Software — NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. Humne NeoShala banaya hai — ek complete school management software with 45+ modules.\n\n✅ Fee Collection + WhatsApp Reminders\n✅ One-Click Attendance\n✅ Report Cards & Certificates (auto PDF)\n✅ Hindi + 10 Languages Support\n\n500+ institutions across India trust NeoShala.\n30-day FREE trial — no credit card needed.\n\nDemo: https://neo-shala.vercel.app\n\n5-minute demo chahiye? WhatsApp karein: +91 94533 73823\n\nRegards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' },
   hindi: { subject:'मुफ्त स्कूल मैनेजमेंट सॉफ्टवेयर — NeoShala | DRS Softlabs', body:'आदरणीय महोदय/महोदया,\n\nDRS Softlabs की ओर से नमस्कार!\n\nहमने NeoShala बनाया है — एक पूर्ण स्कूल मैनेजमेंट सॉफ्टवेयर जिसमें 45+ मॉड्यूल हैं:\n\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ एक क्लिक में अटेंडेंस\n✅ रिपोर्ट कार्ड और सर्टिफिकेट (ऑटो PDF)\n✅ हिंदी + 10 भाषाओं में उपलब्ध\n\n500+ संस्थान NeoShala पर भरोसा करते हैं।\n30 दिन का मुफ्त ट्रायल — कोई क्रेडिट कार्ड नहीं चाहिए।\n\nDemo: https://neo-shala.vercel.app\n\nWhatsApp: +91 94533 73823\n\nसादर,\nDRS Softlabs टीम' },
-  english: { subject:'Free School Management Software — NeoShala by DRS Softlabs', body:'Dear Sir/Madam,\n\nGreetings from DRS Softlabs!\n\nWe have developed NeoShala — a comprehensive school management software with 45+ modules:\n\n✅ Fee Collection with WhatsApp Reminders\n✅ One-Click Attendance\n✅ Report Cards & Certificates (auto PDF)\n✅ Student & Staff Management\n✅ 10 Indian Languages Support\n\n500+ institutions across India trust NeoShala.\n30-day FREE trial — no credit card required.\n\nDemo: https://neo-shala.vercel.app\n\nWould love to schedule a 5-minute demo.\n\nBest Regards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823' }
+  english: { subject:'Free School Management Software — NeoShala by DRS Softlabs', body:'Dear Sir/Madam,\n\nGreetings from DRS Softlabs!\n\nWe have developed NeoShala — a comprehensive school management software with 45+ modules:\n\n✅ Fee Collection with WhatsApp Reminders\n✅ One-Click Attendance\n✅ Report Cards & Certificates (auto PDF)\n✅ Student & Staff Management\n✅ 10 Indian Languages Support\n\n500+ institutions across India trust NeoShala.\n30-day FREE trial — no credit card required.\n\nDemo: https://neo-shala.vercel.app\n\nWould love to schedule a 5-minute demo.\n\nBest Regards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' }
 };
 
 // Computed from current language
@@ -801,11 +802,11 @@ function setLang(lang) {
 
 var EMAIL_CAT_TEMPLATES = {
   hinglish: {
-    school: { subject:'Free School Management Software — NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — complete school management software (45+ modules).\n\n✅ Fee Collection + WhatsApp Reminders\n✅ Attendance, Report Cards, Certificates\n✅ Hindi + 10 Languages\n\n500+ schools trust us. 30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
-    pharmacy: { subject:'Free Pharmacy Billing Software — Aushadhi | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. Aushadhi — smart pharmacy billing software.\n\n✅ 10-second GST billing\n✅ Expiry alerts — lakhs bachao\n✅ Credit ledger + GSTR-1\n✅ WhatsApp payment reminders\n\n500+ pharmacies trust us. 15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
-    coaching: { subject:'Free Coaching Management Software — NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — coaching center management software.\n\n✅ Batch management + Fee collection\n✅ Attendance + Test results\n✅ WhatsApp reminders\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
-    followup1: { subject:'Quick follow-up — NeoShala Demo | DRS Softlabs', body:'Dear Sir/Madam,\n\nMaine pichle hafte message kiya tha NeoShala ke baare mein.\nKya aapne demo try kiya?\n\n5-minute free demo de sakte hain WhatsApp call pe.\n\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
-    followup2: { subject:'Last chance — 20% OFF NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nYe last reminder hai.\n\n🎁 Is hafte sign up karo — pehle 3 months 20% discount!\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' }
+    school: { subject:'Free School Management Software — NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — complete school management software (45+ modules).\n\n✅ Fee Collection + WhatsApp Reminders\n✅ Attendance, Report Cards, Certificates\n✅ Hindi + 10 Languages\n\n500+ schools trust us. 30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' },
+    pharmacy: { subject:'Free Pharmacy Billing Software — Aushadhi | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. Aushadhi — smart pharmacy billing software.\n\n✅ 10-second GST billing\n✅ Expiry alerts — lakhs bachao\n✅ Credit ledger + GSTR-1\n✅ WhatsApp payment reminders\n\n500+ pharmacies trust us. 15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' },
+    coaching: { subject:'Free Coaching Management Software — NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — coaching center management software.\n\n✅ Batch management + Fee collection\n✅ Attendance + Test results\n✅ WhatsApp reminders\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' },
+    followup1: { subject:'Quick follow-up — NeoShala Demo | DRS Softlabs', body:'Dear Sir/Madam,\n\nMaine pichle hafte message kiya tha NeoShala ke baare mein.\nKya aapne demo try kiya?\n\n5-minute free demo de sakte hain WhatsApp call pe.\n\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' },
+    followup2: { subject:'Last chance — 20% OFF NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nYe last reminder hai.\n\n🎁 Is hafte sign up karo — pehle 3 months 20% discount!\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' }
   },
   hindi: {
     school: { subject:'मुफ्त स्कूल मैनेजमेंट सॉफ्टवेयर — NeoShala | DRS Softlabs', body:'आदरणीय महोदय/महोदया,\n\nDRS Softlabs से नमस्कार। हमने NeoShala बनाया है — 45+ मॉड्यूल वाला स्कूल मैनेजमेंट सॉफ्टवेयर।\n\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ अटेंडेंस, रिपोर्ट कार्ड, सर्टिफिकेट\n✅ हिंदी + 10 भाषाएं\n\n500+ संस्थान भरोसा करते हैं। 30 दिन मुफ्त ट्रायल।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nसादर,\nDRS Softlabs टीम' },
@@ -815,11 +816,11 @@ var EMAIL_CAT_TEMPLATES = {
     followup2: { subject:'आखिरी रिमाइंडर — 20% छूट NeoShala | DRS Softlabs', body:'आदरणीय महोदय/महोदया,\n\nयह आखिरी रिमाइंडर है।\n\n🎁 इस हफ्ते — 20% छूट!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823\n\nसादर,\nDRS Softlabs टीम' }
   },
   english: {
-    school: { subject:'Free School Management Software — NeoShala by DRS Softlabs', body:'Dear Sir/Madam,\n\nGreetings from DRS Softlabs!\n\nWe have built NeoShala — a school management system with 45+ modules:\n\n✅ Fee Collection + WhatsApp Reminders\n✅ Attendance, Report Cards, Certificates\n✅ 10 Indian Languages\n\n500+ schools trust us. 30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team' },
-    pharmacy: { subject:'Free Pharmacy Billing Software — Aushadhi by DRS Softlabs', body:'Dear Sir/Madam,\n\nWe offer Aushadhi — smart pharmacy management.\n\n✅ 10-second GST billing\n✅ Expiry alerts — save lakhs\n✅ Credit ledger + GSTR-1\n\n500+ pharmacies trust us. 15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team' },
-    coaching: { subject:'Free Coaching Management — NeoShala by DRS Softlabs', body:'Dear Sir/Madam,\n\nNeoShala — coaching center management.\n\n✅ Batch + Fee + Attendance\n✅ Results + WhatsApp\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team' },
-    followup1: { subject:'Follow-up — NeoShala Demo | DRS Softlabs', body:'Dear Sir/Madam,\n\nI reached out last week about NeoShala.\nDid you get a chance to check the demo?\n\nHappy to give a 5-min walkthrough.\n\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team' },
-    followup2: { subject:'Final Reminder — 20% OFF NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nFinal reminder.\n\n🎁 Sign up this week — 20% off first 3 months!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823\n\nBest Regards,\nDRS Softlabs Team' }
+    school: { subject:'Free School Management Software — NeoShala by DRS Softlabs', body:'Dear Sir/Madam,\n\nGreetings from DRS Softlabs!\n\nWe have built NeoShala — a school management system with 45+ modules:\n\n✅ Fee Collection + WhatsApp Reminders\n✅ Attendance, Report Cards, Certificates\n✅ 10 Indian Languages\n\n500+ schools trust us. 30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' },
+    pharmacy: { subject:'Free Pharmacy Billing Software — Aushadhi by DRS Softlabs', body:'Dear Sir/Madam,\n\nWe offer Aushadhi — smart pharmacy management.\n\n✅ 10-second GST billing\n✅ Expiry alerts — save lakhs\n✅ Credit ledger + GSTR-1\n\n500+ pharmacies trust us. 15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' },
+    coaching: { subject:'Free Coaching Management — NeoShala by DRS Softlabs', body:'Dear Sir/Madam,\n\nNeoShala — coaching center management.\n\n✅ Batch + Fee + Attendance\n✅ Results + WhatsApp\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' },
+    followup1: { subject:'Follow-up — NeoShala Demo | DRS Softlabs', body:'Dear Sir/Madam,\n\nI reached out last week about NeoShala.\nDid you get a chance to check the demo?\n\nHappy to give a 5-min walkthrough.\n\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' },
+    followup2: { subject:'Final Reminder — 20% OFF NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nFinal reminder.\n\n🎁 Sign up this week — 20% off first 3 months!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823\n\nBest Regards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823\nEmail: drssoftlabs@gmail.com\nWeb: drssoftlab.netlify.app' }
   }
 };
 
@@ -952,9 +953,10 @@ function render(){
       '<td class="date-cell">'+(l.followup1||'-')+'</td>'+
       '<td class="date-cell">'+(l.followup2||'-')+'</td>'+
       '<td class="notes-cell"><span class="editable" onclick="openNotesModal(\''+l.phone+'\')" title="Click to edit notes">'+esc(l.notes||'')+'</span></td>'+
-      '<td class="action-links">'+
-        '<a class="wa-link" href="https://wa.me/91'+l.phone+'?text='+encodeURIComponent(document.getElementById('wa-template').value)+'" target="_blank" title="WhatsApp">WA</a>'+
-        (l.email?'<a class="email-link" href="mailto:'+l.email+'?subject='+encodeURIComponent(document.getElementById('email-subject').value)+'&body='+encodeURIComponent(document.getElementById('email-body').value)+'" target="_blank" title="Email">EM</a>':'')+
+      '<td class="action-links" style="white-space:nowrap">'+
+        '<a class="wa-link" href="https://wa.me/91'+l.phone+'?text='+encodeURIComponent(document.getElementById('wa-template').value)+'" target="_blank" title="WhatsApp" style="padding:3px 8px;background:rgba(37,211,102,0.15);border-radius:5px;font-size:11px">📱WA</a> '+
+        '<a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(l.email||'')+'&su='+encodeURIComponent(document.getElementById('email-subject').value)+'&body='+encodeURIComponent(document.getElementById('email-body').value)+'" target="_blank" title="Email" style="padding:3px 8px;background:rgba(21,101,192,0.15);border-radius:5px;font-size:11px">📧EM</a> '+
+        '<span onclick="deleteLead(\''+l.phone+'\')" title="Delete" style="padding:3px 8px;background:rgba(220,38,38,0.15);border-radius:5px;font-size:11px;cursor:pointer;color:#f87171">🗑️</span>'+
       '</td>';
     tbody.appendChild(tr);
   });
@@ -1130,6 +1132,24 @@ function importCSV(){
 }
 
 // ─── Export CSV ───
+function deleteLead(phone){
+  if(!confirm('Delete this lead?')) return;
+  leads = leads.filter(function(l){ return l.phone !== phone; });
+  saveData();
+  render();
+}
+
+function deleteSelected(){
+  var checks = document.querySelectorAll('.lchk:checked');
+  if(checks.length===0){alert('Select leads first!');return}
+  if(!confirm('Delete '+checks.length+' selected leads?')) return;
+  var phones = new Set();
+  checks.forEach(function(c){ phones.add(c.dataset.ph); });
+  leads = leads.filter(function(l){ return !phones.has(l.phone); });
+  saveData();
+  render();
+}
+
 function exportCSV(){
   var header='Name,Phone,Email,City,Category,Status,Notes,Contacted,FollowUp1,FollowUp2\n';
   var rows=leads.map(function(l){
@@ -1175,10 +1195,14 @@ function startSending(mode){
       var msg=document.getElementById('wa-template').value;
       window.open('https://wa.me/91'+phone+'?text='+encodeURIComponent(msg),'_blank');
     }else{
+      var subj=document.getElementById('email-subject').value;
+      var body=document.getElementById('email-body').value;
       if(lead&&lead.email){
-        var subj=document.getElementById('email-subject').value;
-        var body=document.getElementById('email-body').value;
-        window.open('mailto:'+lead.email+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body),'_blank');
+        // Gmail compose with pre-filled
+        window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(lead.email)+'&su='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body),'_blank');
+      }else{
+        // No email - open Gmail with empty TO (user can paste)
+        window.open('https://mail.google.com/mail/?view=cm&fs=1&to=&su='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body),'_blank');
       }
     }
 
