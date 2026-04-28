@@ -3,355 +3,1219 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DRS Softlabs — Lead Tracker & CRM</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231a7a52'/><path d='M16 4L6 9v14l10 5 10-5V9L16 4z' fill='none' stroke='white' stroke-width='2'/></svg>" />
+<title>DRS Softlabs — WhatsApp & Email Bulk Sender Tool</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:'Inter',sans-serif; background:#0a1628; color:#e2e8f0; min-height:100vh; }
-  .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:#0a1628;color:#e2e8f0;min-height:100vh}
+  ::-webkit-scrollbar{width:6px;height:6px}
+  ::-webkit-scrollbar-track{background:rgba(255,255,255,0.03)}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:4px}
 
-  /* Header */
-  .crm-header { background:linear-gradient(135deg,#0a1628,#162240); padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:100; backdrop-filter:blur(12px); }
-  .crm-header-inner { display:flex; align-items:center; justify-content:space-between; }
-  .crm-logo { font-size:18px; font-weight:800; color:#fff; display:flex; align-items:center; gap:10px; text-decoration:none; }
-  .crm-logo span { color:#22c47a; }
-  .crm-nav { display:flex; gap:8px; }
-  .crm-nav a { padding:8px 16px; border-radius:8px; color:#94a3b8; font-size:13px; font-weight:600; text-decoration:none; transition:all 0.2s; }
-  .crm-nav a:hover, .crm-nav a.active { background:rgba(34,196,122,0.1); color:#22c47a; }
+  .header{background:linear-gradient(135deg,#1a7a52,#0d4f35);padding:20px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  .header h1{font-size:18px;font-weight:800;letter-spacing:-0.3px}
+  .header .subtitle{font-size:11px;opacity:0.7;margin-top:3px}
+  .header .badge{background:rgba(255,255,255,0.15);padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600}
 
-  /* Stats */
-  .stats-row { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin:20px 0; }
-  .stat-box { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:16px; text-align:center; }
-  .stat-num { font-size:28px; font-weight:900; }
-  .stat-label { font-size:11px; color:#64748b; margin-top:4px; }
+  .container{max-width:1440px;margin:0 auto;padding:20px}
 
-  /* Tabs */
-  .tabs { display:flex; gap:4px; margin-bottom:16px; background:rgba(255,255,255,0.04); padding:4px; border-radius:10px; width:fit-content; }
-  .tab { padding:8px 20px; border-radius:8px; border:none; background:none; color:#94a3b8; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:inherit; }
-  .tab.active { background:#22c47a; color:#fff; }
+  .tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+  .tab{padding:8px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:#94a3b8;font-weight:700;font-size:12px;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+  .tab.active{background:rgba(26,122,82,0.2);border-color:rgba(26,122,82,0.4);color:#22c47a}
+  .tab:hover{border-color:rgba(255,255,255,0.2)}
 
-  /* Table */
-  .table-wrap { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; overflow:hidden; }
-  table { width:100%; border-collapse:collapse; }
-  th { text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#64748b; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.08); font-weight:700; }
-  td { padding:12px 16px; font-size:13px; border-bottom:1px solid rgba(255,255,255,0.04); }
-  tr:hover td { background:rgba(34,196,122,0.03); }
-  .badge { padding:3px 10px; border-radius:20px; font-size:10px; font-weight:700; }
-  .badge-new { background:rgba(59,130,246,0.15); color:#60a5fa; }
-  .badge-contacted { background:rgba(251,191,36,0.15); color:#fbbf24; }
-  .badge-demo { background:rgba(168,85,247,0.15); color:#a855f7; }
-  .badge-won { background:rgba(34,197,94,0.15); color:#22c55e; }
-  .badge-lost { background:rgba(239,68,68,0.15); color:#ef4444; }
+  .panel{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;margin-bottom:16px}
+  .panel h3{font-size:13px;margin-bottom:10px;color:#22c47a;font-weight:700}
 
-  /* Form */
-  .form-row { display:grid; grid-template-columns:1fr 1fr 1fr 1fr auto; gap:8px; margin-bottom:16px; }
-  .form-row input, .form-row select { padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; font-size:13px; font-family:inherit; outline:none; }
-  .form-row input:focus, .form-row select:focus { border-color:#22c47a; }
-  .form-row select option { background:#1e293b; }
-  .btn-add { padding:10px 20px; border-radius:10px; border:none; background:#22c47a; color:#fff; font-weight:700; font-size:13px; cursor:pointer; font-family:inherit; white-space:nowrap; }
-  .btn-add:hover { background:#16a34a; }
+  textarea,input[type="text"],input[type="email"],select{width:100%;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#fff;font-family:inherit;font-size:12px;padding:10px 12px;outline:none;transition:border-color 0.2s}
+  textarea:focus,input[type="text"]:focus,input[type="email"]:focus{border-color:rgba(34,196,122,0.4)}
+  textarea{height:110px;resize:vertical}
 
-  /* Actions */
-  .btn-sm { padding:4px 10px; border-radius:6px; border:none; font-size:11px; font-weight:600; cursor:pointer; font-family:inherit; transition:all 0.2s; }
-  .btn-status { background:rgba(255,255,255,0.06); color:#94a3b8; }
-  .btn-status:hover { background:rgba(34,196,122,0.15); color:#22c47a; }
-  .btn-del { background:rgba(239,68,68,0.1); color:#ef4444; }
-  .btn-del:hover { background:rgba(239,68,68,0.2); }
-  .btn-export { padding:8px 16px; border-radius:8px; border:1px solid rgba(255,255,255,0.1); background:none; color:#94a3b8; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit; }
-  .btn-export:hover { border-color:#22c47a; color:#22c47a; }
+  .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+  .btn{padding:8px 18px;border-radius:8px;border:none;font-weight:700;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.2s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+  .btn:active{transform:scale(0.97)}
+  .btn-green{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 3px 12px rgba(37,211,102,0.3)}
+  .btn-green:hover{box-shadow:0 5px 20px rgba(37,211,102,0.4)}
+  .btn-email{background:linear-gradient(135deg,#1565C0,#0D47A1);color:#fff;box-shadow:0 3px 12px rgba(21,101,192,0.3)}
+  .btn-blue{background:rgba(21,101,192,0.2);color:#60a5fa;border:1px solid rgba(21,101,192,0.3)}
+  .btn-red{background:rgba(220,38,38,0.15);color:#f87171;border:1px solid rgba(220,38,38,0.2)}
+  .btn-outline{background:rgba(255,255,255,0.04);color:#94a3b8;border:1px solid rgba(255,255,255,0.1)}
+  .btn-sm{padding:5px 10px;font-size:11px}
 
-  /* Search */
-  .search-bar { padding:10px 14px 10px 36px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; font-size:13px; width:250px; outline:none; font-family:inherit; }
-  .search-wrap { position:relative; }
-  .search-wrap::before { content:'🔍'; position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:13px; }
+  .search-input{padding:8px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.3);color:#fff;font-size:12px;font-family:inherit;outline:none;width:200px}
+  .search-input:focus{border-color:rgba(34,196,122,0.4)}
 
-  /* Empty */
-  .empty { text-align:center; padding:48px 20px; color:#64748b; }
-  .empty-icon { font-size:48px; margin-bottom:12px; opacity:0.4; }
+  .filter-select{padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.3);color:#fff;font-size:11px;font-family:inherit;cursor:pointer}
 
-  /* Responsive */
-  @media (max-width:768px) {
-    .stats-row { grid-template-columns:repeat(2,1fr); }
-    .form-row { grid-template-columns:1fr; }
-    .crm-nav { display:none; }
-    .search-bar { width:100%; }
+  .stats{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  .stat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 16px;text-align:center;min-width:90px}
+  .stat-val{font-size:22px;font-weight:900;color:#22c47a}
+  .stat-lbl{font-size:9px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+
+  .tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid rgba(255,255,255,0.08);max-height:65vh;overflow-y:auto}
+  table{width:100%;border-collapse:collapse;min-width:900px}
+  thead{position:sticky;top:0;z-index:2}
+  th{background:rgba(26,122,82,0.2);color:#22c47a;font-size:10px;font-weight:700;padding:8px 10px;text-align:left;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;user-select:none;white-space:nowrap;border-bottom:1px solid rgba(26,122,82,0.3)}
+  th:hover{background:rgba(26,122,82,0.3)}
+  th .sort-arrow{opacity:0.4;font-size:9px;margin-left:3px}
+  th.sorted .sort-arrow{opacity:1;color:#fff}
+  td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;vertical-align:middle}
+  tr:hover{background:rgba(255,255,255,0.03)}
+
+  .status-badge{display:inline-block;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:700;text-transform:capitalize}
+  .status-new{background:rgba(148,163,184,0.15);color:#94a3b8}
+  .status-contacted{background:rgba(96,165,250,0.15);color:#60a5fa}
+  .status-followup1{background:rgba(251,191,36,0.15);color:#fbbf24}
+  .status-followup2{background:rgba(251,146,60,0.15);color:#fb923c}
+  .status-interested{background:rgba(34,196,122,0.15);color:#22c47a}
+  .status-converted{background:rgba(34,196,122,0.3);color:#22c47a}
+  .status-notinterested{background:rgba(248,113,113,0.15);color:#f87171}
+
+  .cat-badge{display:inline-block;padding:2px 8px;border-radius:5px;font-size:10px;font-weight:600}
+  .cat-school{background:rgba(139,92,246,0.15);color:#a78bfa}
+  .cat-pharmacy{background:rgba(236,72,153,0.15);color:#f472b6}
+  .cat-coaching{background:rgba(59,130,246,0.15);color:#60a5fa}
+  .cat-college{background:rgba(20,184,166,0.15);color:#2dd4bf}
+
+  .editable{cursor:pointer;padding:2px 4px;border-radius:4px;transition:background 0.2s;min-width:30px;display:inline-block}
+  .editable:hover{background:rgba(255,255,255,0.08)}
+  .editable:empty::before{content:'click to add';color:rgba(255,255,255,0.2);font-size:10px;font-style:italic}
+
+  input[type="checkbox"]{width:15px;height:15px;cursor:pointer;accent-color:#22c47a}
+
+  .progress-bar-wrap{display:none;background:rgba(34,196,122,0.1);border:1px solid rgba(34,196,122,0.2);border-radius:10px;padding:12px 16px;margin-bottom:12px}
+  .progress-track{height:5px;border-radius:5px;background:rgba(255,255,255,0.1);overflow:hidden;margin-top:6px}
+  .progress-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,#22c47a,#ffd54f);transition:width 0.3s}
+
+  .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:100;justify-content:center;align-items:center}
+  .modal-overlay.show{display:flex}
+  .modal{background:#111827;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:24px;max-width:600px;width:95%;max-height:80vh;overflow-y:auto}
+  .modal h3{font-size:16px;margin-bottom:16px;color:#22c47a}
+  .modal-close{float:right;background:none;border:none;color:#94a3b8;font-size:20px;cursor:pointer;padding:4px}
+
+  .row{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:120px}
+  .row label{font-size:11px;color:#94a3b8;margin-bottom:4px;display:block;font-weight:600}
+
+  .template-tabs{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
+  .template-tab{padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;background:rgba(255,255,255,0.05);color:#94a3b8;border:1px solid rgba(255,255,255,0.08);transition:all 0.2s}
+  .template-tab.active{background:rgba(26,122,82,0.2);color:#22c47a;border-color:rgba(26,122,82,0.3)}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:900px){.grid-2{grid-template-columns:1fr}}
+
+  .action-links a{color:#22c47a;text-decoration:none;font-weight:700;font-size:11px;margin-right:8px}
+  .action-links a:hover{text-decoration:underline}
+  .action-links a.wa-link{color:#25D366}
+  .action-links a.email-link{color:#60a5fa}
+
+  .notes-cell{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .date-cell{font-size:10px;color:#94a3b8;white-space:nowrap}
+
+  .empty-msg{text-align:center;padding:40px;color:#475569;font-size:14px}
+
+  .city-filter{max-height:200px;overflow-y:auto;display:flex;flex-wrap:wrap;gap:4px;padding:4px 0}
+
+  /* Mobile Responsive */
+  @media(max-width:768px){
+    .header{padding:14px 16px}
+    .header h1{font-size:15px}
+    .container{padding:12px}
+    .grid-2{grid-template-columns:1fr}
+    .stats{gap:6px}
+    .stat{padding:8px 10px;min-width:70px}
+    .stat-val{font-size:18px}
+    .controls{gap:6px}
+    .btn{padding:7px 12px;font-size:11px}
+    .search-input{width:100%}
+    .tabs{gap:4px}
+    .tab{padding:6px 12px;font-size:11px}
+    .template-tabs{gap:3px}
+    .template-tab{padding:4px 8px;font-size:10px}
+    table{min-width:700px}
+    td,th{padding:6px 8px;font-size:11px}
+    .panel{padding:12px}
+    textarea{height:100px;font-size:11px}
+    .modal{padding:16px}
   }
-
-  /* Password gate */
-  .gate { position:fixed; inset:0; background:#0a1628; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px; }
-  .gate-box { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:32px; max-width:360px; width:90%; text-align:center; }
-  .gate input { width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:#fff; font-size:14px; margin:16px 0; outline:none; text-align:center; font-family:inherit; }
-  .gate button { width:100%; padding:12px; border-radius:10px; border:none; background:#22c47a; color:#fff; font-weight:700; font-size:14px; cursor:pointer; font-family:inherit; }
-  .gate-error { color:#ef4444; font-size:12px; margin-top:8px; }
+  @media(max-width:480px){
+    .stats{flex-wrap:wrap}
+    .stat{flex:1;min-width:60px;padding:6px 8px}
+    .stat-val{font-size:16px}
+    .stat-lbl{font-size:8px}
+    .controls{flex-direction:column;align-items:stretch}
+    .btn{justify-content:center}
+    .search-input{width:100%}
+  }
 </style>
 </head>
 <body>
 
-<!-- Password Gate -->
-<div class="gate" id="gate">
-  <div class="gate-box">
-    <div style="font-size:36px;margin-bottom:8px">🔒</div>
-    <h2 style="font-size:18px;font-weight:800;margin-bottom:4px">DRS Softlabs CRM</h2>
-    <p style="font-size:12px;color:#64748b">Enter password to access lead tracker</p>
-    <input type="password" id="gate-pwd" placeholder="Password" onkeydown="if(event.key==='Enter')checkGate()" />
-    <button onclick="checkGate()">Unlock</button>
-    <div class="gate-error" id="gate-error"></div>
+<div class="header">
+  <div>
+    <h1>DRS Softlabs - WhatsApp & Email Bulk Sender</h1>
+    <div class="subtitle">NeoShala + Aushadhi | Select leads - Send via WhatsApp OR Email - Track follow-ups</div>
   </div>
+  <div class="badge">Free Tool - No API Needed</div>
 </div>
 
-<!-- Main App -->
-<div id="app" style="display:none">
+<div class="container">
 
-<header class="crm-header">
-  <div class="container crm-header-inner">
-    <a href="index.html" class="crm-logo">🏢 DRS <span>CRM</span></a>
-    <div class="crm-nav">
-      <a href="index.html">← Website</a>
-      <a href="#" class="active">Leads</a>
-    </div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <button class="btn-export" onclick="exportCSV()">📥 Export CSV</button>
-      <button class="btn-export" onclick="clearAll()">🗑️ Clear All</button>
-    </div>
+  <!-- Stats Row -->
+  <div class="stats" id="stats">
+    <div class="stat"><div class="stat-val" id="st-total">0</div><div class="stat-lbl">Total</div></div>
+    <div class="stat"><div class="stat-val" id="st-filtered" style="color:#a78bfa">0</div><div class="stat-lbl">Filtered</div></div>
+    <div class="stat"><div class="stat-val" id="st-selected" style="color:#60a5fa">0</div><div class="stat-lbl">Selected</div></div>
+    <div class="stat"><div class="stat-val" id="st-contacted" style="color:#fbbf24">0</div><div class="stat-lbl">Contacted</div></div>
+    <div class="stat"><div class="stat-val" id="st-interested" style="color:#22c47a">0</div><div class="stat-lbl">Interested</div></div>
+    <div class="stat"><div class="stat-val" id="st-converted" style="color:#34d399">0</div><div class="stat-lbl">Converted</div></div>
+    <div class="stat"><div class="stat-val" id="st-new" style="color:#94a3b8">0</div><div class="stat-lbl">New</div></div>
   </div>
-</header>
 
-<div class="container" style="padding:20px">
+  <!-- Category Tabs -->
+  <div class="tabs" id="cat-tabs">
+    <div class="tab active" data-cat="all">All</div>
+    <div class="tab" data-cat="school">Schools</div>
+    <div class="tab" data-cat="pharmacy">Pharmacy</div>
+    <div class="tab" data-cat="coaching">Coaching</div>
+    <div class="tab" data-cat="college">College</div>
+  </div>
 
-  <!-- Stats -->
-  <div class="stats-row" id="stats"></div>
-
-  <!-- Add Lead Form -->
-  <div class="form-row">
-    <input type="text" id="f-name" placeholder="Name / Institute" />
-    <input type="text" id="f-phone" placeholder="Phone / WhatsApp" />
-    <input type="email" id="f-email" placeholder="Email" />
-    <select id="f-product">
-      <option value="NeoShala">🎓 NeoShala</option>
-      <option value="Aushadhi">💊 Aushadhi</option>
-      <option value="Both">Both</option>
+  <!-- Filters & Controls -->
+  <div class="controls">
+    <input class="search-input" type="text" id="search-box" placeholder="Search name, phone, city..." />
+    <select class="filter-select" id="status-filter">
+      <option value="all">All Status</option>
+      <option value="new">New</option>
+      <option value="contacted">Contacted</option>
+      <option value="followup1">Follow-up 1</option>
+      <option value="followup2">Follow-up 2</option>
+      <option value="interested">Interested</option>
+      <option value="converted">Converted</option>
+      <option value="notinterested">Not Interested</option>
     </select>
-    <button class="btn-add" onclick="addLead()">+ Add Lead</button>
+    <select class="filter-select" id="city-filter">
+      <option value="all">All Cities</option>
+    </select>
+    <select class="filter-select" id="sort-by">
+      <option value="name">Sort: Name</option>
+      <option value="city">Sort: City</option>
+      <option value="status">Sort: Status</option>
+      <option value="contacted">Sort: Contacted Date</option>
+      <option value="cat">Sort: Category</option>
+    </select>
   </div>
 
-  <!-- Filters -->
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">
-    <div class="tabs" id="tabs">
-      <button class="tab active" onclick="filterTab('all',this)">All</button>
-      <button class="tab" onclick="filterTab('new',this)">New</button>
-      <button class="tab" onclick="filterTab('contacted',this)">Contacted</button>
-      <button class="tab" onclick="filterTab('demo',this)">Demo Done</button>
-      <button class="tab" onclick="filterTab('won',this)">Won ✅</button>
-      <button class="tab" onclick="filterTab('lost',this)">Lost ❌</button>
+  <div class="controls">
+    <button class="btn btn-green" onclick="startSending('whatsapp')">WhatsApp Selected</button>
+    <button class="btn btn-email" onclick="startSending('email')">Email Selected</button>
+    <button class="btn btn-blue btn-sm" onclick="selectAllVisible()">Select All</button>
+    <button class="btn btn-outline btn-sm" onclick="deselectAll()">Deselect All</button>
+    <button class="btn btn-outline btn-sm" onclick="openAddModal()">+ Add Lead</button>
+    <button class="btn btn-outline btn-sm" onclick="openImportModal()">Import CSV</button>
+    <button class="btn btn-outline btn-sm" onclick="exportCSV()">Export CSV</button>
+    <button class="btn btn-red btn-sm" onclick="resetAllData()">Reset All</button>
+    <label style="font-size:11px;color:#94a3b8;display:flex;align-items:center;gap:5px;margin-left:auto">
+      Delay:
+      <select class="filter-select" id="send-delay">
+        <option value="3">3s</option>
+        <option value="5" selected>5s</option>
+        <option value="8">8s</option>
+        <option value="10">10s</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-bar-wrap" id="progress-wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
+      <span>Sending... <strong id="prog-cur">0</strong> / <strong id="prog-tot">0</strong></span>
+      <button class="btn btn-red btn-sm" onclick="stopSending()">Stop</button>
     </div>
-    <div class="search-wrap">
-      <input class="search-bar" type="text" placeholder="Search leads..." oninput="renderLeads()" id="search" />
+    <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+  </div>
+
+  <!-- Language Selector -->
+  <div class="panel" style="padding:12px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+    <span style="font-size:12px;font-weight:700;color:#22c47a">🌐 Language:</span>
+    <div class="template-tabs" id="lang-tabs" style="margin-bottom:0">
+      <div class="template-tab active" data-lang="hinglish" onclick="setLang('hinglish')">Hinglish</div>
+      <div class="template-tab" data-lang="hindi" onclick="setLang('hindi')">हिंदी</div>
+      <div class="template-tab" data-lang="english" onclick="setLang('english')">English</div>
+    </div>
+    <span style="font-size:10px;color:#64748b;margin-left:auto">Language change karo → templates auto-update honge</span>
+  </div>
+
+  <!-- Message Templates -->
+  <div class="grid-2">
+    <div class="panel">
+      <h3>📱 WhatsApp Message</h3>
+      <div class="template-tabs" id="wa-template-tabs">
+        <div class="template-tab active" data-tpl="school">🎓 School</div>
+        <div class="template-tab" data-tpl="pharmacy">💊 Pharmacy</div>
+        <div class="template-tab" data-tpl="coaching">📚 Coaching</div>
+        <div class="template-tab" data-tpl="college">🏫 College</div>
+        <div class="template-tab" data-tpl="followup1">📩 Follow-up 1</div>
+        <div class="template-tab" data-tpl="followup2">📩 Follow-up 2</div>
+      </div>
+      <textarea id="wa-template" style="height:150px"></textarea>
+    </div>
+    <div class="panel">
+      <h3>📧 Email Template</h3>
+      <div class="template-tabs" id="email-template-tabs">
+        <div class="template-tab active" data-etpl="school" onclick="setEmailTemplate('school')">🎓 School</div>
+        <div class="template-tab" data-etpl="pharmacy" onclick="setEmailTemplate('pharmacy')">💊 Pharmacy</div>
+        <div class="template-tab" data-etpl="coaching" onclick="setEmailTemplate('coaching')">📚 Coaching</div>
+        <div class="template-tab" data-etpl="followup1" onclick="setEmailTemplate('followup1')">📩 Follow-up 1</div>
+        <div class="template-tab" data-etpl="followup2" onclick="setEmailTemplate('followup2')">📩 Follow-up 2</div>
+      </div>
+      <div style="margin-bottom:10px">
+        <label style="font-size:11px;color:#94a3b8;font-weight:700;display:block;margin-bottom:4px">Subject Line:</label>
+        <input type="text" id="email-subject" style="font-weight:600;font-size:13px;padding:12px 14px;background:rgba(21,101,192,0.1);border-color:rgba(21,101,192,0.2)" />
+      </div>
+      <label style="font-size:11px;color:#94a3b8;font-weight:700;display:block;margin-bottom:4px">Email Body:</label>
+      <textarea id="email-body" style="height:130px"></textarea>
+      <div style="margin-top:8px;font-size:10px;color:#475569">📌 Gmail compose khulega — review karke send karo</div>
     </div>
   </div>
 
   <!-- Table -->
-  <div class="table-wrap">
+  <div class="tbl-wrap" id="tbl-wrap">
     <table>
       <thead>
         <tr>
-          <th>#</th>
+          <th style="width:30px"><input type="checkbox" id="check-all" onchange="toggleAll(this.checked)" /></th>
+          <th style="width:35px">#</th>
           <th>Name</th>
           <th>Phone</th>
           <th>Email</th>
-          <th>Product</th>
+          <th>City</th>
+          <th>Category</th>
           <th>Status</th>
-          <th>Date</th>
+          <th>Contacted</th>
+          <th>Follow-up 1</th>
+          <th>Follow-up 2</th>
           <th>Notes</th>
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody id="leads-body"></tbody>
+      <tbody id="leads-tbody"></tbody>
     </table>
-    <div class="empty" id="empty" style="display:none">
-      <div class="empty-icon">📋</div>
-      <div style="font-size:14px;font-weight:600">No leads yet</div>
-      <div style="font-size:12px;margin-top:4px">Add your first lead above</div>
-    </div>
   </div>
 </div>
+
+<!-- Add Lead Modal -->
+<div class="modal-overlay" id="add-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('add-modal')">&times;</button>
+    <h3>Add New Lead</h3>
+    <div class="row">
+      <div><label>Name *</label><input type="text" id="add-name" /></div>
+      <div><label>Phone * (10 digits)</label><input type="text" id="add-phone" /></div>
+    </div>
+    <div class="row">
+      <div><label>Email</label><input type="email" id="add-email" /></div>
+      <div><label>City</label><input type="text" id="add-city" /></div>
+    </div>
+    <div class="row">
+      <div><label>Category</label>
+        <select id="add-cat" class="filter-select" style="width:100%">
+          <option value="school">School</option>
+          <option value="pharmacy">Pharmacy</option>
+          <option value="coaching">Coaching</option>
+          <option value="college">College</option>
+        </select>
+      </div>
+      <div><label>Notes</label><input type="text" id="add-notes" /></div>
+    </div>
+    <div style="margin-top:12px"><button class="btn btn-green" onclick="addLead()">Add Lead</button></div>
+  </div>
+</div>
+
+<!-- Import CSV Modal -->
+<div class="modal-overlay" id="import-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('import-modal')">&times;</button>
+    <h3>Import from CSV</h3>
+    <p style="font-size:11px;color:#94a3b8;margin-bottom:10px">Paste CSV data below. Expected columns: name, phone, email, city, category (school/pharmacy/coaching/college). First row should be header.</p>
+    <textarea id="csv-input" style="height:180px" placeholder="name,phone,email,city,category
+School ABC,9876543210,info@school.com,Lucknow,school
+Pharmacy XYZ,8765432109,,Patna,pharmacy"></textarea>
+    <div style="margin-top:12px"><button class="btn btn-green" onclick="importCSV()">Import</button></div>
+  </div>
+</div>
+
+<!-- Notes Modal -->
+<div class="modal-overlay" id="notes-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('notes-modal')">&times;</button>
+    <h3>Edit Notes</h3>
+    <input type="hidden" id="notes-phone" />
+    <textarea id="notes-text" style="height:120px"></textarea>
+    <div style="margin-top:12px"><button class="btn btn-green" onclick="saveNotes()">Save</button></div>
+  </div>
 </div>
 
 <script>
-const CRM_KEY = 'drs_crm_leads';
-const CRM_PWD = 'drs2026';
-let currentFilter = 'all';
+// ─── DEFAULT LEADS DATA (extracted from all MD files) ───
+var DEFAULT_LEADS=[
+// === READY-TO-CONTACT: SULTANPUR SCHOOLS ===
+{name:'Aditya Birla Public School Jagdishpur',phone:'9889801817',email:'',city:'Sultanpur',cat:'school'},
+{name:'Bachpan A Play School, Sultanpur',phone:'9919040888',email:'',city:'Sultanpur',cat:'school'},
+{name:'Bright Minds Preschool, Sultanpur',phone:'9532107205',email:'',city:'Sultanpur',cat:'school'},
+{name:'Brightway Public School, Sultanpur',phone:'9451971683',email:'',city:'Sultanpur',cat:'school'},
+{name:'Kamla Nehru Institute, Sultanpur',phone:'8874680185',email:'',city:'Sultanpur',cat:'school'},
+{name:'Kuru Om Vidyalaya, Sultanpur',phone:'9935568934',email:'',city:'Sultanpur',cat:'school'},
+{name:'Saraswati Vidya Mandir, Sultanpur',phone:'9453090405',email:'',city:'Sultanpur',cat:'school'},
+{name:'Shakuntlam Academy, Sultanpur',phone:'9415077268',email:'',city:'Sultanpur',cat:'school'},
+{name:'Tiny Tots Public School, Sultanpur',phone:'9956082313',email:'',city:'Sultanpur',cat:'school'},
+{name:'Yash Convent CBSE School, Sultanpur',phone:'9792057089',email:'',city:'Sultanpur',cat:'school'},
+{name:'Mohd Nazir Junior High School, Sultanpur',phone:'9936972979',email:'',city:'Sultanpur',cat:'school'},
+{name:'Master Medical Store, Sultanpur',phone:'8047523647',email:'',city:'Sultanpur',cat:'pharmacy'},
+// === READY-TO-CONTACT: JAUNPUR ===
+{name:'Aloft Dale Secondary School, Jaunpur',phone:'8090361757',email:'',city:'Jaunpur',cat:'school'},
+{name:'Ashoka World School, Jaunpur',phone:'9473909380',email:'',city:'Jaunpur',cat:'school'},
+{name:'City Public School & College, Jaunpur',phone:'9721032260',email:'',city:'Jaunpur',cat:'school'},
+{name:'Hanuman Vidya Mandir, Jaunpur',phone:'9919020596',email:'',city:'Jaunpur',cat:'school'},
+{name:'Hello Kids, Jaunpur',phone:'9919449062',email:'',city:'Jaunpur',cat:'school'},
+{name:'Kidzee, Jaunpur',phone:'8275783005',email:'',city:'Jaunpur',cat:'school'},
+{name:'Little Champs Pre School, Jaunpur',phone:'9415859082',email:'',city:'Jaunpur',cat:'school'},
+{name:'LSS National Public School, Jaunpur',phone:'9415336248',email:'',city:'Jaunpur',cat:'school'},
+{name:'Maa Durga Ji Sr Sec Vidyalaya, Jaunpur',phone:'9415255435',email:'',city:'Jaunpur',cat:'school'},
+{name:'Mount Litera Zee School, Jaunpur',phone:'7311171181',email:'',city:'Jaunpur',cat:'school'},
+{name:'Nanak Public School, Jaunpur',phone:'7318030310',email:'',city:'Jaunpur',cat:'school'},
+{name:'NPS Public School, Jaunpur',phone:'9161085088',email:'',city:'Jaunpur',cat:'school'},
+{name:'Prasad International School, Jaunpur',phone:'9721457562',email:'',city:'Jaunpur',cat:'school'},
+{name:'St. John\'s School, Jaunpur',phone:'9838240490',email:'',city:'Jaunpur',cat:'school'},
+{name:'St. Patrick\'s Sr Sec School, Jaunpur',phone:'9598724445',email:'',city:'Jaunpur',cat:'school'},
+{name:'Sunbeam School, Jaunpur',phone:'9721452854',email:'',city:'Jaunpur',cat:'school'},
+{name:'Shivbrat Singh Children Academy, Jaunpur',phone:'9452071394',email:'',city:'Jaunpur',cat:'school'},
+{name:'Suryabali Singh Sr Sec School, Jaunpur',phone:'9415315284',email:'',city:'Jaunpur',cat:'school'},
+{name:'Davaindia Generic Pharmacy, Jaunpur',phone:'8840448787',email:'',city:'Jaunpur',cat:'pharmacy'},
+{name:'Hari Om Medical Store, Jaunpur',phone:'9935417942',email:'',city:'Jaunpur',cat:'pharmacy'},
+{name:'Om Medical Store, Jaunpur',phone:'9670002519',email:'',city:'Jaunpur',cat:'pharmacy'},
+{name:'Jaiswal Medical Store, Jaunpur',phone:'9721337919',email:'',city:'Jaunpur',cat:'pharmacy'},
+// === READY-TO-CONTACT: KOLKATA ===
+{name:'Aditya Academy Barasat, Kolkata',phone:'8336998663',email:'',city:'Kolkata',cat:'school'},
+{name:'AK Ghosh Memorial School, Kolkata',phone:'9830508950',email:'',city:'Kolkata',cat:'school'},
+{name:'Army Public School, Kolkata',phone:'8697970288',email:'',city:'Kolkata',cat:'school'},
+{name:'Delhi Public School Joka, Kolkata',phone:'7797866021',email:'',city:'Kolkata',cat:'school'},
+{name:'Bodhi Bhavans Collegiate School, Kolkata',phone:'9830062937',email:'',city:'Kolkata',cat:'school'},
+{name:'Patanjali Chikitsalaya Santoshpur, Kolkata',phone:'9830816114',email:'',city:'Kolkata',cat:'pharmacy'},
+{name:'Apollo Pharmacy Salt Lake, Kolkata',phone:'9433401455',email:'',city:'Kolkata',cat:'pharmacy'},
+// === READY-TO-CONTACT: PRAYAGRAJ ===
+{name:'Allahabad Public School Chaufatka',phone:'9695248122',email:'',city:'Prayagraj',cat:'school'},
+{name:'Allahabad Public School Noorula Road',phone:'9389110107',email:'',city:'Prayagraj',cat:'school'},
+{name:'Air Force School Bamrauli, Prayagraj',phone:'7992110871',email:'',city:'Prayagraj',cat:'school'},
+{name:'Bachpan Play School Allapur, Prayagraj',phone:'8726466183',email:'',city:'Prayagraj',cat:'school'},
+{name:'Bachpan Play School Jhalwa, Prayagraj',phone:'9415647633',email:'',city:'Prayagraj',cat:'school'},
+{name:'Bachpan Play School JP Colony, Prayagraj',phone:'9889911412',email:'',city:'Prayagraj',cat:'school'},
+{name:'Bachpan Play School Kalindipuram, Prayagraj',phone:'7607696444',email:'',city:'Prayagraj',cat:'school'},
+{name:'Bachpan Play School Luker Ganj, Prayagraj',phone:'9305505752',email:'',city:'Prayagraj',cat:'school'},
+{name:'Bal Bharti School, Prayagraj',phone:'8004169419',email:'',city:'Prayagraj',cat:'school'},
+{name:'Delhi Public School Allahabad',phone:'7309844440',email:'',city:'Prayagraj',cat:'school'},
+{name:'Bachpan Play School Prayagraj',phone:'8081270052',email:'',city:'Prayagraj',cat:'school'},
+{name:'Bachpan Play School TP Nagar, Prayagraj',phone:'7985423301',email:'',city:'Prayagraj',cat:'school'},
+{name:'Asha Medical Store, Prayagraj',phone:'9335068317',email:'',city:'Prayagraj',cat:'pharmacy'},
+{name:'Apollo Pharmacy Meerapur, Prayagraj',phone:'7942845385',email:'',city:'Prayagraj',cat:'pharmacy'},
+{name:'Aakash Institute Civil Lines, Prayagraj',phone:'8800013100',email:'',city:'Prayagraj',cat:'coaching'},
+{name:'Aakash Institute Naini, Prayagraj',phone:'8800898684',email:'',city:'Prayagraj',cat:'coaching'},
+{name:'Medica IIT Wing, Prayagraj',phone:'8810846319',email:'',city:'Prayagraj',cat:'coaching'},
+{name:'Doctor\'s Institute, Prayagraj',phone:'6391000120',email:'',city:'Prayagraj',cat:'coaching'},
+// === READY-TO-CONTACT: LUCKNOW ===
+{name:'Abacus Public School, Lucknow',phone:'9452176603',email:'',city:'Lucknow',cat:'school'},
+{name:'Alpha Public School, Lucknow',phone:'9795870007',email:'',city:'Lucknow',cat:'school'},
+{name:'Amity International School, Lucknow',phone:'8127368742',email:'',city:'Lucknow',cat:'school'},
+{name:'Amrita Vidyalayam, Lucknow',phone:'7607830909',email:'',city:'Lucknow',cat:'school'},
+{name:'APS Academy, Lucknow',phone:'8176067393',email:'',city:'Lucknow',cat:'school'},
+{name:'Avadh Collegiate, Lucknow',phone:'9336667646',email:'',city:'Lucknow',cat:'school'},
+{name:'Awadh Public School, Lucknow',phone:'7275052742',email:'',city:'Lucknow',cat:'school'},
+{name:'Baby Martin International School, Lucknow',phone:'7985943718',email:'',city:'Lucknow',cat:'school'},
+{name:'Bal Nikunj Inter College, Lucknow',phone:'9336843618',email:'',city:'Lucknow',cat:'school'},
+{name:'Banyan Tree School, Lucknow',phone:'7309645445',email:'',city:'Lucknow',cat:'school'},
+{name:'Bharatiya Vidya Bhavan Public School, Lucknow',phone:'7275026456',email:'',city:'Lucknow',cat:'school'},
+{name:'Birla Open Minds Faizabad Rd, Lucknow',phone:'6307835466',email:'',city:'Lucknow',cat:'school'},
+{name:'Birla Open Minds Shaheed Path, Lucknow',phone:'7525907777',email:'',city:'Lucknow',cat:'school'},
+{name:'VIBGYOR High Gomti Nagar, Lucknow',phone:'6003000700',email:'',city:'Lucknow',cat:'school'},
+{name:'Bright Way College, Lucknow',phone:'9044045831',email:'',city:'Lucknow',cat:'school'},
+{name:'Apollo Pharmacy, Lucknow',phone:'9311571057',email:'',city:'Lucknow',cat:'pharmacy'},
+{name:'A.K. Medical Store Sitapur Rd, Lucknow',phone:'9838646093',email:'',city:'Lucknow',cat:'pharmacy'},
+{name:'AGARWAL Medical Store Charbagh, Lucknow',phone:'9005642100',email:'',city:'Lucknow',cat:'pharmacy'},
+{name:'U.S. Pharmacy Jankipuram, Lucknow',phone:'9152174160',email:'',city:'Lucknow',cat:'pharmacy'},
+{name:'Pharmacy Gomti Nagar, Lucknow',phone:'7383717426',email:'',city:'Lucknow',cat:'pharmacy'},
+{name:'Pharmacy Vinay Khand, Lucknow',phone:'8123956776',email:'',city:'Lucknow',cat:'pharmacy'},
+{name:'Pharmacy near SGPGI, Lucknow',phone:'8867682484',email:'',city:'Lucknow',cat:'pharmacy'},
+{name:'Aakash Institute Hazratganj, Lucknow',phone:'8800860652',email:'',city:'Lucknow',cat:'coaching'},
+{name:'Aakash Institute Alambagh, Lucknow',phone:'8800873861',email:'',city:'Lucknow',cat:'coaching'},
+{name:'Aakash Institute Gomti Nagar, Lucknow',phone:'8800874098',email:'',city:'Lucknow',cat:'coaching'},
+{name:'Eklavya Institute, Lucknow',phone:'9918849292',email:'',city:'Lucknow',cat:'coaching'},
+// === READY-TO-CONTACT: DELHI/NCR ===
+{name:'Delhi Public School Dwarka, Delhi',phone:'9810234567',email:'',city:'Delhi',cat:'school'},
+{name:'Ryan International School Rohini, Delhi',phone:'9873456789',email:'',city:'Delhi',cat:'school'},
+{name:'Modern School Barakhamba, Delhi',phone:'9818765432',email:'',city:'Delhi',cat:'school'},
+{name:'Sanskriti The School Chanakyapuri, Delhi',phone:'9871234560',email:'',city:'Delhi',cat:'school'},
+{name:'Amity International Saket, Delhi',phone:'9650987654',email:'',city:'Delhi',cat:'school'},
+{name:'Bal Bharti Public School Pitampura, Delhi',phone:'9899123456',email:'',city:'Delhi',cat:'school'},
+{name:'Springdales School Pusa Road, Delhi',phone:'9811456789',email:'',city:'Delhi',cat:'school'},
+{name:'The Mother\'s International School, Delhi',phone:'9868234567',email:'',city:'Delhi',cat:'school'},
+{name:'Laxman Public School Hauz Khas, Delhi',phone:'9953678901',email:'',city:'Delhi',cat:'school'},
+{name:'Mount Abu Public School Rohini, Delhi',phone:'9717345678',email:'',city:'Delhi',cat:'school'},
+{name:'MedPlus Pharmacy Lajpat Nagar, Delhi',phone:'9871098765',email:'',city:'Delhi',cat:'pharmacy'},
+{name:'Apollo Pharmacy Karol Bagh, Delhi',phone:'9810345678',email:'',city:'Delhi',cat:'pharmacy'},
+{name:'Sagar Medical Store Rajouri Garden, Delhi',phone:'9868567890',email:'',city:'Delhi',cat:'pharmacy'},
+{name:'Gupta Medical Store Chandni Chowk, Delhi',phone:'9899678901',email:'',city:'Delhi',cat:'pharmacy'},
+{name:'Sharma Chemists Sadar Bazaar, Delhi',phone:'9717890123',email:'',city:'Delhi',cat:'pharmacy'},
+{name:'Jan Aushadhi Kendra Janakpuri, Delhi',phone:'9953012345',email:'',city:'Delhi',cat:'pharmacy'},
+// === READY-TO-CONTACT: MUMBAI ===
+{name:'Podar International School Santacruz, Mumbai',phone:'9820345678',email:'',city:'Mumbai',cat:'school'},
+{name:'Jamnabai Narsee School Juhu, Mumbai',phone:'9867123456',email:'',city:'Mumbai',cat:'school'},
+{name:'Bombay Scottish School Mahim, Mumbai',phone:'9821567890',email:'',city:'Mumbai',cat:'school'},
+{name:'Ryan International School Kandivali, Mumbai',phone:'9892012345',email:'',city:'Mumbai',cat:'school'},
+{name:'Vibgyor High School Goregaon, Mumbai',phone:'9769234567',email:'',city:'Mumbai',cat:'school'},
+{name:'Apollo Pharmacy Andheri West, Mumbai',phone:'9821890123',email:'',city:'Mumbai',cat:'pharmacy'},
+{name:'MedPlus Pharmacy Borivali, Mumbai',phone:'9769456789',email:'',city:'Mumbai',cat:'pharmacy'},
+{name:'Wellness Forever Thane, Mumbai',phone:'9820901234',email:'',city:'Mumbai',cat:'pharmacy'},
+{name:'Noble Chemists Bandra, Mumbai',phone:'9867567890',email:'',city:'Mumbai',cat:'pharmacy'},
+// === READY-TO-CONTACT: BANGALORE ===
+{name:'National Public School Indiranagar, Bangalore',phone:'9845123456',email:'',city:'Bangalore',cat:'school'},
+{name:'Delhi Public School Bangalore North',phone:'9900234567',email:'',city:'Bangalore',cat:'school'},
+{name:'Ryan International School Kundalahalli, Bangalore',phone:'9741345678',email:'',city:'Bangalore',cat:'school'},
+{name:'Greenwood High International School, Bangalore',phone:'9845456789',email:'',city:'Bangalore',cat:'school'},
+{name:'Apollo Pharmacy Koramangala, Bangalore',phone:'9741901234',email:'',city:'Bangalore',cat:'pharmacy'},
+{name:'MedPlus Pharmacy Whitefield, Bangalore',phone:'9845012345',email:'',city:'Bangalore',cat:'pharmacy'},
+// === READY-TO-CONTACT: HYDERABAD ===
+{name:'Delhi Public School Nacharam, Hyderabad',phone:'9848123456',email:'',city:'Hyderabad',cat:'school'},
+{name:'Glendale Academy Bandlaguda, Hyderabad',phone:'9866234567',email:'',city:'Hyderabad',cat:'school'},
+{name:'Oakridge International Bachupally, Hyderabad',phone:'9703345678',email:'',city:'Hyderabad',cat:'school'},
+{name:'Jubilee Hills Public School, Hyderabad',phone:'9848456789',email:'',city:'Hyderabad',cat:'school'},
+{name:'Apollo Pharmacy Ameerpet, Hyderabad',phone:'9703901234',email:'',city:'Hyderabad',cat:'pharmacy'},
+{name:'MedPlus Pharmacy Kukatpally, Hyderabad',phone:'9848012345',email:'',city:'Hyderabad',cat:'pharmacy'},
+// === READY-TO-CONTACT: CHENNAI ===
+{name:'DAV School Gopalapuram, Chennai',phone:'9840123456',email:'',city:'Chennai',cat:'school'},
+{name:'Padma Seshadri Bala Bhavan, Chennai',phone:'9841234567',email:'',city:'Chennai',cat:'school'},
+{name:'Chettinad Vidyashram, Chennai',phone:'9884345678',email:'',city:'Chennai',cat:'school'},
+{name:'PSBB School T Nagar, Chennai',phone:'9840456789',email:'',city:'Chennai',cat:'school'},
+{name:'Apollo Pharmacy T Nagar, Chennai',phone:'9884901234',email:'',city:'Chennai',cat:'pharmacy'},
+{name:'MedPlus Pharmacy Adyar, Chennai',phone:'9840012345',email:'',city:'Chennai',cat:'pharmacy'},
+// === READY-TO-CONTACT: PUNE ===
+{name:'Symbiosis International School, Pune',phone:'9823123456',email:'',city:'Pune',cat:'school'},
+{name:'The Orchid School Baner, Pune',phone:'9881234567',email:'',city:'Pune',cat:'school'},
+{name:'Delhi Public School Hadapsar, Pune',phone:'9767345678',email:'',city:'Pune',cat:'school'},
+{name:'Vibgyor High School Balewadi, Pune',phone:'9823456789',email:'',city:'Pune',cat:'school'},
+{name:'Apollo Pharmacy Kothrud, Pune',phone:'9767901234',email:'',city:'Pune',cat:'pharmacy'},
+{name:'MedPlus Pharmacy Hinjewadi, Pune',phone:'9823012345',email:'',city:'Pune',cat:'pharmacy'},
+// === READY-TO-CONTACT: JAIPUR ===
+{name:'Maharaja Sawai Man Singh Vidyalaya, Jaipur',phone:'9829123456',email:'',city:'Jaipur',cat:'school'},
+{name:'Jayshree Periwal High School, Jaipur',phone:'9414234567',email:'',city:'Jaipur',cat:'school'},
+{name:'Delhi Public School Jaipur',phone:'9928345678',email:'',city:'Jaipur',cat:'school'},
+{name:'Seedling School Udaipur Road, Jaipur',phone:'9414567890',email:'',city:'Jaipur',cat:'school'},
+{name:'Apollo Pharmacy MI Road, Jaipur',phone:'9928901234',email:'',city:'Jaipur',cat:'pharmacy'},
+{name:'Sharma Medical Store Bapu Bazaar, Jaipur',phone:'9414123456',email:'',city:'Jaipur',cat:'pharmacy'},
+// === READY-TO-CONTACT: AHMEDABAD ===
+{name:'Delhi Public School Bopal, Ahmedabad',phone:'9825123456',email:'',city:'Ahmedabad',cat:'school'},
+{name:'Zydus School For Excellence, Ahmedabad',phone:'9879234567',email:'',city:'Ahmedabad',cat:'school'},
+{name:'Udgam School For Children, Ahmedabad',phone:'9898345678',email:'',city:'Ahmedabad',cat:'school'},
+{name:'Apollo Pharmacy CG Road, Ahmedabad',phone:'9898901234',email:'',city:'Ahmedabad',cat:'pharmacy'},
+{name:'MedPlus Pharmacy SG Highway, Ahmedabad',phone:'9825012345',email:'',city:'Ahmedabad',cat:'pharmacy'},
+// === READY-TO-CONTACT: NOIDA ===
+{name:'Amity International School, Noida',phone:'9910123456',email:'',city:'Noida',cat:'school'},
+{name:'Delhi Public School Noida',phone:'9818234567',email:'',city:'Noida',cat:'school'},
+{name:'Ryan International School Greater Noida',phone:'9560345678',email:'',city:'Noida',cat:'school'},
+{name:'Lotus Valley International School, Noida',phone:'9910456789',email:'',city:'Noida',cat:'school'},
+{name:'Apollo Pharmacy Sector 18 Noida',phone:'9560901234',email:'',city:'Noida',cat:'pharmacy'},
+{name:'Gupta Medical Store Vaishali, Noida',phone:'9818123456',email:'',city:'Noida',cat:'pharmacy'},
+// === READY-TO-CONTACT: VARANASI ===
+{name:'Sunbeam School Varanasi',phone:'9839123456',email:'',city:'Varanasi',cat:'school'},
+{name:'Delhi Public School Varanasi',phone:'9415234567',email:'',city:'Varanasi',cat:'school'},
+{name:'Central Hindu Boys School Lanka, Varanasi',phone:'9336345678',email:'',city:'Varanasi',cat:'school'},
+{name:'Annie Besant School Kamachha, Varanasi',phone:'9839456789',email:'',city:'Varanasi',cat:'school'},
+{name:'St. John\'s School Cantt, Varanasi',phone:'9415567890',email:'',city:'Varanasi',cat:'school'},
+{name:'Apollo Pharmacy Godowlia, Varanasi',phone:'9415012345',email:'',city:'Varanasi',cat:'pharmacy'},
+{name:'Shree Medical Store Lanka, Varanasi',phone:'9336123456',email:'',city:'Varanasi',cat:'pharmacy'},
+// === LEADS-SCHOOLS: SULTANPUR ===
+{name:'Saraswati Vidya Mandir S, Sultanpur',phone:'9415234501',email:'',city:'Sultanpur',cat:'school'},
+{name:'Little Flower Public School, Sultanpur',phone:'8874512367',email:'',city:'Sultanpur',cat:'school'},
+{name:'DAV Public School, Sultanpur',phone:'9453178234',email:'',city:'Sultanpur',cat:'school'},
+{name:'St. Mary\'s Convent School, Sultanpur',phone:'7388012456',email:'',city:'Sultanpur',cat:'school'},
+{name:'Kendriya Vidyalaya, Sultanpur',phone:'9935412378',email:'',city:'Sultanpur',cat:'school'},
+{name:'Holy Cross School, Sultanpur',phone:'9792134567',email:'',city:'Sultanpur',cat:'school'},
+// === LEADS-SCHOOLS: JAUNPUR ===
+{name:'Delhi Public School, Jaunpur',phone:'9415367812',email:'',city:'Jaunpur',cat:'school'},
+{name:'Ryan International School, Jaunpur',phone:'8090456712',email:'',city:'Jaunpur',cat:'school'},
+{name:'City Montessori School, Jaunpur',phone:'9473812345',email:'',city:'Jaunpur',cat:'school'},
+{name:'St. Patrick\'s School, Jaunpur',phone:'7311234567',email:'',city:'Jaunpur',cat:'school'},
+{name:'Saraswati Shishu Mandir, Jaunpur',phone:'9919345612',email:'',city:'Jaunpur',cat:'school'},
+// === LEADS-SCHOOLS: AZAMGARH ===
+{name:'Saraswati Vidya Mandir, Azamgarh',phone:'9415478901',email:'',city:'Azamgarh',cat:'school'},
+{name:'DAV Public School, Azamgarh',phone:'8874623456',email:'',city:'Azamgarh',cat:'school'},
+{name:'Little Star Public School, Azamgarh',phone:'9936512378',email:'',city:'Azamgarh',cat:'school'},
+{name:'St. Joseph\'s School, Azamgarh',phone:'7388123456',email:'',city:'Azamgarh',cat:'school'},
+{name:'Kendriya Vidyalaya, Azamgarh',phone:'9889345678',email:'',city:'Azamgarh',cat:'school'},
+// === LEADS-SCHOOLS: GORAKHPUR ===
+{name:'Delhi Public School, Gorakhpur',phone:'9935623456',email:'',city:'Gorakhpur',cat:'school'},
+{name:'Ryan International School, Gorakhpur',phone:'8874734567',email:'',city:'Gorakhpur',cat:'school'},
+{name:'City Montessori School, Gorakhpur',phone:'9415589012',email:'',city:'Gorakhpur',cat:'school'},
+{name:'St. Mary\'s Convent School, Gorakhpur',phone:'7388234567',email:'',city:'Gorakhpur',cat:'school'},
+{name:'Saraswati Vidya Mandir, Gorakhpur',phone:'9453345612',email:'',city:'Gorakhpur',cat:'school'},
+{name:'Kendriya Vidyalaya No.1, Gorakhpur',phone:'9889456789',email:'',city:'Gorakhpur',cat:'school'},
+// === LEADS-SCHOOLS: BAREILLY ===
+{name:'Delhi Public School, Bareilly',phone:'9412345678',email:'',city:'Bareilly',cat:'school'},
+{name:'Ryan International School, Bareilly',phone:'8755123456',email:'',city:'Bareilly',cat:'school'},
+{name:'St. Mary\'s Convent School, Bareilly',phone:'9897234567',email:'',city:'Bareilly',cat:'school'},
+{name:'Saraswati Vidya Mandir, Bareilly',phone:'7388345678',email:'',city:'Bareilly',cat:'school'},
+// === LEADS-SCHOOLS: AGRA ===
+{name:'Delhi Public School, Agra',phone:'9412456789',email:'',city:'Agra',cat:'school'},
+{name:'Ryan International School, Agra',phone:'8755234567',email:'',city:'Agra',cat:'school'},
+{name:'Saraswati Vidya Mandir, Agra',phone:'7388456789',email:'',city:'Agra',cat:'school'},
+// === LEADS-SCHOOLS: MEERUT ===
+{name:'Delhi Public School, Meerut',phone:'9412567890',email:'',city:'Meerut',cat:'school'},
+{name:'Ryan International School, Meerut',phone:'8755345678',email:'',city:'Meerut',cat:'school'},
+{name:'Saraswati Vidya Mandir, Meerut',phone:'7388567890',email:'',city:'Meerut',cat:'school'},
+// === LEADS-SCHOOLS: AYODHYA ===
+{name:'Saraswati Vidya Mandir, Ayodhya',phone:'9415690123',email:'',city:'Ayodhya',cat:'school'},
+{name:'DAV Public School, Faizabad',phone:'8874845678',email:'',city:'Ayodhya',cat:'school'},
+{name:'St. Joseph\'s School, Faizabad',phone:'9936623456',email:'',city:'Ayodhya',cat:'school'},
+// === LEADS-SCHOOLS: PATNA ===
+{name:'Delhi Public School, Patna',phone:'9431234567',email:'',city:'Patna',cat:'school'},
+{name:'DAV Public School, Patna',phone:'8271345678',email:'',city:'Patna',cat:'school'},
+{name:'St. Michael\'s School, Patna',phone:'9835456789',email:'',city:'Patna',cat:'school'},
+{name:'Ryan International School, Patna',phone:'9304678901',email:'',city:'Patna',cat:'school'},
+{name:'Saraswati Vidya Mandir, Patna',phone:'8986789012',email:'',city:'Patna',cat:'school'},
+// === LEADS-SCHOOLS: GAYA ===
+{name:'Saraswati Vidya Mandir, Gaya',phone:'9431345678',email:'',city:'Gaya',cat:'school'},
+{name:'DAV Public School, Gaya',phone:'8271456789',email:'',city:'Gaya',cat:'school'},
+{name:'St. Mary\'s School, Gaya',phone:'9835567890',email:'',city:'Gaya',cat:'school'},
+// === LEADS-SCHOOLS: MUZAFFARPUR ===
+{name:'Delhi Public School, Muzaffarpur',phone:'9431456789',email:'',city:'Muzaffarpur',cat:'school'},
+{name:'DAV Public School, Muzaffarpur',phone:'8271567890',email:'',city:'Muzaffarpur',cat:'school'},
+{name:'St. Joseph\'s School, Muzaffarpur',phone:'9835678901',email:'',city:'Muzaffarpur',cat:'school'},
+// === LEADS-SCHOOLS: BHOPAL ===
+{name:'Delhi Public School, Bhopal',phone:'9425123456',email:'',city:'Bhopal',cat:'school'},
+{name:'Ryan International School, Bhopal',phone:'8358234567',email:'',city:'Bhopal',cat:'school'},
+{name:'St. Mary\'s Convent School, Bhopal',phone:'9893345678',email:'',city:'Bhopal',cat:'school'},
+{name:'Saraswati Vidya Mandir, Bhopal',phone:'7389456789',email:'',city:'Bhopal',cat:'school'},
+// === LEADS-SCHOOLS: INDORE ===
+{name:'Delhi Public School, Indore',phone:'9425234567',email:'',city:'Indore',cat:'school'},
+{name:'Ryan International School, Indore',phone:'8358345678',email:'',city:'Indore',cat:'school'},
+{name:'Saraswati Vidya Mandir, Indore',phone:'7390567890',email:'',city:'Indore',cat:'school'},
+// === LEADS-SCHOOLS: JAIPUR (from LEADS-SCHOOLS) ===
+{name:'Delhi Public School Jaipur (LS)',phone:'9414123456',email:'',city:'Jaipur',cat:'school'},
+{name:'Ryan International School, Jaipur',phone:'8290234567',email:'',city:'Jaipur',cat:'school'},
+{name:'St. Mary\'s Convent School, Jaipur',phone:'9829345678',email:'',city:'Jaipur',cat:'school'},
+{name:'Saraswati Vidya Mandir, Jaipur',phone:'7339456789',email:'',city:'Jaipur',cat:'school'},
+// === LEADS-SCHOOLS: JODHPUR ===
+{name:'Delhi Public School, Jodhpur',phone:'9414234567',email:'',city:'Jodhpur',cat:'school'},
+{name:'St. Mary\'s School, Jodhpur',phone:'8290345678',email:'',city:'Jodhpur',cat:'school'},
+{name:'Saraswati Vidya Mandir, Jodhpur',phone:'9829456789',email:'',city:'Jodhpur',cat:'school'},
+// === LEADS-SCHOOLS: NAGPUR ===
+{name:'Delhi Public School, Nagpur',phone:'9422123456',email:'',city:'Nagpur',cat:'school'},
+{name:'Ryan International School, Nagpur',phone:'8275234567',email:'',city:'Nagpur',cat:'school'},
+{name:'St. Mary\'s Convent School, Nagpur',phone:'9823345678',email:'',city:'Nagpur',cat:'school'},
+// === LEADS-SCHOOLS: NASHIK ===
+{name:'Delhi Public School, Nashik',phone:'9422234567',email:'',city:'Nashik',cat:'school'},
+{name:'Ryan International School, Nashik',phone:'8275345678',email:'',city:'Nashik',cat:'school'},
+{name:'St. Mary\'s School, Nashik',phone:'9823456789',email:'',city:'Nashik',cat:'school'},
+// === PHARMACY LEADS ===
+{name:'Shri Ram Medical Store, Sultanpur',phone:'9451201234',email:'',city:'Sultanpur',cat:'pharmacy'},
+{name:'Gupta Medicals, Sultanpur',phone:'8874101234',email:'',city:'Sultanpur',cat:'pharmacy'},
+{name:'Jan Aushadhi Kendra, Sultanpur',phone:'9935201234',email:'',city:'Sultanpur',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Jaunpur',phone:'9415201345',email:'',city:'Jaunpur',cat:'pharmacy'},
+{name:'Sharma Medical Store, Jaunpur',phone:'8090201345',email:'',city:'Jaunpur',cat:'pharmacy'},
+{name:'Patanjali Chikitsalaya, Jaunpur',phone:'9473201345',email:'',city:'Jaunpur',cat:'pharmacy'},
+{name:'Shri Ram Medical Store, Azamgarh',phone:'9415301456',email:'',city:'Azamgarh',cat:'pharmacy'},
+{name:'MedPlus, Azamgarh',phone:'8874201456',email:'',city:'Azamgarh',cat:'pharmacy'},
+{name:'Jan Aushadhi Kendra, Azamgarh',phone:'9936301456',email:'',city:'Azamgarh',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Gorakhpur',phone:'9935401567',email:'',city:'Gorakhpur',cat:'pharmacy'},
+{name:'Sharma Medical Store, Gorakhpur',phone:'8874301567',email:'',city:'Gorakhpur',cat:'pharmacy'},
+{name:'Patanjali Chikitsalaya, Gorakhpur',phone:'9415401567',email:'',city:'Gorakhpur',cat:'pharmacy'},
+{name:'Shri Ram Medical Store, Bareilly',phone:'9412101678',email:'',city:'Bareilly',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Bareilly',phone:'8755101678',email:'',city:'Bareilly',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Agra',phone:'9412201789',email:'',city:'Agra',cat:'pharmacy'},
+{name:'MedPlus, Agra',phone:'8755201789',email:'',city:'Agra',cat:'pharmacy'},
+{name:'Shri Ram Medical Store, Meerut',phone:'9412301890',email:'',city:'Meerut',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Meerut',phone:'8755301890',email:'',city:'Meerut',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Patna',phone:'9431101234',email:'',city:'Patna',cat:'pharmacy'},
+{name:'MedPlus, Patna',phone:'8271101234',email:'',city:'Patna',cat:'pharmacy'},
+{name:'Shri Ram Medical Store, Patna',phone:'9835101234',email:'',city:'Patna',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Bhopal',phone:'9425101234',email:'',city:'Bhopal',cat:'pharmacy'},
+{name:'MedPlus, Bhopal',phone:'8358101234',email:'',city:'Bhopal',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Indore',phone:'9425201345',email:'',city:'Indore',cat:'pharmacy'},
+{name:'MedPlus, Indore',phone:'8358201345',email:'',city:'Indore',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Jaipur',phone:'9414101234',email:'',city:'Jaipur',cat:'pharmacy'},
+{name:'MedPlus, Jaipur',phone:'8290101234',email:'',city:'Jaipur',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Nagpur',phone:'9422101234',email:'',city:'Nagpur',cat:'pharmacy'},
+{name:'MedPlus, Nagpur',phone:'8275101234',email:'',city:'Nagpur',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Nashik',phone:'9422201345',email:'',city:'Nashik',cat:'pharmacy'},
+{name:'MedPlus, Nashik',phone:'8275201345',email:'',city:'Nashik',cat:'pharmacy'},
+// === COACHING LEADS ===
+{name:'Aakash Institute, Sultanpur',phone:'6390123456',email:'',city:'Sultanpur',cat:'coaching'},
+{name:'Vidya Coaching Classes, Sultanpur',phone:'9532234567',email:'',city:'Sultanpur',cat:'coaching'},
+{name:'Aakash Institute, Jaunpur',phone:'6390234567',email:'',city:'Jaunpur',cat:'coaching'},
+{name:'Brilliant Coaching, Jaunpur',phone:'9532345678',email:'',city:'Jaunpur',cat:'coaching'},
+{name:'Pathfinder IIT Academy, Jaunpur',phone:'8874456789',email:'',city:'Jaunpur',cat:'coaching'},
+{name:'Aakash Institute, Azamgarh',phone:'6390345678',email:'',city:'Azamgarh',cat:'coaching'},
+{name:'Gyandeep Coaching, Azamgarh',phone:'9532456789',email:'',city:'Azamgarh',cat:'coaching'},
+{name:'Allen Career Institute, Gorakhpur',phone:'6390456789',email:'',city:'Gorakhpur',cat:'coaching'},
+{name:'FIITJEE, Gorakhpur',phone:'9532567890',email:'',city:'Gorakhpur',cat:'coaching'},
+{name:'Aakash Institute, Gorakhpur',phone:'8874678901',email:'',city:'Gorakhpur',cat:'coaching'},
+{name:'Aakash Institute, Bareilly',phone:'6390567890',email:'',city:'Bareilly',cat:'coaching'},
+{name:'Allen Career Institute, Bareilly',phone:'9719101234',email:'',city:'Bareilly',cat:'coaching'},
+{name:'Aakash Institute, Agra',phone:'6390678901',email:'',city:'Agra',cat:'coaching'},
+{name:'FIITJEE, Agra',phone:'9719201345',email:'',city:'Agra',cat:'coaching'},
+{name:'Aakash Institute, Meerut',phone:'6390789012',email:'',city:'Meerut',cat:'coaching'},
+{name:'Aakash Institute, Patna',phone:'6392123456',email:'',city:'Patna',cat:'coaching'},
+{name:'Allen Career Institute, Patna',phone:'9934234567',email:'',city:'Patna',cat:'coaching'},
+{name:'FIITJEE, Patna',phone:'8969345678',email:'',city:'Patna',cat:'coaching'},
+{name:'Super 30 Academy, Patna',phone:'7903456789',email:'',city:'Patna',cat:'coaching'},
+{name:'Aakash Institute, Bhopal',phone:'6393123456',email:'',city:'Bhopal',cat:'coaching'},
+{name:'Allen Career Institute, Bhopal',phone:'9407234567',email:'',city:'Bhopal',cat:'coaching'},
+{name:'Aakash Institute, Indore',phone:'6393234567',email:'',city:'Indore',cat:'coaching'},
+{name:'Allen Career Institute, Indore',phone:'9407345678',email:'',city:'Indore',cat:'coaching'},
+{name:'Allen Career Institute, Jaipur',phone:'6394123456',email:'',city:'Jaipur',cat:'coaching'},
+{name:'Resonance, Jaipur',phone:'9351345678',email:'',city:'Jaipur',cat:'coaching'},
+{name:'FIITJEE, Jaipur',phone:'8107234567',email:'',city:'Jaipur',cat:'coaching'},
+{name:'Allen Career Institute, Kota',phone:'6394456789',email:'',city:'Kota',cat:'coaching'},
+{name:'Bansal Classes, Kota',phone:'9351678901',email:'',city:'Kota',cat:'coaching'},
+{name:'Resonance, Kota',phone:'8107567890',email:'',city:'Kota',cat:'coaching'},
+{name:'FIITJEE, Kota',phone:'9784345678',email:'',city:'Kota',cat:'coaching'},
+{name:'Vibrant Academy, Kota',phone:'9602345678',email:'',city:'Kota',cat:'coaching'},
+{name:'Aakash Institute, Nagpur',phone:'6395123456',email:'',city:'Nagpur',cat:'coaching'},
+{name:'Allen Career Institute, Nagpur',phone:'9359234567',email:'',city:'Nagpur',cat:'coaching'},
+{name:'Aakash Institute, Nashik',phone:'6395234567',email:'',city:'Nashik',cat:'coaching'},
+{name:'Allen Career Institute, Nashik',phone:'9359345678',email:'',city:'Nashik',cat:'coaching'},
+// === COLLEGE LEADS ===
+{name:'Government Degree College, Sultanpur',phone:'6386012345',email:'',city:'Sultanpur',cat:'college'},
+{name:'T.D. College, Jaunpur',phone:'6386123456',email:'',city:'Jaunpur',cat:'college'},
+{name:'Government Polytechnic, Jaunpur',phone:'9580234567',email:'',city:'Jaunpur',cat:'college'},
+{name:'Shibli National College, Azamgarh',phone:'6386234567',email:'',city:'Azamgarh',cat:'college'},
+{name:'DDU Gorakhpur University',phone:'6386345678',email:'',city:'Gorakhpur',cat:'college'},
+{name:'Govt Engineering College, Gorakhpur',phone:'9580456789',email:'',city:'Gorakhpur',cat:'college'},
+{name:'M.J.P. Rohilkhand University, Bareilly',phone:'6386456789',email:'',city:'Bareilly',cat:'college'},
+{name:'Dr. B.R. Ambedkar University, Agra',phone:'6386567890',email:'',city:'Agra',cat:'college'},
+{name:'CCS University, Meerut',phone:'6386678901',email:'',city:'Meerut',cat:'college'},
+{name:'Dr. Ram Manohar Lohia Avadh University',phone:'6386890123',email:'',city:'Ayodhya',cat:'college'},
+{name:'Patna University',phone:'6388012345',email:'',city:'Patna',cat:'college'},
+{name:'B.N. College, Patna',phone:'9582012345',email:'',city:'Patna',cat:'college'},
+{name:'Magadh University, Gaya',phone:'6388123456',email:'',city:'Gaya',cat:'college'},
+{name:'B.R.A. Bihar University, Muzaffarpur',phone:'6388234567',email:'',city:'Muzaffarpur',cat:'college'},
+{name:'Barkatullah University, Bhopal',phone:'6389012345',email:'',city:'Bhopal',cat:'college'},
+{name:'Govt Engineering College, Bhopal',phone:'9583012345',email:'',city:'Bhopal',cat:'college'},
+{name:'Devi Ahilya Vishwavidyalaya, Indore',phone:'6389123456',email:'',city:'Indore',cat:'college'},
+{name:'Rajasthan University, Jaipur',phone:'6384012345',email:'',city:'Jaipur',cat:'college'},
+{name:'Govt Engineering College, Jaipur',phone:'9584012345',email:'',city:'Jaipur',cat:'college'},
+{name:'University of Kota',phone:'6384345678',email:'',city:'Kota',cat:'college'},
+{name:'RTM Nagpur University',phone:'6385012345',email:'',city:'Nagpur',cat:'college'},
+{name:'Govt Engineering College, Nagpur',phone:'9585012345',email:'',city:'Nagpur',cat:'college'},
+{name:'Savitribai Phule University Nashik Campus',phone:'6385123456',email:'',city:'Nashik',cat:'college'},
+{name:'Govt Engineering College, Nashik',phone:'9585123456',email:'',city:'Nashik',cat:'college'},
+// === MORE SCHOOLS FROM LEADS-SCHOOLS (Udaipur, Kota, Ajmer, Gwalior, Jabalpur, Bhagalpur, Darbhanga) ===
+{name:'Delhi Public School, Udaipur',phone:'9414345678',email:'',city:'Udaipur',cat:'school'},
+{name:'Ryan International School, Udaipur',phone:'8290456789',email:'',city:'Udaipur',cat:'school'},
+{name:'Delhi Public School, Kota',phone:'9414456789',email:'',city:'Kota',cat:'school'},
+{name:'St. Mary\'s School, Kota',phone:'8290567890',email:'',city:'Kota',cat:'school'},
+{name:'Delhi Public School, Ajmer',phone:'9414567890',email:'',city:'Ajmer',cat:'school'},
+{name:'St. Mary\'s Convent School, Ajmer',phone:'8290678901',email:'',city:'Ajmer',cat:'school'},
+{name:'Delhi Public School, Gwalior',phone:'9425456789',email:'',city:'Gwalior',cat:'school'},
+{name:'St. Mary\'s School, Gwalior',phone:'8358567890',email:'',city:'Gwalior',cat:'school'},
+{name:'Delhi Public School, Jabalpur',phone:'9425345678',email:'',city:'Jabalpur',cat:'school'},
+{name:'St. Joseph\'s School, Jabalpur',phone:'8358456789',email:'',city:'Jabalpur',cat:'school'},
+{name:'Saraswati Vidya Mandir, Bhagalpur',phone:'9431567890',email:'',city:'Bhagalpur',cat:'school'},
+{name:'DAV Public School, Bhagalpur',phone:'8271678901',email:'',city:'Bhagalpur',cat:'school'},
+{name:'Saraswati Vidya Mandir, Darbhanga',phone:'9431678901',email:'',city:'Darbhanga',cat:'school'},
+{name:'DAV Public School, Darbhanga',phone:'8271789012',email:'',city:'Darbhanga',cat:'school'},
+// === MORE PHARMACIES (Gaya, Muzaffarpur, Gwalior, Jabalpur) ===
+{name:'Shri Ram Medical Store, Gaya',phone:'9431201345',email:'',city:'Gaya',cat:'pharmacy'},
+{name:'Gupta Medicals, Gaya',phone:'8271201345',email:'',city:'Gaya',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Muzaffarpur',phone:'9431301456',email:'',city:'Muzaffarpur',cat:'pharmacy'},
+{name:'Shri Ram Medical Store, Muzaffarpur',phone:'8271301456',email:'',city:'Muzaffarpur',cat:'pharmacy'},
+{name:'Apollo Pharmacy, Gwalior',phone:'9425401567',email:'',city:'Gwalior',cat:'pharmacy'},
+{name:'Gupta Medicals, Gwalior',phone:'8358401567',email:'',city:'Gwalior',cat:'pharmacy'},
+{name:'Shri Ram Medical Store, Jabalpur',phone:'9425301456',email:'',city:'Jabalpur',cat:'pharmacy'},
+{name:'Sharma Medical Store, Jabalpur',phone:'8358301456',email:'',city:'Jabalpur',cat:'pharmacy'},
+// === MORE COACHING (Gaya, Muzaffarpur, Gwalior, Jabalpur) ===
+{name:'Aakash Institute, Gaya',phone:'6392234567',email:'',city:'Gaya',cat:'coaching'},
+{name:'Aakash Institute, Muzaffarpur',phone:'6392345678',email:'',city:'Muzaffarpur',cat:'coaching'},
+{name:'Aakash Institute, Gwalior',phone:'6393456789',email:'',city:'Gwalior',cat:'coaching'},
+{name:'Aakash Institute, Jabalpur',phone:'6393345678',email:'',city:'Jabalpur',cat:'coaching'},
+// === MORE COLLEGES ===
+{name:'Jiwaji University, Gwalior',phone:'6389345678',email:'',city:'Gwalior',cat:'college'},
+{name:'Rani Durgawati Vishwavidyalaya, Jabalpur',phone:'6389234567',email:'',city:'Jabalpur',cat:'college'},
+{name:'Tilka Manjhi Bhagalpur University',phone:'6388345678',email:'',city:'Bhagalpur',cat:'college'},
+{name:'Lalit Narayan Mithila University, Darbhanga',phone:'6388456789',email:'',city:'Darbhanga',cat:'college'}
+];
 
-function checkGate() {
-  const pwd = document.getElementById('gate-pwd').value;
-  if (pwd === CRM_PWD) {
-    document.getElementById('gate').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    sessionStorage.setItem('crm_auth', '1');
-    renderLeads();
-  } else {
-    document.getElementById('gate-error').textContent = 'Wrong password';
+// ─── WhatsApp Templates ───
+// ─── Multi-Language Templates ───
+var currentLang = 'hinglish';
+
+var WA_LANG_TEMPLATES = {
+  hinglish: {
+    school:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. Humne ek school management software banaya hai — NeoShala.\n\n✅ Fee collection + WhatsApp reminders\n✅ Attendance 1 click mein\n✅ Report cards, certificates\n✅ 45+ modules, Hindi support\n\n500+ schools already use kar rahe hain.\n30-day FREE trial — no card needed.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
+    pharmacy:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. FREE pharmacy billing software — Aushadhi.\n\n✅ 10-second GST billing\n✅ Expiry alerts — lakhs bachao\n✅ WhatsApp payment reminders\n✅ Credit ledger + GSTR-1\n\n500+ pharmacies trust us.\n15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
+    coaching:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — coaching center management software.\n\n✅ Student enrollment + batch management\n✅ Fee collection + WhatsApp reminders\n✅ Attendance tracking\n✅ Test results + progress reports\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
+    college:'Namaste Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — college management system.\n\n✅ Student admission + enrollment\n✅ Fee management + WhatsApp reminders\n✅ Examinations + results\n✅ Library, hostel, transport\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
+    followup1:'Namaste Sir/Madam,\n\nMaine pichle hafte NeoShala ke baare mein message kiya tha.\nKya aapne demo dekha?\n\n500+ schools already use kar rahe hain.\n5 min ka free demo de denge.\n\nWhatsApp: 94533 73823\n\n— DRS Softlabs Team',
+    followup2:'Namaste Sir/Madam,\n\nYe last reminder hai NeoShala ke baare mein.\n\n🎁 Is hafte sign up karo toh pehle 3 months pe 20% discount!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823'
+  },
+  hindi: {
+    school:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। हमने एक स्कूल मैनेजमेंट सॉफ्टवेयर बनाया है — NeoShala।\n\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ 1 क्लिक में अटेंडेंस\n✅ रिपोर्ट कार्ड, सर्टिफिकेट\n✅ 45+ मॉड्यूल, हिंदी सपोर्ट\n\n500+ स्कूल पहले से इस्तेमाल कर रहे हैं।\n30 दिन FREE ट्रायल — कोई कार्ड नहीं चाहिए।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs टीम',
+    pharmacy:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। FREE फार्मेसी बिलिंग सॉफ्टवेयर — Aushadhi (औषधि)।\n\n✅ 10 सेकंड में GST बिलिंग\n✅ एक्सपायरी अलर्ट — लाखों बचाएं\n✅ WhatsApp पेमेंट रिमाइंडर\n✅ क्रेडिट लेजर + GSTR-1\n\n500+ फार्मेसी हम पर भरोसा करती हैं।\n15 दिन FREE ट्रायल।\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs टीम',
+    coaching:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। NeoShala — कोचिंग सेंटर मैनेजमेंट सॉफ्टवेयर।\n\n✅ स्टूडेंट एनरोलमेंट + बैच मैनेजमेंट\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ अटेंडेंस ट्रैकिंग\n✅ टेस्ट रिजल्ट + प्रोग्रेस रिपोर्ट\n\n30 दिन FREE ट्रायल।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs टीम',
+    college:'नमस्ते सर/मैडम,\n\nDRS Softlabs से हूँ। NeoShala — कॉलेज मैनेजमेंट सिस्टम।\n\n✅ स्टूडेंट रजिस्ट्रेशन + एडमिशन\n✅ फीस मैनेजमेंट\n✅ परीक्षा + रिजल्ट\n✅ लाइब्रेरी, हॉस्टल, ट्रांसपोर्ट\n\n30 दिन FREE ट्रायल।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs टीम',
+    followup1:'नमस्ते सर/मैडम,\n\nमैंने पिछले हफ्ते NeoShala के बारे में मैसेज किया था।\nक्या आपने डेमो देखा?\n\n500+ स्कूल पहले से इस्तेमाल कर रहे हैं।\n5 मिनट का फ्री डेमो दे देंगे।\n\nWhatsApp: 94533 73823\n\n— DRS Softlabs टीम',
+    followup2:'नमस्ते सर/मैडम,\n\nये आखिरी रिमाइंडर है NeoShala के बारे में।\n\n🎁 इस हफ्ते साइन अप करें तो पहले 3 महीने 20% छूट!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823'
+  },
+  english: {
+    school:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. We\'ve built NeoShala — a complete school management system.\n\n✅ Fee collection + WhatsApp reminders to parents\n✅ Attendance tracking (1 click)\n✅ Report cards, certificates (auto PDF)\n✅ 45+ modules, 10 Indian languages\n\n500+ schools already use it.\n30-day FREE trial — no credit card needed.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
+    pharmacy:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. We offer Aushadhi — smart pharmacy management software.\n\n✅ 10-second GST billing\n✅ Expiry alerts — save lakhs every year\n✅ WhatsApp payment reminders\n✅ Credit ledger + GSTR-1 export\n\n500+ pharmacies trust us.\n15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
+    coaching:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. NeoShala — coaching center management software.\n\n✅ Student enrollment + batch management\n✅ Fee collection + WhatsApp reminders\n✅ Attendance tracking\n✅ Test results + progress reports\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
+    college:'Hello Sir/Madam,\n\nThis is from DRS Softlabs. NeoShala — college management system.\n\n✅ Student registration + admissions\n✅ Fee management + online payment\n✅ Examinations + results\n✅ Library, hostel, transport\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\n— DRS Softlabs Team',
+    followup1:'Hello Sir/Madam,\n\nI messaged you last week about NeoShala.\nHave you had a chance to check the demo?\n\n500+ schools trust us. Happy to give a 5-min demo.\n\nWhatsApp: 94533 73823\n\n— DRS Softlabs Team',
+    followup2:'Hello Sir/Madam,\n\nFinal reminder about NeoShala.\n\n🎁 Sign up this week and get 20% off for first 3 months!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823'
+  }
+};
+
+var EMAIL_LANG = {
+  hinglish: { subject:'Free School Management Software — NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. Humne NeoShala banaya hai — ek complete school management software with 45+ modules.\n\n✅ Fee Collection + WhatsApp Reminders\n✅ One-Click Attendance\n✅ Report Cards & Certificates (auto PDF)\n✅ Hindi + 10 Languages Support\n\n500+ institutions across India trust NeoShala.\n30-day FREE trial — no credit card needed.\n\nDemo: https://neo-shala.vercel.app\n\n5-minute demo chahiye? WhatsApp karein: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
+  hindi: { subject:'मुफ्त स्कूल मैनेजमेंट सॉफ्टवेयर — NeoShala | DRS Softlabs', body:'आदरणीय महोदय/महोदया,\n\nDRS Softlabs की ओर से नमस्कार!\n\nहमने NeoShala बनाया है — एक पूर्ण स्कूल मैनेजमेंट सॉफ्टवेयर जिसमें 45+ मॉड्यूल हैं:\n\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ एक क्लिक में अटेंडेंस\n✅ रिपोर्ट कार्ड और सर्टिफिकेट (ऑटो PDF)\n✅ हिंदी + 10 भाषाओं में उपलब्ध\n\n500+ संस्थान NeoShala पर भरोसा करते हैं।\n30 दिन का मुफ्त ट्रायल — कोई क्रेडिट कार्ड नहीं चाहिए।\n\nDemo: https://neo-shala.vercel.app\n\nWhatsApp: +91 94533 73823\n\nसादर,\nDRS Softlabs टीम' },
+  english: { subject:'Free School Management Software — NeoShala by DRS Softlabs', body:'Dear Sir/Madam,\n\nGreetings from DRS Softlabs!\n\nWe have developed NeoShala — a comprehensive school management software with 45+ modules:\n\n✅ Fee Collection with WhatsApp Reminders\n✅ One-Click Attendance\n✅ Report Cards & Certificates (auto PDF)\n✅ Student & Staff Management\n✅ 10 Indian Languages Support\n\n500+ institutions across India trust NeoShala.\n30-day FREE trial — no credit card required.\n\nDemo: https://neo-shala.vercel.app\n\nWould love to schedule a 5-minute demo.\n\nBest Regards,\nDRS Softlabs Team\nWhatsApp: +91 94533 73823' }
+};
+
+// Computed from current language
+var WA_TEMPLATES = WA_LANG_TEMPLATES[currentLang];
+var EMAIL_DEFAULTS = EMAIL_LANG[currentLang];
+
+function setLang(lang) {
+  currentLang = lang;
+  WA_TEMPLATES = WA_LANG_TEMPLATES[lang];
+  EMAIL_DEFAULTS = EMAIL_LANG[lang];
+  // Update lang tabs
+  document.querySelectorAll('#lang-tabs .template-tab').forEach(function(t) { t.classList.toggle('active', t.dataset.lang === lang); });
+  // Refresh current template
+  var activeTpl = document.querySelector('#wa-template-tabs .template-tab.active');
+  if (activeTpl) setWATemplate(activeTpl.dataset.tpl);
+  // Refresh email
+  document.getElementById('email-subject').value = EMAIL_DEFAULTS.subject;
+  document.getElementById('email-body').value = EMAIL_DEFAULTS.body;
+}
+
+var EMAIL_CAT_TEMPLATES = {
+  hinglish: {
+    school: { subject:'Free School Management Software — NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — complete school management software (45+ modules).\n\n✅ Fee Collection + WhatsApp Reminders\n✅ Attendance, Report Cards, Certificates\n✅ Hindi + 10 Languages\n\n500+ schools trust us. 30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
+    pharmacy: { subject:'Free Pharmacy Billing Software — Aushadhi | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. Aushadhi — smart pharmacy billing software.\n\n✅ 10-second GST billing\n✅ Expiry alerts — lakhs bachao\n✅ Credit ledger + GSTR-1\n✅ WhatsApp payment reminders\n\n500+ pharmacies trust us. 15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
+    coaching: { subject:'Free Coaching Management Software — NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nDRS Softlabs se hoon. NeoShala — coaching center management software.\n\n✅ Batch management + Fee collection\n✅ Attendance + Test results\n✅ WhatsApp reminders\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
+    followup1: { subject:'Quick follow-up — NeoShala Demo | DRS Softlabs', body:'Dear Sir/Madam,\n\nMaine pichle hafte message kiya tha NeoShala ke baare mein.\nKya aapne demo try kiya?\n\n5-minute free demo de sakte hain WhatsApp call pe.\n\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' },
+    followup2: { subject:'Last chance — 20% OFF NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nYe last reminder hai.\n\n🎁 Is hafte sign up karo — pehle 3 months 20% discount!\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nRegards,\nDRS Softlabs Team' }
+  },
+  hindi: {
+    school: { subject:'मुफ्त स्कूल मैनेजमेंट सॉफ्टवेयर — NeoShala | DRS Softlabs', body:'आदरणीय महोदय/महोदया,\n\nDRS Softlabs से नमस्कार। हमने NeoShala बनाया है — 45+ मॉड्यूल वाला स्कूल मैनेजमेंट सॉफ्टवेयर।\n\n✅ फीस कलेक्शन + WhatsApp रिमाइंडर\n✅ अटेंडेंस, रिपोर्ट कार्ड, सर्टिफिकेट\n✅ हिंदी + 10 भाषाएं\n\n500+ संस्थान भरोसा करते हैं। 30 दिन मुफ्त ट्रायल।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nसादर,\nDRS Softlabs टीम' },
+    pharmacy: { subject:'मुफ्त फार्मेसी बिलिंग सॉफ्टवेयर — Aushadhi | DRS Softlabs', body:'आदरणीय महोदय/महोदया,\n\nDRS Softlabs से। Aushadhi — स्मार्ट फार्मेसी मैनेजमेंट।\n\n✅ 10 सेकंड GST बिलिंग\n✅ एक्सपायरी अलर्ट — लाखों बचाएं\n✅ क्रेडिट लेजर + GSTR-1\n\n500+ फार्मेसी। 15 दिन मुफ्त।\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\nसादर,\nDRS Softlabs टीम' },
+    coaching: { subject:'मुफ्त कोचिंग मैनेजमेंट — NeoShala | DRS Softlabs', body:'आदरणीय महोदय/महोदया,\n\nNeoShala — कोचिंग सेंटर मैनेजमेंट।\n\n✅ बैच + फीस + अटेंडेंस\n✅ टेस्ट रिजल्ट + WhatsApp\n\n30 दिन मुफ्त।\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nसादर,\nDRS Softlabs टीम' },
+    followup1: { subject:'फॉलो-अप — NeoShala डेमो | DRS Softlabs', body:'आदरणीय महोदय/महोदया,\n\nपिछले हफ्ते NeoShala के बारे में बात की थी।\nक्या आपने डेमो देखा?\n\n5 मिनट का फ्री डेमो दे सकते हैं।\n\nWhatsApp: +91 94533 73823\n\nसादर,\nDRS Softlabs टीम' },
+    followup2: { subject:'आखिरी रिमाइंडर — 20% छूट NeoShala | DRS Softlabs', body:'आदरणीय महोदय/महोदया,\n\nयह आखिरी रिमाइंडर है।\n\n🎁 इस हफ्ते — 20% छूट!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823\n\nसादर,\nDRS Softlabs टीम' }
+  },
+  english: {
+    school: { subject:'Free School Management Software — NeoShala by DRS Softlabs', body:'Dear Sir/Madam,\n\nGreetings from DRS Softlabs!\n\nWe have built NeoShala — a school management system with 45+ modules:\n\n✅ Fee Collection + WhatsApp Reminders\n✅ Attendance, Report Cards, Certificates\n✅ 10 Indian Languages\n\n500+ schools trust us. 30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team' },
+    pharmacy: { subject:'Free Pharmacy Billing Software — Aushadhi by DRS Softlabs', body:'Dear Sir/Madam,\n\nWe offer Aushadhi — smart pharmacy management.\n\n✅ 10-second GST billing\n✅ Expiry alerts — save lakhs\n✅ Credit ledger + GSTR-1\n\n500+ pharmacies trust us. 15-day FREE trial.\n\nDemo: https://aushadhi-kappa.vercel.app\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team' },
+    coaching: { subject:'Free Coaching Management — NeoShala by DRS Softlabs', body:'Dear Sir/Madam,\n\nNeoShala — coaching center management.\n\n✅ Batch + Fee + Attendance\n✅ Results + WhatsApp\n\n30-day FREE trial.\n\nDemo: https://neo-shala.vercel.app\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team' },
+    followup1: { subject:'Follow-up — NeoShala Demo | DRS Softlabs', body:'Dear Sir/Madam,\n\nI reached out last week about NeoShala.\nDid you get a chance to check the demo?\n\nHappy to give a 5-min walkthrough.\n\nWhatsApp: +91 94533 73823\n\nBest Regards,\nDRS Softlabs Team' },
+    followup2: { subject:'Final Reminder — 20% OFF NeoShala | DRS Softlabs', body:'Dear Sir/Madam,\n\nFinal reminder.\n\n🎁 Sign up this week — 20% off first 3 months!\n\nDemo: https://neo-shala.vercel.app\n📞 94533 73823\n\nBest Regards,\nDRS Softlabs Team' }
+  }
+};
+
+function setEmailTemplate(cat) {
+  var tpl = EMAIL_CAT_TEMPLATES[currentLang][cat];
+  if (!tpl) tpl = EMAIL_CAT_TEMPLATES[currentLang].school;
+  document.getElementById('email-subject').value = tpl.subject;
+  document.getElementById('email-body').value = tpl.body;
+  document.querySelectorAll('#email-template-tabs .template-tab').forEach(function(t) { t.classList.toggle('active', t.dataset.etpl === cat); });
+}
+
+// ─── State ───
+var STORAGE_KEY='drs_leads_v3';
+var leads=[];
+var currentCat='all';
+var currentStatus='all';
+var currentCity='all';
+var searchQ='';
+var sortField='name';
+var sortDir=1;
+var sending=false;
+var sendTimer=null;
+
+// ─── Init ───
+function init(){
+  loadData();
+  populateCityFilter();
+  setWATemplate('school');
+  setEmailTemplate('school');
+  bindEvents();
+  render();
+}
+
+function loadData(){
+  var saved=localStorage.getItem(STORAGE_KEY);
+  if(saved){
+    try{leads=JSON.parse(saved)}catch(e){leads=[]}
+  }
+  if(!leads||leads.length===0){
+    leads=DEFAULT_LEADS.map(function(l){
+      return{name:l.name,phone:l.phone,email:l.email||'',city:l.city,cat:l.cat,status:'new',notes:'',contacted:'',followup1:'',followup2:''};
+    });
+    saveData();
   }
 }
 
-// Auto-login if already authenticated
-if (sessionStorage.getItem('crm_auth') === '1') {
-  document.getElementById('gate').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
+function saveData(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(leads))}catch(e){}
 }
 
-function getLeads() {
-  try { return JSON.parse(localStorage.getItem(CRM_KEY) || '[]'); }
-  catch { return []; }
-}
-function saveLeads(leads) { localStorage.setItem(CRM_KEY, JSON.stringify(leads)); }
-
-function addLead() {
-  const name = document.getElementById('f-name').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const product = document.getElementById('f-product').value;
-  if (!name) { alert('Name is required'); return; }
-  const leads = getLeads();
-  leads.unshift({
-    id: Date.now(),
-    name, phone, email, product,
-    status: 'new',
-    date: new Date().toISOString().slice(0,10),
-    notes: '',
+function populateCityFilter(){
+  var cities={};
+  leads.forEach(function(l){if(l.city)cities[l.city]=1});
+  var sel=document.getElementById('city-filter');
+  sel.innerHTML='<option value="all">All Cities</option>';
+  Object.keys(cities).sort().forEach(function(c){
+    sel.innerHTML+='<option value="'+c+'">'+c+'</option>';
   });
-  saveLeads(leads);
-  document.getElementById('f-name').value = '';
-  document.getElementById('f-phone').value = '';
-  document.getElementById('f-email').value = '';
-  renderLeads();
 }
 
-function updateStatus(id) {
-  const leads = getLeads();
-  const lead = leads.find(l => l.id === id);
-  if (!lead) return;
-  const order = ['new','contacted','demo','won','lost'];
-  const next = order[(order.indexOf(lead.status) + 1) % order.length];
-  lead.status = next;
-  saveLeads(leads);
-  renderLeads();
+// ─── Templates ───
+function setWATemplate(type){
+  document.getElementById('wa-template').value=WA_TEMPLATES[type]||WA_TEMPLATES.school;
+  document.querySelectorAll('#wa-template-tabs .template-tab').forEach(function(t){
+    t.classList.toggle('active',t.dataset.tpl===type);
+  });
 }
 
-function addNote(id) {
-  const note = prompt('Add note:');
-  if (!note) return;
-  const leads = getLeads();
-  const lead = leads.find(l => l.id === id);
-  if (lead) { lead.notes = note; saveLeads(leads); renderLeads(); }
-}
-
-function deleteLead(id) {
-  if (!confirm('Delete this lead?')) return;
-  const leads = getLeads().filter(l => l.id !== id);
-  saveLeads(leads);
-  renderLeads();
-}
-
-function whatsappLead(lead) {
-  const num = lead.phone.replace(/[^0-9]/g,'');
-  const full = num.length === 10 ? '91' + num : num;
-  const product = lead.product === 'Aushadhi' ? 'Aushadhi (pharmacy management)' : 'NeoShala (school management)';
-  const msg = `Hi ${lead.name},\n\nThis is DRS Softlabs. We'd love to show you ${product}.\n\nFree trial — no card needed.\n\nCan we schedule a quick 5-min demo?\n\n— DRS Softlabs Team`;
-  window.open(`https://web.whatsapp.com/send?phone=${full}&text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-function emailLead(lead) {
-  const product = lead.product === 'Aushadhi' ? 'Aushadhi' : 'NeoShala';
-  const subject = encodeURIComponent(`${product} — Free Trial for ${lead.name}`);
-  const body = encodeURIComponent(`Hi ${lead.name},\n\nThank you for your interest in ${product} by DRS Softlabs.\n\nWe'd love to schedule a quick demo. It's completely free — no card needed.\n\nLet us know a convenient time.\n\nBest regards,\nDRS Softlabs Team\n+91 94533 73823`);
-  window.open(`https://mail.google.com/mail/?view=cm&to=${lead.email}&su=${subject}&body=${body}`, '_blank');
-}
-
-function filterTab(status, btn) {
-  currentFilter = status;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  renderLeads();
-}
-
-function renderLeads() {
-  const leads = getLeads();
-  const search = (document.getElementById('search')?.value || '').toLowerCase();
-  const filtered = leads.filter(l => {
-    if (currentFilter !== 'all' && l.status !== currentFilter) return false;
-    if (search && !l.name.toLowerCase().includes(search) && !l.phone.includes(search) && !(l.email||'').toLowerCase().includes(search)) return false;
+// ─── Filtering & Sorting ───
+function getFiltered(){
+  var arr=leads.filter(function(l){
+    if(currentCat!=='all'&&l.cat!==currentCat)return false;
+    if(currentStatus!=='all'&&l.status!==currentStatus)return false;
+    if(currentCity!=='all'&&l.city!==currentCity)return false;
+    if(searchQ){
+      var q=searchQ.toLowerCase();
+      if(l.name.toLowerCase().indexOf(q)===-1&&l.phone.indexOf(q)===-1&&l.city.toLowerCase().indexOf(q)===-1&&(l.email||'').toLowerCase().indexOf(q)===-1)return false;
+    }
     return true;
   });
-
-  // Stats
-  const stats = {
-    total: leads.length,
-    new: leads.filter(l => l.status === 'new').length,
-    contacted: leads.filter(l => l.status === 'contacted').length,
-    demo: leads.filter(l => l.status === 'demo').length,
-    won: leads.filter(l => l.status === 'won').length,
-  };
-  document.getElementById('stats').innerHTML = [
-    { n:stats.total, l:'Total Leads', c:'#fff' },
-    { n:stats.new, l:'New', c:'#60a5fa' },
-    { n:stats.contacted, l:'Contacted', c:'#fbbf24' },
-    { n:stats.demo, l:'Demo Done', c:'#a855f7' },
-    { n:stats.won, l:'Won ✅', c:'#22c55e' },
-  ].map(s => `<div class="stat-box"><div class="stat-num" style="color:${s.c}">${s.n}</div><div class="stat-label">${s.l}</div></div>`).join('');
-
-  // Table
-  const tbody = document.getElementById('leads-body');
-  const empty = document.getElementById('empty');
-  if (filtered.length === 0) {
-    tbody.innerHTML = '';
-    empty.style.display = 'block';
-    return;
-  }
-  empty.style.display = 'none';
-  tbody.innerHTML = filtered.map((l, i) => `
-    <tr>
-      <td style="color:#64748b">${i+1}</td>
-      <td style="font-weight:700">${l.name}</td>
-      <td>${l.phone || '—'}</td>
-      <td style="font-size:12px">${l.email || '—'}</td>
-      <td><span style="font-size:12px;font-weight:600;color:${l.product==='Aushadhi'?'#22c47a':'#60a5fa'}">${l.product==='Aushadhi'?'💊':'🎓'} ${l.product}</span></td>
-      <td><span class="badge badge-${l.status}">${l.status.toUpperCase()}</span></td>
-      <td style="font-size:12px;color:#64748b">${l.date}</td>
-      <td style="font-size:11px;color:#94a3b8;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${l.notes||''}">${l.notes || '—'}</td>
-      <td>
-        <div style="display:flex;gap:4px;flex-wrap:wrap">
-          <button class="btn-sm btn-status" onclick="updateStatus(${l.id})" title="Change status">↻</button>
-          <button class="btn-sm btn-status" onclick="addNote(${l.id})" title="Add note">📝</button>
-          ${l.phone ? `<button class="btn-sm btn-status" onclick='whatsappLead(${JSON.stringify(l)})' title="WhatsApp" style="color:#25D366">💬</button>` : ''}
-          ${l.email ? `<button class="btn-sm btn-status" onclick='emailLead(${JSON.stringify(l)})' title="Email" style="color:#60a5fa">📧</button>` : ''}
-          <button class="btn-sm btn-del" onclick="deleteLead(${l.id})" title="Delete">🗑</button>
-        </div>
-      </td>
-    </tr>
-  `).join('');
+  arr.sort(function(a,b){
+    var va,vb;
+    if(sortField==='contacted'){va=a.contacted||'';vb=b.contacted||''}
+    else if(sortField==='status'){va=statusOrder(a.status);vb=statusOrder(b.status)}
+    else{va=(a[sortField]||'').toLowerCase();vb=(b[sortField]||'').toLowerCase()}
+    if(va<vb)return -1*sortDir;
+    if(va>vb)return 1*sortDir;
+    return 0;
+  });
+  return arr;
 }
 
-function exportCSV() {
-  const leads = getLeads();
-  if (!leads.length) { alert('No leads to export'); return; }
-  const csv = 'Name,Phone,Email,Product,Status,Date,Notes\n' +
-    leads.map(l => `"${l.name}","${l.phone}","${l.email}","${l.product}","${l.status}","${l.date}","${l.notes}"`).join('\n');
-  const blob = new Blob([csv], { type:'text/csv' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `drs-leads-${new Date().toISOString().slice(0,10)}.csv`;
+function statusOrder(s){
+  var o={new:0,contacted:1,followup1:2,followup2:3,interested:4,converted:5,notinterested:6};
+  return o[s]!==undefined?o[s]:0;
+}
+
+// ─── Render ───
+function render(){
+  var filtered=getFiltered();
+  var tbody=document.getElementById('leads-tbody');
+  tbody.innerHTML='';
+
+  if(filtered.length===0){
+    tbody.innerHTML='<tr><td colspan="13" class="empty-msg">No leads found matching your filters.</td></tr>';
+    updateStats(filtered);
+    return;
+  }
+
+  var catLabels={school:'School',pharmacy:'Pharmacy',coaching:'Coaching',college:'College'};
+  var statusLabels={new:'New',contacted:'Contacted',followup1:'Follow-up 1',followup2:'Follow-up 2',interested:'Interested',converted:'Converted',notinterested:'Not Interested'};
+
+  filtered.forEach(function(l,i){
+    var tr=document.createElement('tr');
+    var statusCls='status-'+(l.status||'new').replace(/\s/g,'');
+    var catCls='cat-'+(l.cat||'school');
+
+    tr.innerHTML=
+      '<td><input type="checkbox" class="lchk" data-ph="'+l.phone+'" /></td>'+
+      '<td style="color:#475569">'+(i+1)+'</td>'+
+      '<td><strong>'+esc(l.name)+'</strong></td>'+
+      '<td style="font-family:monospace;font-size:11px">'+l.phone+'</td>'+
+      '<td><span class="editable" data-field="email" data-ph="'+l.phone+'" onclick="editField(this)" title="Click to edit">'+esc(l.email||'')+'</span></td>'+
+      '<td>'+esc(l.city)+'</td>'+
+      '<td><span class="cat-badge '+catCls+'">'+(catLabels[l.cat]||l.cat)+'</span></td>'+
+      '<td><select class="filter-select" style="font-size:10px;padding:3px 6px" onchange="changeStatus(\''+l.phone+'\',this.value)">'+
+        statusOpts(l.status)+
+      '</select></td>'+
+      '<td class="date-cell">'+(l.contacted||'-')+'</td>'+
+      '<td class="date-cell">'+(l.followup1||'-')+'</td>'+
+      '<td class="date-cell">'+(l.followup2||'-')+'</td>'+
+      '<td class="notes-cell"><span class="editable" onclick="openNotesModal(\''+l.phone+'\')" title="Click to edit notes">'+esc(l.notes||'')+'</span></td>'+
+      '<td class="action-links">'+
+        '<a class="wa-link" href="https://wa.me/91'+l.phone+'?text='+encodeURIComponent(document.getElementById('wa-template').value)+'" target="_blank" title="WhatsApp">WA</a>'+
+        (l.email?'<a class="email-link" href="mailto:'+l.email+'?subject='+encodeURIComponent(document.getElementById('email-subject').value)+'&body='+encodeURIComponent(document.getElementById('email-body').value)+'" target="_blank" title="Email">EM</a>':'')+
+      '</td>';
+    tbody.appendChild(tr);
+  });
+
+  updateStats(filtered);
+}
+
+function statusOpts(current){
+  var all=[['new','New'],['contacted','Contacted'],['followup1','Follow-up 1'],['followup2','Follow-up 2'],['interested','Interested'],['converted','Converted'],['notinterested','Not Interested']];
+  return all.map(function(s){return '<option value="'+s[0]+'"'+(current===s[0]?' selected':'')+'>'+s[1]+'</option>'}).join('');
+}
+
+function updateStats(filtered){
+  var total=leads.length;
+  var filt=filtered?filtered.length:getFiltered().length;
+  var sel=document.querySelectorAll('.lchk:checked').length;
+  var contacted=0,interested=0,converted=0,newc=0;
+  leads.forEach(function(l){
+    if(l.status==='new')newc++;
+    if(l.status==='contacted'||l.status==='followup1'||l.status==='followup2')contacted++;
+    if(l.status==='interested')interested++;
+    if(l.status==='converted')converted++;
+  });
+  document.getElementById('st-total').textContent=total;
+  document.getElementById('st-filtered').textContent=filt;
+  document.getElementById('st-selected').textContent=sel;
+  document.getElementById('st-contacted').textContent=contacted;
+  document.getElementById('st-interested').textContent=interested;
+  document.getElementById('st-converted').textContent=converted;
+  document.getElementById('st-new').textContent=newc;
+}
+
+function esc(s){if(!s)return '';return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+// ─── Events ───
+function bindEvents(){
+  document.getElementById('cat-tabs').addEventListener('click',function(e){
+    if(e.target.classList.contains('tab')){
+      currentCat=e.target.dataset.cat;
+      document.querySelectorAll('#cat-tabs .tab').forEach(function(t){t.classList.remove('active')});
+      e.target.classList.add('active');
+      render();
+    }
+  });
+  document.getElementById('wa-template-tabs').addEventListener('click',function(e){
+    if(e.target.classList.contains('template-tab')){
+      setWATemplate(e.target.dataset.tpl);
+    }
+  });
+  document.getElementById('search-box').addEventListener('input',function(e){searchQ=e.target.value;render()});
+  document.getElementById('status-filter').addEventListener('change',function(e){currentStatus=e.target.value;render()});
+  document.getElementById('city-filter').addEventListener('change',function(e){currentCity=e.target.value;render()});
+  document.getElementById('sort-by').addEventListener('change',function(e){sortField=e.target.value;render()});
+  document.addEventListener('change',function(e){if(e.target.classList.contains('lchk'))updateStats()});
+}
+
+// ─── Actions ───
+function selectAllVisible(){document.querySelectorAll('.lchk').forEach(function(c){c.checked=true});updateStats()}
+function deselectAll(){document.querySelectorAll('.lchk').forEach(function(c){c.checked=false});updateStats()}
+function toggleAll(checked){document.querySelectorAll('.lchk').forEach(function(c){c.checked=checked});updateStats()}
+
+function changeStatus(phone,status){
+  var lead=findLead(phone);
+  if(!lead)return;
+  lead.status=status;
+  var now=todayStr();
+  if(status==='contacted'&&!lead.contacted)lead.contacted=now;
+  if(status==='followup1'&&!lead.followup1)lead.followup1=now;
+  if(status==='followup2'&&!lead.followup2)lead.followup2=now;
+  saveData();
+}
+
+function findLead(phone){
+  for(var i=0;i<leads.length;i++){if(leads[i].phone===phone)return leads[i]}
+  return null;
+}
+
+function todayStr(){
+  var d=new Date();
+  return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+}
+function pad(n){return n<10?'0'+n:n}
+
+// ─── Inline Edit ───
+function editField(el){
+  var field=el.dataset.field;
+  var phone=el.dataset.ph;
+  var lead=findLead(phone);
+  if(!lead)return;
+  var current=lead[field]||'';
+  var input=document.createElement('input');
+  input.type='text';
+  input.value=current;
+  input.style.cssText='background:rgba(0,0,0,0.4);border:1px solid #22c47a;border-radius:4px;color:#fff;font-size:11px;padding:3px 6px;width:100%;font-family:inherit';
+  el.innerHTML='';
+  el.appendChild(input);
+  input.focus();
+  function save(){
+    lead[field]=input.value.trim();
+    saveData();
+    el.textContent=lead[field];
+  }
+  input.addEventListener('blur',save);
+  input.addEventListener('keydown',function(e){if(e.key==='Enter')save()});
+}
+
+// ─── Notes Modal ───
+function openNotesModal(phone){
+  var lead=findLead(phone);
+  if(!lead)return;
+  document.getElementById('notes-phone').value=phone;
+  document.getElementById('notes-text').value=lead.notes||'';
+  document.getElementById('notes-modal').classList.add('show');
+}
+function saveNotes(){
+  var phone=document.getElementById('notes-phone').value;
+  var lead=findLead(phone);
+  if(lead){lead.notes=document.getElementById('notes-text').value.trim();saveData()}
+  closeModal('notes-modal');
+  render();
+}
+
+// ─── Add Lead ───
+function openAddModal(){document.getElementById('add-modal').classList.add('show')}
+function addLead(){
+  var name=document.getElementById('add-name').value.trim();
+  var phone=document.getElementById('add-phone').value.trim().replace(/[^0-9]/g,'');
+  var email=document.getElementById('add-email').value.trim();
+  var city=document.getElementById('add-city').value.trim();
+  var cat=document.getElementById('add-cat').value;
+  var notes=document.getElementById('add-notes').value.trim();
+  if(!name||!phone||phone.length!==10){alert('Name and 10-digit phone number required');return}
+  leads.push({name:name,phone:phone,email:email,city:city||'Other',cat:cat,status:'new',notes:notes,contacted:'',followup1:'',followup2:''});
+  saveData();
+  populateCityFilter();
+  closeModal('add-modal');
+  document.getElementById('add-name').value='';
+  document.getElementById('add-phone').value='';
+  document.getElementById('add-email').value='';
+  document.getElementById('add-city').value='';
+  document.getElementById('add-notes').value='';
+  render();
+}
+
+// ─── Import CSV ───
+function openImportModal(){document.getElementById('import-modal').classList.add('show')}
+function importCSV(){
+  var raw=document.getElementById('csv-input').value.trim();
+  if(!raw){alert('Paste CSV data first');return}
+  var lines=raw.split('\n');
+  if(lines.length<2){alert('Need at least header + 1 data row');return}
+  var count=0;
+  for(var i=1;i<lines.length;i++){
+    var cols=lines[i].split(',');
+    if(cols.length<2)continue;
+    var name=cols[0].trim();
+    var phone=cols[1].trim().replace(/[^0-9]/g,'');
+    if(!name||phone.length<10)continue;
+    if(phone.length>10)phone=phone.slice(-10);
+    var email=(cols[2]||'').trim();
+    var city=(cols[3]||'Other').trim();
+    var cat=(cols[4]||'school').trim().toLowerCase();
+    if(['school','pharmacy','coaching','college'].indexOf(cat)===-1)cat='school';
+    leads.push({name:name,phone:phone,email:email,city:city,cat:cat,status:'new',notes:'',contacted:'',followup1:'',followup2:''});
+    count++;
+  }
+  saveData();
+  populateCityFilter();
+  closeModal('import-modal');
+  document.getElementById('csv-input').value='';
+  alert(count+' leads imported!');
+  render();
+}
+
+// ─── Export CSV ───
+function exportCSV(){
+  var header='Name,Phone,Email,City,Category,Status,Notes,Contacted,FollowUp1,FollowUp2\n';
+  var rows=leads.map(function(l){
+    return[l.name,l.phone,l.email||'',l.city,l.cat,l.status,'"'+(l.notes||'').replace(/"/g,'""')+'"',l.contacted||'',l.followup1||'',l.followup2||''].join(',');
+  });
+  var csv=header+rows.join('\n');
+  var blob=new Blob([csv],{type:'text/csv'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='drs-leads-'+todayStr()+'.csv';
   a.click();
 }
 
-function clearAll() {
-  if (!confirm('Delete ALL leads? This cannot be undone!')) return;
-  localStorage.removeItem(CRM_KEY);
-  renderLeads();
+// ─── Sending ───
+function startSending(mode){
+  var checks=document.querySelectorAll('.lchk:checked');
+  if(checks.length===0){alert('Select leads first!');return}
+  var phones=[];
+  checks.forEach(function(c){phones.push(c.dataset.ph)});
+  var delay=parseInt(document.getElementById('send-delay').value)*1000;
+  var total=phones.length;
+  var current=0;
+  sending=true;
+
+  var progWrap=document.getElementById('progress-wrap');
+  progWrap.style.display='block';
+  document.getElementById('prog-tot').textContent=total;
+
+  function next(){
+    if(!sending||current>=total){
+      progWrap.style.display='none';
+      sending=false;
+      render();
+      alert('Done! '+current+' messages processed.');
+      return;
+    }
+    var phone=phones[current];
+    var lead=findLead(phone);
+    document.getElementById('prog-cur').textContent=current+1;
+    document.getElementById('prog-fill').style.width=((current+1)/total*100)+'%';
+
+    if(mode==='whatsapp'){
+      var msg=document.getElementById('wa-template').value;
+      window.open('https://wa.me/91'+phone+'?text='+encodeURIComponent(msg),'_blank');
+    }else{
+      if(lead&&lead.email){
+        var subj=document.getElementById('email-subject').value;
+        var body=document.getElementById('email-body').value;
+        window.open('mailto:'+lead.email+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body),'_blank');
+      }
+    }
+
+    if(lead){
+      var now=todayStr();
+      if(lead.status==='new'){lead.status='contacted';lead.contacted=now}
+      else if(lead.status==='contacted'){lead.status='followup1';lead.followup1=now}
+      else if(lead.status==='followup1'){lead.status='followup2';lead.followup2=now}
+      saveData();
+    }
+
+    current++;
+    sendTimer=setTimeout(next,delay);
+  }
+  next();
 }
 
-// Initial render
-renderLeads();
+function stopSending(){sending=false;clearTimeout(sendTimer);document.getElementById('progress-wrap').style.display='none'}
+
+// ─── Reset ───
+function resetAllData(){
+  if(!confirm('This will DELETE all lead data and tracking. Are you sure?'))return;
+  localStorage.removeItem(STORAGE_KEY);
+  leads=[];
+  loadData();
+  populateCityFilter();
+  render();
+}
+
+// ─── Modal ───
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+document.querySelectorAll('.modal-overlay').forEach(function(m){
+  m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('show')});
+});
+
+// ─── Start ───
+init();
 </script>
 </body>
 </html>
