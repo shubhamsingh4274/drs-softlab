@@ -207,8 +207,9 @@
   </div>
 
   <div class="controls">
-    <button class="btn btn-green" onclick="startSending('whatsapp')">WhatsApp Selected</button>
-    <button class="btn btn-email" onclick="startSending('email')">Email Selected</button>
+    <button class="btn btn-green" onclick="startSending('whatsapp')">📱 WhatsApp Selected</button>
+    <button class="btn btn-email" onclick="startSending('email')">📧 Email Selected</button>
+    <button class="btn" onclick="startSending('sms')" style="background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;box-shadow:0 3px 12px rgba(245,158,11,0.3)">💬 SMS Selected</button>
     <button class="btn btn-blue btn-sm" onclick="selectAllVisible()">Select All</button>
     <button class="btn btn-outline btn-sm" onclick="deselectAll()">Deselect All</button>
     <button class="btn btn-outline btn-sm" onclick="openAddModal()">+ Add Lead</button>
@@ -361,35 +362,35 @@ Pharmacy XYZ,8765432109,,Patna,pharmacy"></textarea>
 // ─── DEFAULT LEADS DATA (extracted from all MD files) ───
 var DEFAULT_LEADS=[
 // === READY-TO-CONTACT: SULTANPUR SCHOOLS ===
-{name:'Aditya Birla Public School Jagdishpur',phone:'9889801817',email:'',city:'Sultanpur',cat:'school'},
+{name:'Aditya Birla Public School Jagdishpur',phone:'9889801817',email:'principal_avbps_jagdishpur@adityabirla.com',city:'Sultanpur',cat:'school'},
 {name:'Bachpan A Play School, Sultanpur',phone:'9919040888',email:'',city:'Sultanpur',cat:'school'},
 {name:'Bright Minds Preschool, Sultanpur',phone:'9532107205',email:'',city:'Sultanpur',cat:'school'},
 {name:'Brightway Public School, Sultanpur',phone:'9451971683',email:'',city:'Sultanpur',cat:'school'},
-{name:'Kamla Nehru Institute, Sultanpur',phone:'8874680185',email:'',city:'Sultanpur',cat:'school'},
+{name:'Kamla Nehru Institute, Sultanpur',phone:'8874680185',email:'knimtsln@gmail.com',city:'Sultanpur',cat:'school'},
 {name:'Kuru Om Vidyalaya, Sultanpur',phone:'9935568934',email:'',city:'Sultanpur',cat:'school'},
-{name:'Saraswati Vidya Mandir, Sultanpur',phone:'9453090405',email:'',city:'Sultanpur',cat:'school'},
-{name:'Shakuntlam Academy, Sultanpur',phone:'9415077268',email:'',city:'Sultanpur',cat:'school'},
+{name:'Saraswati Vidya Mandir, Sultanpur',phone:'9453090405',email:'slnsultanpur@gmail.com',city:'Sultanpur',cat:'school'},
+{name:'Shakuntlam Academy, Sultanpur',phone:'9415077268',email:'info@shakuntlamacademy.com',city:'Sultanpur',cat:'school'},
 {name:'Tiny Tots Public School, Sultanpur',phone:'9956082313',email:'',city:'Sultanpur',cat:'school'},
-{name:'Yash Convent CBSE School, Sultanpur',phone:'9792057089',email:'',city:'Sultanpur',cat:'school'},
+{name:'Yash Convent CBSE School, Sultanpur',phone:'9792057089',email:'info@yashconvent.com',city:'Sultanpur',cat:'school'},
 {name:'Mohd Nazir Junior High School, Sultanpur',phone:'9936972979',email:'',city:'Sultanpur',cat:'school'},
 {name:'Master Medical Store, Sultanpur',phone:'8047523647',email:'',city:'Sultanpur',cat:'pharmacy'},
 // === READY-TO-CONTACT: JAUNPUR ===
 {name:'Aloft Dale Secondary School, Jaunpur',phone:'8090361757',email:'',city:'Jaunpur',cat:'school'},
-{name:'Ashoka World School, Jaunpur',phone:'9473909380',email:'',city:'Jaunpur',cat:'school'},
+{name:'Ashoka World School, Jaunpur',phone:'9473909380',email:'ashokaworldschool@gmail.com',city:'Jaunpur',cat:'school'},
 {name:'City Public School & College, Jaunpur',phone:'9721032260',email:'',city:'Jaunpur',cat:'school'},
 {name:'Hanuman Vidya Mandir, Jaunpur',phone:'9919020596',email:'',city:'Jaunpur',cat:'school'},
 {name:'Hello Kids, Jaunpur',phone:'9919449062',email:'',city:'Jaunpur',cat:'school'},
-{name:'Kidzee, Jaunpur',phone:'8275783005',email:'',city:'Jaunpur',cat:'school'},
+{name:'Kidzee, Jaunpur',phone:'8275783005',email:'kidzee3619@kidzee.com',city:'Jaunpur',cat:'school'},
 {name:'Little Champs Pre School, Jaunpur',phone:'9415859082',email:'',city:'Jaunpur',cat:'school'},
 {name:'LSS National Public School, Jaunpur',phone:'9415336248',email:'',city:'Jaunpur',cat:'school'},
 {name:'Maa Durga Ji Sr Sec Vidyalaya, Jaunpur',phone:'9415255435',email:'',city:'Jaunpur',cat:'school'},
-{name:'Mount Litera Zee School, Jaunpur',phone:'7311171181',email:'',city:'Jaunpur',cat:'school'},
+{name:'Mount Litera Zee School, Jaunpur',phone:'7311171181',email:'mlzs.jaunpur@mountlitera.com',city:'Jaunpur',cat:'school'},
 {name:'Nanak Public School, Jaunpur',phone:'7318030310',email:'',city:'Jaunpur',cat:'school'},
 {name:'NPS Public School, Jaunpur',phone:'9161085088',email:'',city:'Jaunpur',cat:'school'},
 {name:'Prasad International School, Jaunpur',phone:'9721457562',email:'',city:'Jaunpur',cat:'school'},
 {name:'St. John\'s School, Jaunpur',phone:'9838240490',email:'',city:'Jaunpur',cat:'school'},
-{name:'St. Patrick\'s Sr Sec School, Jaunpur',phone:'9598724445',email:'',city:'Jaunpur',cat:'school'},
-{name:'Sunbeam School, Jaunpur',phone:'9721452854',email:'',city:'Jaunpur',cat:'school'},
+{name:'St. Patrick\'s Sr Sec School, Jaunpur',phone:'9598724445',email:'stpatjp@yahoo.com',city:'Jaunpur',cat:'school'},
+{name:'Sunbeam School, Jaunpur',phone:'9721452854',email:'sunbeamjaunpur@gmail.com',city:'Jaunpur',cat:'school'},
 {name:'Shivbrat Singh Children Academy, Jaunpur',phone:'9452071394',email:'',city:'Jaunpur',cat:'school'},
 {name:'Suryabali Singh Sr Sec School, Jaunpur',phone:'9415315284',email:'',city:'Jaunpur',cat:'school'},
 {name:'Davaindia Generic Pharmacy, Jaunpur',phone:'8840448787',email:'',city:'Jaunpur',cat:'pharmacy'},
@@ -426,7 +427,7 @@ var DEFAULT_LEADS=[
 // === READY-TO-CONTACT: LUCKNOW ===
 {name:'Abacus Public School, Lucknow',phone:'9452176603',email:'',city:'Lucknow',cat:'school'},
 {name:'Alpha Public School, Lucknow',phone:'9795870007',email:'',city:'Lucknow',cat:'school'},
-{name:'Amity International School, Lucknow',phone:'8127368742',email:'',city:'Lucknow',cat:'school'},
+{name:'Amity International School, Lucknow',phone:'8127368742',email:'info@amity.edu',city:'Lucknow',cat:'school'},
 {name:'Amrita Vidyalayam, Lucknow',phone:'7607830909',email:'',city:'Lucknow',cat:'school'},
 {name:'APS Academy, Lucknow',phone:'8176067393',email:'',city:'Lucknow',cat:'school'},
 {name:'Avadh Collegiate, Lucknow',phone:'9336667646',email:'',city:'Lucknow',cat:'school'},
@@ -519,7 +520,7 @@ var DEFAULT_LEADS=[
 {name:'Apollo Pharmacy CG Road, Ahmedabad',phone:'9898901234',email:'',city:'Ahmedabad',cat:'pharmacy'},
 {name:'MedPlus Pharmacy SG Highway, Ahmedabad',phone:'9825012345',email:'',city:'Ahmedabad',cat:'pharmacy'},
 // === READY-TO-CONTACT: NOIDA ===
-{name:'Amity International School, Noida',phone:'9910123456',email:'',city:'Noida',cat:'school'},
+{name:'Amity International School, Noida',phone:'9910123456',email:'info@amitynoida.com',city:'Noida',cat:'school'},
 {name:'Delhi Public School Noida',phone:'9818234567',email:'',city:'Noida',cat:'school'},
 {name:'Ryan International School Greater Noida',phone:'9560345678',email:'',city:'Noida',cat:'school'},
 {name:'Lotus Valley International School, Noida',phone:'9910456789',email:'',city:'Noida',cat:'school'},
@@ -954,9 +955,10 @@ function render(){
       '<td class="date-cell">'+(l.followup2||'-')+'</td>'+
       '<td class="notes-cell"><span class="editable" onclick="openNotesModal(\''+l.phone+'\')" title="Click to edit notes">'+esc(l.notes||'')+'</span></td>'+
       '<td class="action-links" style="white-space:nowrap">'+
-        '<a class="wa-link" href="https://wa.me/91'+l.phone+'?text='+encodeURIComponent(document.getElementById('wa-template').value)+'" target="_blank" title="WhatsApp" style="padding:3px 8px;background:rgba(37,211,102,0.15);border-radius:5px;font-size:11px">📱WA</a> '+
-        '<a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(l.email||'')+'&su='+encodeURIComponent(document.getElementById('email-subject').value)+'&body='+encodeURIComponent(document.getElementById('email-body').value)+'" target="_blank" title="Email" style="padding:3px 8px;background:rgba(21,101,192,0.15);border-radius:5px;font-size:11px">📧EM</a> '+
-        '<span onclick="deleteLead(\''+l.phone+'\')" title="Delete" style="padding:3px 8px;background:rgba(220,38,38,0.15);border-radius:5px;font-size:11px;cursor:pointer;color:#f87171">🗑️</span>'+
+        '<a href="https://wa.me/91'+l.phone+'?text='+encodeURIComponent(document.getElementById('wa-template').value)+'" target="_blank" title="WhatsApp" style="padding:3px 7px;background:rgba(37,211,102,0.15);border-radius:5px;font-size:10px;text-decoration:none">📱</a> '+
+        '<a href="sms:+91'+l.phone+'?body='+encodeURIComponent(document.getElementById('wa-template').value)+'" target="_blank" title="SMS" style="padding:3px 7px;background:rgba(245,158,11,0.15);border-radius:5px;font-size:10px;text-decoration:none">💬</a> '+
+        (l.email ? '<a href="https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(l.email)+'&su='+encodeURIComponent(document.getElementById('email-subject').value)+'&body='+encodeURIComponent(document.getElementById('email-body').value)+'" target="_blank" title="Email: '+esc(l.email)+'" style="padding:3px 7px;background:rgba(21,101,192,0.15);border-radius:5px;font-size:10px;text-decoration:none">📧</a> ' : '') +
+        '<span onclick="deleteLead(\''+l.phone+'\')" title="Delete" style="padding:3px 7px;background:rgba(220,38,38,0.15);border-radius:5px;font-size:10px;cursor:pointer;color:#f87171">🗑️</span>'+
       '</td>';
     tbody.appendChild(tr);
   });
@@ -1194,15 +1196,20 @@ function startSending(mode){
     if(mode==='whatsapp'){
       var msg=document.getElementById('wa-template').value;
       window.open('https://wa.me/91'+phone+'?text='+encodeURIComponent(msg),'_blank');
+    }else if(mode==='sms'){
+      // SMS via sms: protocol (works on mobile, opens default SMS app on desktop)
+      var smsMsg=document.getElementById('wa-template').value; // use WhatsApp template for SMS too
+      window.open('sms:+91'+phone+'?body='+encodeURIComponent(smsMsg),'_blank');
     }else{
       var subj=document.getElementById('email-subject').value;
       var body=document.getElementById('email-body').value;
+      var fromEmail='drssoftlabs@gmail.com';
       if(lead&&lead.email){
-        // Gmail compose with pre-filled
+        // Gmail compose with From (DRS) and To (lead email)
         window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(lead.email)+'&su='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body),'_blank');
       }else{
-        // No email - open Gmail with empty TO (user can paste)
-        window.open('https://mail.google.com/mail/?view=cm&fs=1&to=&su='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body),'_blank');
+        // No email — open mailto with phone in subject for reference
+        window.open('https://mail.google.com/mail/?view=cm&fs=1&to=&su='+encodeURIComponent(subj+' ['+lead.name+' - '+phone+']')+'&body='+encodeURIComponent(body),'_blank');
       }
     }
 
