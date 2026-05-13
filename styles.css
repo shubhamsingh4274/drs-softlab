@@ -708,6 +708,86 @@ body.light-mode details { background: #fff !important; border-color: #e2e8f0 !im
 body.light-mode details[open] { background: #f8fafc !important; }
 body.light-mode details p { color: #6b7280 !important; }
 
+/* Light mode: Comparison Table */
+body.light-mode .compare-table th, body.light-mode .compare-table td {
+  border-bottom-color: #e2e8f0;
+  color: #1a1a2e;
+}
+body.light-mode .compare-table th { color: #4b5563; }
+body.light-mode .compare-table td:first-child { color: #1a1a2e; }
+body.light-mode .compare-table .check { color: #16a34a; font-weight: 700; }
+body.light-mode .compare-table .cross { color: #d1d5db; font-weight: 700; }
+body.light-mode .compare-table .drs-col { background: rgba(26,122,82,0.05); }
+body.light-mode .compare-table thead .drs-col {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+}
+body.light-mode .compare-table tbody tr:hover { background: rgba(0,0,0,0.02); }
+body.light-mode .compare-table tbody tr td { background-color: #fff; }
+body.light-mode .compare-table tbody tr td.drs-col,
+body.light-mode .compare-table tbody tr:hover td.drs-col { background: rgba(26,122,82,0.08); }
+/* Wrapping container if present */
+body.light-mode .compare-section, body.light-mode .compare-card {
+  background: #fff; border: 1px solid #e2e8f0;
+}
+
+/* Light mode: Pricing cards */
+body.light-mode .pricing-card { background: #fff; border-color: #e2e8f0; }
+body.light-mode .pricing-card.featured { border-color: var(--primary); background: linear-gradient(135deg, rgba(26,122,82,0.04), #fff); }
+body.light-mode .pricing-card .price { color: #1a1a2e; }
+body.light-mode .pricing-card .period { color: #6b7280; }
+body.light-mode .pricing-card li { color: #4b5563; }
+
+/* Light mode: Blog cards */
+body.light-mode .blog-card { background: #fff; border-color: #e2e8f0; }
+body.light-mode .blog-card h3 { color: #1a1a2e; }
+body.light-mode .blog-card p, body.light-mode .blog-card .meta { color: #6b7280; }
+body.light-mode .blog-category { background: rgba(26,122,82,0.08); color: var(--primary); }
+
+/* Light mode: Job cards (careers) */
+body.light-mode .job-card { background: #fff; border-color: #e2e8f0; }
+body.light-mode .job-card h3 { color: #1a1a2e; }
+body.light-mode .job-card .job-meta span { color: #6b7280; }
+body.light-mode .job-tag { background: rgba(0,0,0,0.04); color: #374151; border-color: rgba(0,0,0,0.08); }
+
+/* Light mode: Contact form */
+body.light-mode .contact-form input,
+body.light-mode .contact-form textarea,
+body.light-mode .contact-form select {
+  background: #fff; border-color: #e2e8f0; color: #1a1a2e;
+}
+body.light-mode .contact-form input:focus,
+body.light-mode .contact-form textarea:focus { border-color: var(--primary); }
+body.light-mode .contact-form label { color: #374151; }
+body.light-mode .contact-info-card { background: #fff; border-color: #e2e8f0; }
+body.light-mode .contact-info-card p { color: #6b7280; }
+
+/* Light mode: Testimonials */
+body.light-mode .testimonial-card { background: #fff; border-color: #e2e8f0; box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+body.light-mode .testimonial-card p { color: #374151; }
+body.light-mode .testimonial-author .name { color: #1a1a2e; }
+body.light-mode .testimonial-author .role { color: #6b7280; }
+
+/* Light mode: Features grid */
+body.light-mode .feature-card { background: #fff; border-color: #e2e8f0; }
+body.light-mode .feature-card h3 { color: #1a1a2e; }
+body.light-mode .feature-card p { color: #6b7280; }
+
+/* Light mode: Section borders */
+body.light-mode section { border-color: #e2e8f0 !important; }
+body.light-mode .section-divider { background: linear-gradient(90deg, transparent, #e2e8f0, transparent); }
+
+/* Light mode: floating buttons */
+body.light-mode .ai-floating-badge { background: rgba(255,255,255,0.95); border-color: #e2e8f0; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+body.light-mode .ai-floating-badge span { color: #374151; }
+
+/* Light mode: stats numbers */
+body.light-mode .stat-card .value, body.light-mode .stat-number { color: var(--primary); }
+body.light-mode .stat-card .label, body.light-mode .stat-label { color: #6b7280; }
+
+/* Light mode: code/terminal blocks */
+body.light-mode pre, body.light-mode code { background: #f1f5f9; color: #1e293b; border-color: #e2e8f0; }
+
 /* ─── Device Mockup ───────────────────────────────── */
 .device-laptop {
   background: #1e1e2e; border-radius: 14px; padding: 10px 10px 0; position: relative;
